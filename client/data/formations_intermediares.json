@@ -1,0 +1,232 @@
+{
+    "formationsData": {
+        "5": {
+            "title": "Contexte et persona",
+            "category": "Techniques",
+            "difficulty": "Intermédiaire",
+            "duration": "30 min",
+            "xp": 300,
+            "concept": {
+                "title": "Utiliser le contexte et les personas",
+                "content": "Le contexte et les personas sont des outils puissants pour personnaliser les réponses de l'IA.\n\n**Qu'est-ce qu'un persona ?**\nUn persona est un rôle que vous demandez à l'IA d'adopter. Cela influence son ton, son vocabulaire et son approche.\n\n**Types de personas efficaces :**\n\n**1. Expert métier**\n\"Agis comme un développeur senior avec 15 ans d'expérience en architecture logicielle\"\n\n**2. Pédagogue**\n\"Tu es un professeur patient qui explique des concepts complexes simplement\"\n\n**3. Consultant**\n\"Adopte le rôle d'un consultant McKinsey analysant une stratégie d'entreprise\"\n\n**Pourquoi ça fonctionne ?**\nLe persona guide le modèle vers un type de réponse spécifique, avec le bon niveau de détail et le vocabulaire approprié.",
+                "detailedContent": {
+                    "title": "Maîtriser les personas et le contexte avancé",
+                    "sections": [
+                        {
+                            "title": "Anatomie d'un bon persona",
+                            "content": "**Éléments clés d'un persona efficace :**\n\n1. **Expertise** : Domaine de compétence précis\n2. **Expérience** : Niveau et durée\n3. **Style** : Approche et méthodologie\n4. **Objectif** : Ce qu'il cherche à accomplir\n\n**Exemple complet :**\n\"Tu es Marie, une UX designer senior avec 12 ans d'expérience, spécialisée dans les applications B2B SaaS. Tu privilégies une approche data-driven et tu es connue pour tes wireframes détaillés. Ton objectif est d'améliorer le taux de conversion.\""
+                        },
+                        {
+                            "title": "Contexte multicouche",
+                            "content": "**Niveau 1 - Contexte immédiat :**\nLa situation actuelle, le problème à résoudre\n\n**Niveau 2 - Contexte organisationnel :**\nL'entreprise, l'équipe, les contraintes\n\n**Niveau 3 - Contexte historique :**\nCe qui a été essayé, les échecs passés\n\n**Niveau 4 - Contexte futur :**\nLes objectifs à long terme, la vision\n\nPlus vous fournissez de couches de contexte, plus la réponse sera personnalisée et actionnable."
+                        },
+                        {
+                            "title": "Personas composites",
+                            "content": "Vous pouvez combiner plusieurs perspectives :\n\n**Multi-expertise :**\n\"Tu as une double casquette : développeur backend et data scientist\"\n\n**Perspective contradictoire :**\n\"Analyse ce projet du point de vue d'un investisseur prudent ET d'un entrepreneur audacieux\"\n\n**Évolution temporelle :**\n\"Donne-moi d'abord l'avis d'un junior, puis celui d'un senior sur la même question\""
+                        },
+                        {
+                            "title": "Erreurs à éviter",
+                            "content": "**Personas trop vagues :**\n❌ \"Sois un expert\" → Pas assez spécifique\n✅ \"Sois un expert en cybersécurité spécialisé dans les audits RGPD\"\n\n**Personas contradictoires :**\n❌ \"Sois créatif mais reste très conservateur\"\n\n**Personas irréalistes :**\n❌ \"Tu es le meilleur expert mondial\" → Crée des attentes irréalistes\n✅ \"Tu es un professionnel expérimenté avec une solide expertise\""
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Persona en action",
+                "bad": {
+                    "prompt": "Aide-moi à améliorer mon code",
+                    "response": "Voici quelques conseils généraux pour améliorer votre code...",
+                    "explanation": "Sans persona ni contexte, la réponse est générique et peu utile."
+                },
+                "good": {
+                    "prompt": "Tu es un architecte logiciel senior avec 15 ans d'expérience, reconnu pour ton expertise en clean code et SOLID principles. Je suis développeur junior depuis 6 mois. Revois ce code Python et explique-moi comment l'améliorer, en justifiant chaque suggestion comme si tu me mentorais.",
+                    "response": "En tant que ton mentor, voici mon analyse structurée :\n\n**1. Principe de responsabilité unique (SRP)**\nTa classe fait trop de choses à la fois...\n\n**2. Nommage**\n```python\n# Avant\ndef proc(d):\n# Après\ndef process_user_data(user_dict):\n```\nVoici pourquoi...",
+                    "explanation": "Le persona 'mentor senior' + contexte 'junior 6 mois' = réponse pédagogique et adaptée."
+                }
+            },
+            "exercise": {
+                "instruction": "Créez un prompt avec un persona détaillé pour obtenir des conseils sur le lancement d'une startup tech.",
+                "badPrompt": "Comment lancer une startup ?",
+                "hint": "Définissez un persona expert (investisseur, entrepreneur à succès, mentor startup...), votre propre contexte (expérience, domaine, contraintes), et ce que vous attendez précisément.",
+                "validationCriteria": [
+                    "persona détaillé",
+                    "contexte personnel",
+                    "expertise définie",
+                    "objectif clair"
+                ],
+                "exampleSolution": "Tu es Sarah, une business angel qui a investi dans 50+ startups tech dont 3 licornes. Tu as toi-même fondé et vendu 2 startups SaaS. J'ai 5 ans d'expérience en développement web et une idée de produit pour automatiser la gestion de projet. Budget: économies personnelles de 20k€. Analyse mon projet comme si tu considérais y investir : points forts, faiblesses, et les 3 premières étapes concrètes que tu me recommandes."
+            }
+        },
+        "6": {
+            "title": "Chain of Thought",
+            "category": "Techniques",
+            "difficulty": "Intermédiaire",
+            "duration": "35 min",
+            "xp": 350,
+            "concept": {
+                "title": "Le raisonnement étape par étape",
+                "content": "Le Chain of Thought (CoT) est une technique qui guide l'IA à travers un raisonnement structuré.\n\n**Principe :**\nAu lieu de demander directement la réponse, vous demandez à l'IA de réfléchir étape par étape.\n\n**Formulations efficaces :**\n- \"Réfléchis étape par étape\"\n- \"Avant de répondre, analyse le problème\"\n- \"Montre ton raisonnement\"\n- \"Décompose ce problème en sous-problèmes\"\n\n**Pourquoi ça fonctionne ?**\nLe CoT force le modèle à expliciter son raisonnement, ce qui :\n- Réduit les erreurs de logique\n- Permet de vérifier le raisonnement\n- Améliore la qualité sur les problèmes complexes",
+                "detailedContent": {
+                    "title": "Techniques avancées de Chain of Thought",
+                    "sections": [
+                        {
+                            "title": "Zero-shot CoT",
+                            "content": "La technique la plus simple : ajouter \"Réfléchis étape par étape\" à la fin de votre prompt.\n\n**Exemple :**\n\"Un train part à 14h et met 3h30. Un autre part à 15h et met 2h45. Lequel arrive en premier ? Réfléchis étape par étape.\"\n\n**Résultat :**\nL'IA va :\n1. Calculer l'heure d'arrivée du premier train\n2. Calculer l'heure d'arrivée du second\n3. Comparer les deux\n4. Conclure\n\nSans CoT, l'IA pourrait donner une réponse incorrecte sur ce type de problème."
+                        },
+                        {
+                            "title": "CoT avec étapes explicites",
+                            "content": "Spécifiez les étapes que vous voulez voir suivies :\n\n**Structure explicite :**\n\"Analyse ce problème en suivant ces étapes :\n1. Identifie les données clés\n2. Formule le problème mathématiquement\n3. Résous pas à pas\n4. Vérifie ta réponse\n5. Conclus\"\n\nCette approche est particulièrement efficace pour :\n- Les problèmes mathématiques\n- L'analyse de code\n- La prise de décision complexe"
+                        },
+                        {
+                            "title": "Self-consistency",
+                            "content": "Demandez plusieurs raisonnements et comparez :\n\n\"Résous ce problème de 3 manières différentes, puis compare les résultats pour déterminer la réponse la plus fiable.\"\n\n**Avantages :**\n- Détecte les erreurs\n- Renforce la confiance si les résultats convergent\n- Explore différentes approches\n\nC'est particulièrement utile pour les problèmes où il y a plusieurs méthodes de résolution."
+                        },
+                        {
+                            "title": "Tree of Thought",
+                            "content": "Extension du CoT : explorer plusieurs branches de raisonnement.\n\n\"Pour résoudre ce problème :\n1. Génère 3 approches possibles\n2. Pour chaque approche, développe 2 étapes\n3. Évalue quelle branche est la plus prometteuse\n4. Poursuis le raisonnement sur la meilleure branche\"\n\nCette technique est idéale pour :\n- Les problèmes créatifs\n- Les décisions stratégiques\n- Les situations avec incertitude"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Chain of Thought en pratique",
+                "bad": {
+                    "prompt": "J'ai 3 réunions de 45min, 30min et 1h. J'ai une pause déjeuner de 12h à 13h. Ma journée commence à 9h et finit à 17h. Propose-moi un planning.",
+                    "response": "Voici un planning : 9h réunion 1, 10h réunion 2, 11h réunion 3...",
+                    "explanation": "Réponse rapide qui peut contenir des erreurs de timing."
+                },
+                "good": {
+                    "prompt": "J'ai 3 réunions de 45min, 30min et 1h. J'ai une pause déjeuner de 12h à 13h. Ma journée commence à 9h et finit à 17h. Propose-moi un planning optimal.\n\nRéfléchis étape par étape :\n1. Calcule le temps total de réunion\n2. Identifie les plages disponibles\n3. Optimise le placement en laissant des pauses de 15min entre les réunions\n4. Propose le planning final",
+                    "response": "**Étape 1 : Temps total**\n45 + 30 + 60 = 135 min (2h15)\n\n**Étape 2 : Plages disponibles**\nMatin : 9h-12h (3h)\nAprès-midi : 13h-17h (4h)\n\n**Étape 3 : Optimisation**\n...\n\n**Étape 4 : Planning**\n9h00-9h45 : Réunion 1 (45min)\n10h00-11h00 : Réunion 3 (1h)\n14h00-14h30 : Réunion 2 (30min)",
+                    "explanation": "Le raisonnement explicite permet de vérifier la logique et d'obtenir un résultat optimisé."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous devez résoudre un problème de budget. Rédigez un prompt utilisant le Chain of Thought pour analyser et résoudre ce problème de manière structurée.",
+                "badPrompt": "J'ai 5000€ de revenu et des dépenses. Aide-moi.",
+                "hint": "Demandez à l'IA de suivre des étapes précises : lister les revenus, catégoriser les dépenses, calculer les soldes, identifier les économies possibles, proposer un plan.",
+                "validationCriteria": [
+                    "étape par étape",
+                    "structure claire",
+                    "vérification",
+                    "conclusion"
+                ],
+                "exampleSolution": "J'ai un revenu mensuel de 3500€ net. Mes dépenses fixes : loyer 900€, assurances 150€, abonnements 80€, transport 100€. Mes dépenses variables : alimentation ~400€, loisirs ~300€, imprévus ~200€. Objectif : économiser 500€/mois pour un apport immobilier.\n\nAnalyse ma situation étape par étape :\n1. Calcule le total de mes dépenses fixes et variables\n2. Détermine mon solde actuel\n3. Identifie les postes où je peux réduire\n4. Propose un budget révisé pour atteindre mon objectif\n5. Vérifie que le nouveau budget est réaliste"
+            }
+        },
+        "7": {
+            "title": "Few-shot Learning",
+            "category": "Techniques avancées",
+            "difficulty": "Intermédiaire",
+            "duration": "30 min",
+            "xp": 400,
+            "concept": {
+                "title": "Apprendre par l'exemple",
+                "content": "Le Few-shot Learning consiste à fournir des exemples pour guider l'IA vers le format et le style souhaités.\n\n**Principe :**\nAu lieu d'expliquer ce que vous voulez, vous le montrez avec des exemples.\n\n**Structure typique :**\n```\nExemple 1:\nEntrée: [input]\nSortie: [output attendu]\n\nExemple 2:\nEntrée: [input]\nSortie: [output attendu]\n\nMaintenant, traite ceci:\nEntrée: [votre input]\nSortie:\n```\n\n**Quand utiliser le Few-shot ?**\n- Format de sortie très spécifique\n- Ton ou style particulier\n- Tâches de classification\n- Transformations de données",
+                "detailedContent": {
+                    "title": "Maîtriser le Few-shot Learning",
+                    "sections": [
+                        {
+                            "title": "Nombre d'exemples optimal",
+                            "content": "**1-shot :** Un seul exemple\n- Rapide mais risque d'overfitting sur l'exemple\n- Utile pour des tâches simples\n\n**2-3 shots :** Le sweet spot\n- Assez pour montrer un pattern\n- Pas trop pour surcharger le contexte\n\n**5+ shots :** Tâches complexes\n- Classification avec plusieurs catégories\n- Formats très spécifiques\n- Attention à la longueur du contexte"
+                        },
+                        {
+                            "title": "Diversité des exemples",
+                            "content": "**Erreur commune :** Tous les exemples trop similaires\n\n**Bonne pratique :** Montrer la diversité des cas\n\n**Exemple pour sentiment analysis :**\n\nExemple 1 (positif fort):\nTexte: \"Ce produit a changé ma vie !\"\nSentiment: Positif\n\nExemple 2 (négatif modéré):\nTexte: \"Quelques défauts mais dans l'ensemble décevant\"\nSentiment: Négatif\n\nExemple 3 (neutre):\nTexte: \"Le produit fait ce qu'il dit, ni plus ni moins\"\nSentiment: Neutre"
+                        },
+                        {
+                            "title": "Few-shot avec explication",
+                            "content": "Ajoutez le raisonnement dans vos exemples :\n\n**Sans explication :**\nEntrée: \"15% de 80\"\nSortie: 12\n\n**Avec explication :**\nEntrée: \"15% de 80\"\nRaisonnement: 15/100 × 80 = 0.15 × 80 = 12\nSortie: 12\n\nCela combine Few-shot et Chain of Thought pour de meilleurs résultats sur les tâches complexes."
+                        },
+                        {
+                            "title": "Formats avancés",
+                            "content": "**Few-shot avec contraintes :**\n\nExemple:\nEntrée: Article sur l'IA\nSortie (max 50 mots, ton journalistique): [exemple]\n\n**Few-shot avec variations :**\n\nVersion formelle: [exemple]\nVersion casual: [exemple]\nVersion technique: [exemple]\n\nMaintenant, génère les 3 versions pour: [input]"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Few-shot en action",
+                "bad": {
+                    "prompt": "Transforme ces feedbacks en bullet points professionnels",
+                    "response": "Voici les feedbacks en bullet points:\n• Le produit est bien\n• Il y a des problèmes...",
+                    "explanation": "Sans exemple, l'IA interprète 'professionnel' à sa manière."
+                },
+                "good": {
+                    "prompt": "Transforme ces feedbacks clients en bullet points professionnels pour un rapport.\n\nExemple 1:\nFeedback: \"J'adore ce produit mais le prix est trop élevé et la livraison était lente\"\nTransformation:\n• Point fort : Satisfaction produit élevée\n• Amélioration : Politique tarifaire à revoir\n• Amélioration : Optimiser les délais de livraison\n\nExemple 2:\nFeedback: \"Service client au top, par contre l'interface est compliquée\"\nTransformation:\n• Point fort : Excellence du service client\n• Amélioration : Simplification de l'interface utilisateur\n\nMaintenant, transforme:\nFeedback: \"Très bonne qualité mais l'application bug souvent et le support met du temps à répondre\"",
+                    "response": "Transformation:\n• Point fort : Qualité produit reconnue\n• Amélioration : Stabilité de l'application à renforcer\n• Amélioration : Réactivité du support à améliorer",
+                    "explanation": "Les exemples définissent exactement le format, le ton et la structure attendus."
+                }
+            },
+            "exercise": {
+                "instruction": "Créez un prompt Few-shot pour que l'IA génère des descriptions de produits dans un style e-commerce premium.",
+                "badPrompt": "Écris une description de produit pour des écouteurs",
+                "hint": "Fournissez 2-3 exemples de descriptions dans le style souhaité, puis demandez une nouvelle description pour votre produit.",
+                "validationCriteria": [
+                    "2+ exemples",
+                    "format cohérent",
+                    "style défini",
+                    "nouvelle tâche claire"
+                ],
+                "exampleSolution": "Génère des descriptions produit haut de gamme pour e-commerce.\n\nExemple 1:\nProduit: Montre connectée\nDescription: Fusion parfaite entre élégance intemporelle et innovation technologique. Cette montre connectée redéfinit les standards du luxe digital avec son écran AMOLED cristallin et son autonomie de 7 jours.\n\nExemple 2:\nProduit: Sac à dos\nDescription: Conçu pour les esprits libres et les professionnels exigeants. Ce sac à dos en cuir vegan premium allie durabilité éco-responsable et design minimaliste sophistiqué. Chaque détail témoigne d'un savoir-faire artisanal moderne.\n\nMaintenant, génère:\nProduit: Écouteurs sans fil avec réduction de bruit active"
+            }
+        },
+        "8": {
+            "title": "Extraction de données structurées",
+            "category": "Techniques avancées",
+            "difficulty": "Intermédiaire",
+            "duration": "40 min",
+            "xp": 450,
+            "concept": {
+                "title": "Transformer le chaos en données exploitables",
+                "content": "L'extraction de données permet de convertir du texte non structuré en formats exploitables (JSON, CSV, tableaux).\n\n**Cas d'usage :**\n- Extraire des entités d'un texte (noms, dates, montants)\n- Convertir des emails en tâches structurées\n- Parser des descriptions en données produit\n- Analyser des CV automatiquement\n\n**Formats de sortie courants :**\n- JSON pour les APIs et bases de données\n- CSV pour les tableurs\n- Markdown pour la documentation\n- Tableau pour la visualisation\n\n**Clés du succès :**\n1. Définir précisément le schéma attendu\n2. Gérer les cas où l'information est absente\n3. Valider le format de sortie",
+                "detailedContent": {
+                    "title": "Techniques d'extraction avancées",
+                    "sections": [
+                        {
+                            "title": "Définir un schéma strict",
+                            "content": "**Spécifiez exactement ce que vous voulez :**\n\n```json\n{\n  \"nom\": \"string (requis)\",\n  \"email\": \"string (format email)\",\n  \"telephone\": \"string (null si absent)\",\n  \"entreprise\": \"string\",\n  \"poste\": \"string\"\n}\n```\n\n**Gérer les valeurs manquantes :**\n- null pour les champs optionnels absents\n- \"N/A\" ou \"Non spécifié\" pour les champs requis\n- Tableau vide [] si aucun élément"
+                        },
+                        {
+                            "title": "Extraction multi-entités",
+                            "content": "Pour extraire plusieurs types d'informations :\n\n**Structure recommandée :**\n```json\n{\n  \"personnes\": [...],\n  \"organisations\": [...],\n  \"dates\": [...],\n  \"montants\": [...],\n  \"lieux\": [...]\n}\n```\n\n**Conseil :** Demandez à l'IA de catégoriser les entités plutôt que de simplement les lister."
+                        },
+                        {
+                            "title": "Validation et nettoyage",
+                            "content": "**Demandez une validation intégrée :**\n\n\"Après l'extraction :\n1. Vérifie que le JSON est valide\n2. Assure-toi que les emails respectent le format x@y.z\n3. Normalise les numéros de téléphone au format +33\n4. Si une information est ambiguë, indique-le avec un champ 'confidence'\"\n\n**Exemple de réponse avec confiance :**\n```json\n{\n  \"montant\": 5000,\n  \"devise\": \"EUR\",\n  \"confidence\": 0.95\n}\n```"
+                        },
+                        {
+                            "title": "Extraction avec contexte",
+                            "content": "**Enrichissez l'extraction avec de l'analyse :**\n\n\"Extrait les informations ET analyse-les :\n\n```json\n{\n  \"data\": { ... données brutes ... },\n  \"analysis\": {\n    \"completude\": \"85%\",\n    \"alertes\": [\"téléphone manquant\"],\n    \"qualite\": \"haute\"\n  }\n}\n```\n\nCela permet d'automatiser le contrôle qualité des extractions."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Extraction structurée",
+                "bad": {
+                    "prompt": "Extrait les infos de cet email:\n\"Bonjour, je suis Jean Dupont de TechCorp. Contactez-moi au 0612345678 ou jean.dupont@techcorp.fr pour discuter du budget de 50k€ pour le projet Q2.\"",
+                    "response": "Nom: Jean Dupont\nEntreprise: TechCorp\nTéléphone: 0612345678\nEmail: jean.dupont@techcorp.fr\nBudget: 50k€",
+                    "explanation": "Format texte simple, difficile à traiter automatiquement."
+                },
+                "good": {
+                    "prompt": "Extrait les informations de cet email au format JSON strict.\n\nSchéma attendu:\n{\n  \"contact\": {\n    \"nom\": \"string\",\n    \"entreprise\": \"string\",\n    \"email\": \"string (format email)\",\n    \"telephone\": \"string (format +33)\"\n  },\n  \"projet\": {\n    \"budget\": number,\n    \"devise\": \"string\",\n    \"periode\": \"string\"\n  }\n}\n\nEmail: \"Bonjour, je suis Jean Dupont de TechCorp. Contactez-moi au 0612345678 ou jean.dupont@techcorp.fr pour discuter du budget de 50k€ pour le projet Q2.\"",
+                    "response": "```json\n{\n  \"contact\": {\n    \"nom\": \"Jean Dupont\",\n    \"entreprise\": \"TechCorp\",\n    \"email\": \"jean.dupont@techcorp.fr\",\n    \"telephone\": \"+33612345678\"\n  },\n  \"projet\": {\n    \"budget\": 50000,\n    \"devise\": \"EUR\",\n    \"periode\": \"Q2\"\n  }\n}\n```",
+                    "explanation": "JSON valide, normalisé, directement exploitable par une application."
+                }
+            },
+            "exercise": {
+                "instruction": "Créez un prompt pour extraire les informations d'une annonce d'emploi en format structuré JSON.",
+                "badPrompt": "Résume cette offre d'emploi",
+                "hint": "Définissez un schéma JSON avec les champs clés : poste, entreprise, localisation, salaire, compétences requises, type de contrat, etc.",
+                "validationCriteria": [
+                    "schéma JSON",
+                    "champs définis",
+                    "gestion des absents",
+                    "format strict"
+                ],
+                "exampleSolution": "Extrait les informations de cette annonce d'emploi au format JSON.\n\nSchéma:\n{\n  \"poste\": \"string\",\n  \"entreprise\": \"string\",\n  \"localisation\": { \"ville\": \"string\", \"remote\": boolean },\n  \"contrat\": \"CDI|CDD|Freelance|Stage\",\n  \"salaire\": { \"min\": number|null, \"max\": number|null, \"devise\": \"string\" },\n  \"experience\": \"string\",\n  \"competences\": { \"requises\": [string], \"appreciees\": [string] },\n  \"avantages\": [string]\n}\n\nSi une information est absente, utilise null. Renvoie uniquement le JSON, sans texte supplémentaire.\n\nAnnonce: [coller l'annonce ici]"
+            }
+        }
+    }
+}

@@ -1,123 +1,58 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Sidebar from '../components/dashboard/Sidebar';
 import DashboardHeader from '../components/dashboard/DashboardHeader';
+
+// Import the formation service for dynamic data loading
+import { getAllFormations } from '../services/formationService';
+
+// Icon mapping for modules based on their content
+const moduleIcons = {
+    1: "solar:atom-linear",
+    2: "solar:document-text-linear",
+    3: "solar:pen-new-square-linear",
+    4: "solar:chat-round-dots-linear",
+    5: "solar:user-speak-linear",
+    6: "solar:route-linear",
+    7: "solar:copy-linear",
+    8: "solar:database-linear",
+    9: "solar:magic-stick-3-linear",
+    10: "solar:code-square-linear"
+};
+
+// Default icon for modules without specific icon
+const getModuleIcon = (moduleId) => moduleIcons[moduleId] || "solar:book-linear";
 
 export default function Formations() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const navigate = useNavigate();
 
+    // Load formations dynamically from JSON files
+    const formations = useMemo(() => {
+        const allFormations = getAllFormations();
+
+        // Add icons and descriptions to formations
+        return allFormations.map(formation => ({
+            ...formation,
+            icon: getModuleIcon(formation.id),
+            // Generate description from concept content (first 120 chars)
+            description: formation.concept?.content
+                ? formation.concept.content
+                    .replace(/\*\*/g, '')
+                    .replace(/\n/g, ' ')
+                    .substring(0, 120) + '...'
+                : 'Module de formation en prompt engineering.'
+        }));
+    }, []);
+
     // Simulated user progress - in production, this would come from API/database
     const userProgress = {
-        currentLevel: 3, // User has completed up to module 3
-        completedModules: [1, 2, 3],
-        totalXP: 850
+        currentLevel: 8, // Allow access to intermediate modules
+        completedModules: [1, 2, 3, 4, 5, 6, 7],
+        totalXP: 1750
     };
-
-    const formations = [
-        {
-            id: 1,
-            title: "Introduction à l'IA générative",
-            description: "Comprendre les fondamentaux de l'intelligence artificielle et des modèles de langage.",
-            duration: "15 min",
-            xp: 100,
-            icon: "solar:atom-linear",
-            difficulty: "Débutant",
-            category: "Fondamentaux"
-        },
-        {
-            id: 2,
-            title: "Structure d'un prompt efficace",
-            description: "Apprendre à structurer vos prompts pour obtenir des réponses précises et utiles.",
-            duration: "20 min",
-            xp: 150,
-            icon: "solar:document-text-linear",
-            difficulty: "Débutant",
-            category: "Fondamentaux"
-        },
-        {
-            id: 3,
-            title: "Reformulation et clarté",
-            description: "Maîtriser l'art de reformuler pour améliorer la qualité des réponses IA.",
-            duration: "25 min",
-            xp: 200,
-            icon: "solar:pen-new-square-linear",
-            difficulty: "Débutant",
-            category: "Fondamentaux"
-        },
-        {
-            id: 4,
-            title: "Questions intelligentes",
-            description: "Formuler des questions claires et précises pour obtenir des réponses optimales.",
-            duration: "20 min",
-            xp: 250,
-            icon: "solar:chat-round-dots-linear",
-            difficulty: "Intermédiaire",
-            category: "Techniques"
-        },
-        {
-            id: 5,
-            title: "Contexte et persona",
-            description: "Utiliser le contexte et les personas pour des réponses personnalisées.",
-            duration: "30 min",
-            xp: 300,
-            icon: "solar:user-speak-linear",
-            difficulty: "Intermédiaire",
-            category: "Techniques"
-        },
-        {
-            id: 6,
-            title: "Chain of Thought",
-            description: "Guide l'IA à travers un raisonnement étape par étape pour des résultats complexes.",
-            duration: "35 min",
-            xp: 350,
-            icon: "solar:route-linear",
-            difficulty: "Intermédiaire",
-            category: "Techniques"
-        },
-        {
-            id: 7,
-            title: "Few-shot Learning",
-            description: "Fournir des exemples pour améliorer la compréhension et la cohérence des réponses.",
-            duration: "30 min",
-            xp: 400,
-            icon: "solar:copy-linear",
-            difficulty: "Avancé",
-            category: "Techniques avancées"
-        },
-        {
-            id: 8,
-            title: "Extraction de données",
-            description: "Extraire des informations structurées à partir de textes non structurés.",
-            duration: "40 min",
-            xp: 450,
-            icon: "solar:database-linear",
-            difficulty: "Avancé",
-            category: "Techniques avancées"
-        },
-        {
-            id: 9,
-            title: "Génération créative",
-            description: "Maîtriser les techniques pour la création de contenu original et engageant.",
-            duration: "45 min",
-            xp: 500,
-            icon: "solar:magic-stick-3-linear",
-            difficulty: "Avancé",
-            category: "Applications"
-        },
-        {
-            id: 10,
-            title: "Automatisation avec prompts",
-            description: "Créer des workflows automatisés utilisant des prompts enchaînés.",
-            duration: "50 min",
-            xp: 600,
-            icon: "solar:code-square-linear",
-            difficulty: "Expert",
-            category: "Applications"
-        }
-    ];
 
     const isModuleUnlocked = (moduleId) => {
         return moduleId <= userProgress.currentLevel + 1;
@@ -140,15 +75,20 @@ export default function Formations() {
     };
 
     // Group formations by category
-    const groupedFormations = formations.reduce((acc, formation) => {
-        if (!acc[formation.category]) {
-            acc[formation.category] = [];
-        }
-        acc[formation.category].push(formation);
-        return acc;
-    }, {});
+    const groupedFormations = useMemo(() => {
+        return formations.reduce((acc, formation) => {
+            const category = formation.category || 'Autres';
+            if (!acc[category]) {
+                acc[category] = [];
+            }
+            acc[category].push(formation);
+            return acc;
+        }, {});
+    }, [formations]);
 
-    const completionPercentage = Math.round((userProgress.completedModules.length / formations.length) * 100);
+    const completionPercentage = formations.length > 0
+        ? Math.round((userProgress.completedModules.length / formations.length) * 100)
+        : 0;
 
     return (
         <div className="bg-zinc-950 text-white min-h-screen antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -227,10 +167,10 @@ export default function Formations() {
                                                 transition={{ delay: index * 0.05 }}
                                                 onClick={() => handleModuleClick(formation)}
                                                 className={`relative bg-zinc-900/50 border rounded-2xl p-5 transition-all duration-300 ${status === 'locked'
-                                                        ? 'border-zinc-800/50 opacity-60 cursor-not-allowed'
-                                                        : status === 'completed'
-                                                            ? 'border-emerald-500/30 hover:border-emerald-500/50 cursor-pointer hover:bg-zinc-900/80'
-                                                            : 'border-violet-500/30 hover:border-violet-500/50 cursor-pointer hover:bg-zinc-900/80'
+                                                    ? 'border-zinc-800/50 opacity-60 cursor-not-allowed'
+                                                    : status === 'completed'
+                                                        ? 'border-emerald-500/30 hover:border-emerald-500/50 cursor-pointer hover:bg-zinc-900/80'
+                                                        : 'border-violet-500/30 hover:border-violet-500/50 cursor-pointer hover:bg-zinc-900/80'
                                                     }`}
                                             >
                                                 {/* Status Badge */}
@@ -254,10 +194,10 @@ export default function Formations() {
 
                                                 {/* Icon */}
                                                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${status === 'completed'
-                                                        ? 'bg-emerald-500/10'
-                                                        : status === 'unlocked'
-                                                            ? 'bg-violet-500/10'
-                                                            : 'bg-zinc-800/50'
+                                                    ? 'bg-emerald-500/10'
+                                                    : status === 'unlocked'
+                                                        ? 'bg-violet-500/10'
+                                                        : 'bg-zinc-800/50'
                                                     }`}>
                                                     <Icon
                                                         icon={formation.icon}
@@ -276,9 +216,9 @@ export default function Formations() {
                                                 <div className="pr-10">
                                                     <div className="flex items-center gap-2 mb-2">
                                                         <span className={`text-xs px-2 py-0.5 rounded-full ${formation.difficulty === 'Débutant' ? 'bg-emerald-500/10 text-emerald-400' :
-                                                                formation.difficulty === 'Intermédiaire' ? 'bg-amber-500/10 text-amber-400' :
-                                                                    formation.difficulty === 'Avancé' ? 'bg-orange-500/10 text-orange-400' :
-                                                                        'bg-red-500/10 text-red-400'
+                                                            formation.difficulty === 'Intermédiaire' ? 'bg-amber-500/10 text-amber-400' :
+                                                                formation.difficulty === 'Avancé' ? 'bg-orange-500/10 text-orange-400' :
+                                                                    'bg-red-500/10 text-red-400'
                                                             }`}>
                                                             {formation.difficulty}
                                                         </span>
@@ -318,6 +258,15 @@ export default function Formations() {
                             </div>
                         ))}
                     </div>
+
+                    {/* Empty state if no formations */}
+                    {formations.length === 0 && (
+                        <div className="text-center py-16">
+                            <Icon icon="solar:book-bookmark-linear" width="64" className="text-zinc-700 mx-auto mb-4" />
+                            <h3 className="text-lg font-medium text-white mb-2">Aucune formation disponible</h3>
+                            <p className="text-zinc-500">Les formations seront bientôt disponibles.</p>
+                        </div>
+                    )}
                 </main>
             </div>
         </div>

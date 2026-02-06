@@ -1,0 +1,212 @@
+{
+    "formationsData": {
+        "1": {
+            "title": "Introduction à l'IA générative",
+            "category": "Fondamentaux",
+            "difficulty": "Débutant",
+            "duration": "15 min",
+            "xp": 100,
+            "concept": {
+                "title": "Qu'est-ce que l'IA générative ?",
+                "content": "L'intelligence artificielle générative est une branche de l'IA capable de créer du contenu nouveau : texte, images, code, musique, et bien plus encore.\n\n**Les modèles de langage (LLM)** comme GPT, Claude ou Gemini sont entraînés sur d'immenses quantités de données textuelles. Ils apprennent les patterns du langage humain et peuvent ensuite générer des réponses cohérentes et contextuelles.\n\n**Comment ça fonctionne ?**\n1. **Tokenisation** : Le texte est découpé en unités appelées \"tokens\"\n2. **Prédiction** : Le modèle prédit le token suivant le plus probable\n3. **Génération** : Cette prédiction est répétée pour créer des phrases complètes\n\n**Le prompting** est l'art de communiquer efficacement avec ces modèles. Un bon prompt permet d'obtenir des réponses précises, utiles et pertinentes.",
+                "detailedContent": {
+                    "title": "Plongée approfondie dans l'IA générative",
+                    "sections": [
+                        {
+                            "title": "Histoire et évolution",
+                            "content": "L'IA générative a connu une évolution fulgurante ces dernières années. Tout a commencé avec les réseaux de neurones récurrents (RNN), puis les architectures Transformer introduites par Google en 2017 ont révolutionné le domaine.\n\nLes modèles actuels comme GPT-4, Claude, et Gemini contiennent des centaines de milliards de paramètres et sont capables de performances quasi-humaines dans de nombreuses tâches linguistiques."
+                        },
+                        {
+                            "title": "Types d'IA générative",
+                            "content": "**Modèles de langage (LLM)** : Génèrent du texte (ChatGPT, Claude, Gemini)\n\n**Modèles de diffusion** : Créent des images (DALL-E, Midjourney, Stable Diffusion)\n\n**Modèles audio** : Produisent de la musique ou de la parole (Suno, ElevenLabs)\n\n**Modèles vidéo** : Génèrent des séquences vidéo (Sora, Runway)\n\n**Modèles multimodaux** : Combinent plusieurs types de contenu (GPT-4V, Gemini)"
+                        },
+                        {
+                            "title": "L'architecture Transformer",
+                            "content": "Le mécanisme d'**attention** est au cœur des Transformers. Il permet au modèle de \"regarder\" toutes les parties d'une phrase simultanément, plutôt que séquentiellement.\n\n**Self-attention** : Chaque mot évalue sa relation avec tous les autres mots\n**Multi-head attention** : Plusieurs \"têtes\" analysent différents aspects\n**Position encoding** : Le modèle comprend l'ordre des mots\n\nCette architecture permet de traiter des contextes très longs et de capturer des dépendances complexes entre les mots."
+                        },
+                        {
+                            "title": "Limites et considérations",
+                            "content": "**Hallucinations** : Les LLM peuvent inventer des informations qui semblent plausibles mais sont fausses\n\n**Biais** : Les modèles reflètent les biais présents dans leurs données d'entraînement\n\n**Connaissance limitée** : La date de coupure signifie que le modèle ne connaît pas les événements récents\n\n**Raisonnement** : Les LLM excellent dans la reconnaissance de patterns mais peuvent échouer sur le raisonnement logique complexe\n\n**Coût environnemental** : L'entraînement et l'inférence consomment beaucoup d'énergie"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Exemple de prompt basique",
+                "bad": {
+                    "prompt": "Parle-moi de Python",
+                    "response": "Python est un langage de programmation...",
+                    "explanation": "Ce prompt est trop vague. L'IA ne sait pas quel aspect de Python vous intéresse."
+                },
+                "good": {
+                    "prompt": "Explique-moi les avantages de Python pour un débutant en programmation, en 3 points clés.",
+                    "response": "Voici les 3 avantages principaux de Python pour débuter :\n\n1. **Syntaxe lisible** : Python utilise une syntaxe proche du langage naturel...\n2. **Large communauté** : Des milliers de tutoriels et ressources disponibles...\n3. **Versatilité** : Web, data science, automatisation...",
+                    "explanation": "Ce prompt est spécifique : il précise le contexte (débutant), le format (3 points) et l'objectif (avantages)."
+                }
+            },
+            "exercise": {
+                "instruction": "Réécrivez le prompt suivant pour le rendre plus précis et obtenir une meilleure réponse de l'IA.",
+                "badPrompt": "Aide-moi avec Excel",
+                "hint": "Pensez à préciser : quel problème ? quel niveau ? quel format de réponse souhaitez-vous ?",
+                "validationCriteria": ["spécifique", "contexte", "format", "objectif"],
+                "exampleSolution": "Je suis débutant sur Excel. Explique-moi comment créer une formule SOMME pour additionner les valeurs de la colonne A (lignes 1 à 10), étape par étape."
+            }
+        },
+        "2": {
+            "title": "Structure d'un prompt efficace",
+            "category": "Fondamentaux",
+            "difficulty": "Débutant",
+            "duration": "20 min",
+            "xp": 150,
+            "concept": {
+                "title": "Les 4 piliers d'un prompt efficace",
+                "content": "Un prompt efficace repose sur une structure claire qui guide l'IA vers la réponse souhaitée.\n\n**1. Le Contexte**\nDonnez à l'IA les informations de fond nécessaires. Plus le contexte est précis, plus la réponse sera pertinente.\n\n**2. L'Instruction**\nSoyez explicite sur ce que vous attendez. Utilisez des verbes d'action clairs : \"Explique\", \"Liste\", \"Compare\", \"Analyse\".\n\n**3. Le Format attendu**\nPrécisez comment vous voulez recevoir l'information : liste à puces, tableau, paragraphes, code, etc.\n\n**4. Les Contraintes**\nAjoutez des limites : longueur, ton, niveau de détail, ce qu'il faut éviter.\n\n**La formule magique :**\n`[Contexte] + [Instruction] + [Format] + [Contraintes]`",
+                "detailedContent": {
+                    "title": "Maîtriser la structure des prompts",
+                    "sections": [
+                        {
+                            "title": "Le Contexte en profondeur",
+                            "content": "Le contexte est la fondation de tout bon prompt. Il répond aux questions : Qui êtes-vous ? Dans quelle situation êtes-vous ? Qu'avez-vous déjà essayé ?\n\n**Exemples de contexte efficace :**\n- \"Je suis développeur junior avec 6 mois d'expérience en Python\"\n- \"Je gère une équipe de 5 personnes dans une startup e-commerce\"\n- \"Je prépare un cours de mathématiques pour des élèves de terminale\"\n\n**Mauvais contexte :**\n- \"Je travaille dans le web\" (trop vague)\n- Absence totale de contexte"
+                        },
+                        {
+                            "title": "L'art de l'instruction",
+                            "content": "**Verbes d'action puissants :**\n\n| Objectif | Verbes recommandés |\n|----------|--------------------|  \n| Expliquer | Explique, Décris, Détaille |\n| Analyser | Analyse, Compare, Évalue |\n| Créer | Génère, Rédige, Conçois |\n| Transformer | Résume, Traduis, Reformule |\n| Conseiller | Recommande, Suggère, Propose |\n\n**Technique du \"Act as\"** : Demandez à l'IA de jouer un rôle\n\"Agis comme un expert SEO senior avec 10 ans d'expérience\""
+                        },
+                        {
+                            "title": "Formater pour mieux comprendre",
+                            "content": "**Formats disponibles :**\n\n• **Liste à puces** : Pour des points distincts\n• **Liste numérotée** : Pour des étapes séquentielles\n• **Tableau** : Pour des comparaisons\n• **JSON/XML** : Pour des données structurées\n• **Markdown** : Pour du contenu formaté\n• **Code commenté** : Pour de la programmation\n\n**Exemple :** \"Présente ta réponse sous forme de tableau avec les colonnes : Avantage, Inconvénient, Recommandation\""
+                        },
+                        {
+                            "title": "Contraintes intelligentes",
+                            "content": "**Types de contraintes :**\n\n**Longueur** : \"En 200 mots maximum\", \"En 3 paragraphes\"\n\n**Ton** : \"Style professionnel\", \"Ton conversationnel\", \"Registre académique\"\n\n**Exclusions** : \"Sans jargon technique\", \"N'utilise pas d'exemples de...\"\n\n**Niveau** : \"Comme si j'étais débutant\", \"Pour un public expert\"\n\n**Langue** : \"En français courant\", \"Avec des termes techniques anglais si nécessaire\"\n\nLes contraintes évitent les réponses génériques et personnalisent vraiment l'output."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Application de la structure",
+                "bad": {
+                    "prompt": "Donne-moi des idées de business",
+                    "response": "Voici quelques idées : restaurant, boutique en ligne, consulting...",
+                    "explanation": "Sans structure, la réponse est générique et peu utile."
+                },
+                "good": {
+                    "prompt": "[Contexte] Je suis développeur web avec 5 ans d'expérience et un budget de 5000€.\n[Instruction] Propose-moi 5 idées de micro-SaaS.\n[Format] Pour chaque idée : nom, description (2 lignes), investissement estimé, potentiel de revenu mensuel.\n[Contrainte] Focus sur les outils B2B pour PME.",
+                    "response": "1. **InvoiceBot** - Automatisation de facturation...\n2. **TeamPulse** - Sondages d'équipe...",
+                    "explanation": "Chaque élément de la structure apporte de la précision et améliore la qualité de la réponse."
+                }
+            },
+            "exercise": {
+                "instruction": "Créez un prompt structuré pour demander à l'IA de vous aider à planifier vos vacances. Utilisez les 4 piliers : Contexte, Instruction, Format et Contraintes.",
+                "badPrompt": "Planifie mes vacances",
+                "hint": "Précisez votre destination ou préférences, ce que vous voulez (itinéraire, budget...), le format souhaité, et vos contraintes (durée, budget, type d'activités).",
+                "validationCriteria": ["contexte", "instruction", "format", "contrainte"],
+                "exampleSolution": "[Contexte] Je voyage en couple, nous aimons la nature et la gastronomie. Budget : 2000€ pour 7 jours.\n[Instruction] Crée un itinéraire de voyage au Portugal.\n[Format] Jour par jour avec activités matin/après-midi, restaurant recommandé le soir, budget estimé.\n[Contraintes] Éviter les zones trop touristiques, privilégier les expériences authentiques."
+            }
+        },
+        "3": {
+            "title": "Reformulation et clarté",
+            "category": "Fondamentaux",
+            "difficulty": "Débutant",
+            "duration": "25 min",
+            "xp": 200,
+            "concept": {
+                "title": "L'art de reformuler pour plus de clarté",
+                "content": "La reformulation est une compétence essentielle en prompting. Elle permet d'affiner vos demandes pour obtenir exactement ce que vous cherchez.\n\n**Pourquoi reformuler ?**\n- La première réponse n'est pas satisfaisante\n- Vous voulez plus de détails sur un aspect spécifique\n- Vous souhaitez un angle différent\n\n**Techniques de reformulation :**\n\n**1. Précision progressive**\nCommencez large, puis affinez avec des questions de suivi.\n\n**2. Changement de perspective**\n\"Explique-le comme si j'avais 10 ans\" ou \"Du point de vue d'un expert\".\n\n**3. Demande de clarification**\n\"Peux-tu développer le point 2 ?\" ou \"Donne-moi un exemple concret\".\n\n**4. Reformulation négative**\nPrécisez ce que vous ne voulez PAS : \"Sans jargon technique\", \"Pas de liste\".",
+                "detailedContent": {
+                    "title": "Techniques avancées de reformulation",
+                    "sections": [
+                        {
+                            "title": "La méthode itérative",
+                            "content": "La reformulation n'est pas un échec, c'est une conversation. Les meilleurs résultats viennent souvent après 2-3 échanges.\n\n**Cycle de reformulation :**\n1. Prompt initial → Réponse\n2. Identifier ce qui manque ou ne convient pas\n3. Reformuler en précisant\n4. Répéter jusqu'à satisfaction\n\n**Phrases clés pour reformuler :**\n- \"C'est intéressant, mais peux-tu...\"\n- \"J'aimerais que tu approfondisses...\"\n- \"Ton explication est bonne, mais elle ne couvre pas...\""
+                        },
+                        {
+                            "title": "Techniques de perspective",
+                            "content": "**Changer d'audience :**\n- \"Explique comme à un enfant de 5 ans\"\n- \"Présente cela à un CEO\"\n- \"Vulgarise pour un non-spécialiste\"\n\n**Changer de format :**\n- \"Transforme cette explication en histoire\"\n- \"Fais-en une métaphore avec la cuisine\"\n- \"Présente cela comme un dialogue\"\n\n**Changer de ton :**\n- \"Rends cela plus engageant\"\n- \"Adopte un style académique\"\n- \"Sois plus direct et pratique\""
+                        },
+                        {
+                            "title": "Feedback constructif",
+                            "content": "Donnez un feedback précis sur ce qui ne va pas :\n\n**Au lieu de :** \"Ce n'est pas ce que je voulais\"\n**Dites :** \"Ta réponse est trop théorique, j'ai besoin d'exemples pratiques que je peux appliquer demain\"\n\n**Au lieu de :** \"C'est trop long\"\n**Dites :** \"Garde uniquement les 3 points les plus importants et résume chacun en 2 phrases\"\n\n**Au lieu de :** \"Je ne comprends pas\"\n**Dites :** \"Le concept X n'est pas clair pour moi. Peux-tu l'expliquer avec une analogie du quotidien ?\""
+                        },
+                        {
+                            "title": "Éviter les pièges courants",
+                            "content": "**Ne faites pas :**\n- Reformuler en restant aussi vague\n- Ajouter trop de contraintes d'un coup\n- Ignorer les bonnes parties de la réponse\n\n**Faites :**\n- Être spécifique sur ce qui ne convient pas\n- Garder ce qui fonctionne et ajuster le reste\n- Une seule modification majeure par reformulation\n\n**Astuce pro :** Si après 3 reformulations vous n'obtenez pas satisfaction, reprenez à zéro avec un prompt complètement différent."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Reformulation en action",
+                "bad": {
+                    "prompt": "C'est quoi le machine learning ?",
+                    "response": "Le machine learning est une branche de l'IA qui permet aux machines d'apprendre à partir de données...",
+                    "explanation": "Réponse correcte mais peut-être trop technique ou pas adaptée à votre niveau."
+                },
+                "good": {
+                    "prompt": "Tu m'as expliqué le machine learning, mais c'est encore flou. Peux-tu me l'expliquer avec une analogie simple, comme si j'étais quelqu'un qui n'a jamais fait d'informatique ? Utilise un exemple de la vie quotidienne.",
+                    "response": "Imagine que tu apprends à reconnaître les chats. Au début, on te montre plein de photos de chats en te disant 'ça c'est un chat'. À force, tu apprends à reconnaître les caractéristiques...",
+                    "explanation": "La reformulation précise le niveau souhaité et demande un format spécifique (analogie)."
+                }
+            },
+            "exercise": {
+                "instruction": "L'IA vous a donné une réponse technique sur la blockchain. Reformulez votre demande pour obtenir une explication accessible à quelqu'un sans connaissances techniques.",
+                "badPrompt": "Explique la blockchain",
+                "hint": "Utilisez une demande de changement de perspective ou une analogie. Précisez ce que vous ne voulez pas (jargon technique).",
+                "validationCriteria": ["simplification", "analogie", "sans jargon", "accessible"],
+                "exampleSolution": "Ta réponse sur la blockchain était trop technique pour moi. Peux-tu me l'expliquer comme si j'étais un enfant de 12 ans ? Utilise une analogie avec quelque chose de la vie quotidienne, et évite tous les termes techniques."
+            }
+        },
+        "4": {
+            "title": "Questions intelligentes",
+            "category": "Techniques",
+            "difficulty": "Intermédiaire",
+            "duration": "20 min",
+            "xp": 250,
+            "concept": {
+                "title": "Formuler des questions qui obtiennent des réponses",
+                "content": "Les questions que vous posez déterminent la qualité des réponses. Une question bien formulée est une question qui obtient une réponse actionnable.\n\n**Types de questions efficaces :**\n\n**1. Questions ouvertes guidées**\nAu lieu de \"Comment réussir ?\", demandez \"Quelles sont les 5 étapes clés pour réussir un entretien d'embauche en startup tech ?\"\n\n**2. Questions comparatives**\n\"Quelles sont les différences entre X et Y en termes de [critère spécifique] ?\"\n\n**3. Questions hypothétiques**\n\"Si je devais lancer un produit SaaS avec 0€ de budget marketing, quelle stratégie adopterais-tu ?\"\n\n**4. Questions de priorisation**\n\"Parmi ces options, laquelle recommandes-tu en priorité et pourquoi ?\"\n\n**Évitez :**\n- Les questions trop vagues (\"Comment ça marche ?\")\n- Les questions fermées quand vous voulez des détails\n- Les questions multiples dans un seul prompt",
+                "detailedContent": {
+                    "title": "L'art de poser les bonnes questions",
+                    "sections": [
+                        {
+                            "title": "La taxonomie des questions",
+                            "content": "**Niveau 1 - Questions factuelles :**\n\"Quelle est la capitale de la France ?\" → Réponse directe\n\n**Niveau 2 - Questions explicatives :**\n\"Pourquoi Python est-il populaire ?\" → Analyse et justification\n\n**Niveau 3 - Questions analytiques :**\n\"Compare React et Vue en termes de courbe d'apprentissage\" → Évaluation critique\n\n**Niveau 4 - Questions créatives :**\n\"Imagine un nouveau framework qui combine les avantages des deux\" → Synthèse et innovation\n\nPlus le niveau est élevé, plus le contexte devient important."
+                        },
+                        {
+                            "title": "Questions socratiques",
+                            "content": "La méthode socratique consiste à guider par des questions successives :\n\n**1. Clarification :**\n\"Que veux-tu dire par... ?\"\n\"Peux-tu me donner un exemple de... ?\"\n\n**2. Exploration des hypothèses :**\n\"Qu'est-ce qui te fait penser que... ?\"\n\"Est-ce toujours le cas ?\"\n\n**3. Implications :**\n\"Si cela est vrai, alors... ?\"\n\"Quelles seraient les conséquences de... ?\"\n\nCette approche est idéale pour approfondir un sujet complexe."
+                        },
+                        {
+                            "title": "Questions à haute valeur ajoutée",
+                            "content": "**Questions \"Et si...\" :**\n- Ouvrent des possibilités créatives\n- Permettent d'explorer des scénarios\n- \"Et si le budget était illimité ?\"\n\n**Questions \"Pourquoi pas...\" :**\n- Challengent les évidences\n- Révèlent les contraintes cachées\n- \"Pourquoi ne pas utiliser une base NoSQL ?\"\n\n**Questions \"Quel serait le risque de...\" :**\n- Anticipent les problèmes\n- Préparent les contingences\n- \"Quel serait le risque d'ignorer ce warning ?\""
+                        },
+                        {
+                            "title": "Erreurs fréquentes",
+                            "content": "**Questions-réponses déguisées :**\n❌ \"N'est-ce pas vrai que React est meilleur que Vue ?\"\n✅ \"Quels sont les cas d'usage où React excelle par rapport à Vue ?\"\n\n**Questions trop chargées :**\n❌ \"Donne-moi une stratégie marketing complète pour mon startup\"\n✅ \"Quelle serait la première action marketing prioritaire pour une startup B2B avec 0 budget ?\"\n\n**Questions sans contexte :**\n❌ \"C'est quoi la meilleure pratique ?\"\n✅ \"Quelle est la meilleure pratique pour gérer les erreurs dans une API REST en Node.js ?\""
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Questions vagues vs Questions intelligentes",
+                "bad": {
+                    "prompt": "Comment créer un site web ?",
+                    "response": "Pour créer un site web, vous pouvez utiliser des outils comme WordPress, Wix, ou coder en HTML/CSS...",
+                    "explanation": "Question trop large = réponse superficielle qui couvre tout sans profondeur."
+                },
+                "good": {
+                    "prompt": "Je suis freelance graphiste et je veux créer un portfolio en ligne pour montrer mes projets. J'ai des bases en HTML/CSS. Quelle solution technique me recommandes-tu entre WordPress, Webflow et un site codé à la main ? Compare-les sur : facilité de mise à jour, coût annuel, et personnalisation visuelle.",
+                    "response": "Pour un portfolio de graphiste avec tes compétences, voici ma comparaison :\n\n| Critère | WordPress | Webflow | Code manuel |\n|---------|-----------|---------|-------------|\n| Mise à jour | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |...",
+                    "explanation": "La question inclut le contexte personnel, les options à comparer, et les critères d'évaluation."
+                }
+            },
+            "exercise": {
+                "instruction": "Transformez cette question vague en question intelligente : 'C'est quoi le meilleur langage de programmation ?'",
+                "badPrompt": "C'est quoi le meilleur langage de programmation ?",
+                "hint": "Ajoutez : votre objectif (web, mobile, data...), votre niveau, vos critères de choix, et demandez une comparaison structurée.",
+                "validationCriteria": ["contexte personnel", "objectif précis", "critères", "comparaison"],
+                "exampleSolution": "Je suis étudiant et je veux apprendre mon premier langage de programmation pour créer des applications web. Compare Python, JavaScript et Ruby sur ces critères : facilité d'apprentissage, opportunités d'emploi en France, et ressources disponibles en français. Lequel me recommandes-tu pour commencer ?"
+            }
+        }
+    }
+}
