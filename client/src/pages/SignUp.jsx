@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
+import { useAuth } from '../context/AuthContext';
 
 export default function SignUp() {
+    const navigate = useNavigate();
+    const { register, error: authError } = useAuth();
+
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -13,6 +17,7 @@ export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [acceptTerms, setAcceptTerms] = useState(false);
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,16 +25,28 @@ export default function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+
         if (formData.password !== formData.confirmPassword) {
-            alert('Les mots de passe ne correspondent pas');
+            setError('Les mots de passe ne correspondent pas');
             return;
         }
+
+        if (formData.password.length < 6) {
+            setError('Le mot de passe doit contenir au moins 6 caractères');
+            return;
+        }
+
         setIsLoading(true);
-        // Simulate API call
-        setTimeout(() => {
+
+        try {
+            await register(formData.fullName, formData.email, formData.password);
+            navigate('/dashboard');
+        } catch (err) {
+            setError(err.message || 'Erreur lors de la création du compte');
+        } finally {
             setIsLoading(false);
-            console.log('SignUp:', formData);
-        }, 1500);
+        }
     };
 
     const passwordStrength = () => {
@@ -68,6 +85,14 @@ export default function SignUp() {
                 {/* Sign Up Card */}
                 <div className="bg-zinc-900/50 backdrop-blur-xl border border-zinc-800/50 rounded-2xl p-8 shadow-xl">
                     <h1 className="text-2xl font-semibold text-white mb-6">Créer un compte</h1>
+
+                    {/* Error Message */}
+                    {(error || authError) && (
+                        <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm flex items-center gap-2">
+                            <Icon icon="solar:danger-triangle-linear" width="18" />
+                            {error || authError}
+                        </div>
+                    )}
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Full Name Field */}

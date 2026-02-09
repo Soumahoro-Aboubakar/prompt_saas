@@ -29,7 +29,7 @@ const LEVEL_CONFIG = {
         moduleRange: [13, 16], // Modules 13-16 (future)
         data: null // To be added: formationsExperts
     }
-};
+}; 
 
 /**
  * Get the level key for a given module ID

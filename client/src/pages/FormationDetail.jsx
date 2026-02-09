@@ -8,6 +8,11 @@ import DashboardHeader from '../components/dashboard/DashboardHeader';
 // Import the formation service for dynamic data loading
 import { getFormationOrDefault, getLevelForModule, getFormationsCount } from '../services/formationService';
 
+// Import sync and progress hooks/contexts
+import { useProgress } from '../context/ProgressContext';
+import useSyncProgress from '../hooks/useSyncProgress';
+import { useToast } from '../components/ui/Toast';
+
 export default function FormationDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -25,17 +30,20 @@ export default function FormationDetail() {
 
     // Dynamically load formation data from JSON files based on module ID
     const formation = getFormationOrDefault(moduleId);
-    const currentLevel = getLevelForModule(moduleId);
+    const formationLevel = getLevelForModule(moduleId);
     const totalFormations = getFormationsCount();
 
-    // Simulated user progress (to be replaced by real user data)
-    const userProgress = {
-        currentLevel: 8, // Allow access to intermediate modules
-        completedModules: [1, 2, 3, 4, 5, 6, 7]
-    };
+    // Use progress context instead of hardcoded values
+    const { currentLevel, isModuleCompleted, optimisticComplete } = useProgress();
+    const { syncModuleCompletion, pendingSync, syncError, clearError } = useSyncProgress();
+    const toast = useToast();
 
-    const isUnlocked = moduleId <= userProgress.currentLevel + 1;
-    const wasCompleted = userProgress.completedModules.includes(moduleId);
+    // Rollback function reference
+    const rollbackRef = useRef(null);
+    const navigatedRef = useRef(false);
+
+    const isUnlocked = moduleId <= currentLevel;
+    const wasCompleted = isModuleCompleted(moduleId);
 
     useEffect(() => {
         if (!isUnlocked) {
@@ -51,7 +59,9 @@ export default function FormationDetail() {
         setShowHint(false);
         setIsCompleted(false);
         setShowDetailModal(false);
-    }, [moduleId]);
+        navigatedRef.current = false;
+        clearError();
+    }, [moduleId, clearError]);
 
     const validateAnswer = async () => {
         if (!userAnswer.trim()) return;
@@ -108,12 +118,51 @@ export default function FormationDetail() {
 
         if (passed) {
             setIsCompleted(true);
+
+            // Optimistic update - store rollback function
+            rollbackRef.current = optimisticComplete(moduleId, score);
+
+            // Show success toast immediately
+            toast.success(`+${formation.xp} XP gagnés !`, {
+                title: 'Module validé !'
+            });
+
+            // Sync with backend in background
+            syncModuleCompletion(moduleId, score, formation.xp).then(result => {
+                if (!result.success) {
+                    // Rollback on failure
+                    if (rollbackRef.current) {
+                        rollbackRef.current();
+                        rollbackRef.current = null;
+                    }
+
+                    setIsCompleted(false);
+
+                    // Show error toast with retry option
+                    toast.error('Serveur indisponible, progression non enregistrée', {
+                        title: 'Erreur de synchronisation',
+                        duration: 8000,
+                        action: {
+                            label: 'Réessayer',
+                            onClick: () => validateAnswer()
+                        }
+                    });
+
+                    // If navigated, go back
+                    if (navigatedRef.current) {
+                        navigate(`/formations/${moduleId}`);
+                        navigatedRef.current = false;
+                    }
+                }
+            });
         }
 
         setIsValidating(false);
     };
 
+
     const goToNextModule = () => {
+        navigatedRef.current = true;
         navigate(`/formations/${moduleId + 1}`);
     };
 
@@ -135,7 +184,7 @@ export default function FormationDetail() {
                     <div className="flex items-center gap-2 text-sm text-zinc-500 mb-6">
                         <Link to="/formations" className="hover:text-white transition-colors">Formations</Link>
                         <Icon icon="solar:alt-arrow-right-linear" width="14" />
-                        <span className="text-zinc-400">{currentLevel}</span>
+                        <span className="text-zinc-400">{formationLevel}</span>
                         <Icon icon="solar:alt-arrow-right-linear" width="14" />
                         <span className="text-white">{formation.title}</span>
                     </div>
@@ -406,7 +455,7 @@ export default function FormationDetail() {
                                             </div>
                                         </div>
 
-                                        <div className="mb-4">
+                                        <div>
                                             <span className="text-xs text-zinc-500 uppercase tracking-wider">Réponse IA</span>
                                             <div className="mt-2 p-4 bg-zinc-800/50 rounded-xl border border-zinc-700/50">
                                                 <p className="text-zinc-400 text-sm whitespace-pre-line">{formation.example.good.response}</p>

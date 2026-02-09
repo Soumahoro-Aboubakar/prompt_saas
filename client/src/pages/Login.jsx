@@ -1,22 +1,32 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
+import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
+    const navigate = useNavigate();
+    const { login, error: authError } = useAuth();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        // Simulate API call
-        setTimeout(() => {
+        setError('');
+
+        try {
+            await login(email, password);
+            navigate('/dashboard');
+        } catch (err) {
+            setError(err.message || 'Invalid email or password');
+        } finally {
             setIsLoading(false);
-            console.log('Login:', { email, password });
-        }, 1500);
+        }
     };
 
     return (
@@ -42,6 +52,14 @@ export default function Login() {
                 {/* Login Card */}
                 <div className="bg-zinc-900/50 backdrop-blur-xl border border-zinc-800/50 rounded-2xl p-8 shadow-xl">
                     <h1 className="text-2xl font-semibold text-white mb-6">Connexion</h1>
+
+                    {/* Error Message */}
+                    {(error || authError) && (
+                        <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm flex items-center gap-2">
+                            <Icon icon="solar:danger-triangle-linear" width="18" />
+                            {error || authError}
+                        </div>
+                    )}
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Email Field */}

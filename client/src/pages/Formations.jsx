@@ -8,6 +8,10 @@ import DashboardHeader from '../components/dashboard/DashboardHeader';
 // Import the formation service for dynamic data loading
 import { getAllFormations } from '../services/formationService';
 
+// Import contexts for real data
+import { useAuth } from '../context/AuthContext';
+import { useProgress } from '../context/ProgressContext';
+
 // Icon mapping for modules based on their content
 const moduleIcons = {
     1: "solar:atom-linear",
@@ -29,6 +33,10 @@ export default function Formations() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const navigate = useNavigate();
 
+    // Get real user data from contexts
+    const { stats } = useAuth();
+    const { completedModules, currentLevel, loading, isModuleCompleted, isModuleUnlocked } = useProgress();
+
     // Load formations dynamically from JSON files
     const formations = useMemo(() => {
         const allFormations = getAllFormations();
@@ -47,20 +55,8 @@ export default function Formations() {
         }));
     }, []);
 
-    // Simulated user progress - in production, this would come from API/database
-    const userProgress = {
-        currentLevel: 8, // Allow access to intermediate modules
-        completedModules: [1, 2, 3, 4, 5, 6, 7],
-        totalXP: 1750
-    };
-
-    const isModuleUnlocked = (moduleId) => {
-        return moduleId <= userProgress.currentLevel + 1;
-    };
-
-    const isModuleCompleted = (moduleId) => {
-        return userProgress.completedModules.includes(moduleId);
-    };
+    // Get total XP from stats
+    const totalXP = stats?.totalXP || 0;
 
     const getModuleStatus = (moduleId) => {
         if (isModuleCompleted(moduleId)) return 'completed';
@@ -87,8 +83,16 @@ export default function Formations() {
     }, [formations]);
 
     const completionPercentage = formations.length > 0
-        ? Math.round((userProgress.completedModules.length / formations.length) * 100)
+        ? Math.round((completedModules.length / formations.length) * 100)
         : 0;
+
+    if (loading) {
+        return (
+            <div className="bg-zinc-950 text-white min-h-screen flex items-center justify-center">
+                <div className="w-8 h-8 border-2 border-violet-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="bg-zinc-950 text-white min-h-screen antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -113,7 +117,7 @@ export default function Formations() {
                                 <div className="px-4 py-2 bg-violet-500/10 border border-violet-500/20 rounded-lg">
                                     <div className="flex items-center gap-2">
                                         <Icon icon="solar:star-bold" width="18" className="text-violet-400" />
-                                        <span className="text-sm font-medium text-violet-400">{userProgress.totalXP} XP</span>
+                                        <span className="text-sm font-medium text-violet-400">{totalXP.toLocaleString()} XP</span>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +129,7 @@ export default function Formations() {
                                 <div>
                                     <h2 className="text-lg font-medium text-white mb-1">Progression globale</h2>
                                     <p className="text-sm text-zinc-500">
-                                        {userProgress.completedModules.length} modules complétés sur {formations.length}
+                                        {completedModules.length} modules complétés sur {formations.length}
                                     </p>
                                 </div>
                                 <div className="text-right">
