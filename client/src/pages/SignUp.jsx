@@ -41,7 +41,7 @@ export default function SignUp() {
 
         try {
             await register(formData.fullName, formData.email, formData.password);
-            navigate('/dashboard');
+            navigate('/verify-email', { state: { email: formData.email } });
         } catch (err) {
             setError(err.message || 'Erreur lors de la création du compte');
         } finally {

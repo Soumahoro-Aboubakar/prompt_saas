@@ -248,7 +248,7 @@ export default function Dashboard() {
                                 </div>
                             </div>
 
-                            {/* Weekly Activity */}
+                            {/* Weekly Activity
                             <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-6">
                                 <div className="flex items-center justify-between mb-6">
                                     <h2 className="text-lg font-semibold text-white">Activité de la semaine</h2>
@@ -266,7 +266,8 @@ export default function Dashboard() {
                                                     className={`absolute bottom-0 left-0 right-0 ${day.isToday ? 'bg-gradient-to-t from-violet-500 to-fuchsia-500' : 'bg-violet-500'} rounded-b-lg transition-all`}
                                                     style={{ height: day.height }}
                                                 ></div>
-                                                {/* XP label on hover */}
+                                                {//* XP label on hover 
+                                                }
                                                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30 rounded-lg">
                                                     <span className="text-xs text-white font-medium">{day.xpEarned || 0}</span>
                                                 </div>
@@ -275,12 +276,12 @@ export default function Dashboard() {
                                         </div>
                                     ))}
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
 
                         {/* Right Column */}
                         <div className="space-y-6">
-                            {/* Quick Actions */}
+                            {/* Quick Actions 
                             <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-6">
                                 <h2 className="text-lg font-semibold text-white mb-4">Actions rapides</h2>
                                 <div className="grid grid-cols-2 gap-3">
@@ -293,7 +294,7 @@ export default function Dashboard() {
                                         </button>
                                     ))}
                                 </div>
-                            </div>
+                            </div>*/}
 
                             {/* Badges */}
                             <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-6">
@@ -324,7 +325,7 @@ export default function Dashboard() {
                                 </a>
                             </div>
 
-                            {/* Upcoming Competition */}
+                            {/* Upcoming Competition 
                             <div className="bg-gradient-to-br from-violet-600/10 to-fuchsia-600/10 border border-violet-500/20 rounded-2xl p-6">
                                 <div className="flex items-center gap-2 mb-3">
                                     <Icon icon="solar:cup-star-bold" width="20" className="text-amber-400" />
@@ -345,9 +346,9 @@ export default function Dashboard() {
                                 <button className="w-full py-2.5 bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium rounded-lg transition-colors">
                                     Participer
                                 </button>
-                            </div>
+                            </div>*/}
 
-                            {/* Leaderboard */}
+                            {/* Leaderboard 
                             <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-6">
                                 <div className="flex items-center justify-between mb-4">
                                     <h2 className="text-lg font-semibold text-white">Classement</h2>
@@ -367,7 +368,8 @@ export default function Dashboard() {
                                             <span className="text-sm font-medium text-zinc-400">{player.xp}</span>
                                         </div>
                                     ))}
-                                    {/* Current User */}
+                                    {// Current User
+                                    }
                                     <div className="flex items-center gap-3 p-2 -mx-2 bg-violet-500/10 rounded-lg border border-violet-500/20">
                                         <span className="w-6 text-center text-sm font-medium text-violet-400">156</span>
                                         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-xs font-medium">
@@ -381,7 +383,7 @@ export default function Dashboard() {
                                     </div>
                                 </div>
                             </div>
-
+*/}
                             {/* Daily Goal */}
                             <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-6">
                                 <h2 className="text-lg font-semibold text-white mb-4">Objectif du jour</h2>

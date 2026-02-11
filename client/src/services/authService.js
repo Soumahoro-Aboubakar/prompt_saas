@@ -87,6 +87,49 @@ export const fetchCurrentUser = async () => {
     }
 };
 
+// Request password reset
+export const requestPasswordReset = async (email) => {
+    try {
+        const response = await api.post('/auth/forgot-password', { email });
+        return response.data;
+    } catch (error) {
+        throw error.response?.data || { message: 'Failed to request password reset' };
+    }
+};
+
+// Reset password with token
+export const resetPassword = async (token, password) => {
+    try {
+        const response = await api.post('/auth/reset-password', { token, password });
+        return response.data;
+    } catch (error) {
+        throw error.response?.data || { message: 'Failed to reset password' };
+    }
+};
+
+// Verify email with OTP code
+export const verifyEmailCode = async (code) => {
+    try {
+        const response = await api.post('/auth/verify-code', { code });
+        if (response.data.success && response.data.user) {
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+        }
+        return response.data;
+    } catch (error) {
+        throw error.response?.data || { message: 'Failed to verify code' };
+    }
+};
+
+// Resend OTP code
+export const resendVerificationCode = async () => {
+    try {
+        const response = await api.post('/auth/resend-verification-code');
+        return response.data;
+    } catch (error) {
+        throw error.response?.data || { message: 'Failed to resend code' };
+    }
+};
+
 export default {
     register,
     login,
@@ -94,5 +137,9 @@ export default {
     getCurrentUser,
     getToken,
     isAuthenticated,
-    fetchCurrentUser
+    fetchCurrentUser,
+    requestPasswordReset,
+    resetPassword,
+    verifyEmailCode,
+    resendVerificationCode
 };

@@ -98,6 +98,20 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // Refresh user (re-validate token)
+    const refreshUser = async () => {
+        try {
+            const response = await authService.fetchCurrentUser();
+            if (response?.user) {
+                setUser(response.user);
+                setStats(response.stats);
+            }
+            return response?.user;
+        } catch (err) {
+            console.error('Failed to refresh user:', err);
+        }
+    };
+
     // Context value
     const value = {
         user,
@@ -105,10 +119,12 @@ export const AuthProvider = ({ children }) => {
         loading,
         error,
         isAuthenticated: !!user,
+        isVerified: !!user?.isVerified,
         login,
         register,
         logout,
-        refreshStats
+        refreshStats,
+        refreshUser
     };
 
     return (
@@ -129,14 +145,17 @@ export const useAuth = () => {
 
 // Protected Route Component
 export const ProtectedRoute = ({ children }) => {
-    const { isAuthenticated, loading } = useAuth();
+    const { isAuthenticated, isVerified, loading } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (!loading && !isAuthenticated) {
             navigate('/login');
         }
-    }, [isAuthenticated, loading, navigate]);
+        if (!loading && isAuthenticated && !isVerified) {
+            navigate('/verify-email');
+        }
+    }, [isAuthenticated, isVerified, loading, navigate]);
 
     if (loading) {
         return (
@@ -146,7 +165,7 @@ export const ProtectedRoute = ({ children }) => {
         );
     }
 
-    return isAuthenticated ? children : null;
+    return isAuthenticated && isVerified ? children : null;
 };
 
 export default AuthContext;
