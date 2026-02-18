@@ -13,6 +13,21 @@ export const ProgressProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [currentLevel, setCurrentLevel] = useState(1);
 
+    const applyProgressSnapshot = useCallback((progressData = []) => {
+        const completed = progressData
+            .filter(p => p.completed)
+            .map(p => p.moduleId);
+
+        const progressMap = {};
+        progressData.forEach((p) => {
+            progressMap[p.moduleId] = p;
+        });
+
+        setCompletedModules(completed);
+        setModuleProgress(progressMap);
+        setCurrentLevel(Math.max(1, completed.length + 1));
+    }, []);
+
     // Fetch progress when authenticated
     useEffect(() => {
         const fetchProgress = async () => {
@@ -25,24 +40,7 @@ export const ProgressProvider = ({ children }) => {
 
             try {
                 const response = await progressService.getAllProgress();
-                const progressData = response.progress || [];
-
-                // Extract completed module IDs
-                const completed = progressData
-                    .filter(p => p.completed)
-                    .map(p => p.moduleId);
-
-                // Build progress map
-                const progressMap = {};
-                progressData.forEach(p => {
-                    progressMap[p.moduleId] = p;
-                });
-
-                setCompletedModules(completed);
-                setModuleProgress(progressMap);
-
-                // Calculate current level based on completed modules
-                setCurrentLevel(Math.max(1, completed.length + 1));
+                applyProgressSnapshot(response.progress || []);
             } catch (error) {
                 console.error('Failed to fetch progress:', error);
             } finally {
@@ -51,7 +49,7 @@ export const ProgressProvider = ({ children }) => {
         };
 
         fetchProgress();
-    }, [isAuthenticated, user]);
+    }, [isAuthenticated, user, applyProgressSnapshot]);
 
     /**
      * Optimistically mark a module as completed
@@ -108,6 +106,29 @@ export const ProgressProvider = ({ children }) => {
         return moduleProgress[moduleId] || null;
     }, [moduleProgress]);
 
+    /**
+     * Merge one progress record from backend into local state
+     */
+    const syncModuleProgress = useCallback((progress) => {
+        if (!progress || !progress.moduleId) return;
+
+        setModuleProgress((prev) => ({
+            ...prev,
+            [progress.moduleId]: {
+                ...prev[progress.moduleId],
+                ...progress
+            }
+        }));
+
+        if (progress.completed) {
+            setCompletedModules((prev) => {
+                if (prev.includes(progress.moduleId)) return prev;
+                return [...prev, progress.moduleId];
+            });
+            setCurrentLevel((prev) => Math.max(prev, progress.moduleId + 1));
+        }
+    }, []);
+
     // Context value
     const value = {
         completedModules,
@@ -115,6 +136,7 @@ export const ProgressProvider = ({ children }) => {
         currentLevel,
         loading,
         optimisticComplete,
+        syncModuleProgress,
         isModuleCompleted,
         isModuleUnlocked,
         getModuleProgress

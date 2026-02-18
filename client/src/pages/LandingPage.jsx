@@ -11,7 +11,7 @@ import CTA from '../components/sections/CTA';
 
 export default function LandingPage() {
     return (
-        <div className="text-white font-sans antialiased min-h-screen relative">
+        <div className="text-white font-sans antialiased min-h-screen relative overflow-hidden">
 
             <Background />
             <Navbar />

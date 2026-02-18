@@ -3,6 +3,8 @@ const router = express.Router();
 const UserProgress = require('../models/UserProgress');
 const UserStats = require('../models/UserStats');
 const { protect } = require('../middleware/auth');
+const { checkAndAwardBadges, getLockedBadges } = require('../utils/badges');
+const { buildStatsPayload } = require('../utils/statsPayload');
 
 // @desc    Get all progress for current user
 // @route   GET /api/progress
@@ -84,7 +86,19 @@ router.get('/:moduleId', protect, async (req, res) => {
 router.post('/:moduleId', protect, async (req, res) => {
     try {
         const moduleId = parseInt(req.params.moduleId);
+        if (!Number.isInteger(moduleId) || moduleId <= 0) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid module id'
+            });
+        }
+
         const { completed, score, timeSpent, xpEarned } = req.body;
+        const normalizedScore = Number(score);
+        const normalizedTimeSpent = Number(timeSpent);
+        const normalizedXpEarned = Number(xpEarned) || 0;
+        const isCompleting = Boolean(completed);
+        let stats = await UserStats.findOne({ user: req.user._id });
 
         // Find or create progress
         let progress = await UserProgress.findOne({
@@ -92,20 +106,21 @@ router.post('/:moduleId', protect, async (req, res) => {
             moduleId
         });
 
-        const isNewCompletion = !progress?.completed && completed;
+        const wasAlreadyCompleted = Boolean(progress?.completed);
+        const isNewCompletion = !wasAlreadyCompleted && isCompleting;
 
         if (progress) {
             // Update existing progress
             progress.attempts += 1;
             progress.lastAttemptAt = new Date();
 
-            if (score !== undefined && score > progress.score) {
-                progress.score = score;
+            if (Number.isFinite(normalizedScore) && normalizedScore > progress.score) {
+                progress.score = normalizedScore;
             }
-            if (timeSpent) {
-                progress.timeSpent += timeSpent;
+            if (Number.isFinite(normalizedTimeSpent) && normalizedTimeSpent > 0) {
+                progress.timeSpent += normalizedTimeSpent;
             }
-            if (completed && !progress.completed) {
+            if (isCompleting && !progress.completed) {
                 progress.completed = true;
                 progress.completedAt = new Date();
             }
@@ -116,19 +131,17 @@ router.post('/:moduleId', protect, async (req, res) => {
             progress = await UserProgress.create({
                 user: req.user._id,
                 moduleId,
-                completed: completed || false,
-                score: score || 0,
-                timeSpent: timeSpent || 0,
+                completed: isCompleting,
+                score: Number.isFinite(normalizedScore) ? normalizedScore : 0,
+                timeSpent: Number.isFinite(normalizedTimeSpent) ? normalizedTimeSpent : 0,
                 attempts: 1,
                 lastAttemptAt: new Date(),
-                completedAt: completed ? new Date() : null
+                completedAt: isCompleting ? new Date() : null
             });
         }
 
-        // Update user stats if XP earned
-        if (xpEarned && xpEarned > 0) {
-            let stats = await UserStats.findOne({ user: req.user._id });
-
+        // Reward and activity are applied on first completion only (idempotent).
+        if (isNewCompletion) {
             if (!stats) {
                 stats = await UserStats.create({
                     user: req.user._id,
@@ -137,14 +150,62 @@ router.post('/:moduleId', protect, async (req, res) => {
                 });
             }
 
-            await stats.addXP(xpEarned);
+            stats.modulesCompleted += 1;
 
-            // Update modules completed count if new completion
-            if (isNewCompletion) {
-                stats.modulesCompleted += 1;
-                await stats.save();
+            if (normalizedXpEarned > 0) {
+                await stats.addXP(normalizedXpEarned, {
+                    moduleCompleted: true,
+                    save: false
+                });
+            } else {
+                stats.recordActivity({
+                    xpEarned: 0,
+                    moduleCompleted: true
+                });
             }
+
+            await stats.save();
+            const newBadges = await checkAndAwardBadges(stats);
+
+            const earnedBadgeIds = stats.badges.map(b => b.id);
+            const lockedBadges = getLockedBadges(earnedBadgeIds).slice(0, 3);
+
+            return res.json({
+                success: true,
+                progress: {
+                    moduleId: progress.moduleId,
+                    completed: progress.completed,
+                    score: progress.score,
+                    timeSpent: progress.timeSpent,
+                    attempts: progress.attempts,
+                    completedAt: progress.completedAt
+                },
+                stats: buildStatsPayload(stats, {
+                    lockedBadges,
+                    newBadges
+                }),
+                isNewCompletion: true
+            });
         }
+
+        if (!stats) {
+            stats = await UserStats.create({
+                user: req.user._id,
+                totalXP: 0,
+                level: 1,
+                streak: 0
+            });
+        }
+
+        // Keep streak state fresh even when a module was already completed.
+        const streakReset = stats.resetStreakIfExpired();
+        if (streakReset) {
+            await stats.save();
+        }
+
+        const newBadges = await checkAndAwardBadges(stats);
+        const earnedBadgeIds = stats.badges.map((b) => b.id);
+        const lockedBadges = getLockedBadges(earnedBadgeIds).slice(0, 3);
 
         res.json({
             success: true,
@@ -155,7 +216,12 @@ router.post('/:moduleId', protect, async (req, res) => {
                 timeSpent: progress.timeSpent,
                 attempts: progress.attempts,
                 completedAt: progress.completedAt
-            }
+            },
+            stats: buildStatsPayload(stats, {
+                lockedBadges,
+                newBadges
+            }),
+            isNewCompletion: false
         });
     } catch (error) {
         console.error('Update progress error:', error);

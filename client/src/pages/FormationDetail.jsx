@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from '../components/dashboard/Sidebar';
 import DashboardHeader from '../components/dashboard/DashboardHeader';
+import { validateAnswer as aiValidateAnswer } from '../services/validateService';
 
 // Import the formation service for dynamic data loading
 import { getFormationOrDefault, getLevelForModule, getFormationsCount } from '../services/formationService';
@@ -67,97 +68,89 @@ export default function FormationDetail() {
         if (!userAnswer.trim()) return;
 
         setIsValidating(true);
+        setValidationResult(null);
 
-        // Simulate AI validation
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        try {
+            const response = await aiValidateAnswer(
+                moduleId,
+                userAnswer,
+                formation.exercise,
+                formation.title
+            );
 
-        const answer = userAnswer.toLowerCase();
-        const criteria = formation.exercise.validationCriteria;
-        let score = 0;
-        let feedback = [];
+            if (!response.success) {
+                throw new Error(response.message || 'Validation failed');
+            }
 
-        // Check various criteria
-        if (answer.length > 50) {
-            score += 25;
-            feedback.push({ text: "Prompt suffisamment détaillé", passed: true });
-        } else {
-            feedback.push({ text: "Prompt trop court, ajoutez plus de détails", passed: false });
-        }
+            const { score, passed, feedback, message } = response.data;
 
-        if (answer.includes('contexte') || answer.includes('je suis') || answer.includes('mon') || answer.includes('notre')) {
-            score += 25;
-            feedback.push({ text: "Contexte personnel fourni", passed: true });
-        } else {
-            feedback.push({ text: "Ajoutez du contexte personnel", passed: false });
-        }
-
-        if (answer.includes('format') || answer.includes('liste') || answer.includes('étape') || answer.includes('tableau') || answer.includes('point')) {
-            score += 25;
-            feedback.push({ text: "Format de réponse spécifié", passed: true });
-        } else {
-            feedback.push({ text: "Précisez le format de réponse souhaité", passed: false });
-        }
-
-        if (answer.includes('?') || answer.includes('explique') || answer.includes('comment') || answer.includes('pourquoi') || answer.includes('compare')) {
-            score += 25;
-            feedback.push({ text: "Question ou instruction claire", passed: true });
-        } else {
-            feedback.push({ text: "Formulez une instruction plus claire", passed: false });
-        }
-
-        const passed = score >= 75;
-
-        setValidationResult({
-            passed,
-            score,
-            feedback,
-            message: passed
-                ? "Excellent travail ! Votre prompt est bien structuré et devrait obtenir une réponse pertinente de l'IA."
-                : "Votre prompt peut être amélioré. Consultez les points à corriger ci-dessous."
-        });
-
-        if (passed) {
-            setIsCompleted(true);
-
-            // Optimistic update - store rollback function
-            rollbackRef.current = optimisticComplete(moduleId, score);
-
-            // Show success toast immediately
-            toast.success(`+${formation.xp} XP gagnés !`, {
-                title: 'Module validé !'
+            setValidationResult({
+                passed,
+                score,
+                feedback: feedback || [],
+                message: message || (passed
+                    ? "Excellent travail ! Votre prompt est bien structuré."
+                    : "Votre prompt peut être amélioré.")
             });
 
-            // Sync with backend in background
-            syncModuleCompletion(moduleId, score, formation.xp).then(result => {
-                if (!result.success) {
-                    // Rollback on failure
-                    if (rollbackRef.current) {
-                        rollbackRef.current();
-                        rollbackRef.current = null;
-                    }
+            if (passed) {
+                setIsCompleted(true);
 
-                    setIsCompleted(false);
+                // Optimistic update - store rollback function
+                rollbackRef.current = optimisticComplete(moduleId, score);
 
-                    // Show error toast with retry option
-                    toast.error('Serveur indisponible, progression non enregistrée', {
-                        title: 'Erreur de synchronisation',
-                        duration: 8000,
-                        action: {
-                            label: 'Réessayer',
-                            onClick: () => validateAnswer()
+                // Show success toast immediately
+                toast.success(`+${formation.xp} XP gagnés !`, {
+                    title: 'Module validé !'
+                });
+
+                // Sync with backend in background
+                syncModuleCompletion(moduleId, score, formation.xp).then(result => {
+                    if (!result.success) {
+                        if (result.canceled) return;
+
+                        if (rollbackRef.current) {
+                            rollbackRef.current();
+                            rollbackRef.current = null;
                         }
-                    });
 
-                    // If navigated, go back
-                    if (navigatedRef.current) {
-                        navigate(`/formations/${moduleId}`);
-                        navigatedRef.current = false;
+                        setIsCompleted(false);
+
+                        toast.error('Serveur indisponible, progression non enregistrée', {
+                            title: 'Erreur de synchronisation',
+                            duration: 8000,
+                            action: {
+                                label: 'Réessayer',
+                                onClick: () => validateAnswer()
+                            }
+                        });
+
+                        if (navigatedRef.current) {
+                            navigate(`/formations/${moduleId}`);
+                            navigatedRef.current = false;
+                        }
+                        return;
                     }
-                }
-            });
-        }
 
-        setIsValidating(false);
+                    if (Array.isArray(result.data?.stats?.newBadges) && result.data.stats.newBadges.length > 0) {
+                        const count = result.data.stats.newBadges.length;
+                        toast.success(`${count} nouveau${count > 1 ? 'x' : ''} badge${count > 1 ? 's' : ''} débloqué${count > 1 ? 's' : ''} !`, {
+                            title: 'Récompense'
+                        });
+                    }
+                });
+            }
+        } catch (error) {
+            console.error('Validation error:', error);
+            setValidationResult({
+                passed: false,
+                score: 0,
+                feedback: [],
+                message: 'Erreur lors de la validation. Veuillez réessayer.'
+            });
+        } finally {
+            setIsValidating(false);
+        }
     };
 
 
@@ -545,7 +538,7 @@ export default function FormationDetail() {
                                     </div>
 
                                     {/* Validate Button */}
-                                    {!isCompleted && (
+                                    {!isCompleted && !wasCompleted && (
                                         <button
                                             onClick={validateAnswer}
                                             disabled={!userAnswer.trim() || isValidating}

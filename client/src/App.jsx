@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AuthProvider, ProtectedRoute } from './context/AuthContext';
+import { AuthProvider, ProtectedRoute, GuestRoute } from './context/AuthContext';
 import { ProgressProvider } from './context/ProgressContext';
 import { ToastProvider } from './components/ui/Toast';
 import LandingPage from './pages/LandingPage';
@@ -11,6 +11,9 @@ import VerifyEmail from './pages/VerifyEmail';
 import Dashboard from './pages/Dashboard';
 import Formations from './pages/Formations';
 import FormationDetail from './pages/FormationDetail';
+import OAuthCallback from './pages/OAuthCallback';
+import Forbidden from './pages/Forbidden';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -20,11 +23,21 @@ function App() {
           <ToastProvider>
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
+              <Route path="/auth/callback" element={<OAuthCallback />} />
+              <Route path="/login" element={
+                <GuestRoute>
+                  <Login />
+                </GuestRoute>
+              } />
+              <Route path="/signup" element={
+                <GuestRoute>
+                  <SignUp />
+                </GuestRoute>
+              } />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/verify-email" element={<VerifyEmail />} />
+
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Dashboard />
@@ -40,6 +53,7 @@ function App() {
                   <FormationDetail />
                 </ProtectedRoute>
               } />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </ToastProvider>
         </ProgressProvider>

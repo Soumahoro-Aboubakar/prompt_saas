@@ -6,6 +6,9 @@ const User = require('../models/User');
 const UserStats = require('../models/UserStats');
 const { protect } = require('../middleware/auth');
 const { sendEmail, buildResetPasswordEmail, buildVerifyEmail, buildWelcomeEmail } = require('../utils/email');
+const { getLockedBadges } = require('../utils/badges');
+const { buildStatsPayload } = require('../utils/statsPayload');
+const passport = require('passport');
 
 const EMAIL_OTP_TTL_MINUTES = Number(process.env.EMAIL_OTP_TTL_MINUTES || 10);
 const EMAIL_OTP_MAX_ATTEMPTS = Number(process.env.EMAIL_OTP_MAX_ATTEMPTS || 5);
@@ -109,7 +112,7 @@ router.post('/register', async (req, res) => {
                 fullName: user.fullName,
                 email: user.email,
                 createdAt: user.createdAt,
-                isVerified: !user.isVerified
+                isVerified: user.isVerified
             }
         });
     } catch (error) {
@@ -314,6 +317,18 @@ router.get('/me', protect, async (req, res) => {
         const user = await User.findById(req.user._id);
         const stats = await UserStats.findOne({ user: req.user._id });
 
+        let statsPayload = null;
+        if (stats) {
+            const streakReset = stats.resetStreakIfExpired();
+            if (streakReset) {
+                await stats.save();
+            }
+
+            const earnedBadgeIds = stats.badges.map(b => b.id);
+            const lockedBadges = getLockedBadges(earnedBadgeIds).slice(0, 3);
+            statsPayload = buildStatsPayload(stats, { lockedBadges });
+        }
+
         res.json({
             success: true,
             user: {
@@ -324,13 +339,7 @@ router.get('/me', protect, async (req, res) => {
                 createdAt: user.createdAt,
                 isVerified: user.isVerified
             },
-            stats: stats ? {
-                totalXP: stats.totalXP,
-                level: stats.level,
-                streak: stats.streak,
-                badges: stats.badges,
-                modulesCompleted: stats.modulesCompleted
-            } : null
+            stats: statsPayload
         });
     } catch (error) {
         console.error('Get me error:', error);
@@ -421,31 +430,30 @@ router.post('/verify-code', protect, async (req, res) => {
                 message: 'Email already verified'
             });
         }
-/*
-        if (!user.emailVerificationCodeHash || !user.emailVerificationCodeExpires || user.emailVerificationCodeExpires <= new Date()) {
-            return res.status(400).json({
-                success: false,
-                message: 'Code is invalid or expired'
-            });
-        }
+        /*     if (!user.emailVerificationCodeHash || !user.emailVerificationCodeExpires || user.emailVerificationCodeExpires <= new Date()) {
+                 return res.status(400).json({
+                     success: false,
+                     message: 'Code is invalid or expired'
+                 });
+             }
+     
+             if (user.emailVerificationAttempts >= EMAIL_OTP_MAX_ATTEMPTS) {
+                 return res.status(429).json({
+                     success: false,
+                     message: 'Too many attempts. Request a new code.'
+                 });
+             } */
 
-        if (user.emailVerificationAttempts >= EMAIL_OTP_MAX_ATTEMPTS) {
-            return res.status(429).json({
-                success: false,
-                message: 'Too many attempts. Request a new code.'
-            });
-        }
+        /*  const incomingCodeHash = hashValue(normalizedCode);
+          if (incomingCodeHash !== user.emailVerificationCodeHash) {
+              user.emailVerificationAttempts += 1;
+              await user.save();
+              return res.status(400).json({
+                  success: false,
+                  message: 'Code is invalid or expired'
+              });
+          } */
 
-        const incomingCodeHash = hashValue(normalizedCode);
-        if (incomingCodeHash !== user.emailVerificationCodeHash) {
-            user.emailVerificationAttempts += 1;
-            await user.save();
-            return res.status(400).json({
-                success: false,
-                message: 'Code is invalid or expired'
-            });
-        }
-   */
         user.isVerified = true;
         user.emailVerificationCodeHash = undefined;
         user.emailVerificationCodeExpires = undefined;
@@ -453,18 +461,18 @@ router.post('/verify-code', protect, async (req, res) => {
         user.emailVerificationLastSentAt = undefined;
         await user.save();
 
-        // Send welcome email (optional, non-blocking)
-        try {
-            const welcome = buildWelcomeEmail({ name: user.fullName });
-            await sendEmail({
-                to: user.email,
-                subject: welcome.subject,
-                html: welcome.html,
-                text: welcome.text
-            });
-        } catch (emailError) {
-            console.error('Welcome email error:', emailError.message);
-        }
+        /*  // Send welcome email (optional, non-blocking)
+          try {
+              const welcome = buildWelcomeEmail({ name: user.fullName });
+              await sendEmail({
+                  to: user.email,
+                  subject: welcome.subject,
+                  html: welcome.html,
+                  text: welcome.text
+              });
+          } catch (emailError) {
+              console.error('Welcome email error:', emailError.message);
+          } */
 
         return res.json({
             success: true,
@@ -485,5 +493,45 @@ router.post('/verify-code', protect, async (req, res) => {
         });
     }
 });
+
+// ==================== OAuth Routes ====================
+
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+
+// @desc    Initiate Google OAuth
+// @route   GET /api/auth/google
+// @access  Public
+router.get('/google',
+    passport.authenticate('google', { scope: ['profile', 'email'], session: false })
+);
+
+// @desc    Google OAuth callback
+// @route   GET /api/auth/google/callback
+// @access  Public
+router.get('/google/callback',
+    passport.authenticate('google', { session: false, failureRedirect: `${CLIENT_URL}/login?error=google_auth_failed` }),
+    (req, res) => {
+        const token = generateToken(req.user._id);
+        res.redirect(`${CLIENT_URL}/auth/callback?token=${token}`);
+    }
+);
+
+// @desc    Initiate GitHub OAuth
+// @route   GET /api/auth/github
+// @access  Public
+router.get('/github',
+    passport.authenticate('github', { scope: ['user:email'], session: false })
+);
+
+// @desc    GitHub OAuth callback
+// @route   GET /api/auth/github/callback
+// @access  Public
+router.get('/github/callback',
+    passport.authenticate('github', { session: false, failureRedirect: `${CLIENT_URL}/login?error=github_auth_failed` }),
+    (req, res) => {
+        const token = generateToken(req.user._id);
+        res.redirect(`${CLIENT_URL}/auth/callback?token=${token}`);
+    }
+);
 
 module.exports = router;

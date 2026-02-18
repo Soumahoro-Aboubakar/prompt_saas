@@ -21,11 +21,16 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Initialize Passport (no sessions — we use JWT)
+const passport = require('./config/passport');
+app.use(passport.initialize());
+
 // API Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/progress', require('./routes/progress'));
 app.use('/api/stats', require('./routes/stats'));
+app.use('/api/validate', require('./routes/validate'));
 
 // Health check route
 app.get('/api/health', (req, res) => {

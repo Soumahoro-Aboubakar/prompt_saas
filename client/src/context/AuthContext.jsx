@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
 import statsService from '../services/statsService';
@@ -13,6 +13,18 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const updateStats = useCallback((nextStats, options = {}) => {
+        const { replace = false } = options;
+        if (!nextStats) return null;
+
+        setStats((prev) => {
+            if (replace || !prev) return nextStats;
+            return { ...prev, ...nextStats };
+        });
+
+        return nextStats;
+    }, []);
+
     // Initialize auth state from localStorage
     useEffect(() => {
         const initAuth = async () => {
@@ -24,8 +36,7 @@ export const AuthProvider = ({ children }) => {
                     // Verify token with API
                     const response = await authService.fetchCurrentUser();
                     setUser(response.user);
-                    setStats(response.stats);
-                    console.log("response", response);
+                    updateStats(response.stats, { replace: true });
                 } catch (err) {
                     // Token invalid - clear everything
                     console.error('Auth init error:', err);
@@ -36,7 +47,7 @@ export const AuthProvider = ({ children }) => {
         };
 
         initAuth();
-    }, []);
+    }, [updateStats]);
 
     // Login function
     const login = async (email, password) => {
@@ -48,7 +59,7 @@ export const AuthProvider = ({ children }) => {
             // Fetch user stats after login
             try {
                 const statsResponse = await statsService.getStats();
-                setStats(statsResponse.stats);
+                updateStats(statsResponse.stats, { replace: true });
             } catch {
                 // Stats fetch failure is not critical
             }
@@ -66,13 +77,13 @@ export const AuthProvider = ({ children }) => {
             setError(null);
             const response = await authService.register(fullName, email, password);
             setUser(response.user);
-            setStats({
+            updateStats({
                 totalXP: 0,
                 level: 1,
                 streak: 0,
                 badges: [],
                 modulesCompleted: 0
-            });
+            }, { replace: true });
             return response;
         } catch (err) {
             setError(err.message || 'Registration failed');
@@ -91,7 +102,7 @@ export const AuthProvider = ({ children }) => {
     const refreshStats = async () => {
         try {
             const response = await statsService.getStats();
-            setStats(response.stats);
+            updateStats(response.stats, { replace: true });
             return response.stats;
         } catch (err) {
             console.error('Failed to refresh stats:', err);
@@ -104,7 +115,7 @@ export const AuthProvider = ({ children }) => {
             const response = await authService.fetchCurrentUser();
             if (response?.user) {
                 setUser(response.user);
-                setStats(response.stats);
+                updateStats(response.stats, { replace: true });
             }
             return response?.user;
         } catch (err) {
@@ -124,7 +135,8 @@ export const AuthProvider = ({ children }) => {
         register,
         logout,
         refreshStats,
-        refreshUser
+        refreshUser,
+        updateStats
     };
 
     return (
@@ -166,6 +178,28 @@ export const ProtectedRoute = ({ children }) => {
     }
 
     return isAuthenticated && isVerified ? children : null;
+};
+
+// Guest Route Component — redirects authenticated users away from login/signup
+export const GuestRoute = ({ children }) => {
+    const { isAuthenticated, isVerified, loading } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!loading && isAuthenticated && isVerified) {
+            navigate('/dashboard', { replace: true });
+        }
+    }, [isAuthenticated, isVerified, loading, navigate]);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+                <div className="w-8 h-8 border-2 border-violet-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+        );
+    }
+
+    return (!isAuthenticated || !isVerified) ? children : null;
 };
 
 export default AuthContext;

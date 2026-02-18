@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const DAY_IN_MS = 1000 * 60 * 60 * 24;
+
+const toUtcDayStart = (date) => {
+    const normalized = new Date(date);
+    normalized.setUTCHours(0, 0, 0, 0);
+    return normalized;
+};
+
 const userStatsSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -58,14 +66,12 @@ userStatsSchema.methods.calculateLevel = function () {
 };
 
 // Method to update weekly activity
-userStatsSchema.methods.updateWeeklyActivity = function (xpEarned, modulesCompleted = 0) {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+userStatsSchema.methods.updateWeeklyActivity = function (xpEarned, modulesCompleted = 0, activityDate = new Date()) {
+    const today = toUtcDayStart(activityDate);
 
     // Find today's entry
     const todayIndex = this.weeklyActivity.findIndex(entry => {
-        const entryDate = new Date(entry.date);
-        entryDate.setHours(0, 0, 0, 0);
+        const entryDate = toUtcDayStart(entry.date);
         return entryDate.getTime() === today.getTime();
     });
 
@@ -85,7 +91,7 @@ userStatsSchema.methods.updateWeeklyActivity = function (xpEarned, modulesComple
     // Keep only last 7 days
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-    sevenDaysAgo.setHours(0, 0, 0, 0);
+    sevenDaysAgo.setUTCHours(0, 0, 0, 0);
 
     this.weeklyActivity = this.weeklyActivity.filter(entry => {
         const entryDate = new Date(entry.date);
@@ -93,34 +99,87 @@ userStatsSchema.methods.updateWeeklyActivity = function (xpEarned, modulesComple
     });
 };
 
-// Method to add XP and update level
-userStatsSchema.methods.addXP = async function (amount, moduleCompleted = false) {
-    this.totalXP += amount;
-    this.level = this.calculateLevel();
+userStatsSchema.methods.getDaysSinceLastActivity = function (referenceDate = new Date()) {
+    if (!this.lastActivityDate) return Number.POSITIVE_INFINITY;
 
-    // Update weekly activity
-    this.updateWeeklyActivity(amount, moduleCompleted ? 1 : 0);
+    const today = toUtcDayStart(referenceDate);
+    const lastActivity = toUtcDayStart(this.lastActivityDate);
+    return Math.floor((today.getTime() - lastActivity.getTime()) / DAY_IN_MS);
+};
 
-    // Update streak
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const lastActivity = new Date(this.lastActivityDate);
-    lastActivity.setHours(0, 0, 0, 0);
+userStatsSchema.methods.isActiveToday = function (referenceDate = new Date()) {
+    return this.getDaysSinceLastActivity(referenceDate) === 0;
+};
 
-    const diffDays = Math.floor((today - lastActivity) / (1000 * 60 * 60 * 24));
+userStatsSchema.methods.isStreakAtRisk = function (referenceDate = new Date()) {
+    if (!this.streak || this.streak <= 0) return false;
+    return this.getDaysSinceLastActivity(referenceDate) === 1;
+};
 
-    if (diffDays === 1) {
-        this.streak += 1;
-        if (this.streak > this.longestStreak) {
-            this.longestStreak = this.streak;
-        }
+// If the user missed more than one day, active streak is reset.
+userStatsSchema.methods.resetStreakIfExpired = function (referenceDate = new Date()) {
+    if (!this.streak || this.streak <= 0 || !this.lastActivityDate) return false;
+
+    const diffDays = this.getDaysSinceLastActivity(referenceDate);
+    if (diffDays > 1) {
+        this.streak = 0;
+        return true;
+    }
+
+    return false;
+};
+
+// Register activity (module completion/XP gain) and update streak + activity windows.
+userStatsSchema.methods.recordActivity = function ({ xpEarned = 0, moduleCompleted = false, activityDate = new Date() } = {}) {
+    const normalizedXP = Number(xpEarned) || 0;
+    const today = toUtcDayStart(activityDate);
+
+    let diffDays = Number.POSITIVE_INFINITY;
+    if (this.lastActivityDate) {
+        const lastActivity = toUtcDayStart(this.lastActivityDate);
+        diffDays = Math.floor((today.getTime() - lastActivity.getTime()) / DAY_IN_MS);
+    }
+
+    if (diffDays === Number.POSITIVE_INFINITY) {
+        this.streak = 1;
+    } else if (diffDays === 1) {
+        this.streak = (this.streak || 0) + 1;
     } else if (diffDays > 1) {
         this.streak = 1;
     }
 
-    this.lastActivityDate = new Date();
+    this.longestStreak = Math.max(this.longestStreak || 0, this.streak || 0);
+    this.updateWeeklyActivity(normalizedXP, moduleCompleted ? 1 : 0, activityDate);
+    this.lastActivityDate = activityDate;
+};
 
-    await this.save();
+// Method to add XP and update level
+userStatsSchema.methods.addXP = async function (amount, options = {}) {
+    if (typeof options === 'boolean') {
+        options = { moduleCompleted: options };
+    }
+
+    const {
+        moduleCompleted = false,
+        activityDate = new Date(),
+        save = true
+    } = options;
+
+    const normalizedAmount = Number(amount) || 0;
+    if (normalizedAmount > 0) {
+        this.totalXP += normalizedAmount;
+        this.level = this.calculateLevel();
+    }
+
+    this.recordActivity({
+        xpEarned: normalizedAmount,
+        moduleCompleted,
+        activityDate
+    });
+
+    if (save) {
+        await this.save();
+    }
     return this;
 };
 
@@ -129,7 +188,7 @@ userStatsSchema.methods.getWeeklyActivityForDisplay = function () {
     const days = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
     const result = [];
     const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    today.setUTCHours(0, 0, 0, 0);
 
     // Get max XP in the week for scaling
     let maxXP = 100; // Minimum scale
@@ -141,11 +200,10 @@ userStatsSchema.methods.getWeeklyActivityForDisplay = function () {
     for (let i = 6; i >= 0; i--) {
         const date = new Date(today);
         date.setDate(date.getDate() - i);
-        date.setHours(0, 0, 0, 0);
+        date.setUTCHours(0, 0, 0, 0);
 
         const activity = this.weeklyActivity.find(entry => {
-            const entryDate = new Date(entry.date);
-            entryDate.setHours(0, 0, 0, 0);
+            const entryDate = toUtcDayStart(entry.date);
             return entryDate.getTime() === date.getTime();
         });
 

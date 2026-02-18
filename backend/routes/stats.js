@@ -3,6 +3,7 @@ const router = express.Router();
 const UserStats = require('../models/UserStats');
 const { protect } = require('../middleware/auth');
 const { checkAndAwardBadges, getLockedBadges, getBadgeDefinitions } = require('../utils/badges');
+const { buildStatsPayload } = require('../utils/statsPayload');
 
 // @desc    Get user statistics
 // @route   GET /api/stats
@@ -21,6 +22,12 @@ router.get('/', protect, async (req, res) => {
             });
         }
 
+        // Daily streak reset rule: if inactivity > 1 day, active streak resets.
+        const streakReset = stats.resetStreakIfExpired();
+        if (streakReset) {
+            await stats.save();
+        }
+
         // Check for new badges automatically
         const newBadges = await checkAndAwardBadges(stats);
 
@@ -30,18 +37,10 @@ router.get('/', protect, async (req, res) => {
 
         res.json({
             success: true,
-            stats: {
-                totalXP: stats.totalXP,
-                level: stats.level,
-                streak: stats.streak,
-                longestStreak: stats.longestStreak,
-                modulesCompleted: stats.modulesCompleted,
-                badges: stats.badges,
-                lockedBadges: lockedBadges.slice(0, 3), // Show max 3 locked badges
-                newBadges: newBadges, // Newly earned badges this check
-                lastActivityDate: stats.lastActivityDate,
-                weeklyActivity: stats.getWeeklyActivityForDisplay()
-            }
+            stats: buildStatsPayload(stats, {
+                lockedBadges: lockedBadges.slice(0, 3),
+                newBadges
+            })
         });
     } catch (error) {
         console.error('Get stats error:', error);
@@ -86,9 +85,7 @@ router.put('/xp', protect, async (req, res) => {
             xpAdded: amount,
             reason: reason || 'XP earned',
             stats: {
-                totalXP: stats.totalXP,
-                level: stats.level,
-                streak: stats.streak,
+                ...buildStatsPayload(stats),
                 leveledUp,
                 previousLevel: leveledUp ? previousLevel : undefined
             }

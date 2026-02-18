@@ -251,11 +251,17 @@ export default function SignUp() {
 
                     {/* Social Sign Up */}
                     <div className="space-y-3">
-                        <button className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-medium py-3 rounded-xl transition-colors flex items-center justify-center gap-3">
+                        <button
+                            onClick={() => window.location.href = 'http://localhost:5000/api/auth/google'}
+                            className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-medium py-3 rounded-xl transition-colors flex items-center justify-center gap-3"
+                        >
                             <Icon icon="logos:google-icon" width="20" />
                             S'inscrire avec Google
                         </button>
-                        <button className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-medium py-3 rounded-xl transition-colors flex items-center justify-center gap-3">
+                        <button
+                            onClick={() => window.location.href = 'http://localhost:5000/api/auth/github'}
+                            className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-medium py-3 rounded-xl transition-colors flex items-center justify-center gap-3"
+                        >
                             <Icon icon="logos:github-icon" width="20" />
                             S'inscrire avec GitHub
                         </button>

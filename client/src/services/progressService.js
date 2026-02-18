@@ -26,11 +26,16 @@ export const getModuleProgress = async (moduleId) => {
 };
 
 // Update/complete module progress - sends data as body
-export const updateProgress = async (moduleId, data) => {
+export const updateProgress = async (moduleId, data, options = {}) => {
     try {
-        const response = await api.post(`/progress/${moduleId}`, data);
+        const response = await api.post(`/progress/${moduleId}`, data, {
+            signal: options.signal
+        });
         return response.data;
     } catch (error) {
+        if (error?.code === 'ERR_CANCELED') {
+            throw error;
+        }
         throw error.response?.data || { message: 'Failed to update progress' };
     }
 };
@@ -39,13 +44,13 @@ export const updateProgress = async (moduleId, data) => {
 // @param {number} moduleId - Module ID
 // @param {number} score - Score achieved (0-100)
 // @param {number} xpEarned - XP to award
-export const completeModule = async (moduleId, score, xpEarned) => {
+export const completeModule = async (moduleId, score, xpEarned, options = {}) => {
     // Send as proper object with individual fields
     return updateProgress(moduleId, {
         completed: true,
         score: Number(score),
         xpEarned: Number(xpEarned)
-    });
+    }, options);
 };
 
 export default {

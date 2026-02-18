@@ -20,9 +20,17 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, 'Please add a password'],
         minlength: [6, 'Password must be at least 6 characters'],
         select: false // Don't return password by default
+    },
+    authProvider: {
+        type: String,
+        enum: ['local', 'google', 'github'],
+        default: 'local'
+    },
+    authProviderId: {
+        type: String,
+        default: null
     },
     isVerified: {
         type: Boolean,
@@ -67,8 +75,8 @@ const userSchema = new mongoose.Schema({
 
 // Encrypt password before saving
 userSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) {
-        next();
+    if (!this.isModified('password') || !this.password) {
+        return next();
     }
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);

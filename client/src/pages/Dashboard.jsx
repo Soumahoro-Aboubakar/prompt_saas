@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Sidebar from '../components/dashboard/Sidebar';
@@ -19,9 +19,10 @@ const MODULE_STYLES = [
 
 export default function Dashboard() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [showBadgesModal, setShowBadgesModal] = useState(false);
     const navigate = useNavigate();
     const { user, stats: authStats } = useAuth();
-    const { completedModules, currentLevel, loading: progressLoading } = useProgress();
+    const { completedModules, currentLevel } = useProgress();
 
     // Get user's first name for greeting
     const firstName = user?.fullName?.split(' ')[0] || 'Utilisateur';
@@ -34,6 +35,13 @@ export default function Dashboard() {
     const xpInCurrentLevel = totalXP % xpPerLevel;
     const xpToNextLevel = xpPerLevel - xpInCurrentLevel;
     const levelProgress = Math.round((xpInCurrentLevel / xpPerLevel) * 100);
+    const streakStatus = authStats?.streakStatus;
+    const streakLabel = streakStatus?.isActiveToday
+        ? 'Série active'
+        : streakStatus?.isAtRisk
+            ? 'Série à risque'
+            : 'Série active';
+    const completedCount = authStats?.modulesCompleted ?? completedModules.length;
 
     // Get current formation data
     const currentFormation = getFormationOrDefault(currentLevel);
@@ -46,8 +54,8 @@ export default function Dashboard() {
     const stats = [
         { icon: 'solar:chart-2-linear', iconColor: 'text-violet-400', bgColor: 'bg-violet-500/10', value: `Niveau ${userLevel}`, label: levelLabel },
         { icon: 'solar:star-linear', iconColor: 'text-emerald-400', bgColor: 'bg-emerald-500/10', value: totalXP.toLocaleString(), label: 'XP Total' },
-        { icon: 'solar:fire-linear', iconColor: 'text-amber-400', bgColor: 'bg-amber-500/10', value: `${authStats?.streak || 0} jours`, label: 'Série active' },
-        { icon: 'solar:medal-ribbons-star-linear', iconColor: 'text-blue-400', bgColor: 'bg-blue-500/10', value: completedModules.length.toString(), label: 'Modules complétés' },
+        { icon: 'solar:fire-linear', iconColor: 'text-amber-400', bgColor: 'bg-amber-500/10', value: `${authStats?.streak || 0} jours`, label: streakLabel },
+        { icon: 'solar:medal-ribbons-star-linear', iconColor: 'text-blue-400', bgColor: 'bg-blue-500/10', value: completedCount.toString(), label: 'Modules complétés' },
     ];
 
     // Dynamic recommended modules: filter out completed modules and get next 3
@@ -91,11 +99,26 @@ export default function Dashboard() {
     const lockedBadges = authStats?.lockedBadges || [];
     const totalBadgesCount = 11; // Total available badges
 
-    // Combine earned and locked badges for display
+    // Combine earned and locked badges for display (max 5 on dashboard)
     const displayBadges = [
         ...earnedBadges.map(b => ({ ...b, isLocked: false })),
-        ...lockedBadges.slice(0, Math.max(0, 5 - earnedBadges.length)) // Fill up to 5 total
+        ...lockedBadges.slice(0, Math.max(0, 5 - earnedBadges.length))
     ];
+
+    // All badges for the modal (earned + all locked)
+    const allBadges = useMemo(() => [
+        ...earnedBadges.map(b => ({ ...b, isLocked: false })),
+        ...lockedBadges.map(b => ({ ...b, isLocked: true }))
+    ], [earnedBadges, lockedBadges]);
+
+    // Close modal on Escape key
+    const handleCloseBadgesModal = useCallback(() => setShowBadgesModal(false), []);
+    useEffect(() => {
+        if (!showBadgesModal) return;
+        const onKey = (e) => { if (e.key === 'Escape') handleCloseBadgesModal(); };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, [showBadgesModal, handleCloseBadgesModal]);
 
     const leaderboard = [
         { rank: 1, initials: 'SA', name: 'Sophie A.', level: 'Niveau 45', xp: '15,420 XP', gradient: 'from-amber-400 to-orange-500', rankColor: 'text-amber-400' },
@@ -103,11 +126,29 @@ export default function Dashboard() {
         { rank: 3, initials: 'LB', name: 'Léa B.', level: 'Niveau 38', xp: '12,450 XP', gradient: 'from-amber-600 to-amber-700', rankColor: 'text-amber-600' },
     ];
 
-    const dailyGoals = [
-        { text: 'Compléter 1 leçon', completed: true },
-        { text: 'Pratiquer avec le Mentor IA', completed: true },
-        { text: 'Gagner 100 XP', completed: false },
-    ];
+    // Dynamic daily goals based on real user activity today
+    const todayActivity = useMemo(() => {
+        const wa = weeklyActivity;
+        return wa.find(d => d.isToday) || { xpEarned: 0, modulesCompleted: 0 };
+    }, [weeklyActivity]);
+
+    const dailyGoals = useMemo(() => [
+        {
+            text: 'Compléter 2 leçon',
+            completed: (todayActivity.modulesCompleted || 0) >= 2,
+        },
+        {
+            text: 'Gagner 200 XP',
+            completed: (todayActivity.xpEarned || 0) >= 200,
+        },
+        {
+            text: 'Maintenir votre série',
+            completed: streakStatus?.isActiveToday === true,
+        },
+    ], [todayActivity, streakStatus]);
+
+    const completedGoalsCount = dailyGoals.filter(g => g.completed).length;
+    const goalProgress = Math.round((completedGoalsCount / dailyGoals.length) * 100);
 
     return (
         <div className="bg-zinc-950 text-white min-h-screen antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -148,10 +189,10 @@ export default function Dashboard() {
                         <div className="lg:col-span-2 space-y-6">
                             {/* Current Progress */}
                             <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-6">
-                                <div className="flex items-center justify-between mb-6">
+                                {/* <div className="flex items-center justify-between mb-6">
                                     <h2 className="text-lg font-semibold text-white">Progression actuelle</h2>
                                     <a href="#" className="text-sm text-violet-400 hover:text-violet-300">Voir tout</a>
-                                </div>
+                                </div> */}
 
                                 {/* Level Progress */}
                                 <div className="mb-6">
@@ -162,10 +203,10 @@ export default function Dashboard() {
                                     <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
                                         <div className="h-full bg-gradient-to-r from-violet-600 to-fuchsia-500 rounded-full transition-all duration-500" style={{ width: `${levelProgress}%` }}></div>
                                     </div>
-                                    <div className="flex items-center justify-between mt-2">
-                                        <span className="text-xs text-zinc-500">{xpInCurrentLevel} XP</span>
+                                    {/*<div className="flex items-center justify-between mt-2">
+                                <span className="text-xs text-zinc-500">{xpInCurrentLevel} XP</span>
                                         <span className="text-xs text-zinc-500">{xpToNextLevel} XP restants</span>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 {/* Continue Learning */}
@@ -319,10 +360,10 @@ export default function Dashboard() {
                                         <p className="text-sm text-zinc-500">Complétez des modules pour gagner des badges !</p>
                                     )}
                                 </div>
-                                <a href="#" className="flex items-center gap-1 mt-4 text-sm text-violet-400 hover:text-violet-300">
+                                {displayBadges.length > 0 && <button onClick={() => setShowBadgesModal(true)} className="flex items-center gap-1 mt-4 text-sm text-violet-400 hover:text-violet-300 transition-colors">
                                     Voir tous les badges
                                     <Icon icon="solar:arrow-right-linear" width="14" />
-                                </a>
+                                </button>}
                             </div>
 
                             {/* Upcoming Competition 
@@ -405,10 +446,10 @@ export default function Dashboard() {
                                 <div className="mt-4 pt-4 border-t border-zinc-800/50">
                                     <div className="flex items-center justify-between text-sm">
                                         <span className="text-zinc-500">Progression</span>
-                                        <span className="text-white font-medium">2/3</span>
+                                        <span className="text-white font-medium">{completedGoalsCount}/{dailyGoals.length}</span>
                                     </div>
                                     <div className="h-2 bg-zinc-800 rounded-full mt-2 overflow-hidden">
-                                        <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full" style={{ width: '66%' }}></div>
+                                        <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all duration-500" style={{ width: `${goalProgress}%` }}></div>
                                     </div>
                                 </div>
                             </div>
@@ -416,6 +457,89 @@ export default function Dashboard() {
                     </div>
                 </main >
             </div >
+
+            {/* Badges Modal */}
+            {showBadgesModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={handleCloseBadgesModal}>
+                    {/* Backdrop */}
+                    <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+
+                    {/* Modal */}
+                    <div
+                        className="relative bg-zinc-900 border border-zinc-800/50 rounded-2xl w-full max-w-lg max-h-[85vh] overflow-hidden shadow-2xl shadow-black/50"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Header */}
+                        <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-800/50">
+                            <div>
+                                <h2 className="text-xl font-semibold text-white">Tous les badges</h2>
+                                <p className="text-sm text-zinc-500 mt-1">{earnedBadges.length} obtenu{earnedBadges.length > 1 ? 's' : ''} sur {totalBadgesCount}</p>
+                            </div>
+                            <button
+                                onClick={handleCloseBadgesModal}
+                                className="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors"
+                            >
+                                <Icon icon="solar:close-circle-linear" width="24" />
+                            </button>
+                        </div>
+
+                        {/* Progress */}
+                        <div className="px-6 pt-4">
+                            <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+                                <div
+                                    className="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full transition-all duration-500"
+                                    style={{ width: `${Math.round((earnedBadges.length / totalBadgesCount) * 100)}%` }}
+                                />
+                            </div>
+                        </div>
+
+                        {/* Badges Grid */}
+                        <div className="p-6 overflow-y-auto max-h-[60vh] space-y-3">
+                            {allBadges.map((badge, index) => (
+                                <div
+                                    key={badge.id || index}
+                                    className={`flex items-center gap-4 p-4 rounded-xl transition-colors ${badge.isLocked
+                                            ? 'bg-zinc-800/20 opacity-60'
+                                            : 'bg-gradient-to-r from-violet-600/10 to-fuchsia-600/10 border border-violet-500/20'
+                                        }`}
+                                >
+                                    {/* Badge Icon */}
+                                    <div className={`w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 ${badge.isLocked
+                                            ? 'bg-zinc-800'
+                                            : `bg-gradient-to-br ${badge.gradient || 'from-violet-400 to-purple-500'} shadow-lg ${badge.shadow || 'shadow-violet-500/20'}`
+                                        }`}>
+                                        <Icon
+                                            icon={badge.isLocked ? 'solar:lock-linear' : badge.icon}
+                                            width="24"
+                                            className={badge.isLocked ? 'text-zinc-600' : 'text-white'}
+                                        />
+                                    </div>
+
+                                    {/* Badge Info */}
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className={`font-medium ${badge.isLocked ? 'text-zinc-500' : 'text-white'}`}>
+                                            {badge.name}
+                                        </h3>
+                                        <p className="text-sm text-zinc-500 truncate">
+                                            {badge.description || ''}
+                                        </p>
+                                    </div>
+
+                                    {/* Status */}
+                                    {badge.isLocked ? (
+                                        <Icon icon="solar:lock-linear" width="18" className="text-zinc-600 flex-shrink-0" />
+                                    ) : (
+                                        <div className="flex items-center gap-1.5 flex-shrink-0">
+                                            <Icon icon="solar:check-circle-bold" width="18" className="text-emerald-400" />
+                                            <span className="text-xs text-emerald-400 font-medium">Obtenu</span>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div >
     );
 }
