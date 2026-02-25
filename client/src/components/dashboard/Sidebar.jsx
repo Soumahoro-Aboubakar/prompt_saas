@@ -39,6 +39,7 @@ export default function Sidebar({ isOpen, onClose }) {
     const navItems = [
         { icon: 'solar:home-2-linear', activeIcon: 'solar:home-2-bold', label: 'Dashboard', href: '/dashboard' },
         { icon: 'solar:book-bookmark-linear', activeIcon: 'solar:book-bookmark-bold', label: 'Mes formations', href: '/formations' },
+        { icon: 'solar:shop-linear', activeIcon: 'solar:shop-bold', label: 'Store Pro', href: '/store-pro', badge: 'Pro' },
         { icon: 'solar:route-linear', activeIcon: 'solar:route-bold', label: 'Parcours', href: '/parcours' },
         { icon: 'solar:cpu-bolt-linear', activeIcon: 'solar:cpu-bolt-bold', label: 'Mentor IA', href: '/mentor' },
         { icon: 'solar:code-square-linear', activeIcon: 'solar:code-square-bold', label: 'Sandbox', href: '/sandbox' },
@@ -48,6 +49,7 @@ export default function Sidebar({ isOpen, onClose }) {
     ];
 
     const communityItems = [
+        { icon: 'solar:chat-round-dots-linear', activeIcon: 'solar:chat-round-dots-bold', label: 'Suggestions', href: '/suggestions', badge: 'New' },
         { icon: 'solar:users-group-rounded-linear', activeIcon: 'solar:users-group-rounded-bold', label: 'Forum', href: '/forum' },
         { icon: 'solar:ranking-linear', activeIcon: 'solar:ranking-bold', label: 'Classement', href: '/classement' },
     ];
@@ -100,7 +102,12 @@ export default function Sidebar({ isOpen, onClose }) {
                                     className={active ? 'text-violet-400' : ''}
                                 />
                                 <span className={`text-sm ${active ? 'font-medium' : ''}`}>{item.label}</span>
-                                {active && (
+                                {item.badge && (
+                                    <span className="ml-auto px-1.5 py-0.5 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 text-amber-400 text-[10px] font-semibold rounded-full leading-none">
+                                        {item.badge}
+                                    </span>
+                                )}
+                                {active && !item.badge && (
                                     <div className="ml-auto w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                                 )}
                             </Link>
@@ -130,7 +137,12 @@ export default function Sidebar({ isOpen, onClose }) {
                                     className={active ? 'text-violet-400' : ''}
                                 />
                                 <span className={`text-sm ${active ? 'font-medium' : ''}`}>{item.label}</span>
-                                {active && (
+                                {item.badge && (
+                                    <span className="ml-auto px-1.5 py-0.5 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 border border-violet-500/30 text-violet-400 text-[10px] font-semibold rounded-full leading-none">
+                                        {item.badge}
+                                    </span>
+                                )}
+                                {active && !item.badge && (
                                     <div className="ml-auto w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                                 )}
                             </Link>

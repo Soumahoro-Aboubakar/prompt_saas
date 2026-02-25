@@ -1,0 +1,410 @@
+[
+    {
+        "id": "dev-001",
+        "category": "Développement",
+        "categorySlug": "developpement",
+        "title": "Générateur de composant React",
+        "description": "Crée un composant React complet avec props typées, état local et styles Tailwind.",
+        "prompt": "Tu es un développeur React senior expert en TypeScript et Tailwind CSS.\n\nCrée un composant React fonctionnel nommé [NOM_COMPOSANT] qui :\n- Accepte les props suivantes : [LISTE_PROPS]\n- Gère l'état local pour [FONCTIONNALITÉ]\n- Utilise Tailwind CSS pour le style avec un design moderne et responsive\n- Inclut des commentaires JSDoc pour chaque prop\n- Exporte le composant par défaut\n\nLe composant doit être production-ready, accessible (ARIA), et suivre les best practices React 18.",
+        "tags": [
+            "React",
+            "TypeScript",
+            "Tailwind",
+            "Frontend"
+        ],
+        "previewEmoji": "⚛️",
+        "gradient": "from-violet-600/20 to-purple-600/20",
+        "accentColor": "violet"
+    },
+    {
+        "id": "dev-002",
+        "category": "Développement",
+        "categorySlug": "developpement",
+        "title": "API REST Express complète",
+        "description": "Génère une route Express avec validation, gestion d'erreurs et middleware d'auth.",
+        "prompt": "Tu es un développeur backend Node.js expert en Express.js et architecture REST.\n\nCrée une route Express complète pour [RESSOURCE] qui inclut :\n- CRUD complet (GET, POST, PUT, DELETE)\n- Validation des données avec express-validator\n- Middleware d'authentification JWT\n- Gestion d'erreurs centralisée avec codes HTTP appropriés\n- Commentaires JSDoc sur chaque endpoint\n- Exemples de requêtes/réponses JSON\n\nSuis les conventions REST et les best practices de sécurité (sanitisation, rate limiting).",
+        "tags": [
+            "Node.js",
+            "Express",
+            "REST API",
+            "JWT"
+        ],
+        "previewEmoji": "🔌",
+        "gradient": "from-violet-600/20 to-indigo-600/20",
+        "accentColor": "violet"
+    },
+    {
+        "id": "dev-003",
+        "category": "Développement",
+        "categorySlug": "developpement",
+        "title": "Débogueur de code intelligent",
+        "description": "Analyse ton code, identifie les bugs et propose des corrections expliquées.",
+        "prompt": "Tu es un expert en débogage et en revue de code avec 15 ans d'expérience.\n\nAnalyse le code suivant et :\n1. Identifie tous les bugs, erreurs potentielles et problèmes de performance\n2. Explique clairement POURQUOI chaque problème est un problème\n3. Propose une version corrigée du code\n4. Suggère des améliorations supplémentaires (lisibilité, maintenabilité, sécurité)\n5. Donne une note de qualité globale /10 avec justification\n\nCode à analyser :\n```\n[COLLER_LE_CODE_ICI]\n```",
+        "tags": [
+            "Debug",
+            "Code Review",
+            "Qualité",
+            "Tous langages"
+        ],
+        "previewEmoji": "🐛",
+        "gradient": "from-red-600/20 to-violet-600/20",
+        "accentColor": "violet"
+    },
+    {
+        "id": "dev-004",
+        "category": "Développement",
+        "categorySlug": "developpement",
+        "title": "Générateur de tests unitaires",
+        "description": "Crée des tests Jest/Vitest complets pour n'importe quelle fonction ou composant.",
+        "prompt": "Tu es un expert en Test-Driven Development (TDD) et en qualité logicielle.\n\nGénère des tests unitaires complets avec Jest/Vitest pour le code suivant :\n- Couvre tous les cas nominaux (happy path)\n- Couvre tous les cas limites (edge cases)\n- Couvre les cas d'erreur et exceptions\n- Utilise des mocks pour les dépendances externes\n- Vise une couverture de code > 90%\n- Nomme les tests de façon descriptive (pattern: 'should [action] when [condition]')\n\nCode à tester :\n```\n[COLLER_LE_CODE_ICI]\n```",
+        "tags": [
+            "Jest",
+            "Vitest",
+            "TDD",
+            "Tests"
+        ],
+        "previewEmoji": "✅",
+        "gradient": "from-emerald-600/20 to-violet-600/20",
+        "accentColor": "violet"
+    },
+    {
+        "id": "web-001",
+        "category": "Interface Web",
+        "categorySlug": "interface-web",
+        "title": "Landing page moderne",
+        "description": "Génère le HTML/CSS d'une landing page complète avec hero, features et CTA.",
+        "prompt": "Tu es un expert en développement web frontend et en conversion rate optimization (CRO).\n\nCrée une landing page complète en HTML/CSS/JS pour [PRODUIT/SERVICE] avec :\n- Section Hero avec headline percutant, sous-titre et CTA principal\n- Section Features (3-6 avantages clés avec icônes)\n- Section Social Proof (témoignages ou logos clients)\n- Section Pricing (si applicable)\n- Section FAQ\n- Footer complet\n- Design moderne avec palette de couleurs [COULEURS]\n- Animations CSS subtiles au scroll\n- 100% responsive (mobile-first)\n- Optimisé pour la conversion",
+        "tags": [
+            "HTML",
+            "CSS",
+            "Landing Page",
+            "Conversion"
+        ],
+        "previewEmoji": "🌐",
+        "gradient": "from-blue-600/20 to-cyan-600/20",
+        "accentColor": "blue"
+    },
+    {
+        "id": "web-002",
+        "category": "Interface Web",
+        "categorySlug": "interface-web",
+        "title": "Dashboard analytics interactif",
+        "description": "Crée un tableau de bord avec graphiques, KPIs et filtres dynamiques.",
+        "prompt": "Tu es un expert en data visualization et en UX pour applications analytiques.\n\nConçois un dashboard analytics complet pour [DOMAINE] avec :\n- KPIs principaux en haut (4-6 métriques clés avec tendances)\n- Graphique principal (line chart ou bar chart) avec filtres temporels\n- Tableau de données paginé et triable\n- Filtres globaux (date range, catégorie, statut)\n- Design dark mode professionnel\n- Responsive pour desktop et tablette\n- Utilise Chart.js ou Recharts pour les graphiques\n- Données mockées réalistes pour la démo\n\nCible : [TYPE_D_UTILISATEUR]",
+        "tags": [
+            "Dashboard",
+            "Analytics",
+            "Chart.js",
+            "Data Viz"
+        ],
+        "previewEmoji": "📊",
+        "gradient": "from-blue-600/20 to-indigo-600/20",
+        "accentColor": "blue"
+    },
+    {
+        "id": "web-003",
+        "category": "Interface Web",
+        "categorySlug": "interface-web",
+        "title": "Formulaire multi-étapes avec validation",
+        "description": "Génère un formulaire wizard avec validation temps réel et barre de progression.",
+        "prompt": "Tu es un expert en UX et en développement de formulaires complexes.\n\nCrée un formulaire multi-étapes (wizard) pour [OBJECTIF] avec :\n- [N] étapes clairement définies avec barre de progression\n- Validation en temps réel sur chaque champ (avec messages d'erreur clairs)\n- Navigation avant/arrière sans perte de données\n- Récapitulatif avant soumission finale\n- Animations de transition entre les étapes\n- Accessibilité complète (ARIA, navigation clavier)\n- Gestion des états : idle, loading, success, error\n- Style moderne et professionnel\n\nChamps requis par étape : [DÉCRIRE_LES_CHAMPS]",
+        "tags": [
+            "Formulaire",
+            "UX",
+            "Validation",
+            "Multi-étapes"
+        ],
+        "previewEmoji": "📝",
+        "gradient": "from-cyan-600/20 to-blue-600/20",
+        "accentColor": "blue"
+    },
+    {
+        "id": "web-004",
+        "category": "Interface Web",
+        "categorySlug": "interface-web",
+        "title": "Système d'authentification complet",
+        "description": "Login, register, forgot password avec JWT et protection des routes.",
+        "prompt": "Tu es un expert en sécurité web et en authentification.\n\nImplémente un système d'authentification complet avec :\n- Page de connexion (email + mot de passe)\n- Page d'inscription avec validation des champs\n- Récupération de mot de passe par email\n- Authentification JWT (access token + refresh token)\n- Protection des routes côté client et serveur\n- Gestion des sessions (localStorage ou cookies httpOnly)\n- OAuth optionnel (Google, GitHub)\n- Messages d'erreur sécurisés (sans révéler d'infos sensibles)\n- Rate limiting sur les endpoints d'auth\n\nStack : [FRONTEND_FRAMEWORK] + [BACKEND_FRAMEWORK]",
+        "tags": [
+            "Auth",
+            "JWT",
+            "Sécurité",
+            "OAuth"
+        ],
+        "previewEmoji": "🔐",
+        "gradient": "from-indigo-600/20 to-blue-600/20",
+        "accentColor": "blue"
+    },
+    {
+        "id": "design-001",
+        "category": "Design UI",
+        "categorySlug": "design-ui",
+        "title": "Système de design complet",
+        "description": "Crée un design system cohérent avec tokens, composants et guidelines.",
+        "prompt": "Tu es un designer UI/UX senior expert en design systems et en atomic design.\n\nCrée un design system complet pour [MARQUE/PRODUIT] avec :\n- Palette de couleurs (primaire, secondaire, neutres, sémantiques)\n- Typographie (familles, tailles, poids, line-heights)\n- Espacement (système 4px ou 8px)\n- Composants de base : Button (5 variantes), Input, Card, Badge, Alert, Modal\n- États de chaque composant : default, hover, active, disabled, focus\n- Dark mode et light mode\n- Tokens CSS custom properties\n- Guidelines d'utilisation pour chaque composant\n\nPersonnalité de la marque : [DÉCRIRE_LA_MARQUE]",
+        "tags": [
+            "Design System",
+            "UI",
+            "CSS Variables",
+            "Atomic Design"
+        ],
+        "previewEmoji": "🎨",
+        "gradient": "from-fuchsia-600/20 to-pink-600/20",
+        "accentColor": "fuchsia"
+    },
+    {
+        "id": "design-002",
+        "category": "Design UI",
+        "categorySlug": "design-ui",
+        "title": "Interface glassmorphism premium",
+        "description": "Génère une interface moderne avec effets de verre, gradients et animations.",
+        "prompt": "Tu es un designer UI expert en tendances visuelles modernes et en CSS avancé.\n\nCrée une interface [TYPE_D_INTERFACE] avec le style glassmorphism premium :\n- Arrière-plan : gradient sombre ou image floue\n- Cartes en verre : backdrop-filter blur, transparence, bordure lumineuse\n- Effets de lumière : glows, halos colorés, reflets\n- Typographie : blanc/gris clair sur fond sombre\n- Animations : hover avec scale et glow, transitions fluides\n- Palette : [COULEURS_ACCENT] sur fond #0a0a0a ou similaire\n- Micro-interactions sur tous les éléments interactifs\n- Responsive et performant (will-change, GPU acceleration)\n\nContexte d'utilisation : [DÉCRIRE_LE_CONTEXTE]",
+        "tags": [
+            "Glassmorphism",
+            "CSS",
+            "Animation",
+            "Premium"
+        ],
+        "previewEmoji": "✨",
+        "gradient": "from-fuchsia-600/20 to-violet-600/20",
+        "accentColor": "fuchsia"
+    },
+    {
+        "id": "design-003",
+        "category": "Design UI",
+        "categorySlug": "design-ui",
+        "title": "Palette de couleurs harmonieuse",
+        "description": "Génère une palette complète avec nuances, accessibilité et cas d'usage.",
+        "prompt": "Tu es un expert en théorie des couleurs et en accessibilité web (WCAG).\n\nGénère une palette de couleurs complète pour [MARQUE/PROJET] :\n- Couleur primaire : [COULEUR_DE_BASE]\n- 10 nuances de la couleur primaire (50 à 950)\n- Couleur secondaire complémentaire ou analogique\n- Couleurs sémantiques : success, warning, error, info\n- Neutres : 10 nuances de gris\n- Vérification des ratios de contraste WCAG AA et AAA\n- Exemples d'application sur fond clair et sombre\n- Variables CSS prêtes à l'emploi\n- Recommandations d'usage pour chaque couleur",
+        "tags": [
+            "Couleurs",
+            "WCAG",
+            "Accessibilité",
+            "CSS"
+        ],
+        "previewEmoji": "🌈",
+        "gradient": "from-pink-600/20 to-fuchsia-600/20",
+        "accentColor": "fuchsia"
+    },
+    {
+        "id": "design-004",
+        "category": "Design UI",
+        "categorySlug": "design-ui",
+        "title": "Icônes et illustrations SVG",
+        "description": "Crée des icônes SVG personnalisées cohérentes avec ton style visuel.",
+        "prompt": "Tu es un illustrateur digital expert en SVG et en design d'icônes.\n\nCrée un set d'icônes SVG pour [THÈME/DOMAINE] :\n- Style : [STYLE : outline/filled/duotone/3D]\n- Taille de base : 24x24px (viewBox=\"0 0 24 24\")\n- Stroke width : [ÉPAISSEUR]\n- Couleur : currentColor (pour la flexibilité)\n- Icônes à créer : [LISTE_DES_ICÔNES]\n- Cohérence visuelle entre toutes les icônes\n- Optimisées (pas de paths inutiles)\n- Accessibles (title + aria-label)\n- Exportées en composants React si possible",
+        "tags": [
+            "SVG",
+            "Icônes",
+            "Illustration",
+            "React"
+        ],
+        "previewEmoji": "🖼️",
+        "gradient": "from-rose-600/20 to-fuchsia-600/20",
+        "accentColor": "fuchsia"
+    },
+    {
+        "id": "img-001",
+        "category": "Génération d'images",
+        "categorySlug": "generation-images",
+        "title": "Portrait professionnel IA",
+        "description": "Prompt optimisé pour générer des portraits photoréalistes de haute qualité.",
+        "prompt": "Professional headshot portrait of [DESCRIPTION_PERSONNE], ultra-realistic photography, shot with Canon EOS R5, 85mm f/1.4 lens, soft studio lighting with key light and fill light, shallow depth of field, sharp focus on eyes, natural skin texture, [COULEUR_FOND] background, professional attire, confident expression, 8K resolution, photorealistic, hyperdetailed, award-winning photography style.\n\nNegative prompt: cartoon, anime, illustration, painting, blurry, distorted, extra limbs, bad anatomy, watermark, text.",
+        "tags": [
+            "Portrait",
+            "Photoréaliste",
+            "Midjourney",
+            "DALL-E"
+        ],
+        "previewEmoji": "📸",
+        "gradient": "from-amber-600/20 to-orange-600/20",
+        "accentColor": "amber"
+    },
+    {
+        "id": "img-002",
+        "category": "Génération d'images",
+        "categorySlug": "generation-images",
+        "title": "Illustration de marque stylisée",
+        "description": "Crée des illustrations cohérentes pour ton identité visuelle de marque.",
+        "prompt": "Brand illustration for [MARQUE], flat design style with [COULEURS_MARQUE] color palette, clean geometric shapes, minimalist aesthetic, [SUJET_ILLUSTRATION], white or [COULEUR_FOND] background, vector art style, professional and modern, suitable for website hero section, high contrast, bold lines, [STYLE_ADDITIONNEL : isometric/2.5D/outline], 4K resolution, no text, no watermark.\n\nStyle reference: Stripe, Linear, Notion illustration style.",
+        "tags": [
+            "Illustration",
+            "Branding",
+            "Flat Design",
+            "Midjourney"
+        ],
+        "previewEmoji": "🎭",
+        "gradient": "from-amber-600/20 to-yellow-600/20",
+        "accentColor": "amber"
+    },
+    {
+        "id": "img-003",
+        "category": "Génération d'images",
+        "categorySlug": "generation-images",
+        "title": "Mockup produit 3D réaliste",
+        "description": "Génère des mockups produits photoréalistes pour tes présentations marketing.",
+        "prompt": "Photorealistic 3D product mockup of [DESCRIPTION_PRODUIT], studio photography setup, clean white or [COULEUR] background, professional product photography lighting (3-point lighting setup), sharp details, reflections on surface, [ANGLE : front view/45-degree angle/top view], commercial photography quality, 8K resolution, no shadows clipping, perfect proportions, suitable for e-commerce or marketing materials.\n\nStyle: Apple product photography aesthetic, ultra-clean, minimal.",
+        "tags": [
+            "Mockup",
+            "3D",
+            "Produit",
+            "E-commerce"
+        ],
+        "previewEmoji": "📦",
+        "gradient": "from-orange-600/20 to-amber-600/20",
+        "accentColor": "amber"
+    },
+    {
+        "id": "img-004",
+        "category": "Génération d'images",
+        "categorySlug": "generation-images",
+        "title": "Fond d'écran abstrait premium",
+        "description": "Génère des wallpapers abstraits époustouflants pour desktop ou mobile.",
+        "prompt": "Abstract digital art wallpaper, [STYLE : fluid/geometric/cosmic/neon], dominant colors [COULEURS], ultra-high resolution 4K/8K, smooth gradients, depth and dimension, [AMBIANCE : dark/light/vibrant], no text, no watermark, seamless composition, suitable as desktop wallpaper, professional digital art, trending on ArtStation, cinematic quality, volumetric lighting, [ÉLÉMENTS_ADDITIONNELS : particles/waves/fractals/crystals].",
+        "tags": [
+            "Wallpaper",
+            "Abstrait",
+            "4K",
+            "Digital Art"
+        ],
+        "previewEmoji": "🌌",
+        "gradient": "from-yellow-600/20 to-amber-600/20",
+        "accentColor": "amber"
+    },
+    {
+        "id": "mkt-001",
+        "category": "Marketing",
+        "categorySlug": "marketing",
+        "title": "Copywriting pour page de vente",
+        "description": "Rédige une page de vente persuasive qui convertit avec les frameworks AIDA et PAS.",
+        "prompt": "Tu es un copywriter expert en persuasion et en psychologie du consommateur, spécialisé dans les pages de vente à fort taux de conversion.\n\nRédige une page de vente complète pour [PRODUIT/SERVICE] en utilisant le framework AIDA + PAS :\n\nINFORMATIONS PRODUIT :\n- Produit : [NOM]\n- Prix : [PRIX]\n- Cible : [PERSONA]\n- Problème résolu : [PROBLÈME]\n- Bénéfice principal : [BÉNÉFICE]\n- Preuves sociales disponibles : [TÉMOIGNAGES/CHIFFRES]\n\nSTRUCTURE ATTENDUE :\n1. Headline accrocheur (bénéfice + curiosité)\n2. Sous-headline (clarification)\n3. Problème (agitation émotionnelle)\n4. Solution (ton produit)\n5. Bénéfices (pas features)\n6. Preuves sociales\n7. Offre + garantie\n8. CTA urgent",
+        "tags": [
+            "Copywriting",
+            "Vente",
+            "AIDA",
+            "Conversion"
+        ],
+        "previewEmoji": "💰",
+        "gradient": "from-emerald-600/20 to-teal-600/20",
+        "accentColor": "emerald"
+    },
+    {
+        "id": "mkt-002",
+        "category": "Marketing",
+        "categorySlug": "marketing",
+        "title": "Stratégie de contenu réseaux sociaux",
+        "description": "Planifie un mois de contenu engageant pour LinkedIn, Instagram ou Twitter.",
+        "prompt": "Tu es un stratège en marketing de contenu et community manager expert avec 10 ans d'expérience.\n\nCrée un calendrier éditorial complet pour [MARQUE] sur [PLATEFORME] pour le mois de [MOIS] :\n\nCONTEXTE :\n- Secteur : [SECTEUR]\n- Cible : [AUDIENCE]\n- Objectif : [NOTORIÉTÉ/ENGAGEMENT/LEADS/VENTES]\n- Ton de la marque : [TON]\n\nPOUR CHAQUE POST :\n- Date et heure optimale de publication\n- Format (texte/image/vidéo/carousel/story)\n- Hook d'accroche (première ligne)\n- Corps du message\n- Call-to-action\n- Hashtags pertinents (10-15)\n- Idée visuelle\n\nObjectif : 20 posts sur 4 semaines avec variété de formats.",
+        "tags": [
+            "Social Media",
+            "Contenu",
+            "LinkedIn",
+            "Instagram"
+        ],
+        "previewEmoji": "📱",
+        "gradient": "from-emerald-600/20 to-green-600/20",
+        "accentColor": "emerald"
+    },
+    {
+        "id": "mkt-003",
+        "category": "Marketing",
+        "categorySlug": "marketing",
+        "title": "Email marketing séquence nurturing",
+        "description": "Crée une séquence d'emails automatisée pour convertir tes leads en clients.",
+        "prompt": "Tu es un expert en email marketing et en automation avec un taux d'ouverture moyen de 45%.\n\nCrée une séquence d'emails de nurturing en [N] emails pour [PRODUIT/SERVICE] :\n\nCONTEXTE :\n- Produit : [PRODUIT]\n- Prix : [PRIX]\n- Durée de la séquence : [DURÉE]\n- Déclencheur : [INSCRIPTION_NEWSLETTER/TÉLÉCHARGEMENT_LEAD_MAGNET/ESSAI_GRATUIT]\n\nPOUR CHAQUE EMAIL :\n- Délai d'envoi (J+0, J+2, etc.)\n- Objet (A/B test : 2 versions)\n- Preheader\n- Corps de l'email (storytelling + valeur)\n- CTA principal\n- P.S. (toujours inclure)\n\nObjectif final : conversion vers [ACTION_FINALE]",
+        "tags": [
+            "Email",
+            "Automation",
+            "Nurturing",
+            "Conversion"
+        ],
+        "previewEmoji": "📧",
+        "gradient": "from-teal-600/20 to-emerald-600/20",
+        "accentColor": "emerald"
+    },
+    {
+        "id": "mkt-004",
+        "category": "Marketing",
+        "categorySlug": "marketing",
+        "title": "Analyse concurrentielle approfondie",
+        "description": "Analyse tes concurrents et identifie des opportunités de positionnement.",
+        "prompt": "Tu es un consultant en stratégie marketing et en intelligence compétitive.\n\nRéalise une analyse concurrentielle complète pour [MON_PRODUIT] face à [CONCURRENTS] :\n\n1. TABLEAU COMPARATIF\n   - Fonctionnalités clés (présent/absent/partiel)\n   - Pricing et modèles tarifaires\n   - Positionnement et messaging\n   - Forces et faiblesses\n\n2. ANALYSE SWOT de ma position\n\n3. GAPS DU MARCHÉ\n   - Besoins non adressés par les concurrents\n   - Opportunités de différenciation\n\n4. RECOMMANDATIONS STRATÉGIQUES\n   - Positionnement unique recommandé\n   - Arguments de vente différenciants\n   - Stratégie de prix suggérée\n\nMarché cible : [MARCHÉ]",
+        "tags": [
+            "Stratégie",
+            "Concurrence",
+            "SWOT",
+            "Positionnement"
+        ],
+        "previewEmoji": "🔍",
+        "gradient": "from-green-600/20 to-emerald-600/20",
+        "accentColor": "emerald"
+    },
+    {
+        "id": "red-001",
+        "category": "Rédaction",
+        "categorySlug": "redaction",
+        "title": "Article de blog SEO optimisé",
+        "description": "Rédige un article long format optimisé pour le référencement et l'engagement.",
+        "prompt": "Tu es un rédacteur SEO expert avec 10 ans d'expérience en content marketing.\n\nRédige un article de blog complet et optimisé SEO sur [SUJET] :\n\nSPÉCIFICATIONS :\n- Mot-clé principal : [MOT_CLÉ]\n- Mots-clés secondaires : [LISTE]\n- Longueur cible : [1500-3000] mots\n- Audience : [CIBLE]\n- Ton : [TON : informatif/conversationnel/expert]\n\nSTRUCTURE :\n1. Titre H1 accrocheur avec mot-clé\n2. Introduction (hook + promesse + plan)\n3. Corps avec H2/H3 structurés\n4. Exemples concrets et données chiffrées\n5. FAQ (5 questions)\n6. Conclusion avec CTA\n7. Meta description (155 caractères max)\n\nOptimisation : densité de mots-clés 1-2%, liens internes suggérés.",
+        "tags": [
+            "SEO",
+            "Blog",
+            "Contenu",
+            "Rédaction"
+        ],
+        "previewEmoji": "✍️",
+        "gradient": "from-rose-600/20 to-pink-600/20",
+        "accentColor": "rose"
+    },
+    {
+        "id": "red-002",
+        "category": "Rédaction",
+        "categorySlug": "redaction",
+        "title": "Pitch deck investisseurs",
+        "description": "Structure et rédige un pitch deck convaincant pour lever des fonds.",
+        "prompt": "Tu es un expert en fundraising et en storytelling pour startups, ayant accompagné des levées de fonds de 500K€ à 10M€.\n\nCrée le contenu complet d'un pitch deck pour [STARTUP] :\n\nINFOS STARTUP :\n- Nom : [NOM]\n- Secteur : [SECTEUR]\n- Problème résolu : [PROBLÈME]\n- Solution : [SOLUTION]\n- Modèle économique : [MODÈLE]\n- Traction : [MÉTRIQUES]\n- Montant recherché : [MONTANT]\n\nSLIDES À RÉDIGER (10-12 slides) :\n1. Cover + tagline\n2. Problème (avec données)\n3. Solution\n4. Marché (TAM/SAM/SOM)\n5. Produit\n6. Business Model\n7. Traction\n8. Équipe\n9. Roadmap\n10. Financials\n11. Ask (ce que tu demandes)\n\nTon : confiant, factuel, inspirant.",
+        "tags": [
+            "Pitch",
+            "Startup",
+            "Investisseurs",
+            "Business"
+        ],
+        "previewEmoji": "🚀",
+        "gradient": "from-rose-600/20 to-red-600/20",
+        "accentColor": "rose"
+    },
+    {
+        "id": "red-003",
+        "category": "Rédaction",
+        "categorySlug": "redaction",
+        "title": "Newsletter hebdomadaire engageante",
+        "description": "Rédige une newsletter qui fidélise tes abonnés et génère des clics.",
+        "prompt": "Tu es un expert en newsletter marketing avec une audience fidèle de 50 000+ abonnés.\n\nRédige une newsletter hebdomadaire pour [MARQUE/CRÉATEUR] sur le thème [THÈME] :\n\nCONTEXTE :\n- Audience : [DESCRIPTION]\n- Fréquence : hebdomadaire\n- Objectif : [ENGAGEMENT/TRAFIC/VENTES]\n- Ton : [TON]\n\nSTRUCTURE :\n1. Objet accrocheur (max 50 caractères)\n2. Preheader mystérieux\n3. Intro personnelle (2-3 phrases)\n4. Contenu principal (insight/histoire/tutoriel)\n5. Ressource de la semaine\n6. Tip actionnable\n7. Question à la communauté\n8. CTA final\n9. Signature personnalisée\n\nLongueur : 400-600 mots. Ton conversationnel et authentique.",
+        "tags": [
+            "Newsletter",
+            "Email",
+            "Engagement",
+            "Fidélisation"
+        ],
+        "previewEmoji": "📰",
+        "gradient": "from-pink-600/20 to-rose-600/20",
+        "accentColor": "rose"
+    },
+    {
+        "id": "red-004",
+        "category": "Rédaction",
+        "categorySlug": "redaction",
+        "title": "Fiche produit e-commerce persuasive",
+        "description": "Rédige des descriptions produits qui vendent en mettant en avant les bénéfices.",
+        "prompt": "Tu es un copywriter e-commerce expert en psychologie d'achat et en optimisation des fiches produits.\n\nRédige une fiche produit complète et persuasive pour [PRODUIT] :\n\nINFOS PRODUIT :\n- Nom : [NOM]\n- Catégorie : [CATÉGORIE]\n- Prix : [PRIX]\n- Caractéristiques : [LISTE]\n- Cible : [CLIENT_IDÉAL]\n- Problème résolu : [PROBLÈME]\n\nÉLÉMENTS À RÉDIGER :\n1. Titre produit optimisé SEO (60-80 caractères)\n2. Description courte (2-3 phrases, bénéfices clés)\n3. Description longue (300-500 mots, storytelling + bénéfices)\n4. Bullet points (5-7 points, format : [Bénéfice] — [Feature])\n5. FAQ produit (5 questions)\n6. Meta description SEO\n\nTon : [LUXE/ACCESSIBLE/TECHNIQUE/LIFESTYLE]",
+        "tags": [
+            "E-commerce",
+            "Fiche produit",
+            "Copywriting",
+            "SEO"
+        ],
+        "previewEmoji": "🛍️",
+        "gradient": "from-red-600/20 to-rose-600/20",
+        "accentColor": "rose"
+    }
+]

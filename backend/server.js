@@ -31,6 +31,8 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/progress', require('./routes/progress'));
 app.use('/api/stats', require('./routes/stats'));
 app.use('/api/validate', require('./routes/validate'));
+app.use('/api/store-pro', require('./routes/store'));
+app.use('/api/suggestions', require('./routes/suggestions'));
 
 // Health check route
 app.get('/api/health', (req, res) => {

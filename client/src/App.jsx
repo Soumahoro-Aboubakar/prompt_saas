@@ -14,6 +14,8 @@ import FormationDetail from './pages/FormationDetail';
 import OAuthCallback from './pages/OAuthCallback';
 import Forbidden from './pages/Forbidden';
 import NotFound from './pages/NotFound';
+import StorePro from './pages/StorePro';
+import Suggestions from './pages/Suggestions';
 
 function App() {
   return (
@@ -51,6 +53,16 @@ function App() {
               <Route path="/formations/:id" element={
                 <ProtectedRoute>
                   <FormationDetail />
+                </ProtectedRoute>
+              } />
+              <Route path="/store-pro" element={
+                <ProtectedRoute>
+                  <StorePro />
+                </ProtectedRoute>
+              } />
+              <Route path="/suggestions" element={
+                <ProtectedRoute>
+                  <Suggestions />
                 </ProtectedRoute>
               } />
               <Route path="*" element={<NotFound />} />
