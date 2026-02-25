@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import AppLogo from '../ui/AppLogo';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,8 +49,8 @@ export default function Navbar() {
             <div className="max-w-5xl mx-auto">
                 <div className="flex items-center justify-between h-14 px-6 bg-white/95 backdrop-blur-xl rounded-full shadow-lg shadow-black/5 border border-zinc-200/50">
                     {/* Logo */}
-                    <Link to="/" className="text-lg font-semibold tracking-tight text-zinc-900">
-                        <span className="text-violet-600">✦</span> prompt<span className="text-violet-600">academy</span>
+                    <Link to="/" className="inline-block">
+                        <AppLogo variant="light" size="md" />
                     </Link>
 
                     {/* Center Navigation - Desktop */}

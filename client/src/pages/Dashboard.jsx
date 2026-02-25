@@ -6,6 +6,7 @@ import DashboardHeader from '../components/dashboard/DashboardHeader';
 import { useAuth } from '../context/AuthContext';
 import { useProgress } from '../context/ProgressContext';
 import { getFormationOrDefault, getAllFormations } from '../services/formationService';
+import OnboardingModal from '../components/ui/OnboardingModal';
 
 // Icon and color configurations for module display
 const MODULE_STYLES = [
@@ -458,6 +459,9 @@ export default function Dashboard() {
                 </main >
             </div >
 
+            {/* Onboarding Modal */}
+            <OnboardingModal routeKey="/dashboard" />
+
             {/* Badges Modal */}
             {showBadgesModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={handleCloseBadgesModal}>
@@ -499,14 +503,14 @@ export default function Dashboard() {
                                 <div
                                     key={badge.id || index}
                                     className={`flex items-center gap-4 p-4 rounded-xl transition-colors ${badge.isLocked
-                                            ? 'bg-zinc-800/20 opacity-60'
-                                            : 'bg-gradient-to-r from-violet-600/10 to-fuchsia-600/10 border border-violet-500/20'
+                                        ? 'bg-zinc-800/20 opacity-60'
+                                        : 'bg-gradient-to-r from-violet-600/10 to-fuchsia-600/10 border border-violet-500/20'
                                         }`}
                                 >
                                     {/* Badge Icon */}
                                     <div className={`w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 ${badge.isLocked
-                                            ? 'bg-zinc-800'
-                                            : `bg-gradient-to-br ${badge.gradient || 'from-violet-400 to-purple-500'} shadow-lg ${badge.shadow || 'shadow-violet-500/20'}`
+                                        ? 'bg-zinc-800'
+                                        : `bg-gradient-to-br ${badge.gradient || 'from-violet-400 to-purple-500'} shadow-lg ${badge.shadow || 'shadow-violet-500/20'}`
                                         }`}>
                                         <Icon
                                             icon={badge.isLocked ? 'solar:lock-linear' : badge.icon}

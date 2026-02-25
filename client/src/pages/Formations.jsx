@@ -11,6 +11,7 @@ import { getAllFormations } from '../services/formationService';
 // Import contexts for real data
 import { useAuth } from '../context/AuthContext';
 import { useProgress } from '../context/ProgressContext';
+import OnboardingModal from '../components/ui/OnboardingModal';
 
 // Icon mapping for modules based on their content
 const moduleIcons = {
@@ -273,6 +274,9 @@ export default function Formations() {
                     )}
                 </main>
             </div>
+
+            {/* Onboarding Modal */}
+            <OnboardingModal routeKey="/formations" />
         </div>
     );
 }

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../context/AuthContext';
+import AppLogo from '../ui/AppLogo';
 
 export default function Sidebar({ isOpen, onClose }) {
     const { user, stats, logout } = useAuth();
@@ -38,20 +39,20 @@ export default function Sidebar({ isOpen, onClose }) {
 
     const navItems = [
         { icon: 'solar:home-2-linear', activeIcon: 'solar:home-2-bold', label: 'Dashboard', href: '/dashboard' },
-        { icon: 'solar:book-bookmark-linear', activeIcon: 'solar:book-bookmark-bold', label: 'Mes formations', href: '/formations' },
+        { icon: 'solar:book-bookmark-linear', activeIcon: 'solar:book-bookmark-bold', label: 'Mes formations', href: '/formations' },/*
         { icon: 'solar:shop-linear', activeIcon: 'solar:shop-bold', label: 'Store Pro', href: '/store-pro', badge: 'Pro' },
         { icon: 'solar:route-linear', activeIcon: 'solar:route-bold', label: 'Parcours', href: '/parcours' },
         { icon: 'solar:cpu-bolt-linear', activeIcon: 'solar:cpu-bolt-bold', label: 'Mentor IA', href: '/mentor' },
         { icon: 'solar:code-square-linear', activeIcon: 'solar:code-square-bold', label: 'Sandbox', href: '/sandbox' },
         { icon: 'solar:library-linear', activeIcon: 'solar:library-bold', label: 'Bibliothèque', href: '/bibliotheque' },
         { icon: 'solar:cup-star-linear', activeIcon: 'solar:cup-star-bold', label: 'Compétitions', href: '/competitions' },
-        { icon: 'solar:diploma-linear', activeIcon: 'solar:diploma-bold', label: 'Certifications', href: '/certifications' },
+        { icon: 'solar:diploma-linear', activeIcon: 'solar:diploma-bold', label: 'Certifications', href: '/certifications' }, */
     ];
 
     const communityItems = [
-        { icon: 'solar:chat-round-dots-linear', activeIcon: 'solar:chat-round-dots-bold', label: 'Suggestions', href: '/suggestions', badge: 'New' },
+        { icon: 'solar:chat-round-dots-linear', activeIcon: 'solar:chat-round-dots-bold', label: 'Suggestions', href: '/suggestions', badge: 'New' }, /*
         { icon: 'solar:users-group-rounded-linear', activeIcon: 'solar:users-group-rounded-bold', label: 'Forum', href: '/forum' },
-        { icon: 'solar:ranking-linear', activeIcon: 'solar:ranking-bold', label: 'Classement', href: '/classement' },
+        { icon: 'solar:ranking-linear', activeIcon: 'solar:ranking-bold', label: 'Classement', href: '/classement' },  */
     ];
 
     // Determine if a nav item is active based on the current route
@@ -76,8 +77,8 @@ export default function Sidebar({ isOpen, onClose }) {
             <aside className={`fixed left-0 top-0 bottom-0 w-64 bg-zinc-950 border-r border-zinc-800/50 flex flex-col z-40 transform transition-transform duration-300 lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 {/* Logo */}
                 <div className="p-6 border-b border-zinc-800/50">
-                    <Link to="/" className="text-lg font-semibold tracking-tight text-white">
-                        <span className="text-violet-500">✦</span> prompt<span className="text-violet-500">academy</span>
+                    <Link to="/" className="inline-block">
+                        <AppLogo variant="dark" size="md" />
                     </Link>
                 </div>
 

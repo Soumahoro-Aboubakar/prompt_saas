@@ -5,6 +5,7 @@ import Sidebar from '../components/dashboard/Sidebar';
 import DashboardHeader from '../components/dashboard/DashboardHeader';
 import { useAuth } from '../context/AuthContext';
 import * as suggestionsService from '../services/suggestionsService';
+import OnboardingModal from '../components/ui/OnboardingModal';
 
 // Category config
 const CATEGORIES = {
@@ -234,8 +235,8 @@ export default function Suggestions() {
                                         key={key}
                                         onClick={() => { setStatusFilter(key); setShowMine(false); }}
                                         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${statusFilter === key && !showMine
-                                                ? 'bg-violet-600/20 text-violet-400 border border-violet-500/30'
-                                                : 'text-zinc-500 hover:text-zinc-300 border border-transparent hover:border-zinc-700/50'
+                                            ? 'bg-violet-600/20 text-violet-400 border border-violet-500/30'
+                                            : 'text-zinc-500 hover:text-zinc-300 border border-transparent hover:border-zinc-700/50'
                                             }`}
                                     >
                                         <Icon icon={s.icon} width="14" />
@@ -245,8 +246,8 @@ export default function Suggestions() {
                                 <button
                                     onClick={() => setShowMine(!showMine)}
                                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${showMine
-                                            ? 'bg-fuchsia-600/20 text-fuchsia-400 border border-fuchsia-500/30'
-                                            : 'text-zinc-500 hover:text-zinc-300 border border-transparent hover:border-zinc-700/50'
+                                        ? 'bg-fuchsia-600/20 text-fuchsia-400 border border-fuchsia-500/30'
+                                        : 'text-zinc-500 hover:text-zinc-300 border border-transparent hover:border-zinc-700/50'
                                         }`}
                                 >
                                     <Icon icon="solar:user-circle-linear" width="14" />
@@ -325,8 +326,8 @@ export default function Suggestions() {
                                                     <motion.button
                                                         onClick={() => handleVote(s._id)}
                                                         className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${s.hasVoted
-                                                                ? 'bg-violet-500/20 border border-violet-500/40 text-violet-400'
-                                                                : 'bg-zinc-800/50 border border-zinc-700/50 text-zinc-500 hover:text-violet-400 hover:border-violet-500/30'
+                                                            ? 'bg-violet-500/20 border border-violet-500/40 text-violet-400'
+                                                            : 'bg-zinc-800/50 border border-zinc-700/50 text-zinc-500 hover:text-violet-400 hover:border-violet-500/30'
                                                             }`}
                                                         whileHover={{ scale: 1.1 }}
                                                         whileTap={{ scale: 0.9 }}
@@ -518,8 +519,8 @@ export default function Suggestions() {
                                                 type="button"
                                                 onClick={() => setFormData(prev => ({ ...prev, category: key }))}
                                                 className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border transition-all duration-200 ${formData.category === key
-                                                        ? `${c.bg} ${c.border} ${c.color}`
-                                                        : 'border-zinc-700/50 text-zinc-500 hover:border-zinc-600'
+                                                    ? `${c.bg} ${c.border} ${c.color}`
+                                                    : 'border-zinc-700/50 text-zinc-500 hover:border-zinc-600'
                                                     }`}
                                             >
                                                 <Icon icon={c.icon} width="20" />
@@ -598,8 +599,8 @@ export default function Suggestions() {
                 {toast && (
                     <motion.div
                         className={`fixed bottom-6 right-6 z-[70] flex items-center gap-2 px-4 py-3 rounded-xl border shadow-2xl backdrop-blur-md text-sm font-medium ${toast.type === 'error'
-                                ? 'bg-red-500/10 border-red-500/30 text-red-400'
-                                : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                            ? 'bg-red-500/10 border-red-500/30 text-red-400'
+                            : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
                             }`}
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -613,6 +614,9 @@ export default function Suggestions() {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* Onboarding Modal */}
+            <OnboardingModal routeKey="/suggestions" />
         </div>
     );
 }

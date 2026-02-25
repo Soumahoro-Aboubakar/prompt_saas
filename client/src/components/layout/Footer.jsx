@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
 import { StaggerContainer, StaggerItem, FadeIn } from '../../hooks/useAnimations';
+import AppLogo from '../ui/AppLogo';
 
 export default function Footer() {
     return (
@@ -13,8 +14,8 @@ export default function Footer() {
                 >
                     <StaggerItem>
                         <div>
-                            <div className="text-lg font-semibold tracking-tight text-white mb-4">
-                                <span className="text-violet-500">✦</span> prompt<span className="text-violet-500">academy</span>
+                            <div className="mb-4">
+                                <AppLogo variant="dark" size="md" />
                             </div>
                             <p className="text-sm text-zinc-500">La première école numérique francophone spécialisée en IA.</p>
                         </div>

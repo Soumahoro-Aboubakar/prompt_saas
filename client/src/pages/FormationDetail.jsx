@@ -13,6 +13,7 @@ import { getFormationOrDefault, getLevelForModule, getFormationsCount } from '..
 import { useProgress } from '../context/ProgressContext';
 import useSyncProgress from '../hooks/useSyncProgress';
 import { useToast } from '../components/ui/Toast';
+import OnboardingModal from '../components/ui/OnboardingModal';
 
 export default function FormationDetail() {
     const { id } = useParams();
@@ -676,6 +677,9 @@ export default function FormationDetail() {
                     </AnimatePresence>
                 </main>
             </div>
+
+            {/* Onboarding Modal */}
+            <OnboardingModal routeKey="/formations/:id" />
         </div>
     );
 }

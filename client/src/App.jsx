@@ -55,11 +55,11 @@ function App() {
                   <FormationDetail />
                 </ProtectedRoute>
               } />
-              <Route path="/store-pro" element={
+           {  /* <Route path="/store-pro" element={
                 <ProtectedRoute>
                   <StorePro />
                 </ProtectedRoute>
-              } />
+              } /> */}
               <Route path="/suggestions" element={
                 <ProtectedRoute>
                   <Suggestions />

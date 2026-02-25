@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
+import AppLogo from '../components/ui/AppLogo';
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -76,8 +77,8 @@ export default function SignUp() {
             >
                 {/* Logo */}
                 <div className="text-center mb-8">
-                    <Link to="/" className="inline-block text-2xl font-semibold tracking-tight">
-                        <span className="text-violet-500">✦</span> prompt<span className="text-violet-500">academy</span>
+                    <Link to="/" className="inline-block">
+                        <AppLogo variant="dark" size="lg" />
                     </Link>
                     <p className="text-zinc-500 mt-2">Créez votre compte et maîtrisez l'IA</p>
                 </div>
@@ -242,14 +243,14 @@ export default function SignUp() {
                         </motion.button>
                     </form>
 
-                    {/* Divider */}
+                    {/* Divider 
                     <div className="flex items-center gap-4 my-6">
                         <div className="flex-1 h-px bg-zinc-800"></div>
                         <span className="text-sm text-zinc-500">ou</span>
                         <div className="flex-1 h-px bg-zinc-800"></div>
-                    </div>
+                    </div>*/}
 
-                    {/* Social Sign Up */}
+                    {/* Social Sign Up 
                     <div className="space-y-3">
                         <button
                             onClick={() => window.location.href = 'http://localhost:5000/api/auth/google'}
@@ -265,7 +266,7 @@ export default function SignUp() {
                             <Icon icon="logos:github-icon" width="20" />
                             S'inscrire avec GitHub
                         </button>
-                    </div>
+                    </div>*/}
                 </div>
 
                 {/* Login Link */}
