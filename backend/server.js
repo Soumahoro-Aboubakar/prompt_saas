@@ -62,4 +62,19 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+
+    // Self-ping to keep the Render service alive
+    const SELF_PING_URL = 'https://prompt-saas.onrender.com/api/health';
+    const PING_INTERVAL_MS = 60 * 1000; // 1 minute
+
+    setInterval(() => {
+        const https = require('https');
+        https.get(SELF_PING_URL, (res) => {
+            console.log(`[Self-Ping] Status: ${res.statusCode} at ${new Date().toISOString()}`);
+        }).on('error', (err) => {
+            console.error(`[Self-Ping] Error: ${err.message}`);
+        });
+    }, PING_INTERVAL_MS);
+
+    console.log(`[Self-Ping] Scheduled every ${PING_INTERVAL_MS / 1000}s → ${SELF_PING_URL}`);
 });
