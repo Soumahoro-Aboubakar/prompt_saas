@@ -13,7 +13,8 @@ const app = express();
 
 // CORS configuration - allow client origin
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:3000'],
+    origin: ['http://localhost:5173', 'http://localhost:3000', "https://eprompt.site",
+        "https://www.eprompt.site"],
     credentials: true
 }));
 
