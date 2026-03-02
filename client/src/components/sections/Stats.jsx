@@ -10,7 +10,8 @@ export default function Stats() {
     ];
 
     return (
-        <section className="py-12 px-4 sm:px-6 lg:px-8 border-y border-zinc-800/50">
+        <section className="py-12 px-4 sm:px-6 lg:px-8 border-y border-zinc-800/50" aria-label="Statistiques de la plateforme">
+            <h2 className="sr-only">Nos formations en chiffres</h2>
             <StaggerContainer
                 className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8"
                 staggerDelay={0.12}

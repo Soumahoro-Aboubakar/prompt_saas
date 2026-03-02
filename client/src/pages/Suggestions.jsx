@@ -9,19 +9,19 @@ import OnboardingModal from '../components/ui/OnboardingModal';
 
 // Category config
 const CATEGORIES = {
-    feature: { label: 'New Feature', icon: 'solar:star-shine-linear', color: 'text-violet-400', bg: 'bg-violet-500/10', border: 'border-violet-500/25' },
-    improvement: { label: 'Improvement', icon: 'solar:pen-new-square-linear', color: 'text-sky-400', bg: 'bg-sky-500/10', border: 'border-sky-500/25' },
-    optimization: { label: 'Optimization', icon: 'solar:bolt-circle-linear', color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/25' },
+    feature: { label: 'Nouvelle fonctionnalité', icon: 'solar:star-shine-linear', color: 'text-violet-400', bg: 'bg-violet-500/10', border: 'border-violet-500/25' },
+    improvement: { label: 'Amélioration', icon: 'solar:pen-new-square-linear', color: 'text-sky-400', bg: 'bg-sky-500/10', border: 'border-sky-500/25' },
+    optimization: { label: 'Optimisation', icon: 'solar:bolt-circle-linear', color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/25' },
 };
 
 // Status config
 const STATUSES = {
-    all: { label: 'All', icon: 'solar:list-linear', color: 'text-zinc-300' },
-    pending: { label: 'Pending', icon: 'solar:clock-circle-linear', color: 'text-zinc-400', bg: 'bg-zinc-500/10', border: 'border-zinc-500/25' },
-    in_review: { label: 'In Review', icon: 'solar:eye-linear', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/25' },
-    in_progress: { label: 'In Progress', icon: 'solar:programming-linear', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/25' },
-    implemented: { label: 'Implemented', icon: 'solar:check-circle-linear', color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/25' },
-    declined: { label: 'Declined', icon: 'solar:close-circle-linear', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/25' },
+    all: { label: 'Tout', icon: 'solar:list-linear', color: 'text-zinc-300' },
+    pending: { label: 'En attente', icon: 'solar:clock-circle-linear', color: 'text-zinc-400', bg: 'bg-zinc-500/10', border: 'border-zinc-500/25' },
+    in_review: { label: 'En examen', icon: 'solar:eye-linear', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/25' },
+    in_progress: { label: 'En cours', icon: 'solar:programming-linear', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/25' },
+    implemented: { label: 'Implémenté', icon: 'solar:check-circle-linear', color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/25' },
+    declined: { label: 'Refusé', icon: 'solar:close-circle-linear', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/25' },
 };
 
 // Skeleton loader
@@ -73,7 +73,7 @@ export default function Suggestions() {
             }
             setSuggestions(res.data || []);
         } catch {
-            showToast('Failed to load suggestions', 'error');
+            showToast('Échec du chargement des suggestions', 'error');
         } finally {
             setLoading(false);
         }
@@ -97,9 +97,9 @@ export default function Suggestions() {
             setSuggestions(prev => [res.data, ...prev]);
             setFormData({ title: '', description: '', category: 'feature' });
             setShowCreateModal(false);
-            showToast('Suggestion submitted successfully!');
+            showToast('Suggestion soumise avec succès !');
         } catch {
-            showToast('Failed to submit suggestion', 'error');
+            showToast('Échec de la soumission', 'error');
         } finally {
             setSubmitting(false);
         }
@@ -115,7 +115,7 @@ export default function Suggestions() {
                     : s
             ));
         } catch {
-            showToast('Failed to vote', 'error');
+            showToast('Échec du vote', 'error');
         }
     };
 
@@ -127,9 +127,9 @@ export default function Suggestions() {
                 s._id === id ? { ...s, status } : s
             ));
             setAdminStatusId(null);
-            showToast('Status updated');
+            showToast('Statut mis à jour');
         } catch {
-            showToast('Failed to update status', 'error');
+            showToast('Échec de la mise à jour du statut', 'error');
         }
     };
 
@@ -143,9 +143,9 @@ export default function Suggestions() {
             ));
             setAdminResponseText('');
             setExpandedAdmin(null);
-            showToast('Response sent');
+            showToast('Réponse envoyée');
         } catch {
-            showToast('Failed to send response', 'error');
+            showToast('Échec de l\'envoi de la réponse', 'error');
         }
     };
 
@@ -154,9 +154,9 @@ export default function Suggestions() {
         try {
             await suggestionsService.deleteSuggestion(id);
             setSuggestions(prev => prev.filter(s => s._id !== id));
-            showToast('Suggestion deleted');
+            showToast('Suggestion supprimée');
         } catch {
-            showToast('Failed to delete suggestion', 'error');
+            showToast('Échec de la suppression', 'error');
         }
     };
 
@@ -169,13 +169,13 @@ export default function Suggestions() {
         const now = new Date();
         const diffMs = now - date;
         const diffMin = Math.floor(diffMs / 60000);
-        if (diffMin < 1) return 'Just now';
-        if (diffMin < 60) return `${diffMin}m ago`;
+        if (diffMin < 1) return 'À l\'instant';
+        if (diffMin < 60) return `il y a ${diffMin} min`;
         const diffH = Math.floor(diffMin / 60);
-        if (diffH < 24) return `${diffH}h ago`;
+        if (diffH < 24) return `il y a ${diffH}h`;
         const diffD = Math.floor(diffH / 24);
-        if (diffD < 30) return `${diffD}d ago`;
-        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        if (diffD < 30) return `il y a ${diffD}j`;
+        return date.toLocaleDateString('fr-FR', { month: 'short', day: 'numeric' });
     };
 
     return (
@@ -194,7 +194,7 @@ export default function Suggestions() {
                                     Suggestions
                                 </h1>
                                 <p className="text-sm text-zinc-500 mt-1">
-                                    Propose ideas, vote for features, and shape the future of the platform
+                                    Proposez des idées, votez pour des fonctionnalités et façonnez l'avenir de la plateforme
                                 </p>
                             </div>
                             <motion.button
@@ -204,7 +204,7 @@ export default function Suggestions() {
                                 whileTap={{ scale: 0.97 }}
                             >
                                 <Icon icon="solar:add-circle-linear" width="18" />
-                                New Suggestion
+                                Nouvelle suggestion
                             </motion.button>
                         </div>
 
@@ -212,17 +212,17 @@ export default function Suggestions() {
                         <div className="grid grid-cols-3 gap-3 mb-6">
                             <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-xl p-4 text-center">
                                 <div className="text-2xl font-bold text-violet-400">{totalCount}</div>
-                                <div className="text-xs text-zinc-500 mt-1">Total Ideas</div>
+                                <div className="text-xs text-zinc-500 mt-1">Total des idées</div>
                             </div>
                             <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-xl p-4 text-center">
                                 <div className="text-2xl font-bold text-emerald-400">{implementedCount}</div>
-                                <div className="text-xs text-zinc-500 mt-1">Implemented</div>
+                                <div className="text-xs text-zinc-500 mt-1">Implémentées</div>
                             </div>
                             <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-xl p-4 text-center">
                                 <div className="text-2xl font-bold text-sky-400">
                                     {suggestions.reduce((sum, s) => sum + (s.voteCount || 0), 0)}
                                 </div>
-                                <div className="text-xs text-zinc-500 mt-1">Total Votes</div>
+                                <div className="text-xs text-zinc-500 mt-1">Total des votes</div>
                             </div>
                         </div>
 
@@ -251,7 +251,7 @@ export default function Suggestions() {
                                         }`}
                                 >
                                     <Icon icon="solar:user-circle-linear" width="14" />
-                                    My Ideas
+                                    Mes idées
                                 </button>
                             </div>
 
@@ -263,7 +263,7 @@ export default function Suggestions() {
                                         }`}
                                 >
                                     <Icon icon="solar:clock-circle-linear" width="14" />
-                                    Recent
+                                    Récent
                                 </button>
                                 <button
                                     onClick={() => setSortBy('popular')}
@@ -271,7 +271,7 @@ export default function Suggestions() {
                                         }`}
                                 >
                                     <Icon icon="solar:fire-linear" width="14" />
-                                    Popular
+                                    Populaire
                                 </button>
                             </div>
                         </div>
@@ -291,9 +291,9 @@ export default function Suggestions() {
                                 <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center">
                                     <Icon icon="solar:lightbulb-bolt-linear" width="40" className="text-violet-400" />
                                 </div>
-                                <h3 className="text-lg font-semibold text-white mb-2">No suggestions yet</h3>
+                                <h3 className="text-lg font-semibold text-white mb-2">Aucune suggestion pour le moment</h3>
                                 <p className="text-sm text-zinc-500 mb-6 max-w-md mx-auto">
-                                    Be the first to share your ideas! Your feedback helps us build a better platform.
+                                    Soyez le premier à partager vos idées ! Vos retours nous aident à construire une meilleure plateforme.
                                 </p>
                                 <motion.button
                                     onClick={() => setShowCreateModal(true)}
@@ -301,7 +301,7 @@ export default function Suggestions() {
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.97 }}
                                 >
-                                    Share Your Idea
+                                    Partagez votre idée
                                 </motion.button>
                             </motion.div>
                         ) : (
@@ -366,7 +366,7 @@ export default function Suggestions() {
                                                         <div className="mb-3 bg-violet-500/5 border border-violet-500/15 rounded-xl p-3">
                                                             <div className="flex items-center gap-1.5 mb-1.5">
                                                                 <Icon icon="solar:shield-check-linear" width="14" className="text-violet-400" />
-                                                                <span className="text-[11px] font-semibold text-violet-400">Admin Response</span>
+                                                                <span className="text-[11px] font-semibold text-violet-400">Réponse de l'admin</span>
                                                                 {s.adminRespondedBy && (
                                                                     <span className="text-[11px] text-zinc-500">— {s.adminRespondedBy.fullName}</span>
                                                                 )}
@@ -379,7 +379,7 @@ export default function Suggestions() {
                                                     <div className="flex items-center gap-3 text-xs text-zinc-600">
                                                         <span className="flex items-center gap-1">
                                                             <Icon icon="solar:user-circle-linear" width="13" />
-                                                            {s.author?.fullName || 'Anonymous'}
+                                                            {s.author?.fullName || 'Anonyme'}
                                                         </span>
                                                         <span>•</span>
                                                         <span>{formatDate(s.createdAt)}</span>
@@ -390,7 +390,7 @@ export default function Suggestions() {
                                                                     onClick={() => handleDelete(s._id)}
                                                                     className="text-zinc-600 hover:text-red-400 transition-colors"
                                                                 >
-                                                                    Delete
+                                                                    Supprimer
                                                                 </button>
                                                             </>
                                                         )}
@@ -415,7 +415,7 @@ export default function Suggestions() {
                                                                         onClick={() => setAdminStatusId(null)}
                                                                         className="px-2 py-1 text-[11px] text-zinc-500 hover:text-zinc-300"
                                                                     >
-                                                                        Cancel
+                                                                        Annuler
                                                                     </button>
                                                                 </div>
                                                             ) : (
@@ -424,7 +424,7 @@ export default function Suggestions() {
                                                                     className="flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-medium text-zinc-500 hover:text-white bg-zinc-800/50 border border-zinc-700/50 transition-all"
                                                                 >
                                                                     <Icon icon="solar:refresh-linear" width="12" />
-                                                                    Change Status
+                                                                    Changer le statut
                                                                 </button>
                                                             )}
                                                             {/* Reply */}
@@ -434,7 +434,7 @@ export default function Suggestions() {
                                                                         type="text"
                                                                         value={adminResponseText}
                                                                         onChange={(e) => setAdminResponseText(e.target.value)}
-                                                                        placeholder="Type your response..."
+                                                                        placeholder="Tapez votre réponse..."
                                                                         className="flex-1 bg-zinc-800/60 border border-zinc-700/50 rounded-lg px-3 py-1.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-violet-500/50"
                                                                         onKeyDown={(e) => e.key === 'Enter' && handleAdminRespond(s._id)}
                                                                     />
@@ -442,13 +442,13 @@ export default function Suggestions() {
                                                                         onClick={() => handleAdminRespond(s._id)}
                                                                         className="px-3 py-1.5 bg-violet-600 hover:bg-violet-500 text-white text-xs font-medium rounded-lg transition-colors"
                                                                     >
-                                                                        Send
+                                                                        Envoyer
                                                                     </button>
                                                                     <button
                                                                         onClick={() => { setExpandedAdmin(null); setAdminResponseText(''); }}
                                                                         className="px-2 py-1.5 text-zinc-500 hover:text-zinc-300 text-xs"
                                                                     >
-                                                                        Cancel
+                                                                        Annuler
                                                                     </button>
                                                                 </div>
                                                             ) : (
@@ -457,7 +457,7 @@ export default function Suggestions() {
                                                                     className="flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-medium text-zinc-500 hover:text-white bg-zinc-800/50 border border-zinc-700/50 transition-all"
                                                                 >
                                                                     <Icon icon="solar:chat-round-dots-linear" width="12" />
-                                                                    Reply
+                                                                    Répondre
                                                                 </button>
                                                             )}
                                                         </div>
@@ -498,7 +498,7 @@ export default function Suggestions() {
                                 <div className="flex items-center justify-between mb-6">
                                     <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                                         <Icon icon="solar:lightbulb-bolt-linear" width="22" className="text-violet-400" />
-                                        Share Your Idea
+                                        Partagez votre idée
                                     </h3>
                                     <button
                                         type="button"
@@ -511,7 +511,7 @@ export default function Suggestions() {
 
                                 {/* Category Selector */}
                                 <div className="mb-4">
-                                    <label className="block text-xs font-medium text-zinc-400 mb-2">Category</label>
+                                    <label className="block text-xs font-medium text-zinc-400 mb-2">Catégorie</label>
                                     <div className="grid grid-cols-3 gap-2">
                                         {Object.entries(CATEGORIES).map(([key, c]) => (
                                             <button
@@ -532,12 +532,12 @@ export default function Suggestions() {
 
                                 {/* Title */}
                                 <div className="mb-4">
-                                    <label className="block text-xs font-medium text-zinc-400 mb-2">Title</label>
+                                    <label className="block text-xs font-medium text-zinc-400 mb-2">Titre</label>
                                     <input
                                         type="text"
                                         value={formData.title}
                                         onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                                        placeholder="A concise title for your idea..."
+                                        placeholder="Un titre concis pour votre idée..."
                                         maxLength={150}
                                         required
                                         className="w-full bg-zinc-800/60 border border-zinc-700/50 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-violet-500/50 transition-colors"
@@ -551,7 +551,7 @@ export default function Suggestions() {
                                     <textarea
                                         value={formData.description}
                                         onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                                        placeholder="Describe your idea in detail. What problem does it solve? How should it work?"
+                                        placeholder="Décrivez votre idée en détail. Quel problème résout-elle ? Comment devrait-elle fonctionner ?"
                                         maxLength={2000}
                                         required
                                         rows={4}
@@ -569,7 +569,7 @@ export default function Suggestions() {
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                     >
-                                        Cancel
+                                        Annuler
                                     </motion.button>
                                     <motion.button
                                         type="submit"
@@ -583,7 +583,7 @@ export default function Suggestions() {
                                         ) : (
                                             <>
                                                 <Icon icon="solar:plain-2-linear" width="16" />
-                                                Submit
+                                                Soumettre
                                             </>
                                         )}
                                     </motion.button>

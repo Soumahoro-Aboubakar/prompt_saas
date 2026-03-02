@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { StaggerContainer, StaggerItem, FadeIn } from '../../hooks/useAnimations';
 import AppLogo from '../ui/AppLogo';
 
@@ -21,52 +22,51 @@ export default function Footer() {
                         </div>
                     </StaggerItem>
                     <StaggerItem>
-                        <div>
+                        <nav aria-label="Parcours de formation">
                             <div className="text-sm font-medium text-white mb-4">Parcours</div>
                             <ul className="space-y-2">
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">Débutant</a></li>
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">Intermédiaire</a></li>
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">Avancé</a></li>
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">Expert</a></li>
+                                <li><Link to="/formations" className="text-sm text-zinc-500 hover:text-white transition-colors">Débutant</Link></li>
+                                <li><Link to="/formations" className="text-sm text-zinc-500 hover:text-white transition-colors">Intermédiaire</Link></li>
+                                <li><Link to="/formations" className="text-sm text-zinc-500 hover:text-white transition-colors">Avancé</Link></li>
+                                <li><Link to="/formations" className="text-sm text-zinc-500 hover:text-white transition-colors">Expert</Link></li>
                             </ul>
-                        </div>
+                        </nav>
                     </StaggerItem>
                     <StaggerItem>
-                        <div>
+                        <nav aria-label="Ressources">
                             <div className="text-sm font-medium text-white mb-4">Ressources</div>
                             <ul className="space-y-2">
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">Documentation</a></li>
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">Blog</a></li>
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">FAQ</a></li>
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">Support</a></li>
+                                <li><Link to="/store-pro" className="text-sm text-zinc-500 hover:text-white transition-colors">Store Pro</Link></li>
+                                <li><Link to="/suggestions" className="text-sm text-zinc-500 hover:text-white transition-colors">Suggestions</Link></li>
+                                <li><Link to="/signup" className="text-sm text-zinc-500 hover:text-white transition-colors">Inscription</Link></li>
+                                <li><Link to="/login" className="text-sm text-zinc-500 hover:text-white transition-colors">Connexion</Link></li>
                             </ul>
-                        </div>
+                        </nav>
                     </StaggerItem>
                     <StaggerItem>
-                        <div>
+                        <nav aria-label="Entreprise">
                             <div className="text-sm font-medium text-white mb-4">Entreprise</div>
                             <ul className="space-y-2">
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">À propos</a></li>
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">Partenariats</a></li>
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">Carrières</a></li>
-                                <li><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">Contact</a></li>
+                                <li><a href="mailto:contact@promptacademy.com" className="text-sm text-zinc-500 hover:text-white transition-colors">Contact</a></li>
+                                <li><Link to="/suggestions" className="text-sm text-zinc-500 hover:text-white transition-colors">Retours & Idées</Link></li>
                             </ul>
-                        </div>
+                        </nav>
                     </StaggerItem>
                 </StaggerContainer>
 
                 <FadeIn direction="up" delay={0.2}>
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-zinc-800/50">
-                        <div className="text-sm text-zinc-500">© 2025 PromptAcademy. Tous droits réservés.</div>
+                        <div className="text-sm text-zinc-500">© 2026 PromptAcademy. Tous droits réservés.</div>
                         <div className="flex items-center gap-4">
                             {[
-                                { icon: 'solar:twitter-linear', href: '#' },
-                                { icon: 'solar:play-circle-linear', href: '#' },
-                                { icon: 'solar:link-circle-linear', href: '#' },
+                                { icon: 'solar:twitter-linear', href: '#', label: 'Twitter' },
+                                { icon: 'solar:play-circle-linear', href: '#', label: 'YouTube' },
+                                { icon: 'solar:link-circle-linear', href: '#', label: 'LinkedIn' },
                             ].map((social, i) => (
                                 <motion.a
                                     key={i}
                                     href={social.href}
+                                    aria-label={social.label}
                                     className="text-zinc-500 hover:text-white transition-colors"
                                     whileHover={{ scale: 1.2, y: -3 }}
                                     whileTap={{ scale: 0.9 }}

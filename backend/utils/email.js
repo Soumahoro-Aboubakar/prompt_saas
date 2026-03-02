@@ -161,7 +161,7 @@ function buildWelcomeEmail({ name }) {
                 <p style="font-size: 16px;">Sur <strong style="color: #6d28d9;">PromptAcademy</strong>, vous découvrirez les meilleures pratiques en ingénierie de prompts pour maîtriser l'Intelligence Artificielle et booster votre productivité.</p>
                 
                 <div style="text-align: center; margin: 35px 0;">
-                    <a href="https://prompt-saas.onrender.com/login" 
+                    <a href="https://www.eprompt.site/login" 
                        style="padding: 14px 28px; background-color: #6d28d9; color: #ffffff; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px rgba(109, 40, 217, 0.2);">
                        Accéder à mon espace
                     </a>
@@ -177,7 +177,7 @@ function buildWelcomeEmail({ name }) {
                 </div>
             </div>
         `,
-        text: `Bienvenue sur PromptAcademy, ${safeName} ! 🎉\n\nNous sommes ravis de vous compter parmi nous. Votre compte a été créé avec succès et est maintenant prêt à être utilisé.\n\nConnectez-vous à votre espace ici : https://prompt-saas.onrender.com/login\n\nL'équipe PromptAcademy`
+        text: `Bienvenue sur PromptAcademy, ${safeName} ! 🎉\n\nNous sommes ravis de vous compter parmi nous. Votre compte a été créé avec succès et est maintenant prêt à être utilisé.\n\nConnectez-vous à votre espace ici : https://www.eprompt.site/login\n\nL'équipe PromptAcademy`
     };
 }
 

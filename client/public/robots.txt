@@ -1,0 +1,9 @@
+# robots.txt — PromptAcademy
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /formations/
+Disallow: /store-pro
+Disallow: /suggestions
+
+Sitemap: https://www.eprompt.site/sitemap.xml

@@ -39,8 +39,8 @@ export default function Sidebar({ isOpen, onClose }) {
 
     const navItems = [
         { icon: 'solar:home-2-linear', activeIcon: 'solar:home-2-bold', label: 'Dashboard', href: '/dashboard' },
-        { icon: 'solar:book-bookmark-linear', activeIcon: 'solar:book-bookmark-bold', label: 'Mes formations', href: '/formations' },/*
-        { icon: 'solar:shop-linear', activeIcon: 'solar:shop-bold', label: 'Store Pro', href: '/store-pro', badge: 'Pro' },
+        { icon: 'solar:book-bookmark-linear', activeIcon: 'solar:book-bookmark-bold', label: 'Mes formations', href: '/formations' },
+        { icon: 'solar:shop-linear', activeIcon: 'solar:shop-bold', label: 'Store Pro', href: '/store-pro', badge: 'Pro' },/*
         { icon: 'solar:route-linear', activeIcon: 'solar:route-bold', label: 'Parcours', href: '/parcours' },
         { icon: 'solar:cpu-bolt-linear', activeIcon: 'solar:cpu-bolt-bold', label: 'Mentor IA', href: '/mentor' },
         { icon: 'solar:code-square-linear', activeIcon: 'solar:code-square-bold', label: 'Sandbox', href: '/sandbox' },
