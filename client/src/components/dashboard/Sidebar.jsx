@@ -39,8 +39,8 @@ export default function Sidebar({ isOpen, onClose }) {
 
     const navItems = [
         { icon: 'solar:home-2-linear', activeIcon: 'solar:home-2-bold', label: 'Dashboard', href: '/dashboard' },
-        { icon: 'solar:book-bookmark-linear', activeIcon: 'solar:book-bookmark-bold', label: 'Mes formations', href: '/formations' },
-        { icon: 'solar:shop-linear', activeIcon: 'solar:shop-bold', label: 'Store Pro', href: '/store-pro', badge: 'Pro' },/*
+        { icon: 'solar:book-bookmark-linear', activeIcon: 'solar:book-bookmark-bold', label: 'Mes formations', href: '/formations' },/*
+        { icon: 'solar:shop-linear', activeIcon: 'solar:shop-bold', label: 'Store Pro', href: '/store-pro', badge: 'Pro' },
         { icon: 'solar:route-linear', activeIcon: 'solar:route-bold', label: 'Parcours', href: '/parcours' },
         { icon: 'solar:cpu-bolt-linear', activeIcon: 'solar:cpu-bolt-bold', label: 'Mentor IA', href: '/mentor' },
         { icon: 'solar:code-square-linear', activeIcon: 'solar:code-square-bold', label: 'Sandbox', href: '/sandbox' },
@@ -149,6 +149,25 @@ export default function Sidebar({ isOpen, onClose }) {
                             </Link>
                         );
                     })}
+
+                    {user?.role === 'admin' && (
+                        <>
+                            <div className="pt-4 mt-4 border-t border-zinc-800/50">
+                                <span className="px-4 text-xs font-medium text-red-500/70 uppercase tracking-wider">Administration</span>
+                            </div>
+                            <Link
+                                to="/admin/store"
+                                onClick={onClose}
+                                className={`flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-200 ${isActive('/admin/store')
+                                    ? 'bg-red-500/10 text-red-400 border border-red-500/20 shadow-sm shadow-red-500/5'
+                                    : 'text-zinc-400 hover:text-red-400 hover:bg-red-500/5 border border-transparent'
+                                    }`}
+                            >
+                                <Icon icon="solar:settings-minimalistic-linear" width="20" style={{ strokeWidth: 1.5 }} className={isActive('/admin/store') ? 'text-red-400' : ''} />
+                                <span className={`text-sm ${isActive('/admin/store') ? 'font-medium' : ''}`}>Store Pro Admin</span>
+                            </Link>
+                        </>
+                    )}
                 </nav>
 
                 {/* User Section */}

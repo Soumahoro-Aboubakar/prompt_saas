@@ -18,6 +18,7 @@ const OAuthCallback = lazy(() => import('./pages/OAuthCallback'));
 const Forbidden = lazy(() => import('./pages/Forbidden'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const StorePro = lazy(() => import('./pages/StorePro'));
+const TemplateAdmin = lazy(() => import('./pages/admin/TemplateAdmin'));
 const Suggestions = lazy(() => import('./pages/Suggestions'));
 
 // Minimal loading fallback
@@ -68,11 +69,16 @@ function App() {
                     <FormationDetail />
                   </ProtectedRoute>
                 } />
-                <Route path="/store-pro" element={
+           {/*      <Route path="/store-pro" element={
                   <ProtectedRoute>
                     <StorePro />
                   </ProtectedRoute>
                 } />
+               <Route path="/admin/store" element={
+                  <ProtectedRoute>
+                    <TemplateAdmin />
+                  </ProtectedRoute>
+                } /> */}
                 <Route path="/suggestions" element={
                   <ProtectedRoute>
                     <Suggestions />
