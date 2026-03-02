@@ -42,6 +42,7 @@ export const login = async (email, password) => {
 
         return response.data;
     } catch (error) {
+        //console.log("voici les erreurs : " , error);
         throw error.response?.data || { message: 'Login failed' };
     }
 };

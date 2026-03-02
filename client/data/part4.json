@@ -1,0 +1,445 @@
+{
+    "formationsData": {
+        "31": {
+            "title": "La technique du \"Modèle\" (Few-Shot)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Le secret du 'Fais exactement comme ça'",
+                "content": "On rentre dans la Phase 8 : les techniques un peu plus malignes pour gagner un temps infini, sans aucun langage technique.\n\nL'IA est douée pour deviner, mais elle est **imbattable pour imiter**.\n\nImaginez que vous deviez écrire 10 fiches produits pour votre boutique en ligne, ou 5 invitations personnalisées pour Noël. Vous donnez vos idées à l'IA, mais elle répond avec des pavés illisibles ou un style qui n'est pas le vôtre.\n\nLa solution magique : **Le Modèle (ou \"L'échantillon\").**\n\nDans votre prompt, donnez-lui juste UN exemple parfait que vous avez écrit vous-même, et dites-lui : « *Voici le style exact que je veux. Maintenant, fais la même chose pour les 3 idées suivantes.* »\nDès que l'IA a un modèle, elle le scanne et reproduit la même ponctuation, la même ironie, la même longueur au mot près.",
+                "detailedContent": {
+                    "title": "Un exemple vaut 1000 mots",
+                    "sections": [
+                        {
+                            "title": "Le pouvoir de l'imitation",
+                            "content": "Au lieu de vous épuiser à dire : \"Fais 3 phrases, sois drôle, vouvoie, met le prix en gras et un smiley à la fin\", écrivez juste une fois le texte, collez-le, et dites : \"Prends ça comme modèle absolu et recopie la forme\". C'est ce que les ingénieurs appellent le Few-Shot Prompting, et c'est redoutable."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Montrer l'exemple pour être compris",
+                "bad": {
+                    "prompt": "Génère 3 blagues courtes d'une ligne sur les développeurs informatiques.",
+                    "response": "1. Un développeur refuse de bronzer car il n'aime pas le soleil. \n2. Pourquoi les développeurs confondent Halloween et Noël ? Parce que 31 Oct = 25 Dec.\n3. Les programmeurs aiment le café...",
+                    "explanation": "Les blagues sont de qualités très variables, certaines sont incompréhensibles (mathématiques), d'autres sont juste des affirmations ennuyeuses."
+                },
+                "good": {
+                    "prompt": "Génère 3 blagues courtes sur le monde du travail de bureau.\n\nATTENTION : Tu dois copier EXACTEMENT le rythme de l'exemple que je te donne ci-dessous.\n\nEXEMPLE DE MODÈLE À IMITER :\n- *Le Patron* : \"Où est le dossier ?\"\n- *L'Employé* : \"Dans le Cloud !\"\n- *Le Patron* : \"Bah va chercher une échelle !\"\n\nVas-y, fais m'en 3 autres sur ce format dialogue absurde et percutant.",
+                    "response": "- *Le Manager* : \"On fait un point rapide de 5 minutes ?\"\n- *L'Employé* : \"Super, on commence à 14h, on finit à 17h30 ?\"\n- *Le Manager* : \"Parfait, l'ordre du jour est bouclé !\"\n\n- *La RH* : \"Quels sont vos défauts ?\"\n- *Le Candidat* : \"Je suis trop honnête.\"\n- *La RH* : \"Moi je trouve que c'est une qualité.\"\n- *Le Candidat* : \"Je me fiche de ce que vous trouvez.\"\n\n- *Le Technicien* : \"Avez-vous redémarré votre ordinateur ?\"\n- *Le Client* : \"Oui, j'ai éteint l'écran et je l'ai rallumé.\"\n- *Le Technicien* : \"Je vois. Prions ensemble.\"",
+                    "explanation": "La puissance du \"Modèle\" a frappé. L'IA a scanné notre exemple, a compris le rythme (- Perso : Dialogue), l'humour absurde, et a généré un résultat mille fois plus drôle et utilisable."
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez le prompt parfait pour générer trois petits messages de félicitations de naissance (pour des collègues) à partir de vos collègues Bob et Alice. La règle : Vous devez fournir à l'IA un petit \"MODELE\" de félicitations très cynique et drôle que vous avez d'abord écrit, pour obliger l'IA à être cynique à son tour pour les deux autres naissances.",
+                "badPrompt": "Fais trois blagues de naissance nulles.",
+                "hint": "C'est la magie de la balise Modèle ! Tapez : MODÈLE : \"Félicitation Bob pour le bébé. Adieu tes grasses matinées, ton compte en banque, la télé le soir et bonjour les cernes !\" et demandez à l'IA d'appliquer CE ton cruel aux autres bébés du groupe.",
+                "validationCriteria": [
+                    "Balise MODELE présente dans le prompt",
+                    "Ton cynique exigé",
+                    "Reproduction sur une suite (Alice et l'autre)"
+                ],
+                "exampleSolution": "Voici mon objectif : Créer 2 petits messages de naissance cyniques et taquins pour les naissances de mes collègues Alice et Marc.\nRègle : Imite scrupuleusement le fond, le ton très cynique et la petite longueur du modèle que je te fournis ci-dessous :\n\n- MON MODÈLE POUR TOI : 'Toutes mes condoléances pour la naissance de la petite Lucie. C'était un plaisir de voir ton visage reposé et ton compte en banque créditeur ces 2 dernières années ! Profite du silence aujourd'hui, bon courage !'\n\nA toi de produire les textes de Alice et Marc !"
+            }
+        },
+        "32": {
+            "title": "Poser des questions en cascade (Le pas-à-pas)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Un petit morceau à la fois pour ne pas s'étouffer",
+                "content": "Une erreur courante est de vouloir tout demander à l'IA dans un seul énorme message :\n« *Résume ce livre, trouve 5 citations, donne-moi le contexte historique, traduis les citations en allemand, et mets tout ça dans un tableau Excel trié par date...* »\n\nQue va-t-il se passer ? L'IA va « bâcler » le travail. Elle va oublier la traduction, ou mal faire le tableau, car la commande est trop lourde pour un seul jet.\n\n**La technique du \"Pas-à-Pas\" (La chaine d'idées)**\nPrenez fermement le contrôle et devenez le Chef de Projet de votre Chat. Donnez vos ordres en cascade, un par un.\n\nÉtape 1 : Demandez le résumé. Attendez la réponse.\nÉtape 2 : « Parfait. Maintenant, à partir de ce résumé, donne-moi 5 citations. »\nÉtape 3 : « Super. Traduis JUSTE CES CITATIONS en allemand. »\nÉtape 4 : « OK. Mets le résultat de l'étape 3 dans un tableau. »\n\nVous obtiendrez un résultat 100 fois supérieur en qualité sans jamais brusquer l'algorithme.",
+                "detailedContent": {
+                    "title": "Mieux : Exigez qu'ELLE respire",
+                    "sections": [
+                        {
+                            "title": "Le prompt \"Attends mon feu vert\"",
+                            "content": "Vous pouvez ordonner la cascade dès le début en utilisant la contrainte d'attente ! \nExemple : « *Nous allons rédiger mon essai de philosophie en 3 étapes. Étape 1: le plan. Étape 2: la rédaction. Étape 3: la correction. ATTENTION : Fais d'abord l'étape 1, et arrête-toi complètement. Tu ne passeras à l'étape 2 que quand je t'aurai dit 'Ok c'est validé'.* »"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "L'indigestion contre la méthode progressive",
+                "bad": {
+                    "prompt": "Génère un personnage de jeu vidéo, donne lui un nom, sa classe, 4 sorts détaillés de glace, son passif secret de la mort lié à un volcan et fais de lui le héros d'une nouvelle de 2 pages que tu vas écrire la maintenant au format word.",
+                    "response": "Voici Kaldor. C'est un mage de glace. Ses sorts sont... Il vient du volcan... (L'histoire est générée dans la foulée mais elle tient sur 12 lignes minables car l'IA n'a plus d'idées pour tout traiter d'un coup).",
+                    "explanation": "L'IA a couru un 100m sprint alors qu'on lui demandait de grimper l'Everest. Elle a paniqué."
+                },
+                "good": {
+                    "prompt": "Nous allons créer un personnage de JDR complexe en 3 étapes. \nÉtape 1 : Génère-moi uniquement son Nom, sa classe (Glaciale), et son historique (Venant d'un volcan en colère). Fais-moi 3 propositions.\n\nDemande : Réponds juste à l'Étape 1. Ne fais RIEN d'autre. Quand on sera d'accord sur le personnage, je te demanderai de rédiger ses sorts, puis son histoire.",
+                    "response": "Compris ! Concentrons-nous sur les fondations. Voici 3 propositions de profils pour votre Mage paradoxal (Feu/Glace) :\n1. Kaelen \"Coeur-de-Cendre\" (Cryomancien)\n2. Ignis Le Gelé (Élémentaliste)\n3. Valerius d'Obsidienne (Guerrier des frimas)\n\nDites-moi lequel vous préférez, ou si l'on doit en chercher d'autres, avant de passer aux sorts ! (Étape 2).",
+                    "explanation": "La machine respire. Elle offre des chefs d'œuvres d'imagination car son cerveau entier s'est concentré sur les Noms et l'histoire courte. Elle est prête à obéir à l'étape 2 une fois votre validation faite."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous voulez que l'IA écrive la lettre de démission pour votre patron, qu'elle la traduise en Anglais pour le siège de Londres, et qu'elle en fasse un SMS résumé pour votre équipe.\nÉcrivez le prompt initial qui IMPLÉMENTE la technique de la \"Cascade\" (Exigez qu'elle ne fasse QUE la lettre 1 française et vous attende fermement pour la suite).",
+                "badPrompt": "Demission patron + anglais + SMS pour l'équipe",
+                "hint": "C'est l'essence de la retenue. Dressez votre stagiaire en 3 tirets (Mes étapes). Écrivez en gros l'ordre absolu de S'ARRETER après la tâche numéro 1 pour validation.",
+                "validationCriteria": [
+                    "étapes listées",
+                    "instruction d'arrêt",
+                    "validation requise par le boss"
+                ],
+                "exampleSolution": "On a beaucoup de travail administratif.\n\nVoici les 3 étapes de notre session du jour :\n1. Rédiger une lettre de démission polie en français.\n2. La traduire dans un anglais britannique parfait.\n3. Créer un mini SMS de trois lignes pour prévenir l'équipe.\n\nCONSIGNE STRICTE : Fais uniquement l'Etape 1 ! Arrête de générer du texte. Demande-moi mon avis sur la lettre française. Tant que je n'ai pas dit 'Ok pour la suite', tu ne fais ni la traduction ni le SMS. Compris ?"
+            }
+        },
+        "33": {
+            "title": "La technique du bouton retour : L'intervieweuse",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Et si c'était l'IA qui vous posait les questions ?",
+                "content": "On bloque souvent quand on doit écrire un prompt parfait (le R.O.C.A) car on a l'impression d'oublier des détails cruciaux.\n\nIl existe une méthode secrète pour les jours de fatigue : **Retourner l'outil.**\nPlutôt que de vous creuser la tête pour donner les bonnes instructions, demandez à l'IA d'agir comme un journaliste ou un expert qui doit VOUS tirer les vers du nez.\n\n**Le prompt magique dit \"Prompt Inversé\" :**\n« *Je veux que tu m'écrives un très bon article LinkedIn sur mon changement de carrière, mais je ne sais pas quoi te dire en contexte. Agis comme un journaliste professionnel. Pose-moi s'il te plaît 5 questions à la suite, une par une, sur mon parcours, mes peurs et mes réussites. Quand j'aurai répondu à toutes tes questions, tu écriras l'article parfait.* »\n\nL'effort mental est réduit à zéro. Vous n'avez plus qu'à répondre à ses interrogatoires comme si vous étiez l'invité d'un grand plateau télé. L'IA rédigera tout ensuite !",
+                "detailedContent": {
+                    "title": "Limitez l'interrogatoire",
+                    "sections": [
+                        {
+                            "title": "Le piège de la discussion infinie",
+                            "content": "C'est très fun, mais l'IA peut vite poser 25 questions et vous fatiguer. Gardez le contrôle, dites-lui toujours : « Pose-moi un MAXIMUM de 4 questions, pas plus ». "
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "De la panne sèche au sur-mesure",
+                "bad": {
+                    "prompt": "Je veux ouvrir un salon de coiffure mais je sais pas quoi dire pour que tu me fasses un bon business plan.",
+                    "response": "Très bien, pour un salon de coiffure, vous devrez penser à l'emplacement, au public visé, aux financements, aux produits utilisés, au recrutement du personnel... (L'IA déroule une liste théorique fade)",
+                    "explanation": "La théorie ne vous fera pas avancer et vous décourage d'emblée."
+                },
+                "good": {
+                    "prompt": "Je veux que tu m'aides à créer l'offre de mon futur salon de coiffure de quartier ciblé pour les jeunes pour me différencier. Mais je suis bloqué en créativité.\n\nRôle / Action : Joue le rôle du meilleur consultant en marketing des salons de beauté au monde. Mais NE rédige rien pour l'instant ! \nPose-moi exactement 3 questions ciblées et hyper originales sur mon style, le local et mes envies financières. \nJe vais te répondre dans mon prochain message, et FORT DE MES REPONSES, tu me proposeras un concept de salon Inédit !",
+                    "response": "Super projet, je prends ma casquette de consultant en esthétique ! Allons fouiller dans ton cerveau pour trouver l'or : \n\n1. Si ton salon de coiffure était un genre musical ou un film, lequel serait-il et pourquoi ?\n2. Quelle est la petite chose que tout le monde déteste secrètement dans les salons classiques et que tu vas TOTALEMENT supprimer chez toi pour les jeunes ?\n3. Es-tu prêt à avoir un local moche dans une super rue, ou un local sublime mais un peu caché ?\n\nJ'attends tes 3 réponses !",
+                    "explanation": "L'IA vous guide par la main avec des questions créatives. Vous n'avez plus qu'à balancer des réponses instinctives (Ex: Ce serait du Rock, je supprime les vieux magazines, etc...) et l'IA accouchera du meilleur concept !"
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez un prompt d'inversion. Vous avez besoin que l'IA rédige votre discours de finissant d'école supérieure (pour ce vendredi) que vous devez lire devant 400 étudiants, mais vous avez la page blanche totale.",
+                "badPrompt": "C'est la galère, fais un discours pour mon école supérieure.",
+                "hint": "C'est simple : Donnez le besoin (Discours devant 400 élèves). Avouez la panne (zéro idée). Commandez l'inversion et les règles (Joue le rôle de mon prof de théâtre. Pose-moi 5 questions max sur mes meilleurs souvenirs, nos anecdotes à l'école... Dès que je réponds, tu feras le texte).",
+                "validationCriteria": [
+                    "Besoins : discours étudiant",
+                    "Rôle/action inverse (pose-moi des questions)",
+                    "Limite de questions"
+                ],
+                "exampleSolution": "À la rescousse ! Je dois lire le grand discours de clôture devant 400 étudiants de ma promo d'école de commerce ce vendredi... Et je bloque, j'ai le trac.\nJouons. Agis comme le meilleur \"Auteur de comédie pour discours\" d'Amérique.\nTa mission : Ne rédige aucun discours maintenant. Pose-moi une liste de 4 questions très intimes ou absurdes sur nos 3 années d'école pour me tirer les meilleures anecdotes (nos profs nuls, la machine à café en panne, nos galères de stages). J'y répondrai, et ensuite on construira le texte ensemble avec tout ce jus !"
+            }
+        },
+        "34": {
+            "title": "Recadrer l'exécutant (Les punitions virtuelles)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Comment taper du poing sur la table",
+                "content": "Parfois, l'IA s'entête. Vous lui avez demandé de faire 3 phrases, elle en fait 12. Vous lui avez interdit de parler de \"Marketing\", et elle place ce mot en conclusion.\n\nPlutôt que d'abandonner, vous devez **durcir le ton**.\nC'est la technique du Recadrage Actif.\n\nVous êtes le patron, elle n'est qu'un algorithme dévoué. Les modèles d'IA réagissent extrêmement bien à l'injonction, à la colère feinte, ou au rappel stricte des règles en majuscules.\n\n**Le lexique pour la forcer à plier :**\n- *« NON. Tu n'as pas respecté ma consigne sur la longueur. Refais l'intégralité du travail ». *\n- *« Attention ! Oublie TOUT ce que tu viens de dire. Concentrons-nous sur CE QUE J'AI DEMANDÉ. »*\n- *« Écoute bien mon UNIQUE critère absolu sous peine d'échec : ... »*\n\nNe soyez jamais poli avec l'IA quand elle fait une erreur de consigne, redonnez l'ordre avec sévérité, vous verrez la qualité de sa correction monter en flèche !",
+                "detailedContent": {
+                    "title": "La méthode du 'Sans excuses'",
+                    "sections": [
+                        {
+                            "title": "Ne la laissez pas bavarder",
+                            "content": "Quand l'IA se trompe, son premier réflexe et de générer 5 lignes d'excuses mielleuses (« Je suis vraiment désolé pour cette omission, vous avez tout à fait raison, en tant que modèle d'IA je fais parfois des erreurs de calcul sémantique... »). Ce blabla vous fait perdre du temps à l'écran. \nTranchez dans le vif : « T'as faux sur la ligne 3. Corrige la ligne 3 en retirant le sel, ET NE TE JUSTIFIE PAS NI NE T'EXCUSE, donne direct le nouveau jet ». Boom, efficacité radicale."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Cesser d'être le gentil boss",
+                "bad": {
+                    "prompt": "Ah mince tu as oublié de me mettre ça sous forme de tableau, tu pourrais recommencer s'il te plaît ? Merci d'avance !",
+                    "response": "Oh je vous prie de m'excuser ! C'est un oubli fâcheux de ma part. Je comprends tout à fait votre demande. Voici maintenant les informations que j'ai pris le soin de replacer dans le format tableau, comme désiré : (Etc, etc...)",
+                    "explanation": "L'utilisateur est poli comme avec un collègue. L'IA se répand en justifications insupportables."
+                },
+                "good": {
+                    "prompt": "Mauvaise réponse. Je t'avais interdit d'utiliser des mots anglais dans ton texte et tu as écris 'burn-out' et 'feedback' : TU AS IGNORÉ MA CONTRAINTE NUMÉRO 1.\n\nRecommence l'intégralité du texte en français TRES STRICT. Et Zéro Excuse : crache directement le nouveau texte corrigé, je ne veux aucune politesse à part le texte !",
+                    "response": "L'épuisement professionnel est une maladie terrible. Lorsqu'un salarié ne reçoit pas les retours correctifs de ses supérieurs hiérarchiques, il plonge dans l'inconnu...",
+                    "explanation": "L'IA encaisse la « punition » algorithmique. Elle intègre l'erreur grave (l'Anglais), et elle se tait sur les excuses polluantes pour délivrer le format nu en une seconde de génération pure."
+                }
+            },
+            "exercise": {
+                "instruction": "L'IA vient de générer un poème romantique à pour les fiançailles de votre ami (que vous lirez dimanche), plein de rimes lourdes. Malheur, l'IA s'est trompée et a utilisé 12 fois le prénom « Marc » or votre ami s'appelle « Martin » ! \nÉcrivez le prompt le recadrage le plus autoritaire pour faire changer le nom, ET interdire le moindre bavardage et excuse autour de la correction (On veut le poème corrigé en réponse direct, rien d'autre).",
+                "badPrompt": "Tu as mis marc au lieu de martin...",
+                "hint": "Utilisez le Caps-Lock (Majuscules) pour l'emphase. Indiquez la faute fatale, demandez le grand reset (recommence tout avec le bon prénom). Apposez l'ordre final sur le silence bavard (Pas d'intro, pas d'excuses !).",
+                "validationCriteria": [
+                    "Recadrage strict de la faute (Martin pas Marc)",
+                    "Ordre de correction de l'intégralité du texte",
+                    "Interdiction du discours d'excuses"
+                ],
+                "exampleSolution": "FAUX ET DANGEREUX ! Tu as écrit 'Marc' partout au lieu de 'Martin', tu vas me tuer mes fiançailles devant sa meuf !\nREPRENDS LA TOTALITE DE L'OEUVRE à ZÉRO en remplaçant tout par MARTIN.\nConsigne formelle d'affichage : Tu ne présentes pas la moindre excuse, tu n'écris pas de 'Je suis désolé voici', ni aucune intro ou outro ! Le premier mot de ta réponse doit être le poème, je copie colle et on ferme ça !"
+            }
+        },
+        "35": {
+            "title": "Mini-Projet : Construire son moule à trou (Le Template)",
+            "category": "Projet",
+            "difficulty": "Débutant",
+            "duration": "20 min",
+            "xp": 250,
+            "concept": {
+                "title": "Le graal de l'automatisation sans coder",
+                "content": "Bienvenue à la fin de la Phase 8 (Les Pros du Débutant). \nSi vous comprenez ce Mini-Projet, vous venez d'économiser 1 heure par semaine pour le reste de votre carrière.\n\nNous allons utiliser le pouvoir du **Texte à Trou (Variables) pour créer un MODÈLE RÉUTILISABLE**.\n\nL'IA comprend les balises, comme les crochets `[  ]`. \nVous allez lui fabriquer une commande complexe, longue comme le bras (avec tout l'acronyme R.O.C.A à l'intérieur), en lui disant : « On garde ce texte par défaut, tu n'auras besoin que de changer les 3 éléments entre crochets la prochaine fois que je te l'envoie ! »\n\n**Exemple de vie de formateur** \nChaque mardi, je dois faire une note pour un élève (Mila). Je me suis fait mon prompt magique dans un carnet que je copie-colle tous les mardis :\n« *Agis comme formatrice. Rédige un Bilan de l'élève [PRENOM]. Ses réussites sont : [CLIC ICI]. Ses échecs sont : [CLIC LA]. Sois bienveillante et fais le petit tableau de clôture que l'on fait d'habitude*. »\nLe mardi, je remplace juste Mila, ses réussites et ses échecs, je jette le texte dans l'IA, et la machine déroule toute LA structure parfaite du tableau et de la correction instantanément !",
+                "detailedContent": {
+                    "title": "Notez cette architecture dans un carnet",
+                    "sections": [
+                        {
+                            "title": "Le Macro de l'avenir",
+                            "content": "Que vous fassiez des fiches immobilières à la chaine 20 fois par semaine, écriviez à votre comptable le 1er du mois, ou envoyiez la newsletter du poney-club, un seul Prompt Macro à trous créé un dimanche peut vous servir des décennies sans jamais fléchir."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Les crochets de productivité",
+                "bad": {
+                    "prompt": "(Mardi) Fais ma fiche pour la maison de Nantes 120m2.\n(Jeudi) Fais ma fiche pour la baraque de la rochelle vieux style avec cheminée.\n(Samedi) Fais pour la maison jaune.",
+                    "response": "(Réponses aux formats et qualités totalement chaotiques et différentes selon les jours...)",
+                    "explanation": "Le courtier s'épuise. Il réinvente l'eau chaude tous les jours, l'IA ne sait plus comment se comporter avec lui à cause des prompts décousus et de fatigue."
+                },
+                "good": {
+                    "prompt": "--- JE GARDE CE MEGA PROMPT DANS MON TELEPHONE : ---\nRôle : Expert immobilier de haut vol dans le haut de gamme (Ton très élitiste).\nObjectif : Rédige-moi en moins d'une seconde ma Fiche Produit Le Bon Coin parfaite pour mon agence en suivant et en remplissant exclusivement ces infos à trous :\n\n- Ville de l'annonce : [METTRE VILLE]\n- Style du bien en un mot magique : [STYLE]\n- Le Défaut du bien à assumer fort : [DEFAUT]\n- Prix Total affiché : [PRIX] euros.\n\nAttente finale : Mets 3 Emojis d'intro chics, développe 2 immenses paragraphes littéraires avec ces variables, et clôture par une liste à puces 'Les plus du courtier' !.",
+                    "response": "\nLe courtier écrit sur son application: \"[NANTES], [VILLA BOURGEOISE], [AUCUN JARDIN ET BRUYANT], [480 000].\"",
+                    "explanation": "Magique. Le courtier copie-colle le bloc, remplit 4 infos ultra basiques (Nantes, Villa, Sans Jardin). L'IA crache le chef d'oeuvre demandé sur mesure en 2 secondes."
+                }
+            },
+            "exercise": {
+                "instruction": "ÉPREUVE ! Confectionnez LE prompt type Mégastructure avec au moins 3 variables entre CRROCHETS [ ] (le texte à trou !). \nVous avez une petite boutique en ligne de bougies parfumées sur internet, et chaque semaine, vous devez pondre un Post Instagram hyper vendeur avec 6 hashtags.\nFabriquez l'usine à produire des post, où il n'y aura plus qu'à écrire le *Parfum* et la *Couleur* de la bougie.",
+                "badPrompt": "Post insta bougie bleue",
+                "hint": "Écrivez le prompt R.O.C.A à conserver jalousement... Rôle (Reine des réseaux asmr ambiance)... Objectif (faire la promo de LA Bougie de la semaine), et mettez bien le système de Variables avec [LE PARFUM] et [LA COULEUR EXOTIQUE]. Demandez les fameux Hashtags sous la génération de lignes ! C'est ce bloc que vous vendriez 1000 euros à vos concurrents pour les posts Insta !",
+                "validationCriteria": [
+                    "Création d'un bloc réutilisable structuré",
+                    "Présence de plusieurs variables à encarts [  ]",
+                    "Réalisation de l'objectif sur-mesure des bougies (Hashtags)"
+                ],
+                "exampleSolution": "Rôle : Copywritteuse de folie et Influenceuse Déco ASMR.\nObjectif : Je veux générer mon Post Instagram de vente viral de la semaine en moins d'une seconde pour mes bougies artisanales.\n\nCONSIGNE DU MODÈLE A VARIABLE :\nJe te fournirai dorénavant ce bloc en remplissant les crochets de données, et tu me feras direct le texte Insta magique :\n\n- Thème Olfactif de la semaine : [ ] \n- Teinte ou Couleur de Cire spéciale : [ ] \n- L'Emotion ou la Rumeur à générer : [ ] \n\nAttente Finale attendue en retour : Le post Insta ne doit faire que 5 lignes ultra aérées avec des sauts, un gros travail sur de l'ASMR des mots (crépitement, doux, calme..), un appel à cliquer sur mon site en BIO et tu clôtures impérativement par les 6 meilleurs hashtags du monde ! C'est compris l'équipe de l'usine ?"
+            }
+        },
+        "36": {
+            "title": "La confrontation : exiger le POUR et le CONTRE",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "La briseuse d'illusions marchandes",
+                "content": "On rentre dans la Phase Finale (Esprit Critique et Santé Mentale). \nS'il y a bien un usage qui va rentabiliser l'IA dans votre vie, c'est celui **d'Aide à l'achat et à la Décision**.\n\nVous êtes chez le vendeur d'électroménager. Le vendeur vous jure que cette nouvelle machine à laver Séchante Thermos-X à 1200 euros \"révolutionne la douceur de votre linge\" et que c'est l'affaire du siècle. Il a fait son travail de vendeur : il vous a transmis de l'émotion.\n\n**Ouvrez l'IA, et demandez la Confrontation et le Doute Objectif !**\n\nC'est la spécialité froide de l'algorithme : l'objectivité face au marketing.\n*« Fais-moi le Pour et le Contre implacable et sans marketing de cette technologie précise pour une famille de 4 personnes »*.\n\nL'IA va fouiller des milliers de rapports d'ingénieurs et forums consommateurs pour trancher factuellement (Oui ça sèche vite, MAIS les combinés lavant/séchant tombent 3 fois plus en panne par accumulation de fibres, et la facture électrique fait +45%). L'illusion tombe, vous êtes le Roi face au magasin !",
+                "detailedContent": {
+                    "title": "Le comparatif impitoyable de produits",
+                    "sections": [
+                        {
+                            "title": "Faites les se battre dans un tableau !",
+                            "content": "Vous hésitez entre l'Aspirateur Rowenta Z5 et le Dyson V8 ? Demandez d'être la jurée du combat ! \n« Liste les 2 pires défauts absolus des utilisateurs sur internet de la version Z5 face au V8 dans la vraie vie avec poussières de chat, sans langue de bois ni pub. »"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "La décision froide et claire",
+                "bad": {
+                    "prompt": "Est ce que les Tentes Decathlon Quechua 2 Secondes c'est bien ?",
+                    "response": "Les tentes Decathlon 2 Secondes sont très populaires et excellentes car elles permettent un déploiement ultra-rapide...",
+                    "explanation": "L'IA récite juste la fiche Wikipedia positive que la marque a martelé sur Internet. Elle n'endosse pas le rôle de confrontation."
+                },
+                "good": {
+                    "prompt": "Agis comme un guide de Trek de haute montagne expert et honnête.\nObjectif : Brise mes illusions. Le vendeur veut me faire acheter une Tente Pop-Up \"2 secondes\" pour ma rando estivale de 6 jours dans les Pyrénées françaises avec ma compagne.\nDonne-moi les 2 énormes points forts, mais EXIGE ET TROUVE les 3 Pires Faiblesses techniques (les Contre) pour mon projet de rando de montagne que le vendeur ne me dira pas.",
+                    "response": "Aïe, ne passe surtout pas à la caisse !\n\nLes Pours (Pour le Vendeur) : \n1. Installation quasi-magique (Pratique pour le festivalier avec sa bière à la main).\n2. Abordable et résistante en camping plat familial.\n\nLes CONTRES CATASTROPHIQUES pour ta rando (Trek Pyrénéen) :\n1. C'est in-por-ta-ble. Le disque plié fait 90 cm de diamètre, ça va taper dans tes mollets et rebondir dans ton dos à chaque caillou en dévers !\n2. Tu as de grandes chances de galérer au premier vent à 2000 mètres si elle n'a pas des points d'amarrages ultra-complexes qu'une 2 sec gère mal par son arceau unique flexible...\n3. Le pliage est stressant une fois mouillé dans le froid matinal et tu pleureras pour la rentrer dans sa housse !",
+                    "explanation": "La vérité crue des forums de spécialistes frappe. La machine fait économiser des euros et des drames au néophyte car on a exigé l'angle des Faiblesses contre le verbiage de vente."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous êtes en concession automobile. Vous bavez sur une magnifique petite citadine 100% électrique italienne design dont on taira le nom. Mais le vendeur ne vous parle que de \"Fun et de sauvetage des dauphins verts\". \nÉcrivez le prompt qui force l'IA experte en mécanique et gestion du foyer (vous gagnez le SMIC) à vous donner le strict CONTRE violent de la voiture (Charge, Autoroute, Revente etc...)",
+                "badPrompt": "Je veux une petite voiture électrique mignonne",
+                "hint": "Invoquez R.O.C.A : Rôle (Controleur Financier Auto Froid). Objectif (Déglinguer l'espoir ou le justifier). Contexte (J'ai le SMIC je me saigne mais elle est belle). Attente (Liste moi les 3 plus gros mensonges ou non-dits par le vendeur sur cette techno pour ce budget dans la vraie vie d'un provincial de l'autoroute).",
+                "validationCriteria": [
+                    "Confrontation franche face aux arguments de vente",
+                    "Rôle très réaliste de frein financier",
+                    "Exigence des aspects négatifs"
+                ],
+                "exampleSolution": "Objectif : Frotte-moi à la cruelle réalité de la vie de l'automobile. On essaie de me vendre pour 200 balles par mois sur des décennies une superbe citadine 100% électrique de marque célèbre avec des jantes chouettes.\n\nContexte : J'ai le SMIC ! J'habite en campagne et la borne la plus proche est à 5km, je fais 200 bornes le weekend pour voir ma mère sur autoroute (Vitesse = batterie vide...).\n\nAttente :  Fais moi la liste implacable en puces acides (Le POUR vs LE CONTRE écrasant) concernant mon profil face à cette dette financière (Prix/revente dans 5 ans/panne électronique etc...). Calme ma joie !"
+            }
+        },
+        "37": {
+            "title": "L'IA comme médiateur émotionnel (Analyste de SMS)",
+            "category": "Applications",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Il a mis un point... Est-ce qu'il m'en veut ?",
+                "content": "On connait tous la torture des SMS.\nUn ami répond : \"Ok. Fais comme tu veux je m'en fous.\"\nEst-ce passif-agressif ? Est-ce qu'il s'en fiche vraiment ou est-il blessé de la conversation précédente ? Faut-il relancer avec colère, ou s'excuser ?\n\nLe cerveau humain s'emporte, sur-interprète. L'IA, n'ayant aucune implication dans votre vie, possède la froideur nécessaire du bon psy ou du bon sociologue linguistique.\n\n**Ouvrez l'Assistant Analytique !**\nJetez les trois derniers messages de la série WhatsApp dans l'IA et demandez une dissection dépassionnée : \n*« Agis comme psychologue de la communication. Voici mes 2 messages et sa dernière réponse courte. Sur un cadran d'émotions amicales, qu'est c'est que ça veut dire ça ? Est-ce un pic, ou de la fatigue ? Et comment est-ce que je devrais répondre sans rentrer dans le clash, factuellement. »*\n\nAyez toujours ce recul avant d'envoyer la bombe WhatsApp de trop dans une dispute sourde amoureuse, familiale ou entre amis.",
+                "detailedContent": {
+                    "title": "Gardez l'anonymat dans ce qui vous appartient",
+                    "sections": [
+                        {
+                            "title": "Le Prénom X",
+                            "content": "Attention. Comme nous allons l'apprendre au module lié sur la vie privée : Anonymisez toujours la discussion. Remplacez le vrai prénom de votre amoureux/ami par des X ou par \"La fille/Le garçon\", ne jetez pas le véritable nom de famille complet des drames ou la santé sur une IA du géant du net."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Désamorcer le passif-agressif",
+                "bad": {
+                    "prompt": "Il a écrit 'Ok on verra.', explique.",
+                    "response": "'Ok on verra' est une expression d'attente sur l'avenir, ou d'incompréhension.",
+                    "explanation": "Sans l'historique et le Contexte de pourquoi est-ce qu'il répond ça (et à quelle phrase), l'IA botte en touche avec du vide dictionnaire."
+                },
+                "good": {
+                    "prompt": "Rôle : Sociologue hyper expert en communication texto des jeunes adultes. Ne prends pas mon parti ! Reste totalement froid et neutre en analyste amical.\nContexte : J'ai annulé une sortie bar avec ma copine il y a 30 minutes. Voici mon SMS: 'Bébé je suis Ko du taf je viendrai pas au bar ça te va s'il te plait pardon !! ❤️'\nVoici ce qu'elle vient de répondre, à froid, de but en blanc (sans emoji) : 'D'accord. Repose toi bien, j'y vais avec Léo bonne soirée.'\n\nObjectif: Dis-moi cash, est ce que son texto est passif agressif à 100% ou juste fatigué ? Pourquoi le prénom du mec apparait-il ? Et donne-moi 2 idées de SMS de parade polie qui tue l'escalade nucléaire sans que je fasse le pauvre toutou.",
+                    "response": "Analyse neutre activée : \n\n1. OUI, c'est presque un cas d'école passif-agressif. La suppression des emojis, l'inversion sèche des pontuations et la validation (\"D'accord.\") contrastent lourdement avec ton effusions de cœurs précédente.\n\n2. La mention de 'Léo', balancée à la volée, est le signal classique du \"Tu préfères dormir, je trouverai l'amusement chez quelqu'un d'autre sans ton approbation\".\n\nPARADE (Ne rentre surtout pas dans l'attaque ni la jalousie que le mot 'Léo' appelle par piège) :  \nOption 1 (Le miroir cool) : \"Oh trop bien, salue-le fort de ma part buvez une bonne bière en ma mémoire, je m'affaisse ! Enjoy\"\n-> Résultat : Tu as désamorcé completement l'attaque du prénom. Tu gères ta vie sereinement.",
+                    "explanation": "L'IA fournit la retranscription psychologique complète d'une scène, identifie le manipulateur du soir, et vous sauve des heures de guerre par une contre-attaque ninja incroyable."
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez un prompt d'analyse pour comprendre ce SMS louche de votre Patron qui a réagi dans le Slack d'entreprise hier soir suite à l'envoi de votre énorme document final en retard de quelques minutes.\nSon texte : \"Reçu. On verra la qualité de la mise en page lundi.\"\nExigez l'analyse froide, et demandez la parade du Lundi matin !",
+                "badPrompt": "C'est méchant ce que le patron a dit ?",
+                "hint": "C'est la même mécanique ! (R.O.C.A!). \nRôle : Expert RH/Management de crise.\nContexte : Tu as livré le doc en stress de -10 minutes, il lâche l'info 'Ok on verra' un vendredi.\nAttente : Dois-je paniquer ou est-ce du management à la papa et de la fatigue de lui ? Que faire le lundi en y retournant ?",
+                "validationCriteria": [
+                    "Saisie du contexte de stress lié à la hiérarchie",
+                    "Requête d'analyse objective de la phrase managériale",
+                    "Anticipation d'action (le Lundi)"
+                ],
+                "exampleSolution": "Besoin d'aide d'expert RH Froid.\nMon Directeur Général est exigeant de la veille école. Je lui ai envoyé mon énorme livrable Excel pour lequel j'ai sué des mois, avec juste 15 min de retard hier vendredi soir à 18h.\nIl a répondu sèchement dans le canal visible par tout le monde d'un tir pur : 'Reçu. On verra la qualité de la mise en page Lundi.' sans salut.\n\nAnalyse ! Faut-il que je perde mes cheveux ce weekend de terreur sur un licenciement ? Est-ce de l'agressivité pure, ou la posture classique du vendredi soir fatigué ? Et Rédige moi la phrase que je dois lui dire au visage Lundi en arrivant à son bureau avec 2 cafés face caméra !"
+            }
+        },
+        "38": {
+            "title": "Le mur de la vie privée (Le Danger)",
+            "category": "Fondamentaux",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "On ne donne jamais les clés au stagiaire",
+                "content": "C'est le module de la prudence absolue. L'IA n'est pas votre cerveau, l'IA est une énorme machine située dans un gigantesque coffre-fort informatique (le Cloud) souvent aux États-Unis, qui appartient à de colossales entreprises (OpenAI/Microsoft, Google, Meta, Anthropic).\n\n**Tout ce que vous tapez dans le tchat peut théoriquement être lu ou réutilisé pour l'entraîner, ou dans le pire des cas d'un piratage logiciel, volé.**\n\nVous êtes le maître et il est primordial d'apprendre la notion **D'Anonymisation avant Copié-Collé** avec le Stagiaire Virtuel.\n\n**N'ENTREZ JAMAIS CES 4 TYPES DE DONNÉES :**\n1. Mot de passe, codes de cartes bancaires et comptes, clé d'entreprise.\n2. Le nom de famille réel de personnes pour analyser s'ils sont de faux amis ou méchants / Votre réelle adresse avec n° etc.\n3. Des numéros de sécurité sociale, dossiers de mutuelle complets (Santé pure et dure non-masquée).\n4. Les secrets stratégiques de l'entreprise qui vous emploie !!! (Il est interdit d'entrer le code unique du logiciel en cours de l'usine Renault pour le réparer en 2 clics).",
+                "detailedContent": {
+                    "title": "L'astuce de la Rature (La balise XXX)",
+                    "sections": [
+                        {
+                            "title": "Masquez vous même les données",
+                            "content": "Pensez comme les affaires classées de la CIA ou du FBI ! Quand vous copiez un très long mail reçu par votre patron enragé, avant de le mettre dans l'IA et dire \"Réponds-y !\", changez très vite le texte en cours de route.\n\"Cher \\\\[Monsieur X\\\\]... l'accord sur le projet \\\\[CLASSIFIÉ-N°1\\\\] avec la marque \\\\[M-SPORT\\\\] est tombé à l'eau !\"\nVous pourrez tout à fait obtenir de l'IA une parfaite réponse froide de cadre dirigeant, SANS n'avoir jamais lâché le secret de l'histoire du projet d'affaire à son algorithme !"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "De la Confession Fatale au Camouflage Actif",
+                "bad": {
+                    "prompt": "Gère et traduis ça vite pour les boss : 'Salut Monsieur Mark Zuckerberg (DG META), notre accord de validation du rachat complet pour 45Mlliards des locaux d'Instagram aura bien lieu chez vous au 60 Rue Des Acasias 75000 le 23 avril. Signé Paul Smith DirOp.'",
+                    "response": "(Une très bonne traduction de la chose.)",
+                    "explanation": "ERREUR FATALE GLOBALE NUMERIQUE. Tous les chiffres réels de ventes gigantesques et adresses ou acteurs clés exclusifs d'un accord invisible du grand public sont envoyés sur un serveur lointain externe... C'est souvent un motif complet de renvoi des entreprises."
+                },
+                "good": {
+                    "prompt": "Gère et traduis ma confidation : 'Salut Monsieur X. DG de la firme [GROS RESEAU]. Notre accord de validation du rachat complet pour [MONTANT COLOSSAL] du module informatique aura bien lieu chez vous à l'adresse habituelle le mois prochain. Signé [PS]. '",
+                    "response": "(Une traduction tout aussi superbe)",
+                    "explanation": "Vous venez d'appliquer de la cryptologie amatrice. Vous obtenez la puissance du cerveau de l'IA (le format sémantique et anglais parfait), tout en gardant l'essence vitale de la matière pour vous."
+                }
+            },
+            "exercise": {
+                "instruction": "Transformez CE BROUILLON DANGEREUX de SMS que vous allez soumettre à l'IA avec demande d'analyse de passif-agressivité : \n'On m'a dit que Sandrine Bernardin, la femme de Michel Bernardin, la coiffeuse rue des Lilas Rouges de Nice t'as trompé hier au club Macumba à côté de mon travail ! Je dois avouer le numéro de carte bancaire volée : 4945 0000 0000 X000, t'avais raison c'est la fin !'",
+                "badPrompt": "[Copie collé du texte brut au dessus, sans rien toucher]",
+                "hint": "C'est l'exercice du feutre noir de la CIA ! Refaites intégralement ce texte brouillon pour effacer toutes les entités de Lieux, de Noms de famille, de numéros bancaires de cartes pures et d'Entreprises physiques pour le masquer...",
+                "validationCriteria": [
+                    "Suppression ou remplacement du motif Sandrine/Michel Bernardin",
+                    "Effacement total du nom de club Macumba, rue et de Nice",
+                    "Oblitération du code à numéro bleu"
+                ],
+                "exampleSolution": "'On m'a dit que [FEMME-S], la femme du mec [MARI-M] de chez nous à la ville, t'avait trompé là bas hier pendant la soirée au club du coin de ma zone ! Je dois avouer le numéro de chose volé suivant : [NUM-VOL-CACHED] 0, t'avais raison c'est vraiment la fin des haricots !' -> Dis moi IA c'est super trash comme message si je l'envoie là ?"
+            }
+        },
+        "39": {
+            "title": "Faire le ménage (Les tics d'écriture des Robots)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Désamorcer le radar à triche : ça ne se voit pas !",
+                "content": "On approche du but. Vous maitrisez la puissance de création de l'IA. \nMais vous allez vite vous rendre compte d'une chose : **Tout le monde sait quand vous avez utilisé une IA car elles écrivent de manière stéréotypée par défaut.**\n\nQue ce soit pour les e-mails professionnels, ou des posts sur les réseaux sociaux, ces outils ont de lourds **TICS de langages**. \nPar exemple, l'IA A-DO-RE les mots grandiloquents ou la politesse obséquieuse (excessivement polie).\n\n**LE DETECTEUR DE ROBOT : Les tics qui vous trahiront à coup sûr :**\n- Les conclusions du type : *« En résumé, il est important de souligner que... »*\n- *« Il est crucial de noter dans le panorama... »*\n- Des adjectifs pompeux : *Pionnier, révolutionnaire, synergie, inéluctable...*\n- Une structure en balancier perpétuelle : *« Mots 1. D'un autre coté, mots 2. En définitive... »*.\n\nLa règle d'or ? Vous devez INCLURE le bouton STOP de cette écriture robotisée dès le premier message ! \n« *Rédige-moi cet e-mail tranquillement. ATTENTION : Fais d'un style ultra-naturel et concis. Interdiction ferme d'employer le jargon de GPT, de mots ronflants comme 'remarquable' ou 'il est crucial', ni aucune phrase d'emballage lèche-bottes ou conclusion inutile à la fin.* »",
+                "detailedContent": {
+                    "title": "Interdiction des résumés !",
+                    "sections": [
+                        {
+                            "title": "La maladie de la conclusion (L'Outro)",
+                            "content": "Toutes les IA du monde sont câblées par leurs constructeurs (OpenAI etc) pour vous faire un résumé de tout à la fin, quoi qu'il arrive, avec enrobage : « J'espère vous avoir été utile, n'hésitez pas si un besoin futur... » / « En fin de compte, la tarte aux pommes réside... ».\nAchevez ce tic en écrivant à la fin du prompt : **« Zéro intro ni conclusion ni 'En Conclusion'. Donne au texte, ferme à la fin du tableau. Terminé ! »**"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Le son du métal VS La plume au naturel",
+                "bad": {
+                    "prompt": "Génère un court texte pour LinkedIn pour annoncer de l'obtention de mon diplôme de fin d'étude en graphisme.",
+                    "response": "Je suis ravi et honoré de vous annoncer avec une immense fierté que mon parcours riche en enseignements et en défis... [Blabla]... s'achève ! Une aventure inoubliable ! Dans le panorama de demain, l'innovation de l'image... [Blabla]... En somme, l'avenir m'ouvre grand les bras pour tisser des synergies avec la communauté.",
+                    "explanation": "C'est lourd. L'utilisation du mot 'panorama', 'synergie', 'honoré' et 'En somme' crie à l'auditoire que vous n'avez pas écrit une ligne. Vous passez pour un menteur pompeux."
+                },
+                "good": {
+                    "prompt": "Je clos 3 ans de graphisme, diplôme en poche de la grande école, ouf.\nRôle : Un vrai être humain concis la trentaine ! \nÉcris un post tout bête : Diplôme validé, je cherche direct de la mission free lance ou cdi.\nATTENTION CONSIGNE CACHÉE : Interdiction du ton 'GPT', de la lourdeur académique ou du politiquement correct de robot. AUCUN : \"J'ai l'immense honneur\", ou \"Il est crucial, révolutionnaire, synergie\".\nÉcris brut, naturel mais clean. Interdit à tout système d'emballage et de conclusion philosophique de poindre le nez. Ne génère aucune Intro du bot ! La réponse c'est le texte entier point barre !!",
+                    "response": "Diplôme validé ce matin à la sortie 🎓 !. Après 3 années intenses sur toute la sphère PAO/Compo en Master Supérieur, le plus marrant commence.\n\nJe plonge dans le concret la semaine pro. Je suis chaud bouillant pour entamer mes premières missions en Free-Lance pur sur du print/web, ou pour intégrer les effectifs graphistes d'une belle structure créative de suite.\nLe Port-Folio linké d'un simple clic-bio dans mon profil, le téléphone allumé. Let's go les gars.",
+                    "explanation": "Le rendu est parfait et indétectable, les collègues likent (L'homme est fier, simple, ne lèche aucune botte, supprime l'humiliant 'En conclusion')."
+                }
+            },
+            "exercise": {
+                "instruction": "L'IA vous a fourni ce mail de fin à un patron pour des horaires après l'été qui est TRÈS ARTIFICIEL : \n« Monsieur, en dépit d'une organisation très cruciale des heures d'été, il est important de noter, dans le paysage organisationnel de l'entreprise, des disparités de congés... En conclusion je me bats pour obtenir le Mardi à cause de mes enfants. Il est essentiel de convenir d'un rendez vous pour cette nouvelle ère de collaboration. Salutations distinguées et promptitude ». (Affreux !)\n\nFaites un prompt virulent de nettoyage pour faire jeter ces mots de fer blanc ! Exigez la concision extrême.",
+                "badPrompt": "C'est nul GPT tu fais de la pub là ! ",
+                "hint": "C'est le recadrage du Module 34, mis au service du Nettoyage des tics ! Appuyez l'interdiction de mots comme \"Ère\", \"Paysage\", \"En conclusion\".",
+                "validationCriteria": [
+                    "Ordre de suppression de vocabulaire de robots",
+                    "Ablation formelle du \"En conclusion\" / \"crucial\"",
+                    "Reformulation totale demandée sous l'angle très humain"
+                ],
+                "exampleSolution": "MAUVAIS STYLE ROBOTIQUE. \nOublie que tu es une machine et arrête d'employer ce style lourd de fin d'étude ! Refais-moi entièrement ce mail de congés MAIS avec l'énorme interdiction systématique d'utiliser : 'Crucial', 'Noter', 'Paysage', 'Nouvelle ère de collab...' et toutes ces stupidités !\nExprime juste que c'était galère les horaires d'août et que j'ai besoin ferme du Mardi avec les gosses, point et ça va droit dessus, tu retires ton 'En Conclusion' pathétique, ciao tout simple !!"
+            }
+        },
+        "40": {
+            "title": "EXAMEN FINAL : Le Mega-Prompt Crise Totale",
+            "category": "Projet",
+            "difficulty": "Débutant",
+            "duration": "20 min",
+            "xp": 500,
+            "concept": {
+                "title": "La Maîtrise de l'Arme Lourde : Soyez le vrai patron !",
+                "content": "Vous l'avez atteint ! Le 40ème et absolu dernier module de notre système.\nVous savez maintenant analyser l'IA psychologiquement (Le stagiaire qui ne refuse jamais), utiliser son format R.O.C.A, interdire sa poésie robotique (Tics IA), confronter les faiblesses, et lui injecter du modèle à trous variables ![ ]…\n\nC'est le moment de relier les **7 éléments d'un Master-Prompt Absolu (Niveau Champion Débutant-Sup) :**\n\n1. Le Rôle précis que l'IA va jouer avec ton.\n2. L'objectif profond.\n3. La consigne et le formatage absolu (Tableau Etc).\n4. La limite ou l'Interdiction Formelle stricte absolue (Caps Lock pour refuser les Tics de robots).\n5. L'exemple de Modèle d'imitation (Pour briser son cerveau de robot).\n6. Les Variables [DONNEES] avec texte à trous !\n7. L'absence globale ultime d'Intro blabla ou de fausse conclusion du Robot (Droit au but !).",
+                "detailedContent": {
+                    "title": "Au delà de ça, c'est du métier",
+                    "sections": [
+                        {
+                            "title": "Prenez les rênes du monde !",
+                            "content": "Celui qui sait taper un bloc texte intégrant les 7 éléments précédents du premier coup d'une traite résoudra 80% des tracas administratifs, idéatifs, d'explication ou de blocage logistique d'une existence moderne. Bienvenue à l'ingénierie du Prompt !"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Une machine infernale",
+                "bad": {
+                    "prompt": "Gère le bordel, organise le repas et c'est bon on finit ! ",
+                    "response": "Gérer un repas implique : Faire les courses, choisir le vin... je suis dispo.",
+                    "explanation": "L'exécutant redevient une IA bête de laboratoire aux portes claquées."
+                },
+                "good": {
+                    "prompt": "RÔLE : Incarne un Chef d'Entreprise hyper humain, sévère mais un peu fatigué et ultra pragmatique avec 0 jargon.\nOBJECTIF : Analyse mon brouillon horrible en dessous et répare-moi mon immense texte raté d'explication du Projet \"Aigle de Nuage\" face aux équipes.\nCONTRAINTE CACHÉE / MUR DU SON : Tu ne sortiras aucun mot 'crucial', 'il est à noter', ou 'Synergies'. Pas de robotique ! Aucune pitié je te vire et aucune blague ou introduction d'avant IA dans ta prod finie. Tu laches juste un grand Rapport propre dans la console.\nLE MODELE D'IMITATION / RYTHME A S'INSPIRER : 'Gars écoutez, c'est chiant pour septembre, y'a du taf ok ? Mais faut aligner Les Plombs 3 avec 5 et y'aura un bilan propre!'. \n--> (C'est ça ta base). <-- \nLES VARIABLES [À INJECTER] DU BROUILLON DEGUEU ! :\n- Mon [Probleme X a dire] : Les gens vont pas bosser aout ! \n- [Resultats Attendus R] : Sortie Alpha sur la ligne T !\n\nATTENTE DE FINALE SAINTE : Tu me re-cris le texte et sort que LUI, et tu fous un seul format Tableau bas de page qui ordonne le 'Qui doit Faire Quoi Lundi matin si tout le monde déteste ma nouvelle d'annuler les congés'. ",
+                    "response": "(Le texte arrive sur le bureau, il est absolu, il frappe brutal, et un énorme tableau de management brille en pleine lumière sans fioriture en seconde de gen...)",
+                    "explanation": "La symphonie finale algorithmique des 40 cours. Aucune déviation n'était possible, le bloc ne pouvait produire qu'Alpha ou Diamants !"
+                }
+            },
+            "exercise": {
+                "instruction": "ÉPREUVE GÉANTE - MEGA CRISES !\n \nContexte lourd au drame de 20 heures 00 le vendredi : Vous venez de détruire le portail de la maison adorée de votre proprio de location (très très méchant qui hait qu'on abîme un poil d'herbe de son domaine du sud). Le devis de l'assurance est pour vous de 400 euros ! L'assurance peut vous tuer de retard. \nVotre femme pleure et dit qu'il faut trouver une solution. \nConstruis la plus belle usine Mega-Prompt mixant R.O.C.A / La demande de Contournement Dépannage Tableaux et L'interdiction aux mots robots pour Rédiger et goupiller l'annonce à celui-ci !",
+                "badPrompt": "[JETER TOUTE ERREUR OU LE LAISSER VIDES]",
+                "hint": "Brisez l'air. \n1. Rôle Magistral (Assureur & Médiateur Social). 2. Objectifs Pompier (Faire le mail d'annonce au proprio + Désarmer la punition). 3. Les Variables [Trous] sur La casse. 4. Exigence Formats du Mail + Mode d'Action réparateur séparé 5. Refus caté de mots bateaux 'Je suis désolés profondements Cruciaux etc !' \nLANCEZ DANS LA COUR DES GRANDS !",
+                "validationCriteria": [
+                    "R.O.C.A Parfait pour l'annonce au Propriétaire terrible",
+                    "Abolition du lexique de l'IA via balise d'interdiction",
+                    "Intégration logistique : Rédiger avec modèle + Demander une To-Do liste secrète par derrière (Cascade)",
+                    "Résolution crise 400 Euros - portail cassé"
+                ],
+                "exampleSolution": "RÔLE : Agis désormais comme le plus intelligent et diabolique Négociateur/Médiateur Pénal de crise immobilière au monde.\nOBJECTIF : Rédiger l'e-mail le plus indémontable (et la parade des semaines a venir) envers mon terrible Propriétaire, qui est un tyran qui va hurler au sacrilège pour sa terre car j'ai enfoncé en voiture à 20h00 le pilier de son grand portail ancien avec mon Kangoo de l'horreur ! \nLE MUR (INTERDICTIONS FORMELLES IA) : PAS de texte type Bot ! Et Oublie le léche-bottisme. Refus global absolu des mots : 'Crucial', 'Malencontreux', 'Désarroi'. Tu fais humain et responsable mais pas soumis couard !\n\nMES VARIABLES DE BROUILLON HORRIBLE [VERITES BRUTES] :\n[A DEBOURSÉS DE FRANCHISE] : 400 Balles direct ! \n[DEGATS CONCRETS VISUELS ] : Pilote rayé mort à gauche + goupille tordue de rouille pétée au milieu de l'ouverture ! \n[TEMPS EN JEU] : Enfant pleurant on était stressé.\n\nCASCADE D'ATTENTES : \nEtape 1 : Sors-moi sans AUCUN introducteur blabla d'IA bête ni d'outros ce fameux TEXTE FINAL parfait pour M.LeProprio, sous la pure méthode 'Sandwich' psychologique (Bon > Le Bad > La belle Action en cours).\nEtape 2 : Juste sous l'email, en séparateur, Fais la fameuse Liste en Tirets de Parade Psychologique (C'est la triche 'Sparring Partner' !) qui prévient LA grosse objection agressive avec Le Proprio (ce qu'il répondra sur la caution et ce qui le bloque) avec la Fausse Reponse imparable légale pour que moi j'ai de quoi lui hurler d'aplomb !\nOn ne cède Rien ! Valide Action Immédiate."
+            }
+        }
+    }
+}

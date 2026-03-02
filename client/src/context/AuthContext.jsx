@@ -66,6 +66,8 @@ export const AuthProvider = ({ children }) => {
 
             return response;
         } catch (err) {
+       //   console.log("voici les erreurs err : " , err);
+
             setError(err.message || 'Login failed');
             throw err;
         }

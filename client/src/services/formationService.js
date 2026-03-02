@@ -11,12 +11,12 @@ import formationsIntermediaires from '../../data/formations_intermediares.json';
 const LEVEL_CONFIG = {
     debutant: {
         label: 'Débutant',
-        moduleRange: [1, 4], // Modules 1-4
+        moduleRange: [1, 60], // Modules 1-60
         data: formationsDebutants
     },
     intermediaire: {
         label: 'Intermédiaire',
-        moduleRange: [5, 8], // Modules 5-8
+        moduleRange: [61, 120], // Modules 61-120
         data: formationsIntermediaires
     },
     avance: {
@@ -29,7 +29,7 @@ const LEVEL_CONFIG = {
         moduleRange: [13, 16], // Modules 13-16 (future)
         data: null // To be added: formationsExperts
     }
-}; 
+};
 
 /**
  * Get the level key for a given module ID

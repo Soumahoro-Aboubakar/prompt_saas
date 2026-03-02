@@ -175,6 +175,13 @@ router.post('/forgot-password', async (req, res) => {
             }
         } catch (emailError) {
             console.error('Reset email error:', emailError);
+            if (emailError.status) {
+                return res.status(emailError.status).json({
+                    success: false,
+                    message: emailError.message,
+                    details: emailError.details
+                });
+            }
             return res.status(500).json({
                 success: false,
                 message: process.env.NODE_ENV === 'development'
@@ -190,6 +197,13 @@ router.post('/forgot-password', async (req, res) => {
         });
     } catch (error) {
         console.error('Forgot password error:', error);
+        if (error.status) {
+            return res.status(error.status).json({
+                success: false,
+                message: error.message,
+                details: error.details
+            });
+        }
         return res.status(500).json({
             success: false,
             message: 'Error processing password reset'
@@ -391,6 +405,13 @@ router.post('/resend-verification-code', protect, async (req, res) => {
         });
     } catch (error) {
         console.error('Resend verification code error:', error);
+        if (error.status) {
+            return res.status(error.status).json({
+                success: false,
+                message: error.message,
+                details: error.details
+            });
+        }
         return res.status(500).json({
             success: false,
             message: 'Error sending verification code'
@@ -430,29 +451,29 @@ router.post('/verify-code', protect, async (req, res) => {
                 message: 'Email already verified'
             });
         }
-        /*     if (!user.emailVerificationCodeHash || !user.emailVerificationCodeExpires || user.emailVerificationCodeExpires <= new Date()) {
-                 return res.status(400).json({
-                     success: false,
-                     message: 'Code is invalid or expired'
-                 });
-             }
-     
-             if (user.emailVerificationAttempts >= EMAIL_OTP_MAX_ATTEMPTS) {
-                 return res.status(429).json({
-                     success: false,
-                     message: 'Too many attempts. Request a new code.'
-                 });
-             } */
+        if (!user.emailVerificationCodeHash || !user.emailVerificationCodeExpires || user.emailVerificationCodeExpires <= new Date()) {
+            return res.status(400).json({
+                success: false,
+                message: 'Code is invalid or expired'
+            });
+        }
 
-        /*  const incomingCodeHash = hashValue(normalizedCode);
-          if (incomingCodeHash !== user.emailVerificationCodeHash) {
-              user.emailVerificationAttempts += 1;
-              await user.save();
-              return res.status(400).json({
-                  success: false,
-                  message: 'Code is invalid or expired'
-              });
-          } */
+        if (user.emailVerificationAttempts >= EMAIL_OTP_MAX_ATTEMPTS) {
+            return res.status(429).json({
+                success: false,
+                message: 'Too many attempts. Request a new code.'
+            });
+        }
+
+        const incomingCodeHash = hashValue(normalizedCode);
+        if (incomingCodeHash !== user.emailVerificationCodeHash) {
+            user.emailVerificationAttempts += 1;
+            await user.save();
+            return res.status(400).json({
+                success: false,
+                message: 'Code is invalid or expired'
+            });
+        }
 
         user.isVerified = true;
         user.emailVerificationCodeHash = undefined;
@@ -461,7 +482,7 @@ router.post('/verify-code', protect, async (req, res) => {
         user.emailVerificationLastSentAt = undefined;
         await user.save();
 
-        /*  // Send welcome email (optional, non-blocking)
+        /* // Send welcome email (optional, non-blocking)
           try {
               const welcome = buildWelcomeEmail({ name: user.fullName });
               await sendEmail({
@@ -472,7 +493,7 @@ router.post('/verify-code', protect, async (req, res) => {
               });
           } catch (emailError) {
               console.error('Welcome email error:', emailError.message);
-          } */
+          }  */
 
         return res.json({
             success: true,

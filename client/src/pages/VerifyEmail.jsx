@@ -47,7 +47,13 @@ export default function VerifyEmail() {
             setMessage(response.message || 'Nouveau code envoye.');
         } catch (err) {
             setStatus('error');
-            if (typeof err.retryAfterSeconds === 'number') {
+            if (err.details?.remainingTime) {
+                const { hours, minutes, seconds } = err.details.remainingTime;
+                const retryAt = new Date(Date.now() + hours * 3600000 + minutes * 60000 + seconds * 1000);
+                const h = String(retryAt.getHours()).padStart(2, '0');
+                const m = String(retryAt.getMinutes()).padStart(2, '0');
+                setMessage(`Limite d'envoi atteinte. Réessayez à ${h}h${m}.`);
+            } else if (typeof err.retryAfterSeconds === 'number') {
                 setMessage(`Veuillez patienter ${err.retryAfterSeconds}s avant de renvoyer un code.`);
             } else {
                 setMessage(err.message || 'Impossible de renvoyer le code');

@@ -1,0 +1,445 @@
+{
+    "formationsData": {
+        "21": {
+            "title": "L'e-mail de la peur : répondre sans émotion",
+            "category": "Applications",
+            "difficulty": "Débutant",
+            "duration": "15 min",
+            "xp": 100,
+            "concept": {
+                "title": "Le bouclier anti-stress au travail",
+                "content": "Vous ouvrez votre boîte mail et découvrez un message agressif d'un client, ou un reproche injuste de votre patron. Votre cœur s'accélère, vous avez envie de répondre à chaud pour vous défendre.\n\n**Ne le faites pas, donnez-le à l'IA.**\n\nL'IA n'a pas d'égo, pas de fierté mal placée, et pas de peur. Elle est le bouclier parfait pour désamorcer les conflits.\nVous pouvez lui copier le mail méchant, lui jeter vos arguments en vrac (même en étant énervé !), et lui demander de rédiger une réponse inattaquable, diplomate et professionnelle.\n\n**L'astuce en plus :**\nDemandez-lui d'abord son avis ! « Lis cet email que je viens de recevoir. À ton avis, sur une échelle de 1 à 10, est-il vraiment agressif ou est-ce juste moi qui interprète mal le ton froid de cette personne ? »",
+                "detailedContent": {
+                    "title": "Agir comme un filtre",
+                    "sections": [
+                        {
+                            "title": "Séparer les faits de l'émotion",
+                            "content": "Quand on est en colère, nos brouillons sont pleins d'accusations. Demandez formellement à l'IA : « Voici mon brouillon de réponse. Réécris-le en supprimant toutes mes remarques émotionnelles, et ne garde que les faits concrets nécessaires pour régler le problème avec courtoisie. »"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Désamorcer une situation délicate",
+                "bad": {
+                    "prompt": "Réponds à ce client qui s'énerve que c'est pas ma faute si La Poste a du retard, je l'ai envoyé lundi.",
+                    "response": "Cher client, ce n'est pas ma faute si La Poste a du retard, car j'ai envoyé votre colis lundi.",
+                    "explanation": "Le prompt n'a demandé aucune diplomatie, l'IA a juste formaté l'agressivité de l'utilisateur."
+                },
+                "good": {
+                    "prompt": "Un client furieux vient de m'écrire car il n'a pas son colis. Réalise une réponse extrêmement courtoise et désolée (même si ce n'est pas ma faute). Le but est de le rassurer totalement.\nMes éléments de langage à intégrer subtilement :\n- J'ai bien posté le colis lundi matin.\n- Le numéro de suivi est le 8899X.\n- La Poste rencontre des retards nationaux en ce moment.\n- S'il n'a rien vendredi, je le rembourse !.",
+                    "response": "Cher [Nom du client],\nJe comprends tout à fait votre inquiétude concernant la réception de votre commande, et je suis sincèrement désolé pour ce délai indépendant de notre volonté.\nVotre colis a bien été confié à nos services postaux ce lundi matin (numéro de suivi : 8899X). Malheureusement, La Poste fait face à des retards généralisés cette semaine sur le réseau national.\nSoyez rassuré : je suis le dossier de très près. Si votre colis ne vous est pas parvenu d'ici vendredi, je procéderai immédiatement à un remboursement intégral de votre commande.\n\nRestant à votre entière disposition, je vous souhaite une excellente journée.",
+                    "explanation": "L'IA a transformé un problème stressant en un modèle parfait de service client, calmant le jeu tout en protégeant l'expéditeur."
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez un prompt demandant à l'IA de répondre à une invitation à dîner de vos beaux-parents pour ce dimanche, que vous voulez absolument refuser sous un faux prétexte gentil (dites que l'IA doit inventer la bonne excuse), tout en proposant qu'on remette ça à dans un mois.",
+                "badPrompt": "Dis à mes beaux parents que je viens pas manger.",
+                "hint": "Il faut demander un ton (chaleureux, désolé), le contexte (on annule), et une action attendue : fournir une excuse très crédible.",
+                "validationCriteria": [
+                    "objectif : décliner poliment",
+                    "action : inventer une excuse",
+                    "contexte fourni"
+                ],
+                "exampleSolution": "Rédige-moi un petit message WhatsApp très affectueux et désolé pour mes beaux-parents. Je dois décliner leur invitation à dîner de ce dimanche. Invente une excuse familiale ou pro extrêmement crédible et inattaquable pour expliquer notre absence. En toute fin, propose qu'on organise ça plutôt fin du mois prochain !"
+            }
+        },
+        "22": {
+            "title": "Le décodeur des courriers administratifs",
+            "category": "Applications",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "On arrête d'avoir peur des impôts",
+                "content": "Avez-vous déjà reçu un courrier de la sécurité sociale, de votre banque, ou un contrat d'assurance où chaque phrase semble écrite pour ne PAS être comprise ? C'est le fameux « jargon administratif ».\n\nL'une des fonctions les plus brillantes de l'IA (le super-stagiaire) est sa capacité à traduire le langage \"Avocat\" vers le langage \"Humain normal\".\n\n**La méthode d'utilisation :**\nPrenez ce courrier incompréhensible en photo ou copiez-collez-le, et donnez cet ordre salvateur à l'IA :\n***« Traduis-moi exactement ce courrier de mon assurance en termes simples. Dis-moi juste en une liste à puces : Qu'est-ce qu'ils me disent ? Est-ce grave ? Et qu'est-ce que je dois faire maintenant ? »***\n\nVous passerez de 10 minutes d'angoisse à 30 secondes de compréhension claire.",
+                "detailedContent": {
+                    "title": "L'exigence de la simplicité",
+                    "sections": [
+                        {
+                            "title": "N'acceptez pas du demi-travail",
+                            "content": "Si après avoir demandé la traduction, l'IA utilise encore des mots comme \"franchise résiduelle\" ou \"bénéficiaire subsidiaire\", n'hésitez pas à la gronder : « C'est encore trop dur ! Explique-moi ces deux mots comme si tu parlais à un adolescent ! »"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Traduire le jargon",
+                "bad": {
+                    "prompt": "Lis ça : 'En application des dispositions de l'article L. 113-15-2 du Code des assurances, vous disposez d'un droit de dénonciation consécutif à l'échéance annuelle...'",
+                    "response": "Ce texte précise que selon l'article L. 113-15-2, le preneur d'assurance a la faculté de résilier son contrat...",
+                    "explanation": "L'IA a juste paraphrasé en utilisant d'autres mots juridiques (preneur, faculté, résilier). Ce n'est pas vulgarisé."
+                },
+                "good": {
+                    "prompt": "Je n'y connais strictement rien en droit. Traduis-moi cette phrase de mon assurance comme si tu l'expliquais à un collégien. Va droit au but : \n'En application des dispositions de l'article L. 113-15-2 du Code des assurances, vous disposez d'un droit de dénonciation consécutif à l'échéance annuelle...'",
+                    "response": "Voici ce que ça veut dire en langage de tous les jours :\n\n👉 **Tu peux annuler ton contrat d'assurance.**\nComme ça fait maintenant plus d'un an que tu es chez eux, la loi (que l'on appelle 'Loi Hamon') t'autorise à les quitter n'importe quand, sans frais et sans avoir à justifier ton choix.",
+                    "explanation": "La traduction est parfaite. L'angoisse s'évapore, l'information concrète (« Je peux annuler gratos ») est mise en avant."
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez le prompt parfait pour ordonner à l'IA de « décoder » les Conditions Générales de Vente (CGV) très longues et écrites en tout petit de votre nouvelle salle de sport, pour trouver la seule information qui vous intéresse : comment se désabonner.",
+                "badPrompt": "Résume ces CGV.",
+                "hint": "L'appareil ne doit pas faire de la littérature. Demandez une action claire de recherche (extrais/trouve) avec un objectif très précis (les règles pour partir).",
+                "validationCriteria": [
+                    "trouver/extraire",
+                    "conditions de désabonnement",
+                    "langage simple"
+                ],
+                "exampleSolution": "Voici le pavé illisible des Conditions Générales de ma salle de sport. Je ne veux pas le lire. Scanne ce document et traduis-moi en langage super simple uniquement le paragraphe qui parle de LA RÉSILIATION. Qu'est ce que je dois leur envoyer, sous quel délai, et y a-t-il des frais cachés pour partir ?"
+            }
+        },
+        "23": {
+            "title": "Extraire un ordre du jour d'un brouillon",
+            "category": "Applications",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Mettre de l'ordre dans le chaos textuel",
+                "content": "On a tous des moments où l'on prend des notes en vrac pendant un appel téléphonique : des mots jetés, des flèches, des bouts de phrases incompréhensibles.\n\nL'IA est incroyablement douée pour faire le ménage et trouver le « Fil conducteur » dans votre désordre.\n\n**Comment \"Mettre au propre\" avec la machine :**\nNe perdez plus 15 minutes à rédiger de jolies phrases après votre réunion. \nTapez simplement : « *Voici mes notes en vrac pleines de fautes prises pendant mon appel. Rédige un compte-rendu professionnel à envoyer à l'équipe, avec des titres, les décisions prises, et la To-Do list (la liste des tâches) de qui fait quoi.* »\n\nC'est la technique absolue des assistants de direction du monde moderne.",
+                "detailedContent": {
+                    "title": "S'assurer qu'elle n'invente rien",
+                    "sections": [
+                        {
+                            "title": "La rigueur sur les faits",
+                            "content": "La seule règle d'or quand vous demandez de \"mettre au propre\", c'est d'interdire à l'IA d'ajouter du contenu. \nElle pourrait, pour faire une belle phrase, ajouter : \"Nous avons aussi évoqué le budget de l'année prochaine\" (ce qui serait faux et vous mettrait dans l'embarras). Précisez toujours : « Organise mieux, mais restreins-toi UNIQUEMENT aux faits que je te donne dans mon texte brouillon. »"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Du chaos à l'organisation parfaite",
+                "bad": {
+                    "prompt": "Rends ça joli : 'Lucie dit pb livraison sur le lot C. Marc doit appeler le founisseur 2m1. ok pour promo -10% ce wd. annuler post FB de jeudi car bug'.",
+                    "response": "Voici le texte amélioré : « Lucie a relevé un problème de livraison concernant le lot C. Marc est chargé de contacter le fournisseur demain. Nous sommes d'accord pour lancer une promotion de -10% ce week-end, et le post Facebook prévu pour jeudi doit être annulé suite à un bug. »",
+                    "explanation": "L'IA a fait de simples phrases. Ce comportement \"correcteur orthographique\" ne fait pas gagner beaucoup de temps à la lecture."
+                },
+                "good": {
+                    "prompt": "Voici mes 4 lignes de notes prises à la volée ce matin avec l'équipe commerciale. Transforme-les en un beau mini compte-rendu sous forme de liste structurée, parfait pour être collé dans Slack/Teams. Classe par : Alertes, Décisions, Actions à mener.\n\nNotes : 'Lucie dit pb livraison sur le lot C. Marc doit appeler le founisseur 2m1. ok pour promo -10% ce wd. annuler post FB de jeudi car bug'.",
+                    "response": "📢 **Mini Compte-Rendu : Équipe Commerciale**\n\n🚨 **Alertes & Problèmes**\n- Un problème de livraison a été identifié sur le Lot C (Remonté par Lucie).\n- Un bug technique affecte le post Facebook prévu ce jeudi.\n\n✅ **Décisions Validées**\n- Lancement d'une promotion de -10% pour ce week-end. \n- Annulation ferme du post Facebook de jeudi.\n\n🎯 **Plan d'Action (To-Do)**\n- **Marc** : Appeler le fournisseur dès demain concernant le Lot C.",
+                    "explanation": "L'IA comprend la logique hiérarchique : elle sépare ceux qui agissent (Marc) des constats (Bug). Elle produit un rapport prêt à l'emploi qui donne l'impression d'avoir demandé 30 minutes de travail d'organisation."
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez les notes en vrac très mal écrites que vous venez de prendre au téléphone avec votre garagiste au sujet de la réparation de votre voiture. Puis, écrivez le prompt pour que l'IA présente ça sous forme d'un SMS très clair et chiffré que vous allez envoyer à votre conjoint pour le tenir au courant.",
+                "badPrompt": "Met au propre ça : voiture pneu crevé 200euros fini jeudi",
+                "hint": "C'est un exercice de concision. Donnez un format de SMS strict. Demandez de l'empathie ou de la clarté sur la triste facture du garagiste.",
+                "validationCriteria": [
+                    "Brouillon inventé fourni au prompt",
+                    "Format SMS",
+                    "Clarté des montants"
+                ],
+                "exampleSolution": "Agis comme un secrétaire personnel. \nVoici ce que le garagiste vient de me hurler au téléphone pour ma Clio : 'amortisseur mort a gauche fuite dhuile 450 balles de piece 200 de memoeuvre recup vendredi soir pas avant sinon ca sra lundi'.\n\nObjectif : Rédige-moi un SMS très court, clair et factuel avec des emojis que je vais copier-coller pour l'envoyer à ma femme pour lui annoncer la mauvaise nouvelle (quand est ce qu'on la récupère, qu'est-ce qui est pété, et combien on va payer au total)."
+            }
+        },
+        "24": {
+            "title": "Se préparer à l'oral pour un appel important",
+            "category": "Applications",
+            "difficulty": "Débutant",
+            "duration": "15 min",
+            "xp": 150,
+            "concept": {
+                "title": "Le meilleur 'Sparring Partner' avant de décrocher",
+                "content": "Vous devez passer un appel pour négocier votre loyer ? Rompre un contrat téléphonique ? Demander une augmentation ? \nLe stress nous fait souvent oublier nos meilleurs arguments une fois le téléphone à l'oreille.\n\nL'IA n'est pas seulement faite pour rédiger des lettres ! Elle est un merveilleux **partenaire d'entraînement (un \"Sparring Partner\")**.\n\nVous pouvez l'utiliser de deux façons :\n1. **« Liste-moi toutes les objections que l'autre va me sortir »** : Très puissant pour ne pas être pris au dépourvu si votre patron vous dit « On n'a pas le budget cette année ».\n2. **Le Jeu de Rôle contradictoire (Simulation)** : Demandez à l'IA de jouer le rôle de la pire opératrice téléphonique possible, qui cherche à vous contredire à tout bout de champ, afin que vous puissiez tester votre répondant par écrit avant le vrai appel.",
+                "detailedContent": {
+                    "title": "Faites les Questions et les Réponses",
+                    "sections": [
+                        {
+                            "title": "La feuille de triche",
+                            "content": "L'outil roi de la préparation à l'oral, c'est la Triche ! \nDemandez cela à l'IA : « Prépare-moi un tableau de triche que j'aurai sous les yeux pendant mon appel, avec 2 colonnes : Si la personne me dit ça / Ma réponse idéale avec la bonne intonation. »"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Anticiper l'argument de l'adversaire",
+                "bad": {
+                    "prompt": "Je vais appeler pour dire que je veux quitter Orange. Que dois-je dire ?",
+                    "response": "Pour résilier, vous devez appeler le service client, leur signaler votre souhait de clôturer le contrat et envoyer une lettre recommandée...",
+                    "explanation": "L'IA vous donne le processus administratif. Ce n'est pas ce dont vous avez besoin : vous avez besoin d'arguments face à un vendeur agressif."
+                },
+                "good": {
+                    "prompt": "Je m'apprête à appeler mon opérateur téléphonique. Je veux résilier car c'est trop cher, mais je sais que ces opérateurs sont formés pour harceler les clients et les convaincre de rester. \nListe-moi les 4 pires pièges de langage ou contre-arguments qu'ils vont utiliser pendant l'appel, et écris-moi la phrase exacte et ferme (mais courtoise) que je dois réciter pour contrer chaque piège d'un coup.",
+                    "response": "**Piège 1 : \"L'offre fidélité exceptionnelle rien que pour vous aujourd'hui\"**\n👉 Votre réponse : « C'est une belle proposition, je vous remercie, mais ma décision de résiliation est définitive et irrévocable, pour des raisons personnelles. Comment validons-nous cette résiliation maintenant ? »\n\n**Piège 2 : \"Avez-vous trouvé moins cher ailleurs ? On s'aligne !\"**\n👉 Votre réponse : « C'est gentil de le proposer, mais la considération n'est plus financière à ce stade. Je souhaite procéder à la coupure dès aujourd'hui sans débattre de la concurrence. »...",
+                    "explanation": "L'IA vous fournit un puissant bouclier mental. Avec ces 4 phrases sous les yeux pendant l'appel, votre niveau de stress baissera considérablement."
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez le prompt (Contexte + Action) pour demander à l'IA de lister 3 objections probables que votre propriétaire va vous faire quand vous allez l'appeler pour réclamer qu'il change ENFIN la chaudière cassée. Demandez les réponses \"Pares-balles\" (irréfutables) en droit (c'est au proprio de payer les gros entretiens).",
+                "badPrompt": "Que dire à mon proprio pour la chaudière ?",
+                "hint": "C'est un prompt d'anticipation. Précisez la situation (chaudière morte, proprio radin). Demandez une liste d'objections (les excuses bidons du proprio) et comment y répondre fermement avec la réalité des lois habituelles.",
+                "validationCriteria": [
+                    "recherche d'objections",
+                    "réponses blindées",
+                    "contexte proprio"
+                ],
+                "exampleSolution": "Action : Je vais appeler mon propriétaire qui rechigne toujours à payer. La chaudière est morte (c'est une chaudière vétuste).\nFais-moi la liste des 3 'mauvaises excuses' courantes qu'un propriétaire radin va utiliser au téléphone pour dire que c'est de ma faute ou que c'est à moi de payer.\nEnsuite, donne-moi pour chaque excuse LA phrase de réponse imparable, ferme et polie, qui lui rappelle brièvement la loi locative en France (le gros œuvre et l'usure, c'est pour lui)."
+            }
+        },
+        "25": {
+            "title": "Mini-Projet : Le 'Copilote' d'une lettre de motiv'",
+            "category": "Projet",
+            "difficulty": "Débutant",
+            "duration": "20 min",
+            "xp": 250,
+            "concept": {
+                "title": "Un cas d'école à valider : Fini le syndrome de la page blanche",
+                "content": "Félicitations pour votre arrivée au quart de la formation ! \nCe module est un **Mini-Projet**. Une mise en application réelle.\n\nImaginez : vous devez postuler pour l'emploi de vos rêves, mais rien ne vient. Taper \"lettre de motivation\" dans un moteur de recherche ne donne que des modèles poussiéreux de 1990 qui vous dévaluent complètement.\n\nNous allons voir comment générer la lettre parfaite, personnalisée et vibrante, non pas en demandant \"Écris ma lettre\", mais en utilisant une technique d'entonnoir !\n\n1. **On ne demande jamais le produit final en premier.**\n2. **On lui donne d'abord NOS infos (CV brut).**\n3. **On lui donne les infos de LA CIBLE (L'offre d'emploi).**\n4. **On exige qu'il relie les deux.**",
+                "detailedContent": {
+                    "title": "Jouer les marieuses",
+                    "sections": [
+                        {
+                            "title": "Le meilleur match",
+                            "content": "La meilleure manière de procéder est :\n\"*Salut. Ton rôle est d'être conseiller en recrutement. Je veux une lettre de motivation d'une page (format).*\n*Pour t'aider, voici mon profil en vrac : (Donnez vos années d'expérience et 2 qualités).*\n*Et voici l'offre d'emploi copiée-collée : (Collez tout le texte de l'annonce de l'entreprise).*\n*Action finale : Rédige une lettre très énergique qui montre directement pour chaque demande de leur annonce que j'ai la compétence exacte !*\""
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "L'entonnoir (Fournir la viande avant la recette)",
+                "bad": {
+                    "prompt": "Écris-moi une lettre pour postuler comme Vendeur chez H&M, je n'ai pas d'expérience, j'ai 19 ans.",
+                    "response": "Objet : Candidature spontanée... Je vous écris pour... Je suis dynamique et j'aime la mode...",
+                    "explanation": "C'est la même lettre que l'IA produit chaque jour des millions de fois pour tous les jeunes. Elle partira directement à la corbeille."
+                },
+                "good": {
+                    "prompt": "Tu es mon coach de carrière. Tu vas rédiger une lettre hyper moderne et percutante (pas de vieux blabla \"Suite à votre annonce...\"). \n\nVoici le brouillon de MOI : J'ai 19 ans. Pas d'expérience en magasin. MAIS je tiens un compte TikTok sur la mode avec 2000 abonnés, je sais scanner les tendances fissa, j'ai fait 2 mois de McDo (donc la pression et la caisse je connais).\n\nVoici L'OFFRE H&M : 'Nous cherchons des profils passionnés de mode, capables d'accueillir souriant même dans le rush du samedi, avec un fort esprit d'équipe.'\n\nRédige ma lettre, et relie absolument mes expériences à leurs attentes.",
+                    "response": "Objet : Vous cherchez un profil résistant au rush et fan de tendances ? J'ai l'âge de votre cible !\n\nMadame, Monsieur,\nOubliez la traditionnelle lettre de longue expérience. Ce que je vous apporte aujourd'hui, c'est l'énergie brute et la connaissance de vos clients de demain.\nVous demandez une résistance au rush du samedi : après deux mois intenses d'été derrière les caisses d'un grand Fast-Food mondial, aucun coup de feu ni aucune file d'attente ne m'effraie.\nVous parlez de conseil de mode : je gère au quotidien une communauté TikTok de plus de 2000 abonnés où je décortique les capsules saisonnières...",
+                    "explanation": "Une lettre atomique. Improbable à réaliser humainement en 30 secondes. L'IA a trouvé le fil invisible entre le McDo et le stress du magasin de vêtement !"
+                }
+            },
+            "exercise": {
+                "instruction": "ÉPREUVE. \nVous devez postuler pour un poste de 'Secrétaire médical dans un cabinet de dentistes très luxueux'.\nRédigez l'invite R.O.C.A entière en suivant l'entonnoir (Donnez vos propres qualités, inventez les besoins du dentiste, et donnez la consigne de faire correspondre les deux dans une belle lettre).",
+                "badPrompt": "Postuler chez un dentiste de luxe, je suis organisé.",
+                "hint": "C'est un mini projet ! Utilisez la structure de cours : \nRôle : (Expert en CV)\nObjectif : Rédiger la lettre en rapprochant mes infos et leur annonce.\nContexte : Ce que je vaux (ex: ancien gérant d'hôtel de luxe) VS Leurs exigences (ex: discrétion absolue patients riches).\nAttente : Le texte fini !",
+                "validationCriteria": [
+                    "Rôle expert carrière",
+                    "Rapporter le profil candidat vers l'offre",
+                    "Spécificité (univers du luxe/dentaire)"
+                ],
+                "exampleSolution": "Rôle : Agis comme un coach RH redoutable spécialisé dans le milieu médical haut de gamme.\nObjectif : Rédiger ma lettre de motivation en créant la rencontre parfaite entre mes petits acquis et leurs très grandes exigences.\nContexte profil (Moi) : J'ai 32 ans, forte voix au téléphone, ancienne hôtesse de l'air (donc présentation et gestion des conflits parfaits). Pas de cursus médical.\nContexte entreprise (Eux) : C'est pour un cabinet d'implantologie VIP à Paris, ils demandent 'réassurance du patient', 'présentation irréprochable'.\nAttente : Une lettre de 3 longs paragraphes. Utilise mon passé dans les airs (sécurité, luxe, stress) pour leur prouver que l'accueil et la rassurance d'un patient angoissé, c'est comme rassurer un client VIP au décollage."
+            }
+        },
+        "26": {
+            "title": "Le cuisinier anti-gaspillage",
+            "category": "Applications",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Une magie à lancer dans la cuisine",
+                "content": "On sous-estime toujours les capacités de l'IA pour la vie de la maison. C'est dommage, car c'est une aide fantastique pour alléger la fameuse « charge mentale » du quotidien.\n\n**Ouvrez votre réfrigérateur.** Vous y voyez 3 œufs périsant demain, un demi-camembert triste, et un poireau qui flétrit.\nÀ l'œil nu, on se dit \"Je n'ai rient à manger\". \n\nL'IA possède des milliards de recettes du monde entier dans sa mémoire. Donnez-lui simplement la liste VRAIE de vos restes.\n\nLa technique s'appelle le **\"Reverse-Cooking (Contrainte de panier)\"** : \n« *Donne-moi 3 idées de plats que je peux faire avec EXACTEMENT et UNIQUEMENT ces ingrédients : 3 œufs, un poireau, du camembert. Ne rajoute rien à part du sel, poivre et huile, parce que les magasins sont fermés !* »",
+                "detailedContent": {
+                    "title": "Imposez la rigueur des ingrédients",
+                    "sections": [
+                        {
+                            "title": "L'IA aime bien faire les courses à votre place",
+                            "content": "Si vous ne lui dites pas \"UNQUEMENT CES INGRÉDIENTS\", elle risque fort de proposer une belle tarte aux poireaux... en vous disant \"Il suffit d'ajouter de la crème fraîche et une pâte feuilletée\". Bloquez ce zèle en étant restrictif dans le prompt !"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Faire d'un rien un festin",
+                "bad": {
+                    "prompt": "Qu'est ce que je cuisine avec 2 patates et du lait ?",
+                    "response": "Vous pouvez réaliser un gratin dauphinois. Pour cela, prenez vos pommes de terre, le lait, ajoutez-y 100g de gruyère râpé, de la crème lègère, une noix de muscade...",
+                    "explanation": "C'est frustrant ! L'IA invente des ingrédients qu'on ne possède pas à la maison ce soir-là."
+                },
+                "good": {
+                    "prompt": "Je suis devant mon grand frigo vide. J'ai faim et tout est fermé. Rôle : Chef étoilé astucieux.\nFais-moi 2 propositions de repas. \n\nCONTRAINTE ABSOLUE : Utilise et mentionne UNIQUEMENT ces denrées : 2 vieilles pommes de terre, du lait demi-écrémé, des pâtes crues coquillettes, et un vieux fond de moutarde. Tu as accès l'eau du robinet, au sel et poivre. Récuse l'utilisation de la moindre autre chose.",
+                    "response": "**Option 1 : La Crème de patate à la moutarde réconfortante**\nFais bouillir et écrase à fond tes pommes de terre à la fourchette pour en faire une purée dense. Ajoute le lait doucement pendant que c'est très chaud pour faire une texture de soupe crémeuse veloutée. Sale, poivre, et mélange une généreuse cuillère de tond fond de moutarde. C'est un velouté de crise excellent, piquant et très rassasiant !\n\n**Option 2 : Les Coquillettes liées au lait de pomme de terre**...",
+                    "explanation": "Le prompt a cadenassé les possibilités. L'IA doit utiliser son génie pour marier la misère des ingrédients et propose une tambouille créative."
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez le prompt parfait pour l'IA en lui donnant vos fonds de placards de placard d'étudiant pour obtenir un dessert miracle. (Inventez 3 ingrédients bizarres, imposez l'interdiction stricte de mentionner de quoi que ce soit d'autre, exigez la méthode).",
+                "badPrompt": "Fais moi un dessert",
+                "hint": "C'est l'entraînement à l'interdiction pure. Si vous donnez des biscuits et de la compote l'IA, redites dans votre consigne de \"ne surtout jamais proposer de Rajouter\" autre chose.",
+                "validationCriteria": [
+                    "liste d'ingrédients inventés pauvre",
+                    "contrainte d'interdiction (rien d'autre)",
+                    "cible (un dessert)"
+                ],
+                "exampleSolution": "J'ai extrêmement envie du sucre ce soir mais je n'irai pas faire des courses. \nDans mon armoire j'ai : des flocons d'avoine secs, le reste d'un sachet de sucre vanillé, et 3 quartiers de pomme abîmés.\nTon défi (Interdiction de tricher) : Trouve-moi 1 recette de \"dessert de survie\". Tu ne dois SOUS AUCUN PRÉTEXTE m'indiquer d'ajouter du beurre, de la farine ou autre chose. Aide-moi à me régaler dans la misère de la faim de 22 heures !"
+            }
+        },
+        "27": {
+            "title": "L'agent de voyage (Planifier au millimètre)",
+            "category": "Applications",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Lancer les vacances sans l'angoisse",
+                "content": "Préparer un week-end à l'étranger ou dans une ville inconnue demande normalement des heures sur 10 fenêtres internet (les avis, la rue, la distance à pied, le budget des musées...). Maux de tête garantis.\n\nDemandez tout de suite un **\"Plan Itinéraire Minute par Minute\"** à l'IA !\nL'IA connaît la géographie, distances de marche et les quartiers très vivants par cœur.\n\nLa méthode magique pour les voyages se découpe en 3 blocs d'info à fournir obligatoirement :\n1. **Temps dispo et Rythme** (Ex: \"On est là 2 jours, rythme lourd on veut courir partout\" ou \"Rythme très doux pour des seniors\").\n2. **Les envies du clan** (Ex: \"On adore l'histoire, mais les enfants détestent les musées d'art\").\n3. **La logistique cible** (Ex: \"Fais l'itinéraire en tenant compte du temps de trajet en métro de la vraie vie entre les lieux proposés\").\n\nAvec ce prompt, l'IA devient une vraie agence de voyage à elle seule.",
+                "detailedContent": {
+                    "title": "Une demande = un format ! Tableau toujours",
+                    "sections": [
+                        {
+                            "title": "Le saint graal : le tableau d'organisation",
+                            "content": "Si on planifie des vacances avec des mots, on ne va pas s'en sortir.\nC'est l'essence du Module 10 revu ! L'Attente du voyageur dans son prompt doit forcément mentionner ça :\n« Présente ma journée complète en tableau : Heure | Activité | Quartier exact | Pourquoi tu l'as choisi pour nous. »"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "De l'idée vague au planning pro",
+                "bad": {
+                    "prompt": "On va à Rome ce week end. Fais-moi le programme stp.",
+                    "response": "Jour 1 : Visitez le Colisée et le Panthéon. Mangez une pizza. \nJour 2 : Allez au Vatican puis baladez-vous sur les grandes places de la ville éternelle.",
+                    "explanation": "Bien sûr, c'est utile. Mais sans détails géographiques précis ou temps de visite, ça ne nous libère absolument pas d'avoir à vérifier le plan sur une carte par nous même."
+                },
+                "good": {
+                    "prompt": "Agis comme un guide romain natif. On vient en couple de 25 ans à Rome pour notre premier weekend de 2 jours (Samedi Dimanche). \nRythme : Plutôt sport, mais longues pauses pour manger au top.\nEnvies : On déteste poireauter les files du Vatican (ne nous y emmène pas), on adore flâner le soir dans de super ruelles qui ont une jolie âme pour les jeunes.\nAction : Trace notre planning d'un tel Week End.\nATTENTE DE OUF: Construit uniquement ce planning dans DEUX GRANDS TABLEAUX (un samedi, un dimanche), croisant les Colonnes d'Heures, Lieux, et Moyens de Transports de A vers B recommandés.",
+                    "response": "Buon viaggio les amoureux ! Voici le plan tactique anti-foules et 100% charme garanti : \n\n**[TABLEAU - SAMEDI 🇮🇹]**\n| Heures | Activité secrète | Quartier du lieu | Mode Transport Depuis point A |\n| 09:00 - 11:30 | Entrée Colisée à la fraiche | Monti | À pied depuis le centre... |\n| 12:00 - 13:30 | Aperitivo en terasse, les panini célèbres | Trastevere | Prendre Tramway 8 (Rapide) |\n... etc",
+                    "explanation": "Oubliez les guides version papiers, ce tableau est calé sur une précision terrifiante pour la réalité pratique d'une logistique de touriste heureux."
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez le prompt R.O.C.A pour l'organisation de votre propre journée de visite express (un jour ! ) à Londres ! \nImposez un fait insolite : 'Moi les grands monuments classiques m'endorment. Je veux voir que des affaires effrayantes londoniennes et manger indien'.",
+                "badPrompt": "Je veux visiter le Londres sombre un jour !",
+                "hint": "C'est un travail de synthèse de toutes vos leçons : Déterminez l'Objectif de guide, indiquez le lourd Contexte (horizons du style), et attendez explicitement de l'IA (en Attente) de faire le timing sous forme de Tableaux pour rassurer la logistique !",
+                "validationCriteria": [
+                    "Une journée de logistique",
+                    "contrainte thématique (sombre + indien)",
+                    "demande de tableau"
+                ],
+                "exampleSolution": "Rôle: Tu gères la boite touristique la plus \"Spécialisée Frissons\" du Royaume-Uni. \nObjectif: Trouve-moi le programme de 24h parfait que je viens d'obtenir sur Londres en escale.\nContexte: Oublie les ponts romantiques, Big Ben et les trucs classiques, ils m'endorment ! J'adore tout ce qui touche à l'histoire vraie sombre (Génère Jack L., ruelles brumeuses). Ah et midi et soir, je mange pure bouffe de tradition Indienne uniquement.\nAttente: Colle ce programme fou et détaillé, minute par minute, sous la belle grande forme d'un tableau synthétique pour qu'en un screenshot, j'aie le plan de route !"
+            }
+        },
+        "28": {
+            "title": "Le grand algorithme de recommandation (Films/Livres)",
+            "category": "Applications",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Au revoir la page d'accueil Netflix",
+                "content": "On connait tous la malédiction : passer 40 minutes à scroller le catalogue pour chercher un bon film de 1h30... Pour finir par ne rien regarder du tout, abasourdi par le choix permanent.\n\nLes algorithmes de type \"Ceux qui aiment ça aiment ça\" sont très bêtes.\n\nL'IA n'est pas bête. L'IA peut comprendre un **mélange d'émotion et de structure.**\nDemandez-lui : « *Trouve-moi un film qui ressemble un peu à L'Odyssée de Pi dans les paysages grandioses, mais qui fait très peur, car c'est Halloween ! Et qui dure moins de 90 minutes.* »\n\nC'est le pouvoir de croisement de bases de données ! L'IA va piocher l'émotion demandée (peur/voyage), trier des durées sur les milliers de mémoires encyclopédiques qu'elle regorge, et ne vous sortir que 3 diamants bruts de recommandation culturelle de son chapeau.",
+                "detailedContent": {
+                    "title": "Laissez-la vous surprendre",
+                    "sections": [
+                        {
+                            "title": "L'importance de l'anti-choix",
+                            "content": "Une bonne astuce pour la recommandation ? Limitez le nombre de propositions d'emblée dans votre consigne.\n« Ne m'en donne que 3 ! » \nAu délà de 3 suggestions, la charge cognitive du cerveau panique. Moins elle en donne, plus l'IA choisira fort avec la quintessence de la proposition, et plus vite vous lancerez la télévision avec du pop corn !"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Sonder les archives selon vos humeurs",
+                "bad": {
+                    "prompt": "Dis moi un bon film drôle",
+                    "response": "Voici de bonnes comédies : 1. La grande vadrouille... 2. Astérix...",
+                    "explanation": "Les classiques les plus connus de la Terre sortent et n'ont rien de surprenant quant à son humeur spécifique du soir."
+                },
+                "good": {
+                    "prompt": "Je suis fatigué en rentrant du boulot, il est tard. Mon cerveau ne veut rien de drôle, rien d'agressif non plus. \nSors-moi ton meilleur rôle de bibliothécaire/vidéoclub des années 90.\n\nObjectif: Trouve moi 3 suggestions de Films.\nContexte: Il me faut absolument de la lenteur, de la contemplation. De beaux paysages de nature silencieux. Un truc qui détend complètement.\nAttente: Seulement 3 films ! Donnes le nom, la durée, la plateforme (si connue) et fais 1 seule petite phrase d'attraction sans gros résumés.",
+                    "response": "Installez-vous confortablement dans le canapé... on va souffler ensemble ce soir face aux grands écrans paisibles de la planète Terre. Voici 3 moments suspendus :\n\n1. Océans (Durée : 1h40) - Un pur poème visuel magistral pour nager tout au fond en silence, les yeux perdus sur l'eau (Perrin).\n2. Into The Wild (Durée : 120min)...",
+                    "explanation": "Le prompt capte le \"mood\", restreint l'offre à 3. Les résumés disparaissent pour éviter la lourdeur : l'IA lâche sa poésie !"
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez le prompt pour demander à l'IA la meilleure recommandation de LITÉRATTURE à trouver en urgence chez le libraire du coin.\nVotre besoin inventé : 'Je cherche un roman policier... qui se passe en période glaciale en Suède... mais je veux que l'enquêteur soit un mec ultra naze, pas un héros à l'Américaine.'",
+                "badPrompt": "Quel livre suèdois acheter avec de la neige et des flics nuls ?",
+                "hint": "C'est une mission de recommandation. Entrez l'émotion demandée, l'exigence d'une limite à 3 choix au grand bout, pour cibler l'essentiel !",
+                "validationCriteria": [
+                    "livres",
+                    "pays/ambiance froids",
+                    "héros nul/faible",
+                    "volume (max 3-5 ouvrages)"
+                ],
+                "exampleSolution": "Tu vas jouer à l'algorithme culturel de folie pour mon samedi ! Ne me livre QUE tes 3 romans absolus en stock !\nLe besoin de base : Les grands flics héros super doués à l'Américaine des romans d'enquêtes m'ennuient ! \nTrouve moi un polar (un policier) nordique/suédois, bourré de neige glaciale, mais où l'enquêteur local mis sur l'affaire au plein milieu du froid est juste affreusement naze, lent ou totalement dépassé ! Un anti-héros ! "
+            }
+        },
+        "29": {
+            "title": "Le Prof de Bricolage (Etude de l'Objet)",
+            "category": "Applications",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "C'est fini le tutoriel incompréhensible",
+                "content": "Avoir une fuite sous son évier un dimanche soir à 23h et chercher sur internet \"Fuite du siphon\".\nTomber sur des articles qui disent d'un coup: \"Dévissez simplement la bague crantée du culot d'expulsion d'eau qui encercle le bitougnaud d'assainissement 12mm.\".\nPanique totale de votre côté devant du jargon des plombiers que vous ne maitrisez pas.\n\nLe pouvoir fou de l'IA ? Elle est LA traductrice d'étapes de travaux : **la Vulgarisation de la panique d'Action.**\n\nVous êtes devant une chose qui a dysfonctionné ? Décrivez-la en mots \"Bêtes\".\n« *Ça coule sous le truc blanc en plastique, vers le milieu du V inversé là...* »\nL'IA vous répondra pour vous indiquer où appuyer avec vos doigts dans un langage qui ne nécessite ni caisse à vis ni expérience décennale !",
+                "detailedContent": {
+                    "title": "Ne supputez pas vos compétences",
+                    "sections": [
+                        {
+                            "title": "Affichez son niveau misérable !",
+                            "content": "La botte secrète est d'utiliser le contexte R.O.C.A pour dire « J'ai deux bras gauches niveau maitrise de mes mains ou d'outils, explique moi comme si j'étais un bambin de 10 ans qu'on envoie au dépannage ». C'est en dévaluant fort avec honneur son profil que l'IA baisse sa sémantique métier vers le simple des mortels."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Comment on ouvre une chose bloquée ?",
+                "bad": {
+                    "prompt": "Gros soucis, j'arrive pas à accéder au trou derrière la cuvette de WC ça chasse trop tard et y'a un tuyau coincé en l'air au fond à droite dans le réservoir blanc comment ouvrir et tirer là.",
+                    "response": "Videz d'abord le réservoir en actionnant manuellement la trappe dans la cloche du mécanisme d'écoulement principal et vérifiez que votre flotteur à tringlerie de butée n'est pas oxydé, dans le cas contraire, retirez le flanc...",
+                    "explanation": "Flotteur à tringlerie ? Le débutant jette l'éponge. L'IA a répondu en plombier et non en formateur."
+                },
+                "good": {
+                    "prompt": "Agis comme le plus vieux et doucereux formateur de plomberie pour les ultra nuls enfants. Ne sors pas UN SEUL MOT compliqué ! \nAction urgente : J'arrive pas à réparer l'intérieur ma chasse d'eau en cours à la maison, le truc de plastique avec un ballon flotteur dedans à droite reste sans arrêt bloqué en position levé, coincé au max.\nComment on répare cette connerie pas à pas en 3 grandes étapes ? \nContexte et Attentes : Juge l'histoire comme si j'étais ton neveu manchot à distance et que tu as peur de m'y voir en panique en mettant de gros mots gras pour rassurer les yeux stp !",
+                    "response": "Mon cher neveu on respire, garde t'es deux mains t'as de quoi réparer ça sans l'aide en 3 mi-temps !\n\n1. **On touche D'ABORD au robinet à coté des fesses** \nRegarde tranquilou le petit robinet gris argent coincé au mur contre tes genoux... Tourne le pour qu'on arrête le bruit de flotte et être serein ! (Ferme le robinet de l'eau).\n2. **Touche juste la partie blanche flottante** \nLa petite boule ou petit bloc bloqué tout en l'air ? S'il est coincé avec le calcaire... Prends dans le cuisine un peu de vinaigre blanc pur. etc...\n(Vulgarisation maximale dans les petits soins)",
+                    "explanation": "Un tuteur bien vivant qui explique en détail là on l'on pose le regard pour s'en sortir ! Outils au sol gagnant."
+                }
+            },
+            "exercise": {
+                "instruction": "Écrivez une consigne (Prompt) car un énorme insecte volant terrifiant de 5 cm marron et velu vient d'entrer et rôde dans l'appartement au sommet d'un rideau gris sombre.\nDemandez avec beaucoup de terreur sans aucun mot biologique comment chasser \"le gros truc machin sans me faire piquer ni le tuer mais de me libérer l'esprit de sa fuite dehors !\"",
+                "badPrompt": "Comment chasser la grosse bebête sur un rideau ?",
+                "hint": "C'est l'objectif du \"faire pour moi avec les mains nuls sans peur\". Adoptez un contexte d'interdiction formelle d'agir avec une serviette risquée. Expliquez la localisation etc...",
+                "validationCriteria": [
+                    "Situation : présence d'un animal",
+                    "Niveau : Panique utilisateur non technique",
+                    "Action pacifique mais rapide"
+                ],
+                "exampleSolution": "SOS tu joues l'assistant sauveur pacifique animalier de la panique : J'ai un gros insecte dégueu marron ultra lourd et très velu de 5 plombes coincé qui ronronne violemment en volant pour se coincer haut perché aux abords du rideau de chambre...!\nJe panique complètement, je n'ai littéralement aucun courage de tapette ou manuel en bio et j'ai deux bras gauches.\nExplique-moi très gentiment par tirets comment capter/virer de ce rideau en vie sans contact ni me faire mourir stp et quel outil en carton on fait avec ce qu'on trouve ?"
+            }
+        },
+        "30": {
+            "title": "Mini-Projet : Gérer la logistique de A à Z",
+            "category": "Projet",
+            "difficulty": "Débutant",
+            "duration": "20 min",
+            "xp": 250,
+            "concept": {
+                "title": "L'organisation familiale sans y penser",
+                "content": "Noël qui approche ? Un pot de départ de votre collègue pour 40 personnes à organiser ? Le planning de travaux des murs du salon ce week-end ?\n\nRanger de l'intellect administratif logistique : c'est un travail colossal de Chef de Projet que l'IA adore faire.\n\nMais attention, une chose manque souvent dans vos premières requêtes : c'est le **RETRO-PLANNING**.\nQuand on organise pour beaucoup, le plus difficile n'est pas \"Ce que l'on fait\", c'est \"Dans quel ordre le faire en partant de la fin pour être dans les temps\".\n\nNous allons voir qu'en fixant massivement « l'Heure H ou le Jour Z de finalité », et le menu ou le projet désiré, le super-stagiaire fait reculer les aiguilles pour dire « Alerte, donc dès ce Jeudi le frigo/fournisseur a besoin qu'on lui porte le message de tel commande ! »",
+                "detailedContent": {
+                    "title": "On avance comme les pros !",
+                    "sections": [
+                        {
+                            "title": "Mettez-lui les points contraires",
+                            "content": "Faites suer l'outil : pour un Repas donnez-lui par exemple les horaires des petits. \"Il faut que Tatie ne croise pas le chien, et que le gâteau soit coupé à minuit alors qu'il se cuit 3h au four le dimanche aprem à la même heure qu'on dort !\" - L'IA va avaler les paradoxes horaires et ordonnancer un plan logistique où rien ne s'entrechoque !"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Le banquet millimétré (Reverse planning)",
+                "bad": {
+                    "prompt": "Dis pour dimanche midi j'ai 12 personnes à la maison au grand repas. Je fais un gigot cuisson forte 3h et un gâteau frigo de 5h avec entrée des petits poireau. Aide mio a organiser la cuisine de tout ça et le planning.",
+                    "response": "L'organisation d'un repas de groupe demande rigueur ! \n1. Faites les Poireaux le samedi soir ou dimanche matin...\n2. Prévoyez vos 3h... 3. Nettoyez",
+                    "explanation": "C'est d'une insipide pauvreté. On doit de nouveau repenser la montre en fonction du \"vers le derrière\". Le stress ne chute pas."
+                },
+                "good": {
+                    "prompt": "Rôle : Organisateur Event Wedding Planer pointilleux pour Repas Domicile.\nObjectif : Gère-moi MA journée de cuisine à la minute sans qu'elle dérape car je croule vite. Le monde entier vient Dimanche MIDI. Tout doit être chaud cuit servi PARFAIT en table le dimanche à 13h00 EXACT ! On a : Un gigot de 3H de cuisson lourde, l'entrée Poireau rapide, et le gâteau de base de 5H de réfrigérateur impératif.\nContrainte : Fais moi le RETRO-PLANNING au sablier. Démarrant son tableau d'horloge DU Samedi fin de journée / Nuit pour aboutir aux dernières actions fumantes de repas servis au son des horloges !",
+                    "response": "Rien ne brûlera, Chef ! Voici le plan militaire : Le Rétro-Planning des 12 pour 13H.\n| TIMING CRITIQUE | ACTION LOGISTIQUE EN CUISINE / AU SALON | NOTES |\n| SAMEDI 18H00  | Lancement de la crème du Gâteau impératif | Le 5H au frigo commence là pour une solidité max du fond.  |\n... (Dimanche...) ...\n| DIM 09H45 ! | ALERTE GIGOT. On lance la chauffe grand four à l'allumage brut ! | (C'est lui qui pèse sur ton planning : La viande ! ) | ...\n| DIM 12H55 | On nappe vite les assiettes d'entrées frondes poireau avec tout de prêt... | Boom ! 13H Les amis sont impressionnés !\n(On respire au carré).",
+                    "explanation": "C'est fini on a l'image d'imprimer l'horloge tableau sur la devanture magnétique de frigidaire ! C"
+                }
+            },
+            "exercise": {
+                "instruction": "ÉPREUVE ! Il est de ton devoir par un beau prompt très complet (le plus long !) d'écrire toute la mise en ordre R.O.C.A du retro-planning d'un super déménagement d'un appartement depuis le mois M-3 à l'appel Final du jour J !! Insistez avec un contexte lourd au niveau \"Papiers en douane à l'international car je vais vivre en Suisse et j'ai plein de chiens chiants à bouger !\".",
+                "badPrompt": "Retroplanning déménagement.",
+                "hint": "C'est l'heure. Détailler : Rôle (Logisticien Suisso-français), Objectifs (On bouge mon t3 tout complet du sud france sans stress), L'évènement Z (On a plus les clés un vendredi à 9H pétante !), Le Contexte : Mettre que de la paperasse, les clebards en avions ou voiture enragée etc...",
+                "validationCriteria": [
+                    "Sujet d'événement logistique de très grande ampleur/temps long",
+                    "Structure avec un rétro-planning impératif clair M-X...",
+                    "Lourdeurs contextuelles posées"
+                ],
+                "exampleSolution": "ROLE : Organisateur grand Logisticien de crise internationale.\nOBJECTIF : Fais-moi le super tableau de retro planning du pire Déménagement du T2 d'un Parisien vers le sud frontière pour mon expatriation future.\nCONTEXTE: Le point chaud C'est LA FRONTIERE papier Suisse, les caisses en cartons intenses, mes deux petits chiens insupportables des routes à basculer sereins. Attention de ne pas craquer je suis une grand mère de 64 ballets.\nHeure de Rendre les Clés absolue : La Mâtinée pile du Lundi 2 Février lointain de ce matin d'hivernage.\nATTENTE : Propose-moi la vision du décalage (Du Loin 6 Mois Jusqu'à J-1) sans une blabla verbeuse. Tableau de puces simples des alertes mois !"
+            }
+        }
+    }
+}

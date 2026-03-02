@@ -71,16 +71,36 @@ export default function Formations() {
         }
     };
 
-    // Group formations by category
-    const groupedFormations = useMemo(() => {
-        return formations.reduce((acc, formation) => {
-            const category = formation.category || 'Autres';
-            if (!acc[category]) {
-                acc[category] = [];
-            }
-            acc[category].push(formation);
-            return acc;
-        }, {});
+    // Structure formations by Level and then Category
+    const structuredFormations = useMemo(() => {
+        const levelsOrder = ['Débutant', 'Intermédiaire', 'Avancé', 'Expert'];
+        const result = [];
+
+        levelsOrder.forEach(levelName => {
+            const formationsInLevel = formations.filter(f => f.levelLabel === levelName);
+            if (formationsInLevel.length === 0) return;
+
+            // Group by category within this level
+            const categories = {};
+            formationsInLevel.forEach(f => {
+                const cat = f.category || 'Autres';
+                if (!categories[cat]) categories[cat] = [];
+                categories[cat].push(f);
+            });
+
+            // Maintain insertion order for categories
+            const categoryKeys = [...new Set(formationsInLevel.map(f => f.category || 'Autres'))];
+
+            result.push({
+                levelName,
+                categories: categoryKeys.map(cat => ({
+                    categoryName: cat,
+                    formations: categories[cat]
+                }))
+            });
+        });
+
+        return result;
     }, [formations]);
 
     const completionPercentage = formations.length > 0
@@ -148,117 +168,137 @@ export default function Formations() {
                         </div>
                     </div>
 
-                    {/* Formations by Category */}
-                    <div className="space-y-8">
-                        {Object.entries(groupedFormations).map(([category, categoryFormations]) => (
-                            <div key={category}>
-                                <div className="flex items-center gap-3 mb-4">
-                                    <h2 className="text-lg font-semibold text-white">{category}</h2>
-                                    <div className="flex-1 h-px bg-zinc-800"></div>
-                                    <span className="text-sm text-zinc-500">
-                                        {categoryFormations.filter(f => isModuleCompleted(f.id)).length}/{categoryFormations.length}
-                                    </span>
+                    {/* Structured Formations by Level and Category */}
+                    <div className="space-y-12">
+                        {structuredFormations.map((levelGroup) => (
+                            <div key={levelGroup.levelName} className="relative">
+                                {/* Level Header */}
+                                <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-1.5 h-8 bg-violet-600 rounded-full"></div>
+                                        <h2 className="text-2xl font-bold text-white tracking-tight">
+                                            Niveau {levelGroup.levelName}
+                                        </h2>
+                                    </div>
+                                    <div className="text-sm font-medium text-zinc-400 bg-zinc-900/80 px-4 py-1.5 rounded-full border border-zinc-800">
+                                        {levelGroup.categories.reduce((acc, cat) => acc + cat.formations.filter(f => isModuleCompleted(f.id)).length, 0)} / {levelGroup.categories.reduce((acc, cat) => acc + cat.formations.length, 0)} modules complétés
+                                    </div>
                                 </div>
 
-                                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    {categoryFormations.map((formation, index) => {
-                                        const status = getModuleStatus(formation.id);
+                                {/* Categories within Level */}
+                                <div className="space-y-8 pl-0 sm:pl-5">
+                                    {levelGroup.categories.map((categoryGroup) => (
+                                        <div key={categoryGroup.categoryName}>
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <h3 className="text-lg font-semibold text-zinc-200">{categoryGroup.categoryName}</h3>
+                                                <div className="flex-1 h-px bg-zinc-800/60"></div>
+                                                <span className="text-xs font-medium text-zinc-500 bg-zinc-900/50 px-2 py-1 rounded-md border border-zinc-800/50">
+                                                    {categoryGroup.formations.filter(f => isModuleCompleted(f.id)).length}/{categoryGroup.formations.length}
+                                                </span>
+                                            </div>
 
-                                        return (
-                                            <motion.div
-                                                key={formation.id}
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: index * 0.05 }}
-                                                onClick={() => handleModuleClick(formation)}
-                                                className={`relative bg-zinc-900/50 border rounded-2xl p-5 transition-all duration-300 ${status === 'locked'
-                                                    ? 'border-zinc-800/50 opacity-60 cursor-not-allowed'
-                                                    : status === 'completed'
-                                                        ? 'border-emerald-500/30 hover:border-emerald-500/50 cursor-pointer hover:bg-zinc-900/80'
-                                                        : 'border-violet-500/30 hover:border-violet-500/50 cursor-pointer hover:bg-zinc-900/80'
-                                                    }`}
-                                            >
-                                                {/* Status Badge */}
-                                                <div className="absolute top-4 right-4">
-                                                    {status === 'completed' && (
-                                                        <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                                                            <Icon icon="solar:check-circle-bold" width="20" className="text-emerald-400" />
-                                                        </div>
-                                                    )}
-                                                    {status === 'locked' && (
-                                                        <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center">
-                                                            <Icon icon="solar:lock-keyhole-bold" width="18" className="text-zinc-500" />
-                                                        </div>
-                                                    )}
-                                                    {status === 'unlocked' && (
-                                                        <div className="w-8 h-8 rounded-full bg-violet-500/20 flex items-center justify-center">
-                                                            <Icon icon="solar:play-bold" width="16" className="text-violet-400" />
-                                                        </div>
-                                                    )}
-                                                </div>
+                                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                                {categoryGroup.formations.map((formation, index) => {
+                                                    const status = getModuleStatus(formation.id);
 
-                                                {/* Icon */}
-                                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${status === 'completed'
-                                                    ? 'bg-emerald-500/10'
-                                                    : status === 'unlocked'
-                                                        ? 'bg-violet-500/10'
-                                                        : 'bg-zinc-800/50'
-                                                    }`}>
-                                                    <Icon
-                                                        icon={formation.icon}
-                                                        width="24"
-                                                        className={
-                                                            status === 'completed'
-                                                                ? 'text-emerald-400'
+                                                    return (
+                                                        <motion.div
+                                                            key={formation.id}
+                                                            initial={{ opacity: 0, y: 20 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            transition={{ delay: index * 0.05 }}
+                                                            onClick={() => handleModuleClick(formation)}
+                                                            className={`relative bg-zinc-900/50 border rounded-2xl p-5 transition-all duration-300 ${status === 'locked'
+                                                                ? 'border-zinc-800/50 opacity-60 cursor-not-allowed'
+                                                                : status === 'completed'
+                                                                    ? 'border-emerald-500/30 hover:border-emerald-500/50 cursor-pointer hover:bg-zinc-900/80'
+                                                                    : 'border-violet-500/30 hover:border-violet-500/50 cursor-pointer hover:bg-zinc-900/80'
+                                                                }`}
+                                                        >
+                                                            {/* Status Badge */}
+                                                            <div className="absolute top-4 right-4">
+                                                                {status === 'completed' && (
+                                                                    <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                                                                        <Icon icon="solar:check-circle-bold" width="20" className="text-emerald-400" />
+                                                                    </div>
+                                                                )}
+                                                                {status === 'locked' && (
+                                                                    <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center">
+                                                                        <Icon icon="solar:lock-keyhole-bold" width="18" className="text-zinc-500" />
+                                                                    </div>
+                                                                )}
+                                                                {status === 'unlocked' && (
+                                                                    <div className="w-8 h-8 rounded-full bg-violet-500/20 flex items-center justify-center">
+                                                                        <Icon icon="solar:play-bold" width="16" className="text-violet-400" />
+                                                                    </div>
+                                                                )}
+                                                            </div>
+
+                                                            {/* Icon */}
+                                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${status === 'completed'
+                                                                ? 'bg-emerald-500/10'
                                                                 : status === 'unlocked'
-                                                                    ? 'text-violet-400'
-                                                                    : 'text-zinc-600'
-                                                        }
-                                                    />
-                                                </div>
+                                                                    ? 'bg-violet-500/10'
+                                                                    : 'bg-zinc-800/50'
+                                                                }`}>
+                                                                <Icon
+                                                                    icon={formation.icon}
+                                                                    width="24"
+                                                                    className={
+                                                                        status === 'completed'
+                                                                            ? 'text-emerald-400'
+                                                                            : status === 'unlocked'
+                                                                                ? 'text-violet-400'
+                                                                                : 'text-zinc-600'
+                                                                    }
+                                                                />
+                                                            </div>
 
-                                                {/* Content */}
-                                                <div className="pr-10">
-                                                    <div className="flex items-center gap-2 mb-2">
-                                                        <span className={`text-xs px-2 py-0.5 rounded-full ${formation.difficulty === 'Débutant' ? 'bg-emerald-500/10 text-emerald-400' :
-                                                            formation.difficulty === 'Intermédiaire' ? 'bg-amber-500/10 text-amber-400' :
-                                                                formation.difficulty === 'Avancé' ? 'bg-orange-500/10 text-orange-400' :
-                                                                    'bg-red-500/10 text-red-400'
-                                                            }`}>
-                                                            {formation.difficulty}
-                                                        </span>
-                                                        <span className="text-xs text-zinc-500">Module {formation.id}</span>
-                                                    </div>
-                                                    <h3 className={`font-medium mb-2 ${status === 'locked' ? 'text-zinc-500' : 'text-white'}`}>
-                                                        {formation.title}
-                                                    </h3>
-                                                    <p className={`text-sm mb-4 line-clamp-2 ${status === 'locked' ? 'text-zinc-600' : 'text-zinc-400'}`}>
-                                                        {formation.description}
-                                                    </p>
-                                                </div>
+                                                            {/* Content */}
+                                                            <div className="pr-10">
+                                                                <div className="flex items-center gap-2 mb-2">
+                                                                    <span className={`text-xs px-2 py-0.5 rounded-full ${formation.difficulty === 'Débutant' ? 'bg-emerald-500/10 text-emerald-400' :
+                                                                        formation.difficulty === 'Intermédiaire' ? 'bg-amber-500/10 text-amber-400' :
+                                                                            formation.difficulty === 'Avancé' ? 'bg-orange-500/10 text-orange-400' :
+                                                                                'bg-red-500/10 text-red-400'
+                                                                        }`}>
+                                                                        {formation.difficulty}
+                                                                    </span>
+                                                                    <span className="text-xs text-zinc-500">Module {formation.id}</span>
+                                                                </div>
+                                                                <h3 className={`font-medium mb-2 ${status === 'locked' ? 'text-zinc-500' : 'text-white'}`}>
+                                                                    {formation.title}
+                                                                </h3>
+                                                                <p className={`text-sm mb-4 line-clamp-2 ${status === 'locked' ? 'text-zinc-600' : 'text-zinc-400'}`}>
+                                                                    {formation.description}
+                                                                </p>
+                                                            </div>
 
-                                                {/* Footer */}
-                                                <div className="flex items-center justify-between pt-4 border-t border-zinc-800/50">
-                                                    <div className="flex items-center gap-3">
-                                                        <div className="flex items-center gap-1.5">
-                                                            <Icon icon="solar:clock-circle-linear" width="14" className="text-zinc-500" />
-                                                            <span className="text-xs text-zinc-500">{formation.duration}</span>
-                                                        </div>
-                                                        <div className="flex items-center gap-1.5">
-                                                            <Icon icon="solar:star-linear" width="14" className="text-amber-400" />
-                                                            <span className="text-xs text-zinc-400">+{formation.xp} XP</span>
-                                                        </div>
-                                                    </div>
-                                                    {status !== 'locked' && (
-                                                        <span className={`text-xs font-medium ${status === 'completed' ? 'text-emerald-400' : 'text-violet-400'
-                                                            }`}>
-                                                            {status === 'completed' ? 'Revoir' : 'Commencer'}
-                                                        </span>
-                                                    )}
-                                                </div>
-                                            </motion.div>
-                                        );
-                                    })}
+                                                            {/* Footer */}
+                                                            <div className="flex items-center justify-between pt-4 border-t border-zinc-800/50">
+                                                                <div className="flex items-center gap-3">
+                                                                    <div className="flex items-center gap-1.5">
+                                                                        <Icon icon="solar:clock-circle-linear" width="14" className="text-zinc-500" />
+                                                                        <span className="text-xs text-zinc-500">{formation.duration}</span>
+                                                                    </div>
+                                                                    <div className="flex items-center gap-1.5">
+                                                                        <Icon icon="solar:star-linear" width="14" className="text-amber-400" />
+                                                                        <span className="text-xs text-zinc-400">+{formation.xp} XP</span>
+                                                                    </div>
+                                                                </div>
+                                                                {status !== 'locked' && (
+                                                                    <span className={`text-xs font-medium ${status === 'completed' ? 'text-emerald-400' : 'text-violet-400'
+                                                                        }`}>
+                                                                        {status === 'completed' ? 'Revoir' : 'Commencer'}
+                                                                    </span>
+                                                                )}
+                                                            </div>
+                                                        </motion.div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         ))}

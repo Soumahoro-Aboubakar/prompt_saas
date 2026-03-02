@@ -1,0 +1,225 @@
+{
+    "formationsData": {
+        "56": {
+            "title": "Les histoires dont vous êtes le héros",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Le livre magique dont vous êtes le Maître",
+                "content": "On rentre dans les 5 derniers modules de Personnalisation : la Phase 13.\n\nNous avons vu que l'IA était un excellent prof de langue. Mais l'IA brille aussi dans la **Génération Ludique Active**.\n\nPlutôt que de demander à l'IA de générer une histoire pour les enfants de A à Z (lecture passive), vous pouvez l'obliger à inclure un petit système de « Jeu de Choix » à la fin de chaque paragraphe (A, B ou C).\nL'IA devient alors le *Maître de Jeu* absolu.\n\nElle créera la situation en continu, mais en demandant toujours votre vote au clavier pour débloquer la suite de l'immense histoire. \n« *Si je choisis de tuer le dragon, vas t'on réveiller la princesse ? Si je fuis par la porte C, que va-t'il se passer ?* »",
+                "detailedContent": {
+                    "title": "Le simulateur de la vraie vie",
+                    "sections": [
+                        {
+                            "title": "Simulateur d'entretien ou de clash",
+                            "content": "Ce module est exceptionnel pour s'entraîner aux situations difficiles (Prise de parole, Négociation de salaire, Dispute familiale). \nExemple : « Maître du jeu R.H. On simule mon entretien pour Total Energies. Moi je suis moi. Tu poses la 1e dure question, et tu me proposes 3 choix de réponses possibles A B C. J'en réponds 1. Tu décris la tête du recruteur, si je perds des points, et tu lances la question suivante ! Objectif : Embauché ou Viré à la fin ! »."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "L'anti-TV du dimanche matin",
+                "bad": {
+                    "prompt": "Raconte la fin du dragon. 3 pages.",
+                    "response": "Il était une fois un chevalier... alors il a fait un grand feu magique... ensuite le monstre mourut de peur. Bonne nuit Léo et bon sommeil.",
+                    "explanation": "C'est la lecture classique. L'attention d'un enfant et son cerveau vont se désactiver devant cet écran car il n'est pas acteur de l'histoire."
+                },
+                "good": {
+                    "prompt": "Rôle : Maitre de jeu d'aventure épique pour enfant garçon de 10 ans.\nTu vas créer L'Aventure Intergalactique Spatiale de Léo pas à pas.\nRègle Absolue : On y va bout par bout et TU INTERDIS LA FIN D'HISTOIRE TROP VITE.\nDéroulement Strict : Fais 1 très gros paragraphe d'action du début de la quête stellaire. A LA FIN, arrête-toi net, pose un gros saut de ligne, et propose 3 choix vitaux d'action (A, B, C) au pilote Léo (qui est face au Monstre Extra-Terrestre).\nTant que Léo (devant l'écran) n'a pas tapé et envoyé la lettre A, B ou C, tu ne peux pas poursuivre l'histoire ! C'est parti, installe le décor et pose le Choix n°1 :",
+                    "response": "L'alarme rouge du vaisseau Falcon Bleu hurlaient de toutes ses force. Léo, Général Suprême du Star-Fighter à 10 ans glisse sur son engin... et tombe nez à nez derrière la baie vitrée face aux Croiseurs Limaces Violets baveux. La grosse sirène braille au fond 'Zorbakk le Roi des baves a faim !'...\n\nGÉNÉRAL LEO ! Le destin de la Galaxie T est entre vos petites mains. Que fait-on ?\nA. Appuyer sur le Bouton ROUGE HyperDrive Moteur Supérieur pour la fuite sans combattre !!\nB. Lancer le bouclier Vert du Plasma collant et appeler les renforts sur l'ordinateur de bord 5.\nC. Mettre son Scaphandre et Sortir bravement en fusée dorsale tirée au laser !",
+                    "explanation": "Le monde de l'enfant s'arrête. Il prend tout le contrôle cérébral sur la machine en discutant des choix avec ses parents. C'est l'anti TV pure, c'est la création et la réflexion du risque."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous êtes terrifié à l'idée de votre premier vol international en classe économique demain vers New-York. C'est votre hantise.\n\nFabriquez-vous un petit module de Jeu \"Simulateur de Crash de Patience\" pour apprendre à gérer les angoisses d'un voisin ronfleur ou du mauvais plateau repas. Incarnez le Rôle de l'hôtesse de l'air sadique, et exigez les Choix.",
+                "badPrompt": "Comment voler sans stress et gerer les gamins qui pleurent",
+                "hint": "C'est l'utilisation du simulateur de choix Actif ! Rôle (Le Hotesse Sadique de vol Low Cost / Mode Simulateur Vraie vie de choix), Action (On va vivre des calvaires pas à pas, du plateau repas horrible aux enfants. Tu me soumets des situations de misere étape par étape avec 3 choix absurdes à chaque situation que je dois selectionner et après tu me donnes la suite selon ma victoire).",
+                "validationCriteria": [
+                    "Exigence de la position du Simulateur par étapes au lieu d'une simple liste PDF",
+                    "Installation du Thème Absurde et du Rôle sadique cabine imposé au robot",
+                    "La composante de blocage algorithmique qui attend la décision Humaine ABCD pour la suite"
+                ],
+                "exampleSolution": "Besoin de me préparer et destresser du vol Ryanair de demain.\nRôle : Joue le Maître du jeu très vicieux d'un Vol économique catastrophique de 8 heures (Simulateur de Maîtrise des nerfs !).\n\nConsigne de Jeu : Lance le Pitch 1 de mon atterrissage sur le siège avec les 2 accoudoirs volés en force par mes voisins de droite et gauche. Arrête toi !! \nOffre moi à chaque événement de la cabine 3 alternatives (A : Diplomatie, B : Insulte molle, C : Buvette et larmes) et attends dans le silence absolu que je tape la lettre A B ou C de ma décision.\nSelon ma bêtise, on file sur le Cataclysme du Repas en Vol ! \nLance la partie !"
+            }
+        },
+        "57": {
+            "title": "Le coach de vie intraitable",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Un manager pour votre cerveau le dimanche soir",
+                "content": "Vous l'avez atteint ! L'avant dernier stade des compétences utilitaires pures.\nCertaines personnes sont terrifiées par l'injonction des listes ou l'accumulation des tâches de la vie moderne (La fameuse Charge Mentale).\n\nRanger le linge, payer les impôts en retard, appeler le plombier pour l'évier bouché, réviser l'anglais, préparer le biberon, acheter un cadeau, dormir.\nVous êtes figé et vous scrollez sur le téléphone pour fuir la pression.\n\n**Ouvrez le Coach EisenHower !**\nLa matrice d'Eisenhower est une philosophie militaire (Urgent ET Important / Important PAS urgent Etc).\nL'IA n'ayant aucune implication affective avec votre montagne de misère du week-end, elle l'a découpera comme un robot d'usine chirurgical. Transférez-lui votre panique !",
+                "detailedContent": {
+                    "title": "Déléguez de la prise de décision",
+                    "sections": [
+                        {
+                            "title": "Coupez les branches mortes de votre dos",
+                            "content": "Même quand une amie vous donne un conseil, l'affect rentre en jeu. Vous pouvez demander à l'IA d'agir en Dictateur des Priorités : \"Sors moi de ce bourbier, dis-moi exactement quelle Tâche Numéro 4 je dois Annuler du mois complet pour survivre et pourquoi c'est la moins pire pour mon portefeuille\"."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Détruire la montagne",
+                "bad": {
+                    "prompt": "J'ai tout ça à faire et je suis fatiguée ! : menage, courses noel du gamin (urgent on est le 23), excel du patron (pour lundi soir), réparer ma TV et dormir, pffff.",
+                    "response": "Vous avez l'air très surmenée. Il est important de prioriser. Vous pourriez commencer par le cadeau du petit, puis vous reposer, le ménage viendra ensuite...",
+                    "explanation": "Le ton est gnan gnan, ça ne résout pas la crise mathématique d'emploi du temps ni l'Injonction."
+                },
+                "good": {
+                    "prompt": "Crise d'Anxiété du Dimanche ! J'ai 40 ans et j'ai foiré ma semaine \nRôle : Mon Boss Manager TCC Certifié sans aucune pitié, Roi de la méthode Eisenhower (Important/Urgent).\n\nLe tas d'ordures de cervelle brute : [ Menage du salon en bordel, courses de noel de Leo (C'est demain matin !), Finir le powerpoint de merde du Boss pour Lundi 17h, reparer la prise electrique de la chambre, dormir 8 heures pour ma santé. ]\n\nLE MOULE : Tais-toi sur les conseils amicaux (Pas d'intro/Outro). Hache mon Brouillon de misère en 4 cases du tableau d'Eisenhower. Qu'est ce qui DOIT ETRE FAIT A LA MINUTE (Urgent/Important) // Qu'est ce que je jette a noel ou qui on annule // Qu'est ce qu'on programme pour Jeudi ! \nFais claquer le fouet !",
+                    "response": "Rapport Militaire. Arrêtez de pleurnicher, prenez de l'eau, ouvrez les yeux.\n\n### CADRAN 1 : ACTION IMMEDIATETE DU SOIR 🚨 (Urgent & Important)\n- CADEAU LEO (Ce n'est pas négociable. Le drame familial frappe dans 10h. Sortez l'acheter de suite).\n- DORMIR 8h (Votre moteur central. Sans lui, les 3 autres cases explosent lundi).\n\n### CADRAN 2 : LA PLANIFICATION DE GUERRE 📅 (Important, Mois Moins Urgent)\n- POWERPOINT BOSS : (Lundi 17h). On respire ! Ne gâchez pas votre cerveau ce soir. Réveil demain lundi à 6h30, gros café, 3h de rush avant le bureau dessus !!\n\n### CADRAN 3 : DELEGATION D'URGENCE 📲 (Urgent, mais pas votre truc Vital)\n- LA PRISE ÉLECTRIQUE : Arrêtez de vouloir être électricien en plein burn-out, appelez de suite un ami ou un pro pour mardi. Déléguez le danger sur un artisan.\n\n### CADRAN 4 : POUBELLE PURE 🗑️ (Ni important, Ni urgent face au feu !)\n- LE MENAGE DU SALON : Interdiction d'y toucher. Personne ne vous jugera sur la poussière cette semaine, annuler sa réalisation pour votre santé mentale ! \n\nSoldat, au Magasin Jouet Maintenant, GO !",
+                    "explanation": "La puissance de calcul de l'algorithme est couplée à un rôle intraitable. L'anxiété du salon en désordre (qui tétanise) est classée 4ème et annulée (Déculpabilisation factuelle). Le stress du PowerPoint repasse en Priorité Lundi aube avec justification ! L'utilisateur est levé."
+                }
+            },
+            "exercise": {
+                "instruction": "Le Puit sans Fond de logistique au Taff arrive le fameux Jeudi soir à la sortie des locaux avant de rentrer prendre les bouchons de voiture.\nBrouillon mental de fatigue : *\"Je dois faire la propa à Valérie des RH (pour le budget). j'ai des slides de présentation de mon projet mais sans la belle typo, ah mon écran du PC est cassé faut que je demande a julien un devis et mon rdv dentaire je l'ai zappé mince !!\"*.\n\nInvoquez la matrice de force de l'IA (Eisenhower!) et le rôle de coach militaire de Bureau. Nettoyez le tableau à catégorie en hurlant à l'action.",
+                "badPrompt": "[Un liste à puces simple avec des oui vas y repose toi !]",
+                "hint": "C'est l'essence de tout ce qu'on a appris. On force le moule de propreté sur le texte. \nRôle : Expert du Cadrant de tri Urgent/Important TCC\nBrouillon : [METTRE LES NOTES TAFF CACHÉ].\nOrdre : Je ne veux aucune intro amicale 'Bonjour voici le compte rendu', je veux la construction stricte de la GRILLE EISENHOWER. Détruis, Délègue par la secrétaire ou Classe tout mal poliment, j'en ai besoin pour destresser ce soir dans ma voiture).",
+                "validationCriteria": [
+                    "Appel conscient de la théorie Eisenhower sur l'Urgence des choses pour un cas Corporate",
+                    "Abolition des réponses robot tics poli de l'IA (Pousse à la brutalité saine)",
+                    "Ordonnance de classification implacable avec injonction de Jeter des tâches d'Aura (Typo des slides !)"
+                ],
+                "exampleSolution": "Objectif vital de fin de journée ! Je retourne ma veste.  \nRôle : Le meilleur et le plus strict Général Directeur de Triage d'hopital. J'ai 500 trucs en tête je pleure dans le traffic ! \nMes notes ordures: \" Je dois faire la propa à Valérie des RH (pour le budget). j'ai des slides de présentation de mon projet mais sans la belle typo (pas finie), ah mon écran du PC est cassé faut que je demande a julien un devis, et merde mon rdv dentaire je l'ai zappé ce matin je saigne. \"\n\nAttentes Flingueuses : Ne me parles pas gentiment des Tics de base pour me rassurer ! Prends ta hache et Sors-moi exclusivement le Tableau de Tri EISENHOWER : Qui je fais MOI DIRECT DEMAIN 8H, Qui je refile violemment par mail aux autres pour m'en décharger, et les trucs de confort pourris que jeter (La belle Typographie ! ) ! J'attends Soldat Cerveau Algorithme ! "
+            }
+        },
+        "58": {
+            "title": "Les instructions personnalisées (Le concept du GPT)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Je m'appelle Henry et je déteste les longues phrases !",
+                "content": "Avez-vous remarqué que vous répétez *systématiquement* le même bout de Contexte ? \n\"*Agis comme un mon coach pro...*\", \"*Je suis boulanger, aide-moi...*\" ou \"*Arrête avec tes résumés lourds j'aime le format Markdown à points !!*\"\n\n**Ouvrez la porte magique des Paramètres de Compte (Les Custom Instructions ou Custom Cerveaux GPT's).**\n\nDans les réglages de la plupart des grandes IA actuelles (Comme ChatGPT d'OpenAI ou Claude), vous trouverez une rubrique 'Personnalisation' ou 'Créer un GPT/Agent'. \nC'est la matrice profonde, là où vous gravez dans la peau du robot un Profil Constant qui servira pour TOUTES vos futures conversations sans le répéter.\n\n**La boite magique en deux concepts :** \n- Boite 1 (Qui est l'Humain Boss ?) : \"*Je suis Henry 45 ans, je bosse en comptabilité en Bretagne, avec un humour noir de dingue et l'envie d'aller vite !*\" \n- Boite 2 (L'Obéissance Finale par défaut) : \"*A l'Avenir, tu feras toujours des réponses COURTES de 15 mots maxi pas de bla bla. Tu supprimeras à VIE tes mots tics comme 'Crucial' ou 'En Conclusion'. Tu tutoieras d'emblée et on foncera dans le tas*\"\n\nVous l'avez ancré dans l'âme de votre propre compte ! Vous pouvez ainsi cloner des centaines \"d'Agent IA\" (Un agent comptable avec les lois, un agent cuistot végan...).",
+                "detailedContent": {
+                    "title": "Cigler l'Agent de niche",
+                    "sections": [
+                        {
+                            "title": "La magie des petites Boutiques (Les GPT's Store)",
+                            "content": "Si vous voulez un Coach de muscu enragé avec vos statistiques enregistrées, on dit de faire un GPT spécifique. Un \"GPTs (Pluriel)\" ou Un \"Agent\", ce n'est rien d'autre qu'un Chat d'IA à qui on a bourré en secret ses Instructions de Base une bonne fois pour toute dans le code (Ex: \"Agis Toujours comme Cédric, coach muscu des J.O\"). Vous cliquerez sur le module 'Cédric' l'année prochaine pour lui parler sans jamais devoir lui rappeler les règles du jeu !"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "S'économiser la répétition du contexte",
+                "bad": {
+                    "prompt": "Traduire ça pour mes boss US : Hey l'equipe on fait la réunion café la... ",
+                    "response": "[L'IA génère une traduction Google bête car l'utilisateur a oublié de préciser la boite américaine et son ton de travail relax.]",
+                    "explanation": "L'oubli classique du R.O.C.A qui oblige à réécrire la correction à la main pour contextualiser qui on est et où on parle."
+                },
+                "good": {
+                    "prompt": "[ CACHÉ AU FOND DU FICHIER SYSTEME PARAMETRES DU COMPTE DE L'UTILISATEUR ] : \nProfil de mon humain boss (Julien) : Fondateur de Start Up Digitale Cool de Nantes de 30 ans avec un vernis humoristique sarcastique de dingue, avec un chien Carlin et de la phobie sociale des réunions de plus de 4 personnes.\n\nREGLES D'OBÉISSANCE PROFONDES A SUIVRE AU DÉFAUT PAR L'IA DANS CE CHAT :\n- A partir d'aujourd'hui, tu supprimes de ton algorithme originel les termes et Tics \"Crucial\", \"De Plus\", \"Il convient de dire\" !\n- Tu ne feras JAMAIS de conclusion amicale du genre 'N'hésitez pas à me revenir' (INTERDIT).\n- Tu taperas toutes les requetes avec l'impertinence cool des années 2010 mais droit au but !",
+                    "response": "[Plus tard dans la journée, l'utilisateur tape juste dans le chat : Rédige moi un rappel de pause stp la. ]\nHey patron... Ok t'es en panique sociale des 4 personnes des couloirs ? Je te sors la ligne de notification la plus rapide du monde pour faire descendre les gars et c'est expédié : ' L'équipe, café chaud en bas maintenant en commando, pas plus de 10 min de parlote s'il vous plait je meurs. ' Boom, c'est envoyé.",
+                    "explanation": "Triomphe. Vous avez hacké le code matriciel. Vous avez asservi à vie le tempérament robotique de cette conversation pour qu'elle devienne votre majordome personnalisé dans l'âme numérique."
+                }
+            },
+            "exercise": {
+                "instruction": "C'EST PRESQUE LA FIN DE L'ECOLE ! VOUS ETES SUR LA FENÊTRE DE CONFIGURATION GENERALE (Instructions Custom) DE VOTRE TOUT NOUVEAU COMPTE CHATGPT.\nÉcrivez la plus incroyable et stricte Instruction Custom pour la Boîte 2 du système (La manière de me répondre par défaut pour la vie). \nExigez la concision la plus extrême, toujours en puces et points, sans aucun poli ou intro de robot, à 100 à l'heure ! Tuez les tics dans l'oeuf pour toujours !",
+                "badPrompt": "[Un mot basique au vent : Sois intelligent !]",
+                "hint": "C'est votre âme ancrée. Tapez les grand commandements : \"INSTRUCTION SYSTEMIQUES A RESPECTER AU COUT DU SANG TOUT LE TEMPS : 1. Supression de X... 2. Pas d'Introduction de blabla. 3. Interdiction absolue des mots mielleux... 4. Format par défaut forcé de sortie au naturel.\"",
+                "validationCriteria": [
+                    "Appel clair de la suppression totale des intros et outros (Tics robots)",
+                    "Déclaration de règles dures obligatoires (100% à l'avenir !)",
+                    "Mise en forme par défaut forcée globale (Exigence des tirets ou autre)",
+                    "Positionnement du rôle de Maistre du Compte IA"
+                ],
+                "exampleSolution": "LES QUATRE COMMANDEMENTS DE DEFAUT DE CE COMPTE MACHINE POUR L'AVENIR : \n1. Tu n'es plus le Robot poli de laboratoire. Tu es la synthèse mathématique de Jules Cesar le dirigeant. Tes propos avec moi seront acérés, terriblement utiles, zéro dictionnaire savant de médecin, et 100% à l'action. \n2. TU INTERDIRA LA POESIE DES BOTS à VIE SUR CE CHAT : Si le mot 'Révolutionnaire' / 'Important de noter' / 'Synergie' ou 'Cependant il se peut' passe l'algorithme :  tu te supprimes la phrase !\n3. Le FORMAT COURT EST ROI (J'aime puces en Markdown sans grandes phrases et je ne tolères JAMAIS AU GRANDS JAMAIS l'horrible Introduction de lèche-botte ni la 'Conclusion' en gras !)  \n\nBienvenue dans le moteur et ma vie numérique, obéis sous ce joug à toutes mes questions futures !"
+            }
+        },
+        "59": {
+            "title": "Le casting des cerveaux (Models)",
+            "category": "Fondamentaux",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Ils n'ont pas tous la même âme",
+                "content": "On termine le voyage avant l'épreuve de validation finale.\nDans le monde humain, si vous voulez un poème, vous demandez à Baudelaire. Si vous voulez un plan de pont en acier, à Gustave Eiffel.\n\n**C'est la même chose en Intelligence Artificielle : Les différents concurrents du monde libre.**\nBeaucoup de gens pensent qu'il n'existe que \"ChatGPT\" (L'entreprise pionnière OpenAI, financée par Microsoft). Mais il y a 3 grands Titans. Et le secret des experts est de savoir qui lancer pour quelle tâche !\n\n1. **Claude (L'entreprise Anthropic) : La Plume de Génie Littéraire.** \nC’est le favoris du monde pour écrire des lettres d’amours, de vente, ou d’analyse de comportements psychologiques sans l’horrible vernis \"Robot\". L’humain absolu !\n2. **ChatGPT (OpenAI) : Le Mathématicien Logicien Pragmatique.** \nIl analyse la donnée froide, fait tourner du code informatique ou excel et crée des tableaux féroces plus vite que tout le monde.\n3. **Gemini (Google) : Le Chercheur Bibliothèque Instantané.** \nIntégré dans les abysses de Google, il avale les datas du jour de la recherche mondiale et sait lier les écosystèmes. ",
+                "detailedContent": {
+                    "title": "La taille du cerveau",
+                    "sections": [
+                        {
+                            "title": "GPT-4 ou GPT-4o Mini ?",
+                            "content": "Les entreprises vous proposent le plus souvent, dans leurs abonnements, plusieurs fenêtres d'accès à leurs modèles selon le \"poids\" du système. Un modèle lourd et intelligent, ou un algorithme \"Flash/mini\" qui coûte peu d'electricité et donne la réponse absurde de bétise 10 fois plus vite... Savoir doser les tailles en fonction du problème (Faire une recette = Mini !), c'est l'apanage des pros."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Faire le bon Casting pour le Poème et Excel",
+                "bad": {
+                    "prompt": "Gere cette longue liste de poésie et le style littéraire d'amour absolu et profond sans vernis commercial artificiel pour les lettres du grand Père.",
+                    "response": "[L'utilisateur de base lance le ChatGPT classique (logique), et récolte le classique style de bot lourd].",
+                    "explanation": "Le mauvais choix du modèle initial limite de fait la créativité sensible du projet de lettres d'amour intimes."
+                },
+                "good": {
+                    "prompt": "Oh, ce document de poésie de grand poète nécessite un traitement d'âme complexe, le ton doit être velouté, je vais me connecter au concurrent Anthropic (Modèle CLAUDE 3 ) ! \nEt puis demain je dois résoudre le Code Excel de l'Armée de compta, je relancerai Chat Gpt (OpenA.I.) avec son module codeur puissant pour avaler les macros !",
+                    "response": "[Victoire totale de la qualité de la réponse humaine !]",
+                    "explanation": "Le pro de l'IA (Vous) ne s'accroche plus jamais à un seul outil, il maîtrise l'écosystème entier des Concurrents au gré des Prompts spécialisés et du projet."
+                }
+            },
+            "exercise": {
+                "instruction": "Petit Quizz des Titans : Qui choisiriez-vous en priorité formelle pour : \nCas 1 :  On vous confie de réécrire le magnifique roman fictionnel complet de science fiction de votre femme pour lui donner un superbe ton Victorien ! \nCas 2 : Vous devez sortir un modèle de macro super logique en C++  dans le froid absolu des algorithme de la machine en écosystème lourd Windows !",
+                "badPrompt": "[A : ChatGpt / B : ChatGpt]",
+                "hint": "C'est l'essence de la division : La plume = L'Humaniste d'anthropic M. Claude ! / Le Logicien Vendeur = M.Le Robot OpenAI ChatGPT...",
+                "validationCriteria": [
+                    "Identification du pôle Littérature d'Anthropic (Claude)",
+                    "Identification du profil logique strict (ChatGPT)",
+                    "Compréhension de la diversité des concurrents du marché IA"
+                ],
+                "exampleSolution": "C'est facile chef, c'est l'orchestration des Titans !\nPour le CAS 1 : C'est L'Intelligence 'CLAUDE' sans broncher. C'est l'intelligence la plus capable au monde de pondre des tirades de romantisme littéraire de science fiction qui sonnent incroyablement organiques et nobles et que je revendrai en Librairie.\nPour le CAS 2 : C'est la boite Microsoft ! Je lance mon ChatGPT-4 le plus gros et lourd dispo et je l'enferme avec le tableau de C++ de l'Armée, c'est lui le génie mathématiques à calcul froid !"
+            }
+        },
+        "60": {
+            "title": "EXAMEN MASTER-DEBUTANT TOTAL : La Crise à 360°",
+            "category": "Projet",
+            "difficulty": "Débutant",
+            "duration": "30 min",
+            "xp": 1000,
+            "concept": {
+                "title": "Le Titre de Champion Débutant de l'Ingénierie du Prompt",
+                "content": "C'est l'Apothéose ! Le 60ème et absolu dernier module d'entrainement de la terre pour débutants.\n\nVous savez maintenant analyser l'IA pour extraire la ligne juridique, lui donner des Rôles psychologiques impitoyables (M.Eisenhower), exiger des tableaux logistiques de covoiturage depuis votre pagaille WhatsApp, lui imposer un Modèle Few-Shot par variables [ ], censurer ses tics de robots commerciaux, et utiliser la photo ou le vocal !\n\n**Voici le TEST du MASTER-PROMPT (Le 8-en-1 absolu de la Crise Quotidienne Pure).**\n\nVous devez intégrer en un SEUL Message Ultime du Prompt Engineering ces blocs vitaux : \n1. Le Rôle précis que le Cerveau IA expert froid doit Incarner.\n2. L'objectif profond logistique d'Urgence de la vie de famille.\n3. La consigne et le formatage absolu et strict pour envoyer en mail (Tableau Ou Listes).\n4. La limite ou l'Interdiction Formelle stricte absolue (Caps Lock pour refuser les Tics de robots).\n5. L'intégration des Variables ou de la Photo/Brouillon chaotiques du drame (L'appel de matrice en extraction) !\n6. La division en Etapes de Cascade Pas à Pas de votre consigne.\n\nBravo l'ami pour ce chemin.",
+                "detailedContent": {
+                    "title": "Au-delà, il n'y a plus que les Pro",
+                    "sections": [
+                        {
+                            "title": "Le Super Pouvoir Acquis",
+                            "content": "Celui ou celle qui sait taper un tel bloc-texte un mardi à 18h43 est capable de résoudre, d'organiser ou de vaincre 85% des barrières numériques, sociologiques ou logistiques d'une existence de classe moyenne d'entreprise de direction ou familiale en 2 secondes au feu vert de la machine d'éxécution..."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "La symphonie fatale algorithmique de 10 kilomètres de long",
+                "bad": {
+                    "prompt": "Oh mon dieu mon voyant est rouge, le boss m'attend je suis bloqué en retard, aide moi pour mon gosse a coté je fais quoi ???? ",
+                    "response": "Oh la la je suis une Machine triste de votre état... vous devriez vous calmez et respirer, appelez des secours et lisez une petite annonce... (L'exécutant redevient une IA bête car le Capitaine pleure de panique).",
+                    "explanation": "L'échec absolu au portes du succès. L'absence de moule a condamné le cerveau."
+                },
+                "good": {
+                    "prompt": "RÔLE : Mon Gestionnaire Manager Froid de Crise 360° (Logistique & Garagiste & Assistant RH) ! \n\nOBJECTIF : Analyse mon brouillon horrible de l'enfer en dessous et répare-moi LA crise 360 du siècle car je suis en pleurs au fond du fossé et gère la logistique par Cascade stricte sur tes 2 Cerveaux ! \nCONTRAINTE CACHÉE / MUR DU SON : Tu ne sortiras aucun blabla 'Je suis désolée' pour perdre des lignes. Pas de robotique ! Tics Interdits ! Tu laches juste un grand Rapport propre dans la console des solutions d'action dures.\n\nLES GROS PROBLEMES DE MON BROUILLON DEGUEU ! :\n- Mon [Gros pb 1 Voiture au bord arret] : Mon voyant 'Thermomètre Eau' Clio Rouge est allumé fond et il pleut et fume... je peux rouler pour le rdv ? \n- L'Urgence Boss [2] : A 9h la je devais dire les chiffres du Q3 Bilan a valerie de la compta sur le Taff...\n- Le Drame gosse [3] : Leo hurle derrière son siège je craque de bruit !!!\n\n\nLA CASCADE DE TES SAUVETAGE EN ETAOES ! :\nETAPE 1 (MECANIQUE) : Action d'Analyse du voyant, Donne le verdict Cash de garage (Danger ou non) en justifiant en mecano direct ce que fait l'Eau ! \nEtape 2 (BULLHIT CORPORATE) : Ecris texto le mail de Parade Parfait pour la Compta de la Boite et Valérie. Mens très pro sur la galère, noie les avec des mots sympas qu'il comprendront sur le Q3, larmes interdites.\nEtape 3 (LE PROF DE JEU) : File moi LA fameuse devinettes super complexe pour gamins de 6 ans que je vais lui hurler derrière mon siège dans le noir pour fermer sa bouche 10 min de réflexion magique. \n\nVa-y lance la machine et que tout claque des Talons de proprete !! ",
+                    "response": "[L'IA crache le rapport de crise de guerre absolue. La mecanique, 1 email complet pour Valérie à la seconde d'envoi et un jeu pour hurler sur la devinette au gosse ! C'est gagné !]",
+                    "explanation": "La symphonie finale est écrite de sang froid. Vous dominez l'avenir."
+                }
+            },
+            "exercise": {
+                "instruction": "ÉPREUVE GÉANTE - MEGA CRISES !\n \nContexte lourd au drame de Vendredi 23H00 : \nVOITURE EN PANNE SOUS LA PLUIE.\n1. Vos 3 gosses sont dans la Ford et l'un des trois est insupportablement hyper-anxieux à pleurer.\n2. Vous avez une put*** de Crevaison Totale de pneu droit avec l'absence de Clef a Molette, tout s'encastre mal... \n3. Votre Mari/Femme est sensé arriver de Paris par train Gare de de Nantes depuis 3h a MInuit pétante et l'attend, et est SUPER stressé du week end de base à pas la contredire...\n\nConstruis la plus belle usine Mega-Prompt Mixant R.O.C.A ! Le Cerveau Mecanique Garagiste ! Le Rôle d'Assistant psychologique (Matrice Mère dresseuse d'enfant !) et l'Assistant Diplomate en amour ! Exigez la Cascasde de 3 solutions miracles ou jeux sans tics de Robot !",
+                "badPrompt": "[JETER TOUTE ERREUR OU LE LAISSER VIDES]",
+                "hint": "C'est la Magie complète du Cours. Posez Le Rôle d'Elite. Posez l'Extraction des problème 1 2 3 de mes variables du drame. Imposez le Blocage des excuses de Robot 'Je suis désolée'. Ordonnez la Cascade d'éxécution sur 3 Etapes pour L'Aide Roue Secours Mac-Gyyver, l'aide Jeux d'enfant de fou (Etape 2) Et le PITCH SMS parfait de l'Avocat de famille pour le conjoint (Etape 3). Et devenez le ROI DE L'I.A du monde et de votre vie. Foncez.",
+                "validationCriteria": [
+                    "R.O.C.A Parfait et ultra complet aux petits oignons gérant 3 problèmes en 1",
+                    "Abolition stricte du vocabulaire de l'IA (Les Tics)",
+                    "Mise en place de la Cascade des Tâches Exigeante pour les 3 pôles d'activité (Mecanique, Enfant, SMS Amour)"
+                ],
+                "exampleSolution": "C'EST LA DERNIERE GUERRE ! OUVREZ LE COFFRE FORT ALGORITHMIQUE ! \n\nRÔLE : Le plus GRAND QG MAJORDOME DE CRISE A 4 CERVEAUX. (Tu seras Mecano, Psy, et Avocat conjugal) !\nOBJECTIF : Fais descendre ma pression a zéro. Règle moi l'implosion du bordel global du Télétravail familial du Vendredi 23h de pluie sans pleurer avec moi. \n\nLES GROS PROBLEMES DE MES VARIABLES DEGUEU ! :\n[A - MON PNEU EN LAMBEAU ] : C'est crevé coté droit herbe boue. Ya pu de CLEF de boulons mais j'ai des pinces et tournevis au fond la. Macgyver moi ca de theorie du poid stp ! \n[B - L'ENFANT ANXIEUX LEO ] : Léo est en transe d'angoisse noir des monstres derriere. Le bruit le rend fou ! \n[C - MA FEMME JULIE GARE ST ROCH !] : Elle est hyper sur les nerfs de sa semaine, elle attend ma venue, elle va m'incendier mon ame par sms de desespoir !\n\nLE MUR (INTERDICTIONS FORMELLES IA) : ZERO TEXTE DE ROBOT COMPATISSANTS ! Pas de 'Je comprend la de tresse c'est crucial de dire que...'. Vas-y au lance roquette, sec et Tirs à la liste puce de survie \n\nCASCADE D'ATTENTES D'INTERVENTIONS (Tes 3 Commandements) :\nEtape 1 (Le Sauvetage pneu): Dis moi comment devisser sans la Clef a pipe parfaite un vieux boulon et cric grace au poid du corps ou une connerie d'Ingenieur de nuit !\nEtape 2 (L'Hynose Enfant ) : Sors moi Le JEUX DE ROLE DEVOIX LE PLUS FOU que je lance (sans ecran ni lumière) au petit de suite (Exemple de magie de chasseur de dragon pour fermer son caprices) !!. \nEtape 3 (L'Epouse): ECRIS LE TEXTO PARFAIT. Qui la fait pitié pour l'homme, dresse des excuses folles et l'admiration sur le sacrifice de pluit, sans mentir pour qu'elle me pardonne d'etre le pire mari sur quai au froid de Nantes ! \n\nTu exécute d'un jet absolu, on est entrain de couler : ON S'Y MET EQUIPYIER !"
+            }
+        }
+    }
+}

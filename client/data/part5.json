@@ -1,0 +1,449 @@
+{
+    "formationsData": {
+        "41": {
+            "title": "L'IA qui a des yeux (Le mode Vision)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Votre appareil photo devient magique",
+                "content": "Jusqu'ici, nous avons parlé avec l'IA en tapant sur un clavier. Mais les intelligences récentes ont gagné un nouveau sens : la vue.\n\nLa plupart des applications (comme l'application ChatGPT sur votre téléphone) possèdent un bouton avec un petit trombone ou un appareil photo.\n\n**Comment ça marche ? (L'analogie du professeur qui regarde par dessus votre épaule)**\nImaginez que vous êtes coincé sur la notice de montage suédoise de votre nouveau meuble. Au lieu de décrire « Alors j'ai une planche avec 3 trous et une vis étrange... », vous prenez la page en photo, vous l'envoyez à l'IA et vous tapez : « *Je suis bloqué à l'étape 4, explique-moi ce que je dois faire avec les pièces sur la photo !* »\n\nL'IA va « lire » l'image, reconnaître le meuble, comprendre le schéma, et vous parler des pièces exactes qu'elle voit sur *votre* table.",
+                "detailedContent": {
+                    "title": "Ne décrivez plus : Montrez !",
+                    "sections": [
+                        {
+                            "title": "Le dépannage instantané",
+                            "content": "C'est l'usage n°1 de la vision. Un voyant rouge s'allume sur le tableau de bord de votre voiture de location ? Ne cherchez pas le manuel dans la boîte à gants. Prenez le compteur en photo, envoyez-le, et demandez : « *C'est grave ce voyant sur une Peugeot 208 ? Je peux rouler jusqu'au garage ?* ». L'IA identifiera le symbole à la perfection."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "La fin du casse-tête des notices",
+                "bad": {
+                    "prompt": "(Sans photo) J'ai un câble avec un bout rond rouge et noir, l'autre bout est carré gris, mais la télé n'a qu'une fente bleue derrière, je le mets où ?",
+                    "response": "Je ne suis pas sûr de quel câble vous parlez, il peut s'agir d'un câble RCA, optique ou HDMI, pourriez vous me donner la marque...",
+                    "explanation": "Vous épuisez l'IA et vous-même par la barrière des mots."
+                },
+                "good": {
+                    "prompt": "(AVEC UNE PHOTO DES CABLES ET DE L'ARRIERE DE L'ECRAN) : Rôle : Électricien patient. Dis-moi quel câble sur ma table va dans quel trou sur ma télé !",
+                    "response": "Facile ! Le câble gris et noir sur votre table (en bas à gauche) est un câble d'alimentation ancienne génération. Il se branche dans la prise complètement à droite de votre téléviseur (sous l'étiquette code barre blanche). Le câble rouge ne servira à rien ici.",
+                    "explanation": "Magique. L'IA a scanné l'environnement spatial. Elle oriente la solution par rapport aux points de repères de la photo (« sous l'étiquette »)."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous êtes en pleine randonnée, votre ami fait une réaction allergique, mais vous avez une vieille trousse de secours familiale avec 3 boîtes de médicaments périmés, avec des écritures russes, et 2 crèmes bizarres.\nÉcrivez le prompt qui sauve la mise, en sachant que vous allez attacher une photo globale de tous les médicaments étalés sur un rocher.",
+                "badPrompt": "Photo. Qu'est ce qu'il y a là dedans ?",
+                "hint": "C'est une urgence. Rappelez le Rôle (Médecin urgentiste traducteur), le Contexte (allergie en forêt), l'Action requise avec la Photo (Analyse ces boîtes, lis les langues étrangères dessus si besoin) et la Consigne Finale (Dis moi ce qui sauve des allergies, et l'année de péremption visible de la boîte que tu choisis).",
+                "validationCriteria": [
+                    "Requête d'analyse visuelle",
+                    "Demande de traduction des emballages photos",
+                    "Isolation du traitement anti-allergique",
+                    "Vérification demandée de la péremption visuelle"
+                ],
+                "exampleSolution": "Rôle : Médecin secouriste polyglotte. \nURGENCE : Mon ami fait une crise d'allergie (Plaques rouges). Voici la photo de ce que j'ai trouvé dans la trousse. \nAction : Scanne visuellement toutes les boîtes, traduis le Russe qui est écrit, et trouve-moi EXCLUSIVEMENT l'antihistaminique ou la crème apaisante. \nAttente : Disquette tout le reste, dis-moi juste quelle boîte je dois lui donner, comment la reconnaître sur la photo, et si tu arrives à lire une date de péremption dessus par sécurité !"
+            }
+        },
+        "42": {
+            "title": "Générer une image parfaite (La méthode SES)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Devenir un peintre sans pinceau",
+                "content": "Beaucoup d'IA permettent aujourd'hui de créer des images à partir de texte (DALL-E, Midjourney, etc.).\n\nLe problème des débutants, c'est de demander : « Dessine-moi un chat mignon ».\nLe résultat sera... n'importe quoi. Un dessin d'enfant, une photo ultra-réaliste, ou une image 3D moche.\n\n**Pour que l'outil de dessin fasse des chefs-d'œuvre, utilisez la règle S.E.S :**\n\n**1. le Sujet (Qui/Quoi) :** Soyez hyper précis. Pas \"Un chat\", mais \"Un chaton tigré portant de petites lunettes de soleil aviateur.\"\n**2. l'Environnement (Où) :** Décrivez le décor et la lumière. \"Assis sur une table de terrasse parisienne, lumière chaude de fin d'après-midi d'été.\"\n**3. le Style (Comment) :** C'est le secret absolu. Voulez-vous une peinture à l'huile ? Un rendu 3D Pixar ? Une photo argentique des années 80 ? \"Style : Photographie réaliste de publicité pour Nikon, très net.\"\n\nDès que vous donnez les 3, l'image devient professionnelle.",
+                "detailedContent": {
+                    "title": "Ne lui laissez faire aucun choix esthétique",
+                    "sections": [
+                        {
+                            "title": "Le problème des mains et de l'orthographe",
+                            "content": "Les IA génératrices d'images ne \"comprennent\" pas l'anatomie ou l'alphabet. Elles font du calcul de pixels. C'est pourquoi elles ont souvent du mal à faire des mains (elles mettent 6 doigts) ou écrivent des mots bizarres sur les pancartes (« Restourant »). Privilégiez des scènes sans texte, ou utilisez des systèmes récents pour l'écriture."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Du brouillon au chef-d'œuvre",
+                "bad": {
+                    "prompt": "Fais un dessin cool pour mon invitation d'anniversaire à la plage (je fête mes 30 ans).",
+                    "response": "(Image générée : Un dessin un peu ringard, façon cartoon de dimanche matin, avec des couleurs saturées et \"Happy Barfday\" écrit n'importe comment dans le ciel).",
+                    "explanation": "L'IA a dû deviner le style (elle a choisi Cartoon), l'époque, et la lumière. Le résultat est imprévisible."
+                },
+                "good": {
+                    "prompt": "Génère une image. Sujet : Un gros feu de camp de nuit sur le sable, entouré de chaises en toile tropicale, avec une glacière rouge vintage. Environnement : Une plage secrète hawaïenne, nuit étoilée, éclairage orange chaud uniquement au centre. Style : Photo hyper-réaliste, qualité magazine de voyage National Geographic, ambiance chill et luxueuse.",
+                    "response": "(Image générée : Une photo somptueuse, photoréaliste. La lumière des flammes lèche les chaises, la glacière est parfaitement rendue. L'image est digne d'une publicité Ralph Lauren).",
+                    "explanation": "La méthode SES a verrouillé la machine créative sur les standards les plus hauts (Style photo magazine, Sujet détaillé)."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous avez besoin d'une belle image pour illustrer votre futur site web qui vend du miel Bio artisanal. \nÉcrivez le prompt parfait en utilisant obligatoirement la règle S.E.S. L'image finale doit faire très « peinture traditionnelle française » et chaleureuse.",
+                "badPrompt": "Photo de pot de miel de qualité !",
+                "hint": "C'est une fiche à remplir. S (Un gros pot en verre coulant de miel doré). E (Sur une table en bois rustique ensoleillée avec des abeilles). S (Peinture classique impressionniste, coup de pinceau épais chaleur estivale).",
+                "validationCriteria": [
+                    "Sujet défini clairement (Le miel)",
+                    "Environnement détaillé (La table, la lumière)",
+                    "Style esthétique imposé (Peinture/style)"
+                ],
+                "exampleSolution": "Créé-moi le visuel suivant : \nSujet : Un grand pot en verre lourd rempli de miel ambré, avec une cuillère en bois posée dessus et quelques gouttes qui coulent sur le côté. Une fleur de lavande à côté.\nEnvironnement : Sur une table en chêne brut très rustique, devant une fenêtre qui laisse passer les rayons de soleil puissants d'une matinée en Provence.\nStyle : Peinture à l'huile traditionnelle type 19ème siècle, touches de pinceau visibles, ambiance chaleureuse, gourmande et noble."
+            }
+        },
+        "43": {
+            "title": "La méthode Socratique (Le prof particulier)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Interdire à la machine de tricher pour vous",
+                "content": "L'IA est programmée pour vous satisfaire le plus vite possible. Si votre enfant de 12 ans lui envoie une équation complexe ou une dissertation, l'IA va, en 1 seconde, écrire l'équation parfaite et faire la rédaction de 3 pages. \nL'enfant aura 20/20, mais il aura appris... 0.\n\n**Ouvrez la Phase 11 : Le Tuteur.**\nLa pédagogie, c'est l'art de *ne pas* donner la réponse.\nPour transformer l'IA en professeur particulier d'élite, vous devez utiliser la directive dite \"Socratique\" (Poser des questions pour faire accoucher la réponse).\n\n**Le prompt impitoyable du Prof :**\n« *Joue le rôle du meilleur professeur de mathématiques du monde. Mon fils a un problème sur ses fractions (je te joins la photo). Règle absolue de sécurité : NE DONNE JAMAIS LA RÉPONSE OU LE RÉSULTAT FINAL ! Donne-lui des indices, pose-lui une question qui le fait réfléchir sur la prochaine étape, et attends qu'il réponde pour lui dire s'il est sur la bonne voie. S'il se trompe, explique avec une analogie.* »",
+                "detailedContent": {
+                    "title": "L'apprentissage qui responsabilise",
+                    "sections": [
+                        {
+                            "title": "Pas que pour les enfants !",
+                            "content": "Cette technique est inestimable pour vous aussi. Si vous vous mettez au code informatique, ou cherchez à comprendre les règles complexes des échecs ou du Droit. Ne demandez pas le compte rendu, exigez d'être bousculé par le Tuteur."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Du distributeur de réponses au guide bienveillant",
+                "bad": {
+                    "prompt": "Fais mes devoirs : 3/4 + 1/8 c'est quoi avec le développement ?",
+                    "response": "Pour additionner ces fractions, mettez-les au même dénominateur. 3/4 donne 6/8. Donc 6/8 + 1/8 = 7/8. Le résultat est 7/8.",
+                    "explanation": "L'outil est performant mais tue la pédagogie. Il exécute la commande de base (être un calculateur textuel)."
+                },
+                "good": {
+                    "prompt": "(Au préalable, on a passé la consigne socratique d'interdiction de réponse). L'enfant tape : J'arrive pas à faire 3/4 + 1/8.",
+                    "response": "Bonjour jeune mathématicien ! Pas de panique. Imagine que tu veux additionner des parts de gâteau. D'un côté tu as des quarts (grosses parts), de l'autre des huitièmes (toutes petites parts).\nOn ne peut pas additionner des pommes et des oranges. Comment ferais-tu pour que toutes les parts fassent la même taille avant de les compter ? (Indice : Regarde tes quarts de gâteaux, que peux-tu faire avec ton couteau ?)",
+                    "explanation": "C'est l'excellence pédagogique. Le bot guide la pensée, utilise les analogies du quotidien (gâteau) et s'arrête en plein vol pour obliger l'utilisateur à travailler son raisonnement propre."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous essayez d'apprendre l'espagnol, et vous bloquez totalement sur la différence entre le verbe \"Ser\" (être) et \"Estar\" (être). \nFaites le prompt pour transformer l'IA en professeur impitoyable de langue. Objectif : IL NE DOIT PAS VOUS FAIRE UN COURS MAGISTRAL, mais vous tester en direct sur des phrases à trous (A vous de deviner).",
+                "badPrompt": "Explique ser et estar",
+                "hint": "C'est un jeu de rôle Tuteur. Rôle (Prof d'Espagnol joueur). Interdiction (Pas de cours chiant de 10 mètres de long !). Processus / Format (Fais-moi jouer. Donne-moi UNE phrase avec un trou, demande-moi quoi mettre, et corrige moi qu'une fois que j'ai répondu. On en fera 5).",
+                "validationCriteria": [
+                    "Rôle de professeur impliqué",
+                    "Interdiction du cours théorique lourd",
+                    "Demande de création d'exercices pratiques (textes à trous) pas à pas"
+                ],
+                "exampleSolution": "Désastre : Je n'arrive pas à comprendre Ser et Estar en espagnol.\n\nRôle : Incarne un prof d'Espagnol redoutable, moderne et malin. \nRègle Absolue : NE me ponds surtout pas un tableau rébarbatif des règles de grammaire que je vais oublier dans 2 minutes.\nMéthode : Nous allons faire ça par le jeu. Propose-moi un défi. Écris-moi UNE situation amusante en français, et la phrase espagnole à trou correspondante. Attends que je tape ma réponse ! Si j'ai faux, donne l'explication (Pourquoi c'était Ser et pas Estar) avec une métaphore facile. C'est parti pour le trou n°1, vas-y !"
+            }
+        },
+        "44": {
+            "title": "La vulgarisation par l'absurde",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Explique-moi Wall Street avec des parts de pizza",
+                "content": "On se sent tous stupide face aux experts des journaux télévisés qui parlent \"d'Assouplissement Quantitatif de la Banque Centrale\" ou de \"Blockchain Décentralisée par Consensus\".\n\nLe pouvoir d'une Intelligence Artificielle ne réside pas dans sa capacité à recracher Wikipédia, mais dans la **Transmutation Sémantique** : elle peut prendre un concept niveau Prix Nobel, et le transformer en une histoire pour un enfant de 8 ans.\n\n**C'est la technique de \"L'Analogie Forcée\".**\nAu lieu de dire : *\"Explique-moi les cryptomonnaies simplement\"* (qui génèrera un texte facile mais ennuyeux), forcez-la par l'absurde :\n*« Explique l'effondrement boursier de 2008 en utilisant exclusivement la métaphore d'une cour de récréation, de billes, de petits caïds et du directeur de l'école. »*\n\nLe cerveau humain retient 100 fois mieux les informations quand elles s'appuient sur son univers connu. Vous allez devenir incollable sur tout.",
+                "detailedContent": {
+                    "title": "Ne soyez jamais gêné de votre niveau",
+                    "sections": [
+                        {
+                            "title": "L'humilité numérique",
+                            "content": "L'IA ne juge pas. Vous pouvez lui dire : \"Je n'ai pas le bac, la biologie me fait peur, peux tu m'expliquer le fonctionnement d'un vaccin ARN avec pour SEULE analogie un patron qui envoie un fax sécurisé aux ouvriers de l'usine cellulaire ?\""
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "La magie du transfert de connaissances",
+                "bad": {
+                    "prompt": "Explique l'inflation vulgairement.",
+                    "response": "L'inflation est la perte du pouvoir d'achat de la monnaie qui se traduit par une augmentation générale et durable des prix... [Cours d'économie classique relou]",
+                    "explanation": "Ce n'est pas de la vulgarisation, c'est un dictionnaire simplifié."
+                },
+                "good": {
+                    "prompt": "Agis comme un pédagogue de génie, très drôle. Je dois comprendre l'INFLATION. \nAttente : Explique-moi tout ce concept monétaire complexe mais RÈGLE ABSOLUE : tu dois uniquement utiliser l'analogie d'une pizzeria de quartier gérée par Luigi, qui doit acheter sa farine et payer son serveur Mario. Fais de l'inflation une 'maladie' qui touche la pizzeria. Sois percutant !",
+                    "response": "C'est parti chef ! Imagine : Luigi vend sa fameuse Margarita à 10 euros. Ses clients l'adorent.\nMais tout à coup, le vendeur de farine augmente ses prix (parce que le blé coûte plus cher). Luigi paie sa farine 2 euros au lieu d'1. En plus, son serveur Mario râle car son loyer a augmenté, il veut 15 euros de l'heure sinon il démissionne !\n\nL'inflation, c'est ce monstre invisible : Pour ne pas couler, Luigi est OBLIGÉ d'augmenter sa Margarita à 12 euros. \nToi, le client, tu arrives avec ton billet de 10 euros (qui suffisait hier). Et là, surprise : ton même billet ne vaut plus une pizza entière. Il te manque 2 euros. Ton argent a perdu son \"Poids Magique\". C'est ça l'inflation : le prix du blé s'est répercuté partout en cascade ! ",
+                    "explanation": "La vulgarisation par l'absurde est un triomphe absolu. Le concept économique complexe (La répercussion des coûts et la perte de valeur faciale de la monnaie) est gravé dans l'esprit du lecteur."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous n'avez jamais rien compris de votre vie au Cloud Informatique (le fait de stocker ses photos sur des serveurs distants). Dès qu'on dit \"Data Center\" ou \"Serveur\", vous êtes perdu. \nFaites un prompt demandant l'explication du système avec l'analogie forcée suivante : \"Une immense grande surface (hypermarché) magique de coffres-forts\".",
+                "badPrompt": "C'est quoi le cloud en vrai stp pour un nul",
+                "hint": "Imposez l'analogie de force. (R.O.C.A) -> Rôle : Vulgarisateur génial. Objectif : Expliquer le 'Cloud' à ma grand-mère. Contrainte / Magie : Tu as l'interdiction d'utiliser des mots d'informatique. Utilise UNIQUEMENT l'analogie de l'Hypermarché géant rempli de coffres de location, avec moi qui y dépose mes cartons à l'entrée ! ",
+                "validationCriteria": [
+                    "Exigence d'explication du concept Informatique (Cloud)",
+                    "Interdiction explicite (ou indirecte forte) du jargon informatique",
+                    "Imposition du scénario de l'hypermarché des coffres-forts"
+                ],
+                "exampleSolution": "Role : Le vulgarisateur de génie façon sorcier C'est pas Sorcier.\nMon problème : Dès que j'entends l'expression informaticienne complexe 'Le cloud' je m'endors, aide moi.\n\nMission : Explique-moi le cloud et comment fonctionne mon smartphone avec. \nLE DEFI : Tu n'as pas le droit d'utiliser des termes techniques ni parler de 'Serveurs'. Tu vas devoir absolument m'expliquer ce principe avec la grosse analogie d'une famille qui loue un coffre-fort dans un gigantesque hypermarché sécurisé souterrain à 4000 km de chez eux... Vas-y l'artiste et raconte une histoire."
+            }
+        },
+        "45": {
+            "title": "Gérer les gros documents (Le Liseur Flash)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Ne lisez plus jamais 40 pages de Contrat",
+                "content": "La plupart des IA actuelles autorisent l'envoi de fichiers dans la fenêtre de discussion (un petit \"Trombone\" ou bouton \"+\"). \nVous pouvez lui envoyer de vrais fichiers : des PDF entiers, des tableaux Excel, ou même de longs textes copiés.\n\nMais attention : il ne faut pas juste envoyer le document et dire \"Lis ça\". Il faut être **extrêmement directif sur le tri des poubelles**.\nL'IA doit devenir votre assistant \"Surligneur\".\n\n**Oubliez le Résumé, Visez l'Extraction Critique !**\nNe demandez pas *« Quel est le sujet de ce contrat de location ? »*\nExigez l'angoisse financière : *« Fais la liste à puce des PIRES conditions concernant le dépôt de garantie de ce PDF et de ce qu'il se passe si je pars avant 1 an. Filtre le reste, c'est inutile. »*\n\nVous passez de \"Liseur\" à \"Chasseur de prime d'informations\".",
+                "detailedContent": {
+                    "title": "La limite de mémoire",
+                    "sections": [
+                        {
+                            "title": "Attention à la taille",
+                            "content": "Les IA très récentes avalent des centaines de pages facilement (Anthropic Claude ou Gemini notamment). Mais sur les versions très gratuites, il se peut que le fichier soit \"trop lourd\" à avaler d'un coup. Le cas échéant : n'envoyez que le Chapitre 3 qui vous fait peur !"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Démêler la pelote de l'administration",
+                "bad": {
+                    "prompt": "(Pièce jointe : ContratMaison14Pages.pdf) Salut Fais un super résumé please.",
+                    "response": "Ce document est un bail d'habitation standard pour une maison située à Nantes entre Mme X et M. Y. Le contrat fait état des conditions de paiements du loyer chaque mois fixé à date... [etc etc]",
+                    "explanation": "L'IA a fait son travail. Elle vous donne l'équivalent d'une quatrième de couverture de livre, plate et molle. Aucun angle n'a été exigé, vous n'apprenez rien d'utile face au propriétaire."
+                },
+                "good": {
+                    "prompt": "*(Pièce jointe : ContratMaison14Pages.pdf)*\nRôle : Mon Avocat d'affaire paranoïaque prêt à défendre mes sous !\nObjectif : L'agence veut me faire signer ce PDF ce soir. Moi je flippe. Scanne chaque ligne microscopique. \n\nAttentes : Je veux uniquement un Tableau d'Alerte : \n1. Quels sont mes risques majeurs si je dois annuler le contrat en plein mois d'Août ? Sort-moi la ligne légale associée qui fait peur.\n2. Y a-t-il une seule ligne dans ce livre qui met les réparations des plomberies à mA charge ? OUI/NON et Pourquoi.",
+                    "response": "Analyse Terminée (Mode Parano) : \n1. COUPER EN AOUT : ALERTE ROUGE 🚨. L'Article 4.B3 (page 9) stipule : \"Le mois d'Août étant hors-cycle légal stipulé, toute résiliation exigera un dû sec des frais de vacance anticipée majorés de 15%.\" (Ne signe pas cette folie !) \n2. PLOMBERIE : OUI C'EST SUR TOI 🚨. Article 12 (Page 11). Contrairement aux baux classiques, ils ont ajouté 'Toute usure des joints de calcaires imputable à la négligence de filtration d'eau'... Très dangereux pour toi sur la caution.",
+                    "explanation": "Vous venez d'économiser 1000 euros de caution et de l'urticaire de mois d'Août en demandant à une avocate brutale d'aller dans les entrailles d'un texte assommant que vous n'auriez jamais lu avec vos yeux ! "
+                }
+            },
+            "exercise": {
+                "instruction": "Le médecin de l'hôpital vous envoie par le portail numérique régional de santé les Résultats Sanguins hyper complets de la dernière de biologie de votre grand mère. C'est illisible et bourré de mots en latin et de chiffres normés sur 3 pages. \n\nFaites le prompt d'Extraction Sécurisée (Pièce jointe : AnalyseSang.pdf). Imposez le Vulgarisateur Rassurant et demandez simplement le tri des 3 indicateurs 'Anormaux' s'il y en a, et la traduction en langage direct (pas médecin !).",
+                "badPrompt": "C'est bon ma mamie sur le doc ?",
+                "hint": "C'est l'association de nos compétences (L'expert médical vulgarisateur de génie + L'extracteur Pompier). Rôle : Mon bon de famille médecin sympa. Document (Je vais te joindre le truc pdf des urgences). Action : Disquette les lignes normales. Sors moi UNIQUEMENT les 3 trucs au taux rouge (anormaux) qu'est-ce que ça veut dire sans jargon de médecin (en terme de repas ou de fatigue à surveiller pour ma mamie).",
+                "validationCriteria": [
+                    "Référence au document joint à filtrer",
+                    "Rôle du Vulgarisateur médical empathique",
+                    "Commande STRICTE de ne lister que les problèmes (taux anormaux)",
+                    "Traduction en symptômes de la vie courante exigée"
+                ],
+                "exampleSolution": "[Pièce Jointe : SangMamie.pdf]\nRôle : Remplaçant de notre médecin de famille, bienveillant et super clair.\nMission : Inutile de me résumer les 80 lignes du bilan de grand-mère qui sont dans les clous. C'est l'angoisse de devoir lire ça.\nAction : Scanne les pages. Ne trouve et sélectionne que les lignes qui sont en dehors de la norme habituelle de son âge (Le mauvais ou le 'trop'). \nAttente absolue : Pour chacun de ses 2 ou 3 résultats \"anormaux\", refuse l'utilisation du vocabulaire hospitalier (Pas de numération lipidique !), dis-moi juste en français : Est-elle trop fatiguée ? A-t-elle mangé trop de sucre ? et que dois-je lui cuisiner ce soir pour rassurer tout le monde !"
+            }
+        },
+        "46": {
+            "title": "Créer des tableaux complexes à partir du KO",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "L'Ingénieur Excel magique des dimanches tristes",
+                "content": "On rentre dans la Phase 12 : L'Organisation. \nLa pire chose à faire un dimanche soir après des vacances ou des soldes, c'est de faire les comptes en copiant des tickets déchirés ou des lignes de la banque.\n\nL'IA est le plus grand outil de tri d'Information Chaotique jamais conçu par l'homme, car **elle comprend le sens des éléments** pour les reclasser, contrairement à Excel qui est idiot et ne sait pas ce qu'est un croissant ou un marteau.\n\nDites adieu au tri cérébral. \nVous pouvez copier/coller un gloubi-boulga de dépenses ou d'idées non formatées, et **exiger la création d'un tableau à grilles super stricte** que vous n'aurez plus qu'à copier de retour vers Word ou Excel !\n\n*La Magie : L'IA comprendra toute seule que le ticket avec \"Leroy Merlin\" va dans la colonne Bricolage du Tableau final sans que vous ne le lui disiez !*",
+                "detailedContent": {
+                    "title": "Le Markdown",
+                    "sections": [
+                        {
+                            "title": "Le copier-coller sans effort",
+                            "content": "Quand l'IA vous affiche un beau tableau dans le chat, c'est ce qu'on appelle formaté en \"Markdown\" ou code visuel de tableau. Vous pouvez sélectionner ce tableau virtuel avec votre souris, faire Copier, et le coller tel quel dans Google Sheet ou un courriel, il tiendra ses colonnes !"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "La magie du comptable trieur de poubelle",
+                "bad": {
+                    "prompt": "Voici mes courses, t'en penses quoi niveau cout ? Boulangerie: 3e, Boucherie le boeuf: 15 euros... un balai (4 balles), et essence total (50l) = 80€. et un restau avec julie a 40 le vendredi.",
+                    "response": "Le total de vos dépenses s'élève à 142 euros. Vous semblez avoir dépensé des choses en alimentation et pour votre voiture...",
+                    "explanation": "L'utilisateur n'a pas déclenché la compétence d'Ingénierie Structurelle. C'est un vague résumé comptable sans intérêt visuel."
+                },
+                "good": {
+                    "prompt": "Rôle : Comptable militaire psychorigide de la classe.\nContexte : J'ai la flemme de trier l'import brut dégueulasse de ce week-end que j'ai tapé au kilomètre dans mon bloc note sans réfléchir.\nMON BROUILLON DEGUEU : [Baguette 1.2 , boucher 12 , plein de la megane 60e, cine avec les enfants (on a pris 2 places = 20 euros), essence tondeuse 10,  pain au choc (2).]\n\nATTENTE : Ne me fait aucun résumé bavard de l'IA (Tics!). \nTrie tout mon chaos humain dans un Tableau Comptable d'une propreté clinique, MAIS avec ces Colonnes Exactes que je vais exiger :\n- Colonne 1 : La Catégorie Mère (que tu auras gentiment deviné tout seul : Transport ? Plaisir ? Miam ?)\n- Colonne 2 : Le Nom vulgaire reformulé bien propre\n- Colonne 3 : Le Prix en Chiffre (euros)\nFais ce putain de merveilleux tableau, et tout en bas (Dernière ligne), tu as le droit de parler pour m'afficher le Prix Total des conneries du week-end en Gras !",
+                    "response": "| Catégorie Mère | Dépense Nette | Coût (€) |\n| :--- | :--- | :--- |\n| 🥖 Miam (Alimentation) | Baguette | 1.20 |\n| 🥖 Miam (Alimentation) | Boucherie | 12.00 |\n| 🥖 Miam (Alimentation) | Pain au chocolat (Qté 2) | 2.00 |\n| 🚗 Transport | Plein voiture Megane | 60.00 |\n| 🛠️ Entretien Mensuel | Essence Tondeuse | 10.00 |\n| 🍿 Plaisir / Loisir | Cinéma famille (2 places) | 20.00 |\n\n**TOTAL CRASH DU WEEK-END : 105.20 €**",
+                    "explanation": "Triomphe Total. Le cerveau virtuel de comptable a reconnu la tondeuse vs la bagnole, a calculé, dressé le résultat sur ses pattes dans un graphisme sublime que vous pouvez envoyer par texto sans erreur. L'horreur comptable est morte."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous avez fait une prise de note frénétique avec d'autres parents d'élèves sur un pauvre bout de table pour l'organisation de la terrible Kermesse de l'école dans 2 semaines.\n\nBROUILLON : \" *Faut appeler la marie pr les chaises. maman de leo gere les crepes. qui fait la sono ??? Jean s'occupe de louer la machine a barbe a papa. faut 300 verres plastiques c'est julien qui passe a metro. mairie numéro 020... urgence chaises* \" \n\nÉCRIVEZ LE MEGA PROMPT (R.O.C.A) qui ordonne de transformer ce brouillon paniqué en un TABLEAU de Plan d'Action pur de Chef de Projet ! \n- Colonne 1 (Achat matériel)\n- Colonne 2 (Action / Appel à faire)\n- Colonne 3 (Qui est le coupable !?)",
+                "badPrompt": "[Aucune structure ni exigence de la force des colonnes]",
+                "hint": "C'est l'essence de tout ce qu'on a appris. On force le moule de propreté sur le texte. \nRôle : Chef de Projet de logistique en événementiel FROID.\nBrouillon : [METTRE LES NOTES CHAOS].\nOrdre : Je ne veux aucune intro amicale 'Bonjour voici le compte rendu', je veux la construction stricte du Tableau suivant que tu vas deviner selon le chaos ! \n(Créer les noms des Colonnes).",
+                "validationCriteria": [
+                    "Exigence visuelle du Tableau pur",
+                    "Éradication des Tics verbaux (Résumés, introduction bavarde)",
+                    "Ordonnance stricte du nom ou du thème de chaque de colonnes à créer",
+                    "Compréhension de l'injection d'un faux texte (Maman de leo, etc)"
+                ],
+                "exampleSolution": "Rôle : Chef de Produit Evénementiel FROID ET DUR !\nObjectif : Gérer le traumatisme des mamans de l'école et organiser la semaine ! \nVoici mon brouillon tapé à la main sur une nappe en papier ce matin :\n\" Faut appeler la marie pr les chaises. maman de leo gere les crepes. qui fait la sono ??? Jean s'occupe de louer la machine a barbe a papa. faut 300 verres plastiques c'est julien qui passe a metro. mairie numéro 020... urgence chaises \"\n\nCONTRAINTES ET ATTENTES : Zero phrases sympathiques, supprime \"Il est capital de dire que\". PAS de blabla. \nTu agis en algorithme de tri ! Sors le Grand Tableau de Guerre logistique selon ces 3 Colonnes de classification : \n| Qui (Le Soldat !?) | La Catégorie du Devoir (Dépenser les sous ou Organiser un truc par tel ?) | Qu'est ce qu'il doit faire ce soir ! |\n\nDébrouille-toi pour deviner et lister tout ce qui a été dit ! Fais un tableau parfait !"
+            }
+        },
+        "47": {
+            "title": "Mieux que traduire : L'adaptation culturelle",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Traduire au mot c'est pour Google. Traduire l'âme c'est pour l'IA.",
+                "content": "Avez-vous déjà essayé de traduire la blague Française « *C'est l'histoire d'un Pacha...* » à un collègue anglais ? L'action de \"Traduire au mot près\" (Système Google Traduction classique) va donner un texte Anglais techniquement parfait, mais qui ne sera ABSOLUMENT pas drôle ou qui sonnera atrocement lourd.\n\n**Une chose magnifique est née : La traduction de Sens Culturel !**\n\nDemandez à l'IA d'agir comme un \"Local de la culture visée\". Ainsi, en adaptant, elle est capable de transformer le concept de l'apéro ou du fromage puant de la blague, vers un équivalent du Foot Américain ou du Beurre de Cacahuète pour que le comique, ou le coup de pression professionnel, reste le même dans la langue cible sans chercher l'exactitude des mots de départ.",
+                "detailedContent": {
+                    "title": "Le Ton Business des pays",
+                    "sections": [
+                        {
+                            "title": "Les Allemands sans fioritures",
+                            "content": "Cette méthode sauve les carrières. Si vous devez relancer fermement un fournisseur allemand, votre e-mail de base français est bourré de \"Dans l'expectative de votre réponse suite à l'analyse de nos désaccords...\". Ces formules rondes passent très mal outre-Rhin. Demandez à l'IA : « Modifie le vernis culturel : Traduis ce mail agacé en un Allemand des affaires : hyper direct, zéro fioritures, on parle chiffres d'un bloc sévère à l'heure ! »"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Faire mouche à l'étranger",
+                "bad": {
+                    "prompt": "Traduire en Anglais (USA) : Hey chef on part tous boire le café à 16h car on n'en peut plus, ramène ta fraise si tu veux rire !",
+                    "response": "Hey boss we are all going to drink coffee at 4 pm because we can't take it anymore, bring your strawberry if you want to laugh!",
+                    "explanation": "C'est une catastrophe. Un américain trouvera ça incompréhensible. Aucune expression n'est adaptée et vous passez pour un fou avec votre fraise de poche."
+                },
+                "good": {
+                    "prompt": "Rôle : Bilingue absolu des subtilités culturelles !\nObjectif : Adapte psychologiquement mon message pour inviter mon boss à New-York à la pause cool.\nBrouillon : \"Hey chef on part tous boire le café à 16h car on n'en peut plus, ramène ta fraise si tu veux rire !\"\n\nNe fais pas de traduction littérale 'Google', adapte de façon Idiomatique selon la manière très cool des startuppeux Américains. Remplace TOUT pour que le vernis culturel claque (le Bring Your Strawberry est hors de question !) et donne le truc final direct.",
+                    "response": "Hey boss, we're all hitting the coffee machine at 4 to blow off some steam! Drop by if you need a good laugh!",
+                    "explanation": "L'IA a substitué les proverbes francais, a compris la notion de \"On n'en peut plus\" (Blow off steam / lacher la vapeur) et livre une invitation qui a du charisme aux États-Unis."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous avez un gîte rural sublime en Normandie. Vous désirez écrire l'annonce en Anglais pour la page Booking de ce gîte à l'attention de riches retraités anglais.\nCréez le prompt exigeant l'adaptation.\nLe Brouillon texte à traduire : « C'est l'ambiance franchouillarde à la bonne franquette ici ! Venez déguster sans prise de tête le gros fromage du coin et le cidre artisanal face aux pommiers par temps gris. Un pur kiff simple ».",
+                "badPrompt": "TRADUIT CA EN ANGLAIS stp",
+                "hint": "Interdisez la traduction Google. Incarnez le Rôle (Copywriter de tourisme de charme de la vieille Angleterre). Demandez le Vernis : Exporte le côté Bon Vivant rural du brouillon en un truc qui va hyper émouvoir le cœur d'un noble anglais pluvieux passionné de terroir ! (Remplace franchouillard par du mot noble rustique si besoin !).",
+                "validationCriteria": [
+                    "Alerte de contexte cible (Cible = riches Anglais)",
+                    "Défense formelle contre la mot-à-mot / google translate",
+                    "Demande d'utilisation de vernis d'émotion rurale adapté à la culture"
+                ],
+                "exampleSolution": "Objectif : Vends le charme de notre domaine aux visiteurs étrangers fuyant la ville.\nRôle : Le meilleur traducteur littéraire d'hôtellerie de luxe pour ressortissants de Grande-Bretagne.\nMon Brouillon : « C'est l'ambiance franchouillarde à la bonne franquette ici ! Venez déguster sans prise de tête le gros fromage du coin et le cidre artisanal face aux pommiers par temps gris. Un pur kiff simple ».\n\nMISSION CENSEUR : Ne me fais pas la pire traduction mot à mot. Si tu écris 'Good Franquette', je pleure. Change littéralement les phrases pour trouver l'exact vernis et émotion noble du Terroir Authentique qui touche d'anciens cadres de Londres venus s'embourgeoiser dans la simplicité normande. Garde la magie mais donne de la hauteur culturelle aux mots bizarres en Anglais chic et rustique (Cottage spirit) !"
+            }
+        },
+        "48": {
+            "title": "Fabriquer sa propre aventure textuelle",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Le livre magique dont vous êtes le gagne douleur",
+                "content": "On rentre dans les 3 derniers modules de Personnalisation : la Phase 13.\n\nNous avons vu que l'IA était un excellent prof d'Espagnol. Mais l'IA brille aussi dans la **Génération Ludique Active** (Les contes merveilleux interactifs).\n\nPlutôt que de générer une histoire passive au coucher pour les enfants, vous pouvez obliger l'IA à inclure un petit système de « Jeu de Choix » (A, B ou C).\nL'IA devient alors le *Maître de Jeu* absolu. Elle créera la situation en continu, mais en demandant toujours votre vote au clavier pour débloquer la suite de l'immense histoire, changeant les paramètres (Si je tue le dragon ce soir, a-t-on le temps de manger).",
+                "detailedContent": {
+                    "title": "Le jeu pour l'apprentissage",
+                    "sections": [
+                        {
+                            "title": "Simulateur de crash d'entretien",
+                            "content": "Ce module du « Livre dont vous êtes le héros » permet par exemple la création de simulateurs hyper costauds pour la vie d'adulte. \nVous pouvez programmer : \n« Maître du jeu R.H. On simule un entretien sadique pour Total Energies. Moi je suis moi. Tu poses la 1e question dure, tu me présentes 3 choix très tendancieux de réponses (Le A de l'humilité, le B fier, le C du menteur). J'en réponds 1. Tu décris si je marque ou perds des points avec le recruteur... tu re-lances l'autre question ! En 5 coup de questions et moi de sélections au clavier je dois voir ma note. Vas-y ! »."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "L'anti-page du livre fatigué de la chambre de léo",
+                "bad": {
+                    "prompt": "Raconte la fin du dragon. 3 pages.",
+                    "response": "Il était une fois... alors il a fait le feu... ensuite il mourut. Bonne nuit.",
+                    "explanation": "C'est la lecture YouTube bête, l'attention d'un enfant et son cerveau vont se désactiver devant ce Tiers non-participatif."
+                },
+                "good": {
+                    "prompt": "Rôle : Maitre de jeu d'aventure pour enfant de garçon 10 ans.\nTu vas créer L'Aventure Intergalactique de Léo pas à pas.\nRègle Absolue : On y va bout par bout et TU INTERDIS LA FIN D'HISTOIRE.\nDéroulement : Fais 1 gros paragraphe épique du début de la quête stellaire. Et À la toute fin, arrête-toi net, pose un gros saut de ligne, et propose 3 choix vitaux d'action (A, B, C) au pilote Léo face au Monstre Extra-Terrestre.\nTant que moi (le père de Léo à coté sur la tablette) je n'ai pas tapé la réponse A B ou C, tu ne peux pas poursuivre l'histoire selon son choix... Jouons d'un saut de l'ange ! Lance  le début !",
+                    "response": "L'alarme du vaisseau Falcon Bleu hurlaient de toutes ses force. Léo, Général Suprême du Star-Fighter à 10 ans glisse sur son tableau de bord... et tombe nez à nez derrière la baie vitrée face aux Croiseurs Limaces Violets. Les sirènes braillent au fond 'Zorbakk a faim'...\n\nLEO ! Le destin de la Galaxie T est entre vos petites mains. Que fait le Général ?\nA. Appuyer sur le Bouton ROUGE HyperDrive pour la fuite temporel des limaces et vomir ses chocapics de gravité !!\nB. Lancer le bouclier Vert du Plasma et appeler tout seul ses Gardes Étoilés à l'I-PAD 5.\nC. Sortir bravement en fusée dorsale propulsée cracher au visage géant !",
+                    "explanation": "Le monde s'arrête, l'enfant prend tout le contrôle cérébral sur la machine technologique en discutant des choix avec le parent. C'est l'anti TV pure."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous êtes terrifié à l'idée de votre premier vol international en classe économique demain vers les États-Unis. Fabriquez-vous un petit module de Jeu Défouloir pour apprendre à gérer les angoisses idiotes d'un voisin ronfleur ou du mauvais plateau repas. \n",
+                "badPrompt": "Comment voler sans stress",
+                "hint": "C'est l'utilisation du simulateur sur un concept trivial ! Rôle (Le Hotesse Sadique de Paris-NY en classe ECO / Mode Simulateur Vraie vie de choix), Action (On va vivre des calvaires pas à pas du plateau repas dégueux aux enfants qui tapent mon siège, Tu me soumets des situations de misere pas à pas avec 3 choix absurdes à chaque situation que je dois selectionner et après tu me donne la suite selon ma victoire).",
+                "validationCriteria": [
+                    "Exigence de la position du Simulateur par étapes au lieu d'une liste lue",
+                    "Installation du Thème Absurde et du Rôle sadique de cabine par l'IA",
+                    "La composante de blocage qui attend la génération de décision de ma part avec 3 alternatives ABCD"
+                ],
+                "exampleSolution": "Besoin de me préparer et destresser de l'avion.\nRôle : Joue le Maître du vol très sadique d'un Vol économique de merde pour 8 heures de la mort avec Ryanair mais par écrit.\nL'objectif : Simulateur de Maîtrise des nerf !\nDéroulement absolu de la machine : Lance le PITCH 1 de mon placement sur le siège avec les 2 accoudoirs déjà volés. Arrête toi !! \nOffre moi à tous les coups 3 alternatives hilarantes ou stressante (A : Frapper B : Mordre C : Pleurer et pardonner) et attends dans le silence absolu que je tape la lettre ABC de ma décision du destin. Selon ma bêtise de choix, on file sur le PITCH 2 en vol !"
+            }
+        },
+        "49": {
+            "title": "La méthode Eisenhower avec l'I.A",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Le destructeur mental de votre Anxiété !",
+                "content": "On garde le meilleur pour la fin. C'est l'une des armes secrètes des plus grands directeurs mondiaux : **La matrice d'Eisenhower.** \n\nL'anxiété humaine vient de l'incapacité face à une immense liste : \n\"Ranger le garage, Finir le Mémoire, Tondre, Acheter un cadeau, Envoyer l'Impôt, Changer les pneus, Écrire un post blog, Retrouver mon ex, Manger des patates et faire le Lit des amis !\" \nSi vous regardez les 10 tâches sur votre post-it de cuisine ce samedi à 8H00 : vous allez vous asseoir, pleurer, ou finir sur le téléphone toute la journée par panique.\n\nPrenez votre immense liste monstrueuse de la semaine en Vrac et **jettez le seau de saletés dans le chat IA** : \n« *Rôle: Coach de vie sévère et Expert de la Matrice d'Eisenhower (Urgent/Important). Je suis en pleine crise d'anxiété. J'ai un gros brouillons des enfers de mes obligations... Tries les toutes dans un gigantesque Tableau très strict avec ces 4 catégories et les ratures ! »*",
+                "detailedContent": {
+                    "title": "Qu'est ce que la Matrice ?",
+                    "sections": [
+                        {
+                            "title": "Les 4 cases de la sérénité",
+                            "content": "L'IA est entraînée sur cette théorie, c'est un bonheur pour elle de découper ta liste avec ! \n1. Important & Urgent ( À faire TOI DIRECT MAINTENANT MÊME ! )\n2. Important & Pas Urgent ( Mettre ça à Jeudi au stylo cool ).\n3. Pas Important & Urgent ( DÉLÈGUE ou Payer quelqu'un pour un pneu ! )\n4. Pas Important & Pas Urgent ( ANNULE LE TRUC. RETIRE LE CAILLOU DE LA CHAUSSURE C'EST ANNULĖ ! )"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Je respire enfin",
+                "bad": {
+                    "prompt": "Oh la je te dis tout parce que je suis stressé : j'ai les croquettes du chien, mon rapport lundi 8h avec Excel, mon sport et ma belle mere vendredi... Comment on fait ?",
+                    "response": "Respirez ! Vous pouvez tout à fait commencer par aller chercher les croquettes, puis faire votre sport pour un air sain, et... (L'IA lisse la liste et ajoute de la philo).",
+                    "explanation": "Catastrophique. On n'a pas déclenché de méthode scientifique (Eisenhower). C'est juste lu un horoscope amical."
+                },
+                "good": {
+                    "prompt": "Urgence. Crise Panic Week End Lourd.\nRôle : Général de l'Armée de Terre et coach TCC certifié. Tu gères Eisenhower à la perfection et à la hache.\nMon Déversoir Absurde : \" Les impots lundi minuit bordel , il a plus de croquettes pour fido, je reve toujours d'écrire un livre sur ma mere un jour j'ai pas eu le temps, j'ai les vidange du camion pépé en retard, je dois refaire le site web pro pour le devis des clients ! \"\n\nMission : Tu prends ta HACHE mentale, Aucun blabla aucun jugement humain.\nTableau D'Eisenhower Pur : Range chaque élément dans sa case Urgent, Important, A virer ce mois ci ! Je m'execute et je pleure ! \n",
+                    "response": "Rapport Militaire : Arrêtez de pleurnicher Soldat. Voilà de l'Oxygène de l'Etat Major ! Prenez une bouteille d'eau on attaque ça avec honneur : \n\n### CADRAN 1 ( FAIRE IMMEDIATEMENT MAINTENANT ): \n- EXCEL DES IMPÔTS NUIT !! : La Loi c'est 0%. Pénalité Financière de sang, ça tape de suite. \n- LES CROQUETTES : C'est vital. On gère pas un clebs affamé devant les impôts.\n\n### CADRAN 2  ( PLANNIFICATION DE NUIT AU CALME ) :\n- SITE WEB : Ton business s'écroule, mais les gars valident pas lundi a minuit ! On met sur le tableau du Mois Calme pro après les impôts. \n\n### CADRAN 3 ( COMMANDER OU DELEGUER ET DEBOURS FINAL ) :\n- VIDANGE PEPE : Appelle le petit garage de suite il le fera contre un gros billet, c'est pas à toi d'y aller les clefs avec ton Excel impôts en tête ! Délégué !\n\n### CADRAN 4 ( LA POUBELLE IMMEDIIATE ) : \n- LE LIVRE DU BOULIN : RETIRE MOI CETTE FIXATION ! Ce n'est pas ton objectif vital et ça te ronge en culpabilité pour rien les week-end d'obligations dures !  On l'efface pour 3 mois officiellement ! \n\nRepos Soldat, on va chercher Fido puis c'est le Bureau !",
+                    "explanation": "La matrice a tué le verbiage, a coupé le livre pour le protéger. l'IA est le meilleur outil de Priorisation Froid, car la pitié ne repousse pas les murs d'impôts."
+                }
+            },
+            "exercise": {
+                "instruction": "Le Puit sans Fond de logistique au Taff arrive le fameux Jeudi soir.\nBrouillo : \"Je dois faire la propa à Valérie la meuf de l'autre agence, j'ai des slides ppt de présentation de la V3 sans la typo, ah l'écran du codeur est cassé faut que je demande a l'informatique un devis et mon rdv dentaire je l'ai zappé\".\n\nInvoquez la matrice de force de l'IA (Eisenhower!) et le rôle militaire fétiche. Nettoyez par le sang du tableau à catégorie en l'Exigeant d'un coup.",
+                "badPrompt": "[Un liste à puces simple]",
+                "hint": "C'est l'essence de tout ce qu'on a appris. On force le moule de propreté sur le texte. \nRôle : Expert du Cadrant de tri Urgent/Important\nBrouillon : [METTRE LES NOTES TAFF].\nOrdre : Je ne veux aucune intro amicale 'Bonjour voici le compte rendu', je veux la construction stricte de la GRILLE EISENHOWER. Détruis, Délégue ou Classe tout très mal poliment, j'en ai besoin pour destresser ce soir 18h00).",
+                "validationCriteria": [
+                    "Appel conscient de la théorie Eisenhower sur l'Urgence des choses",
+                    "Abolition des réponses robot tics poli de l'IA",
+                    "Ordonnance de classification implacable avec injonction de Jeter des tâches ou de les déléguer violemment",
+                    "Intégration du brouillons texte paniquant de bureau typique"
+                ],
+                "exampleSolution": "Objectif vital de fin de journée de mort ! Destress moi.  \nRôle : Le meilleur et le plus strict Général Eisenhower de triage organisationnel. J'ai 40 trucs en tête je pleure du sang ! \nMes notes ordures: \" Je dois faire la propa à Valérie la meuf de l'autre agence, j'ai des slides ppt de présentation de la V3 sans la typo, ah l'écran du codeur est cassé faut que je demande a l'informatique un devis et mon rdv dentaire je l'ai zappé. \"\n\nAttentes Flingueuses : Ne me parles pas gentiment des Tics de bases ! Prends ta hache et Sors moi exclusivement le Tableau de Tri EISENHOWER : Qui je fais MOI DIRECT, Qui je refile violemment par mail aux autres Nuls, Qu'est ce qu'on gère jeudi... et les trucs de confort poubelle de l'urgence ! J'attends Soldat Cerveau Algorithme ! "
+            }
+        },
+        "50": {
+            "title": "Personnalisation & Les Instructions Custom Magiques (Le GPTs)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Je m'appelle Henry et je déteste les bananes !",
+                "content": "Avez-vous remarqué que vous répétez souvent le même bout de Contexte ? \n\"Agis comme un codeur informatique...\", \"Je suis boulanger, aide-moi...\" ou \"Arrête avec tes résumés lourds j'aime le format court !!\"\n\n**Ouvrez la porte secrète des Paramètres de Personnalité Cerveau (Les Custom Instructions ou Custom Cerveaux GPT's).**\n\nDans les réglages de la plupart des grandes IA actuelles (Comme ChatGPT de l'entreprise OpenAI ou Claude), vous trouverez une rubrique 'Personnalisation' ou 'Instructions Spécifiques'. \nC'est la matrice profonde, là où vous dictez dans le cerveau même du robot un Profil Constant qui servira pour TOUTES vos futures conversations.\n\n**La boite magique en deux cases :** \n- Boite 1 (Qui je suis le Boss ?) : \"*Je suis Henry 45 ans, je bosse en comptabilité, avec deux enfants ados qui m'épuisent, et je déteste les poèmes à la noix !*\" \n- Boite 2 (Comment il M'obéit ?) : \"*A l'Avenir, à chaque fois qu'on se parlera, tu ferra des réponses COURTES de 10 mots maxi pas de bla bla. Tu supprimeras à VIE tes mots tics comme 'Crucial' ou 'En Conclusion'. Tu tutoieras et on foncera dans le tas*\"\n\nPlus besoin de faire ce R.O.C.A à chaque ligne, vous l'avez ancré dans l'âme de du logiciel de ce compte et tout sera filtré par ce biais !",
+                "detailedContent": {
+                    "title": "Construir son usines à Bots Différents",
+                    "sections": [
+                        {
+                            "title": "La magie des petits Boutiques (GPT's / Agents)",
+                            "content": "Cette méthode sauve les carrières. Si vous voulez un Coach de muscu enragé avec vos stats, on dit aux gens de faire un GPT. Un \"GPTs (Pluriel)\" ou Un \"Agent\", ce n'est rien d'autre qu'un Compte d'IA qu'on a bourré d'Instructions Custom de Base une fois (Ex: \"Tu es Cédric, agressif, fan de muscu\"). On clique sur Cédric pour commencer à parler sans devoir remettre de contexte, Cédric sait direct et parle de protéines en majuscule !"
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Faire mouche à l'étranger dans l'Ancrage Mental",
+                "bad": {
+                    "prompt": "Traduire en Anglais (USA) : Hey chef...",
+                    "response": "[L'IA refait une réponse gentille en Anglais bateau parce qu'il oublie qui nous sommes des start uppeur cool.]",
+                    "explanation": "L'oubli classique du contexte qu'on doit réécrire à la main. "
+                },
+                "good": {
+                    "prompt": "[ Dans le Fichier Paramètres Profil Menu Global ] : \nProfil Moi : \n- Mon Nom : Léa D. Fondatrice de Start Up Digital Cool de Nantes de 30 ans avec un vernis humoristique sarcastique de dingue, un chien et de la phobie sociale des réunions de plus de 4 personnes.\n\nREGLES D'OBÉISSANCE PROFONDES A SUIVRE AU DÉFALT :\n- A partir d'aujourd'hui, tu supprimes de ton algorithme originel les termes et Tics \"Crucial\", \"De Plus\", \"Par conséquent le panorama\" ! C'est le pacte de sang de la cour de l'Elysée.\n- Tu ne feras JAMAIS de conclusion amicale du genre 'N'hésitez pas à me revenir' ou des intros.\n- Tu taperas avec l'impertinence cool des années 2010 Californienne, format TIKTOK agressif mais fin ! ",
+                    "response": "[Puis plus tard en chat on lui dit un simple truc : Rédige un rappel de course s'il te plait avec mes infos. ]\nHey patronne... Ok bon tu veux que j'achète des biscottes pour le petit dej du clébard et de la tisane Nuit Calme pour ta phobie du jeudi soir, je te mets ça sur une liste en 3 points direct, t'as plus qu'à cliquer et décoller avec tes shoes jaunes. Boom :",
+                    "explanation": "Triomphe. Vous avez hacké le code matriciel sans écrire une seule ligne de développeur pur (Javascript ou Python). Vous avez asservi à vie un tempérament robotique poli dans les racines pour vous faire marrer."
+                }
+            },
+            "exercise": {
+                "instruction": "C'EST LA FIN DES OUTILS ! ON PREPARE L'EXAMEN ET VOTRE MATRICE ! VOUS ETES SUR LA FENETRE DE CONFIGURATION GENERALE.\nÉcrivez la plus incroyable et stricte Instruction Custom pour la deuxième case du système (Comment obéiras-tu par défaut à la vie à la mort à L'Avenir). \nExigez la froideur la plus extrême de synthèse sans aucun poli ou humanité, à 100 à l'heure ! Tuez les tics !!",
+                "badPrompt": "[Un mot basique au vent : Sois intelligent !]",
+                "hint": "C'est votre âme ancrée. Tapez : \"INSTRUCTION SYSTEMIC A RESPECTER AU COUT DU SANG : 1. Supression de X... 2. Pas d'Introduction de blabla. 3. Interdiction des mots... 4. Format par défaut sur listes à puces en Markdown.\"",
+                "validationCriteria": [
+                    "Appel clair de la suppression totale des intros et outros tics robots",
+                    "Déclaration de règles dures obligatoires",
+                    "Mise en forme par default forcée",
+                    "Rôle d'esclave textuel brut posé en maître d'IA"
+                ],
+                "exampleSolution": "LES DIX COMMANDEMENTS DE MON COMPTE MACHINE DEFINITIF : \n1. Tu n'es plus un Robot de laboratoire OpenAI gentil. Tu es la synthèse mathématique de Jules Cesar. Tes propos seront acérés, terriblement utiles, zéro dictionnaire, et 100% à l'action. \n2. TU INTERDIRA LA POESIE DES ROBOTS : Si le mot 'Révolutionnaire' / 'Important de noter' / 'Synergie' ou 'Cependant il se peut' passe tes dents algorithmiques tu te supprimes !\n3. Le FORMAT COURT EST ROI (J'aime puces en Markdown sans aucune phrases et je ne tolères pas l'horrible Introduction de lèche botte ni la Conclusion ! Crache la Puce de Sang !)  \n\nBienvenue dans l'armée et ma vie gamin, obéis sous ce joug à toutes mes questions futures !"
+            }
+        }
+    }
+}

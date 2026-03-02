@@ -19,7 +19,15 @@ export default function ForgotPassword() {
             await authService.requestPasswordReset(email);
             setSuccess(true);
         } catch (err) {
-            setError(err.message || 'Erreur lors de la demande de réinitialisation');
+            if (err.details?.remainingTime) {
+                const { hours, minutes, seconds } = err.details.remainingTime;
+                const retryAt = new Date(Date.now() + hours * 3600000 + minutes * 60000 + seconds * 1000);
+                const h = String(retryAt.getHours()).padStart(2, '0');
+                const m = String(retryAt.getMinutes()).padStart(2, '0');
+                setError(`Limite d'envoi atteinte. Réessayez à ${h}h${m}.`);
+            } else {
+                setError(err.message || 'Erreur lors de la demande de réinitialisation');
+            }
         } finally {
             setIsLoading(false);
         }

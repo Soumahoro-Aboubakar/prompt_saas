@@ -1,0 +1,226 @@
+{
+    "formationsData": {
+        "51": {
+            "title": "Nettoyer des notes chaotiques",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Le Secrétaire de Direction Magique",
+                "content": "On rentre dans la Phase 12 : L'Assistant d'Organisation. \nVous sortez d'une réunion. Sur votre carnet (ou l'application Note de votre téléphone), vous avez tapé 15 lignes incompréhensibles à la volée : *« Julie dit OK pour budget. pb avec fournisseur bois. appeler michel avant 18h. livraisons en retard de 2 sems. »* \n\nTransformer cela en un vrai Compte-Rendu officiel par e-mail prend souvent 20 minutes de douleur.\n\nL'IA excelle pour **restructurer l'information sans en modifier le sens.** \nDonnez-lui votre chaos, et exigez la clarté d'un secrétaire exécutif.\n\n*« Rôle : Secrétaire de Direction très organisé. Voici mes notes prises en direct, très sales. Objectif : Aligne-les dans un Compte-Rendu à puces parfait, catégorisé en 'Problèmes', 'Bonnes Nouvelles' et 'Actions à Faire'. Supprime mes fautes. »*",
+                "detailedContent": {
+                    "title": "Le brouillon reste privé",
+                    "sections": [
+                        {
+                            "title": "Vous pouvez oublier l'orthographe",
+                            "content": "Quand vous prenez des notes pour l'IA, ne vous souciez plus de la grammaire ou de faire des phrases complètes. L'IA devine parfaitement que 'pb fourn' veut dire 'problème avec le fournisseur'."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Du gribouillage au Mail Professionnel",
+                "bad": {
+                    "prompt": "Corrige ça : reuninon d'ecole. madame pechu absente. la sortie au zoo ok pour le 12, prevoir 5 euros par enfant pour le bus. qui amene les gateaux ? gouter a 16h.",
+                    "response": "Réunion d'école. Madame Péchu est absente. La sortie au zoo est OK pour le 12, prévoir 5 euros par enfant pour le bus. Qui amène les gâteaux ? Goûter à 16h.",
+                    "explanation": "L'IA a juste corrigé l'orthographe sans faire l'effort de *structurer* l'information."
+                },
+                "good": {
+                    "prompt": "Rôle : Secrétaire de l'Association des Parents.\nObjectif : Rédige le mail résumé officiel de la réunion pour tous les parents absents ce soir. Mets en valeur les dates clés et les appels à l'action.\nMes notes brouillones : [ reuninon d'ecole. madame pechu absente. la sortie au zoo ok pour le 12, prevoir 5 euros par enfant pour le bus. qui amene les gateaux ? gouter a 16h. ]\nFais ça clair, chaleureux et hyper lisible avec des tirets !",
+                    "response": "Bonsoir à tous,\nVoici le résumé rapide de notre réunion de ce jour (en l'absence de Madame Péchu) :\n\n🦁 Sortie au Zoo : \n- Date validée : Le 12 du mois.\n- A prévoir : 5 euros par enfant pour le financement du bus.\n\n🍰 Goûter de fin : \n- Prévu à 16h.\n- Action requise : Nous cherchons des volontaires pour amener des gâteaux ! \n\nMerci à tous pour votre implication.",
+                    "explanation": "L'IA a classé, aéré, ajouté des emojis pertinents et rendu le message lisible et convivial en 1 seconde à partir d'une ligne de gribouillage."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous rentrez d'une visite épuisante pour acheter une maison. Vous avez pris ces notes dans la voiture : *« belle lumiere, 3 chambres ms 1 petite. fuite salle d bain a verifier plombier ? taxe fonciere 1200E. nego possible sur le prix de 250k. jardin superbe »*.\nCommandez à l'IA la création d'une fiche \"Bilan de Visite\" parfaite pour en discuter ce soir avec votre conjoint(e). Exigez trois catégories : Points Forts, Points Faibles, et Actions Urgentes.",
+                "badPrompt": "Mets ça au propre stp : belle lumiere, etc...",
+                "hint": "C'est la magie du secrétariat. Fixez les 3 catégories imposées par le Rôle ! (Sors moi le Bilan avec 1. Les Points Forts. 2. Les Alertes Rouges/Faibles. 3. Ce que je dois faire vite demain).",
+                "validationCriteria": [
+                    "Ordre de restructuration de texte",
+                    "Définition des 3 catégories de sortie imposées",
+                    "Injection du brouillon brut dans le champ du prompt"
+                ],
+                "exampleSolution": "Besoin de ton cerveau d'Agent Immobilier Analytique.\nVoici mes notes très nulles prises à la va-vite après ma visite de la maison jaune de Nantes : \" belle lumiere, 3 chambres ms 1 petite. fuite salle d bain a verifier plombier ? taxe fonciere 1200E. nego possible sur le prix de 250k. jardin superbe \"\n\nMission : Range-moi ce tas de boue en une \"Fiche de Visite Officielle\" très propre pour que je la lise ce soir à ma femme à table. \nJe VEUX ces 3 Sections : \n- Les Points Forts de la baraque \n- Les Red Flags (Faiblesses/Alertes)\n- Les Actions à faire demain matin ! \nNe parle pas, génère juste la Fiche."
+            }
+        },
+        "52": {
+            "title": "L'ingénieur Excel invisible",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Le magicien des colonnes",
+                "content": "Excel (ou Google Sheets) est puissant, mais les débutants détestent faire des tableaux car il faut réfléchir à comment ranger les colonnes.\nL'IA permet de **créer les tableaux AVANT même d'ouvrir Excel**, simplement en discutant.\n\nVous êtes Trésorier du club de pétanque. Vous avez 20 membres en vrac avec des infos manquantes : *\"Paul a payé 50e, Marie 20 et il lui manque le certif médical, Jacques a tout payé 50e, lucie a pas payé.\"*\n\nNe faites pas le tableau vous-même.\nTapez à l'IA : « *Prends tous ces noms en vrac. Crée-moi un magnifique tableau de suivi. Colonne 1 : Le Nom. Colonne 2 : Le statut du Paiement (OK/Dette). Colonne 3 : Le certificat médical (OK/Manquant).* »\nL'IA générera le tableau parfait sur votre écran. Vous n'aurez plus qu'à surligner les cases avec votre souris, copier, et coller dans Excel ! C'est la fin du calvaire de la mise en page.",
+                "detailedContent": {
+                    "title": "Exigez le calcul automatique",
+                    "sections": [
+                        {
+                            "title": "L'IA comme calculette magique",
+                            "content": "Vous pouvez demander : \"Dans la toute dernière ligne de ce tableau, fais l'addition totale de la colonne Prix et affiche le Résultat en gras\". L'IA fera la somme pour vous, plus besoin de chercher le bouton 'Somme Automatique' d'Excel."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Du chaos à la grille",
+                "bad": {
+                    "prompt": "Fais un tableau avec ces courses: balai 5, steak 10, PQ 2.",
+                    "response": "Voici un petit tableau : \nBalai : 5\nSteak : 10\nPQ : 2",
+                    "explanation": "L'IA fait une simple liste à puce minable car vous n'avez pas *défini* l'architecture des colonnes comme un patron."
+                },
+                "good": {
+                    "prompt": "Rôle : Comptable de Maison. \nOn prépare l'anniversaire du petit. J'ai acheté dans le désordre : des fraises (5e), des ballons rouges (3e), une petite voiture jouet (15e), du jus d'orange (4e) et des bougies (2e).\nAction : Dresse-moi un Tableau Stricte. \n- Colonne A : Nom du produit (avec un emoji)\n- Colonne B : Catégorie (Nourriture, Déco ou Cadeau ? Devine-le toi même)\n- Colonne C : Prix en Euros.\nEt fais-moi le total final à la fin !",
+                    "response": "| Article | Catégorie | Prix (€) |\n| :--- | :--- | :--- |\n| 🍓 Fraises | Nourriture | 5.00 |\n| 🧃 Jus d'orange | Nourriture | 4.00 |\n| 🎈 Ballons rouges | Décoration | 3.00 |\n| 🕯️ Bougies | Décoration | 2.00 |\n| 🏎️ Petite voiture jouet | Cadeau | 15.00 |\n\n**Total Dépensé : 29.00 €**",
+                    "explanation": "L'IA a non seulement dressé les grilles visuelles (copiables vers Excel), mais elle a *analysé* par elle-même que la voiture était un Cadeau et la bougie de la Déco. Le cerveau et la machine travaillent de pair."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous organisez le covoiturage de l'équipe de foot du dimanche. Sur le groupe WhatsApp, ça part dans tous les sens :\n*\"Moi (Jean) je prends ma clio on a 3 places dispo je pars du Stade. Marc dit qu'il a besoin d'une place. Léo a pas le permis. Le coach prend son minibus (8 places) du centre-ville.\"*\n\nForcez l'IA à y voir clair ! Demandez le tableau ultime du covoiturage pour l'envoyer sur le groupe de copains.",
+                "badPrompt": "Qui monte avec qui avec ça ?",
+                "hint": "C'est la Magie des Colonnes. Définissez ce que vous voulez lire pour que ce soit clair. \nRôle : Logisticien du dimanche. Objectif : Réaliser The Tableau WhatsApp du foot.\nAttente : Tableau avec :\n- Col 1 : Prénom du Gars\n- Col 2 : Statut (Chauffeur ou Piéton)\n- Col 3 : Places dispo restantes dans sa voiture (S'il est chauffeur).",
+                "validationCriteria": [
+                    "Ordre de génération de Tableau (Markdown imposé de fait)",
+                    "Désignation des Colonnes précises (Nom, Rôle, Places dispo)",
+                    "Appel au calcul/logique de l'IA sur un brouillon humain (Léo = Piéton sans permis)"
+                ],
+                "exampleSolution": "Je pète un plomb sur le groupe Whatsapp de l'équipe, aide-moi à organiser cette pagaille de covoiturage pour ce dimanche !!\n\nVoici le brouillon des derniers messages des gars : \" Moi (Jean) je prends ma clio on a 3 places dispo je pars du Stade. Marc dit qu'il a besoin d'une place. Léo a pas le permis. Le coach prend son minibus (8 places) du centre-ville. \"\n\nAction : Sors-moi le Grand Tableau d'organisation clair et net pour le mettre sur le groupe le poing sur la table ! \nFormate strictement ces colonnes : \n- Col 1 : Le gars \n- Col 2 : Statut (Pilote ou Passager en galère)\n- Col 3 : D'où il part s'il est pilote\n- Col 4 : Cb de sièges de libre chez lui pour les copains ! "
+            }
+        },
+        "53": {
+            "title": "Le Pêcheur de données (Lecture Rapide)",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Trouver l'aiguille dans un tas de foin administratif",
+                "content": "Vous êtes devant les fameuses C.G.V (Conditions Générales de Ventes) d'un opérateur téléphonique. C'est écrit en minuscule sur 18 pages. Vous voulez juste savoir une chose : *\"Est-ce que je paye si je résilie dans 6 mois ?\"*\n\nNe lisez pas. N'essayez même pas de trouver la page.\nCopiez l'intégralité du texte (ou envoyez le lien/PDF à l'IA si c'est possible) et devenez le **Sniper de la donnée**.\n\nLe vrai pouvoir de ce \"stagiaire\" à lecture rapide, ce n'est pas le résumé, c'est **l'Extraction Sèche**.\n\nLe Prompt du Sniper :\n« *Joue le rôle de mon assistant juridique. Voici 20 pages de texte assommant. Je te pose UNE SEULE question. Sors moi UNIQUEMENT le chiffre ou la réponse exacte concernant 'les frais de résiliation avant 1 an'. Interdiction de me résumer le texte entier. Fais-moi juste remonter l'Aiguille et cite-moi le numéro de la ligne ou de l'article pour que j'aille vérifier.* »",
+                "detailedContent": {
+                    "title": "Demandez la preuve absolue",
+                    "sections": [
+                        {
+                            "title": "Le garde-fou anti-hallucination",
+                            "content": "Pour être sûr que l'IA ne vous invente pas une règle (hallucination), ajoutez toujours dans l'extraction légale : « CITE STRICTEMENT ENTRE GUILLEMETS LA LIGNE EXACTE DU TEXTE QUI TE FAIT DIRE ÇA ». Ainsi, vous aurez l'assurance absolue de la provenance de l'information."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "L'avocat éclair",
+                "bad": {
+                    "prompt": "(Lien vers les 15 pages Leroy Merlin des retours collé ici). Qu'est ce que ça dit sur les retours ?",
+                    "response": "Les retours chez cette enseigne de bricolage sont possibles sous plusieurs conditions. Généralement il faut rapporter le produit dans l'emballage. Le délai de rétractation légal est de 14 jours... (Blabla dilué).",
+                    "explanation": "L'IA vous fait un cours très flou sans certitude absolue sur la question que VOUS vous posez (Avez-vous le droit de le ramener sans la boîte ce mardi ?)."
+                },
+                "good": {
+                    "prompt": "Rôle : Avocat du Consommateur agressif.\n[COPIE-COLLE TOUT LE TEXTE DE LOI/CGV ICI]\nAction : Je suis paniqué, j'ai jeté le carton de ma tondeuse ce matin, elle est en panne. Scanne TOUT ce blabla que je viens de te coller.\nMission : Jette tout le reste. Réponds Cash par Oui ou Non : M'est-il formellement interdit de rendre la tondeuse sans son carton d'usine ?\nATTENTION : Sors-moi le texte EN COPIER COLLER EXACT AVEC GUILLEMETS de l'horrible PDF qui légifère ce point pour que j'ai la preuve !",
+                    "response": "NON, CE N'EST PAS INTERDIT ! Tu es sauvé.\nVoici la PREUVE EXACTE extraite du Chapitre 4 (Alinéa 2) du mur de texte que tu m'as copié : \n« *Pour l'outillage motorisé (Type A), nous reprenons le produit nu, accompagné de sa preuve d'achat, le conditionnement cartonneux d'origine (Boite) n'étant exigé que pour le remboursement numéraire sous 14 jours pleins.* »\n\nFonce au magasin avec ton ticket, laisse la boîte vide chez toi, la loi est avec toi !",
+                    "explanation": "L'information critique est remontée à la surface. La Preuve écrite garantit l'absence d'hallucination de la machine. C'est l'arme absolue des consommateurs."
+                }
+            },
+            "exercise": {
+                "instruction": "Le banquier vous envoie l'offre de prêt pour votre sublime appartement. Vous n'y comprenez rien (12 pages complètes PDF). Vous voulez trouver LA petite ligne qui se cache sur une certaine taxe de modularité.\nFaites le prompt d'Extraction Sniper pour pêcher l'information, en exigeant la citation de l'article exact !",
+                "badPrompt": "C'est bon le credit la dedans ?",
+                "hint": "C'est l'exercice Sniper. \nRôle : Expert Financier Parano !\nDonnée Morte à Scanner : [Je mets le PDF du prêt immobilier de 12 pages].\nAction Sniper (Directivité) : Cible ce que je cherche : Est ce que j'ai des FRAIS (Les sous!) si je change les mensualités de mon Prêt en route ? \nSauvegarde de Vérité : Cite moi le p*** d'article exact copié collé de ce dossier entre guillemets !",
+                "validationCriteria": [
+                    "Injection d'un document complexe (Prêt Bancaire)",
+                    "Demande d'une information Ultra Ciblée et Unique (Frais de modularité)",
+                    "Condition de confiance : Exigence de citation littérale de la ligne de texte trouvée"
+                ],
+                "exampleSolution": "Je ne parle pas le jargon de banquier et ce mec veut me noyer ! \n[PIECE JOINTE : Le Contrat de Crédit en PDF de 122 pages].\n\nRôle : Incarne mon Notaire et Avocat financier féroce et protecteur.\nAction : Scanne les centaines de pages pour me faire une extraction Sniper.\n\nOBJECTIF : Je veux juste savoir UNE chose : M'est-il possible de baisser les mensualités du crédit dans 5 ans SI je perds mon travail, et COMBIEN CES 'FRAIS DE MODULARITE' vont me coûter en agio sec chez eux !?\nATTENTE ABSOLUE : Sors moi entre Guillemet la ligne COPIE-COLLEE originale du contrat qui parle de ça avec le numéro de Page et d'article pour que j'aille surligner la case devant lui Lundi !"
+            }
+        },
+        "54": {
+            "title": "La méthode d'Apprentissage Inversée",
+            "category": "Techniques",
+            "difficulty": "Débutant",
+            "duration": "10 min",
+            "xp": 100,
+            "concept": {
+                "title": "Au lieu de me donner la solution de mon bug, trouve LA MIENNE",
+                "content": "On s'approche de l'excellence mentale des utilisateurs d'IA.\nEn général, nous demandons à l'IA de *faire* quelque chose pour nous. (Exemple: *\"Écris un mail d'excuse pour mon retard.\"*)\nMais il y a une façon bien plus puissante de l'utiliser pour **PROGRESSER dans un art ou un métier : L'Évaluation d'Expertise Inversée !**\n\nAu lieu de demander à la machine de produire de la qualité, SOUMETTEZ-lui votre travail, et exigez la Critique Acide du correcteur d'Etat.\n\n*« Rôle : Expert en Négociation Commerciale monde. Je vais t'envoyer le brouillon du mail que MOI j'ai pensé envoyer à mon fournisseur agressif pour baisser son prix. NE LE REELCRIS PAS ! Dis-moi simplement où sont MES deux grosses erreurs psychologiques dans mon texte perso, et pourquoi je vais me faire avoir si j'envoie mon brouillon tel quel. »*\n\nAinsi, votre cerveau apprend. Vous conservez votre style, et vous gagnez un Mentor de classe mondiale sur l'épaule !",
+                "detailedContent": {
+                    "title": "Le Crash-Test intellectuel",
+                    "sections": [
+                        {
+                            "title": "Pour le code ou les loisirs",
+                            "content": "Si vous apprenez la guitare en écrivant des tablatures, ou si vous tentez de faire un poème d'amour : ne lui demandez pas de le faire. Passez-lui votre essai raté et dites : \"Agis en prof de musique. Juge ma suite d'accords : Où est la fausse note musicale là dedans ? Comment un génie l'aurait amenée mieux ?\""
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Gagner en compétence pure",
+                "bad": {
+                    "prompt": "Le client veut annuler la table de 10 personnes vendredi. Fait un super mail pour dire que c'est pas cool et qu'on garde les arrhes de 50e.",
+                    "response": "Cher Monsieur, Suite à votre demande d'annulation tardive de notre table, nous sommes navrés mais les pénalités s'appliquent... [Mail robotique banal]",
+                    "explanation": "Le gérant de restaurant ne progresse pas. Il envoie un courrier plat et ne saura jamais comment devenir un meilleur gestionnaire relationnel."
+                },
+                "good": {
+                    "prompt": "Rôle : Gérant de palace Étoilé, Roi du SAV et du chic à la française.\nContexte : Un client méchant me lâche vendredi soir 10 places, il veut le remboursement de ses 50e d'arrhes en menaçant de me détruire sur Google Avis. \nVoici le mail rageux que JE PENSE lui envoyer là tout de suite : [\"Vous exagérez, c'est l'aumône là, le restaurant crève et vous annulez à H-24, vos 50 euros sont à nous on a fait les courses pour le saumon merde.\"] \n\nACTION CRITIQUE : NE LE RÉÉCRIS PAS BÊTEMENT ! Incarne mon Boss de Palace, et démonte-moi ce texte. Explique-moi en 3 points pourquoi mon texte va finir au tribunal, et quelle est la pire Erreur de communication que j'ai commise dans mon Brouillon. Détruis mes certitudes et éduque-moi !",
+                    "response": "Directeur Palace Activé : Mon jeune ami, calmez-vous, posez le clavier. Si vous envoyez ce mail, c'est le dépôt de bilan moral.\n\nVoici pourquoi votre brouillon est catastrophique en Service Client : \n1. L'Attaque direct (\"Vous exagérez\") : Le client passera en mode \"Lutte de statut social\". Il ne cédera jamais.\n2. L'apitoiement sur soi (\"Le resto crève\") : Jamais de négation ou de position de faiblesse dans le luxe. Vous n'êtes pas une victime de 50e, vous êtes un Maître Hôtelier !\n3. La vulgarité (\"Merde\") : Capture d'écran direct de sa part, envoi aux journaux, vous êtes mort.\n \nLeçon : On ne répond jamais à chaud à la menace par la menace. On noie le client de droit légal avec un sourire froid par mail. On ignore sa somme, on rappelle nos CGV de réservation en 1 ligne chic et on le salue... On respire on s'y remet ?",
+                    "explanation": "L'utilisateur (Le restaurateur) gagne l'expérience de 40 ans de management Palace en 1 seconde et ne commettra plus l'erreur émotive de sa vie."
+                }
+            },
+            "exercise": {
+                "instruction": "Vous êtes passionné de peinture, et vous essayez d'écrire la Biographie de votre site Web pour vendre vos toiles, mais vous la trouvez prétentieuse.\nSoumettez votre brouillon minable sous la forme d'un Prompt d'Apprentissage Inversé (Le Crash Test) pour recevoir le retour impitoyable d'un Galerie d'Art parisien !",
+                "badPrompt": "Lis ça et fait moi une meilleure bio d'artiste",
+                "hint": "C'est l'Inversion d'Expertise.\nRôle (Galeriste du Marais très dur au jugement acéré).\nBrouillon : [Moi je peins avec mes mains la passion de l'âme et je suis l'élu...].\nOrdre Formel : Interdiction formelle de réécrire le poème/bio pour moi. Mets ta casquette d'expert : Juge mon brouillon. Dis-moi EXACTEMENT quel passage est horriblement prétentieux, pourquoi je vais faire fuir les petits jeunes avec un tel vocabulaire, et éduque mon approche !",
+                "validationCriteria": [
+                    "Soumission volontaire d'un texte personnel (La bio d'artiste)",
+                    "Désignation de la figure d'Autorité (Critique d'art / Galeriste sévère)",
+                    "Demande formelle de NE PAS réécrire le texte",
+                    "Requête d'analyse des erreurs psychologiques et d'éducation métier"
+                ],
+                "exampleSolution": "On passe sur le grill.\nRôle : Critique d'Art Parisien snob, mais très bienveillant dans le coaching de jeunes talents ! \n\nJ'auto-écris la bio de mon petit site vitrine pour vendre 100 balles mes toiles, mais j'ai peur de passer pour un fou prétentieux.\nVoici MON brouillon : \" L'Ame de l'océan transpire de mes coups de raclettes transcendantales, j'offre ma psyché au delà du cosmos du bourgeois \" \n\nACTION INTERDITE : NE ME REECRIS PAS MA BIO. Laisse-moi travailler !\nTA MISSION : Détruis mes illusions et Coach Moi ! Explique-moi en Expert pourquoi ces lignes vont me ridiculiser (Fais Le prof !), pointe le pire mot que j'ai mis, et dis moi comment on passe du Côté \"Humble mais puissant\" en écriture de Peintre pro et serein ! "
+            }
+        },
+        "55": {
+            "title": "Mini-Projet : Le Trieur de Relations (Planifier son VIP)",
+            "category": "Projet",
+            "difficulty": "Débutant",
+            "duration": "20 min",
+            "xp": 250,
+            "concept": {
+                "title": "Faire le ménage dans son réseau d'une seule commande",
+                "content": "Fin de la Phase 12 (Organisation). \nOn va mettre en pratique l'ingénierie du tableau, de la lecture rapide, et du classement intelligent dans un projet que font tous les grands cadres à la rentrée de Septembre.\n\nPrenez votre chaos de cartes de visites virtuels ou vos notes de l'année sociale (Mariage, boulot, vacances) :\n*« J'ai vu Max l'électricien il etait cool. Léo de la compta qui veut changer de taff. Ma prof de yoga sally. Le boss de start up hyper riche Julien L... Julie ma cousine en depression. »*\n\nVous allez lancer **Le Mega-Tri Stratégique des Relations**. \nVous ordonnerez à l'IA la création d'un tableau à froid, en croisant le côté Personnel et Professionnel, et en confiant à l'algorithme le soin de \"deviner\" le **Plan d'Action (Déjeuner, Mail, Appeler, Oublier)** pour classer votre mois ou votre vie sociale avec l'arme chirurgicale du tri !",
+                "detailedContent": {
+                    "title": "Le Hack de la Qualif'",
+                    "sections": [
+                        {
+                            "title": "Une colonne = Un paramètre mental",
+                            "content": "En forçant l'IA à créer la colonne 'Type d'Action de Relance' (Boire un Café vs Faire un simple coucou sur Linkedin), vous transférez la fatigue décisionnelle pénible de maintien du lien social à un algorithme purement logique de rentabilité relationnelle."
+                        }
+                    ]
+                }
+            },
+            "example": {
+                "title": "Du carnet d'adresses mort au plan d'avenir",
+                "bad": {
+                    "prompt": "Gere mes contacts que j'ai noté ce mois, qui je vois ? max de l'urbanisme, leo plombier, lissa du club d'equitation sympa, marco le cousin lourd et leboss de mon entreprise",
+                    "response": "C'est à vous de choisir qui voir ! Si M. Max de l'urbanisme est intéressant, appelez-le. Lissa aussi... [L'IA fait un résumé de vos pensées sans tri].",
+                    "explanation": "Le chaos n'a pas été rangé, l'IA ne sait pas ce qu'elle doit en faire et n'est pas forcée de ranger ou de trancher des statuts VIP."
+                },
+                "good": {
+                    "prompt": "Rôle : Sécretaire particulier (Un majordome à la Batman) impitoyable de mon temps social précieux.\nOBJECTIF : Ranger mon carnage relationnel en Liste de Course VIP pour septembre.\nMon Carnet dégueu : \"max de l'urbanisme pouvoir immense de contact, leo petit plombier cool, lissa fille ecurie super souriante drague?, marco le cousin relou de noel et Monsieur Berthelot le boss de mon entreprise qui m'a souri à la cantine\"\n\nACTION DU MAJORDOME :\nSors le Tableau de Priorisation Sociale Magistral de ma rentrée ! (Et rien d'autre) avec les colonnes exactes :\n1. Le Nom de la cible.\n2. Son Utilité Mentale pour moi : Pro, Fun, Amour, Corvée Famille ? \n3. LE VERDICT D'ACTION : L'Appel Déjeuner Hyper VIP (Mise tout dessus boss) /// Le petit SMS rapide /// A Esquiver absolument jusqu'à Noël !\nRange moi les VIP en haut !",
+                    "response": "| Nom du Contact | Utilité Mentale/Catégorie | VERDICT RELANCE MAGISTRAL |\n| :--- | :--- | :--- |\n| 🏆 M. Berthelot (Boss) | Réseau Pro (Carrière/Argent) | VIP ABSOLU : Inviter à déjeuner pour creuser le 'sourire' dans la semaine ! |\n| 🏆 Max (Urbanisme) | Réseau Pro (Pouvoirs) | VIP 2 : Appel cordial 'Prendre l'apéro' pour maintenir le lien très vite. |\n| ❤️ Lissa (Écurie) | Amour / Fun / Social | CONTACT CIBLE : Un SMS léger rebond drôle sur les chevaux pour jauger le terrain ! |\n| 🛠️ Léo (Plombier) | Utilitaire Réseau Cool | SAUVEGARDE : Ne rien faire, juste enregistrer le numéro chaud pour les pannes. |\n| 🪨 Marco (Cousin Relou) | Corvée Familiale Lourde | ESQUIVE TOTALE : Silence radio mortel préventif jusqu'au 23 Décembre. |",
+                    "explanation": "Batman a encore frappé. La lourdeur sociale est réglée."
+                }
+            },
+            "exercise": {
+                "instruction": "ÉPREUVE ! Vous êtes commercial dans le vin. Vous avez passé le salon du goût et ramené des cartes de visite et griffonné des notes sur des post-it de comptoir arrachés en fin de soirée.\n\nBROUILLON À INCLURE : *\"Pierre (mec des achats de Auchan gros budget vin !), Laura du ptit resto du coin qui veut juste gouter 1 bouteille. Thomas du bar parisien hyper branché bobo (Faut lui claquer un super texte SMS). L'oncle Jules qui cherchait du rouge banal (pas urgent tfason). Fabien le viticulteur qui m'enerves mais il a le meilleur blanc je v lui tel...\"*.\n\nConstruisez Le Méga-Prompt (Avec R.O.C.A et Tableau) pour générer l'emploi du temps de vos relances Commerciales du Lundi depuis les pires jusqu'aux urgentes !",
+                "badPrompt": "[Vague demande de tri et de qui faut appeler]",
+                "hint": "Ciblez votre problème (Ranger mes crasses du salon en outil de pro du vin). Fixez le Bourreau Directeur Commercial.\nPassez les données (Les brouilles dégueules).\nOrdonnez l'Arme Lourde : Tableau de Relance Brutale ! Qui rapporte du fric, qui est une corvée de famille, quel moyen on utilise (Mail, SMS mode cool branchage T, coupure Tel de négociation énervée) et l'ordre d'urgence 1 ou 5 dans la semaine !",
+                "validationCriteria": [
+                    "Assimilation explicite du Brouillon fourni",
+                    "Structure forcée en outil d'Action ou Tableau",
+                    "Création de catégories de tri (CA / Moyen d'Action ou Urgence Commerciale)",
+                    "Délégation absolue du choix décisionnel de 'Comment les relancer' à la machine"
+                ],
+                "exampleSolution": "Rôle : Directeur Commercial d'Elite Impitoyable en Grand Cru !\nObjectif : Faire le tri de mes crasses de réseautage du week-end bourré en rentabilité pure pour lundi matin 8h00 ! \n\nLes Horreurs de mes Post-it de la nuit :\n\" Pierre (mec des achats de Auchan gros budget vin !), Laura du ptit resto du coin qui veut juste gouter 1 bouteille. Thomas du bar parisien hyper branché bobo (Faut lui claquer un super texte SMS). L'oncle Jules qui cherchait du rouge banal (pas urgent tfason). Fabien le viticulteur qui m'enerves mais il a le meilleur blanc je v lui tel... \"\n\nLE MOULE FINAL : Aucun blabla poli ou jugement éthique ! Sors moi l'outil du requin de Wall-Street en Colonnes Strictes : \n- Col A : La Cible & Le Profil\n- Col B : Potentiel de Richesse ou Perte de Temp (Fort/Faible/Famille).\n- Col C : L'Action Recommandée Lundi 8h (Tel lèche botte, Tel agressif ou SMS de charme hipster !)\n- Col D : Le degré d'urgence de 1 à 10 pour le chiffre de la boite ! \n\nRange par urgence rouge le boss de Auchan évidement ! A Toi de bosser Soldat IA !"
+            }
+        }
+    }
+}
